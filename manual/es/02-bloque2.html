@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · Manual de usuario · Capítulo 2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  figure.media { width: 82%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 64%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b2" data-pestana="B2" data-orden="2" style="--acento: var(--b2)">
+  <div class="cap-apertura">
+    <div class="cap-num">2</div>
+    <div class="cap-etiqueta">Bloque 2 · Datos</div>
+    <h1 data-corto="Datos">Registros de plantas y visitantes</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Qué plantas y qué visitantes entran al estudio, y todos sus registros: los de GBIF, las interacciones ya publicadas y los tuyos. Nada se analiza todavía: aquí se reúne, se cuenta y se revisa qué llegó. Es el único bloque que usa internet, y solo cuando se lo pides.</p>
+    <ul class="cap-contenido">
+      <li><b>2.1</b>De dónde vienen los datos</li>
+      <li><b>2.2</b>La lista de estudio</li>
+      <li><b>2.3</b>Los registros de GBIF</li>
+      <li><b>2.4</b>Las interacciones ya publicadas</li>
+      <li><b>2.5</b>Tus propios datos</li>
+      <li><b>2.6</b>Los datos de práctica</li>
+      <li><b>2.7</b>Lo que hay, y el proyecto</li>
+      <li><b>2.8</b>Los avisos de este bloque</li>
+    </ul>
+  </div>
+
+  <!-- 2.1 -->
+  <h2 id="s2-1"><span class="num">2.1</span>De dónde vienen los datos</h2>
+  <p class="lead">Un estudio de polinización con datos de presencia combina cuatro fuentes que dicen cosas distintas (sección 1.6). El Bloque 2 las reúne en cinco tarjetas: la lista de estudio, los registros de GBIF, las interacciones publicadas, tus propios datos y un resumen de lo que hay.</p>
+  <table class="compacta">
+    <thead><tr><th style="width:1.75in">Fuente</th><th>Qué aporta</th><th style="width:1.2in">Dónde se usa</th></tr></thead>
+    <tbody>
+      <tr><td><b>GBIF</b></td><td>Registros de presencia de colecciones, herbarios, observaciones ciudadanas y proyectos, con coordenadas, fecha, tipo de registro y conjunto de datos de origen.</td><td>Bloques 3 a 8</td></tr>
+      <tr><td><b>Base de interacciones bióticas</b></td><td>Pares planta–visitante publicados («visita las flores de», «poliniza a»), casi nunca con lugar ni fecha.</td><td>Bloque 9</td></tr>
+      <tr><td><b>Tus registros de presencia</b></td><td>Lo mismo que GBIF, con tu control de calidad: plantas e insectos que viste, con su punto.</td><td>Bloques 3 a 8</td></tr>
+      <tr><td><b>Tus observaciones de visitas</b></td><td>Pares planta–visitante que observaste, con cuántas visitas y, si puedes, sitio y fecha.</td><td>Bloque 9</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 2.2 -->
+  <h2 id="s2-2"><span class="num">2.2</span>La lista de estudio</h2>
+  <p>Todo empieza con los nombres. Se escriben a cualquier nivel —especie (<i>Coffea arabica</i>), género (<i>Bombus</i>) o familia— en la columna de <b>Plantas</b> o en la de <b>Visitantes</b>, y cada nombre es una <b>entrada</b> de la lista: un género reúne los registros de todas sus especies. Varios nombres se separan con comas o punto y coma. O se parte de uno de los siete <b>sistemas de ejemplo</b>, que son puntos de partida, no recomendaciones: cucurbitáceas de México y abejas de la calabaza; café y abejas; cacao y mosquitas polinizadoras (<i>Forcipomyia</i>); solanáceas y abejorros; aguacate y sus visitantes; agaves y murciélagos nectarívoros; y vainilla y abejas de las orquídeas.</p>
+  <figure>
+    <div class="marco"><img src="../img/b2-lista.png" alt="La tarjeta de la lista de estudio con los siete sistemas de ejemplo, el de cucurbitáceas elegido, y las nueve entradas resueltas en GBIF con su rango, familia, orden, estado, clave y registros en el mundo"></div>
+    <figcaption><b>Figura 2.1.</b> El sistema de las cucurbitáceas de México resuelto en GBIF (consulta real del 27 de septiembre de 2026; tus números serán otros). Cada entrada muestra su rango, familia, orden, estado taxonómico y la clave de GBIF con su enlace; <i>Cucurbita</i> muestra además un selector, porque GBIF tiene más de un nombre con esa grafía.</figcaption>
+  </figure>
+  <p><span class="ui">Resolver los nombres en GBIF</span> busca cada nombre en el esqueleto taxonómico de GBIF. Cuando hay <b>homónimos</b> —el mismo nombre en dos reinos, o un nombre fósil junto al vivo— la app elige el del reino que corresponde al papel (plantas o animales) con más registros, y deja un selector para cambiarlo. En la Figura 2.1, <i>Cucurbita</i> L. tiene 90,979 registros y un homónimo de 180. Cada nombre queda con su número de registros en el mundo; después de contar con los países elegidos (sección 2.3), el número pasa a ser el de esos países.</p>
+  <table class="compacta">
+    <thead><tr><th style="width:1.9in">Lo que puede decir un nombre</th><th>Qué significa y qué hacer</th></tr></thead>
+    <tbody>
+      <tr><td><i>accepted</i></td><td>El nombre es aceptado en el esqueleto de GBIF. Es lo normal.</td></tr>
+      <tr><td><i>synonym</i> o <i>doubtful</i></td><td>GBIF lo considera sinónimo o dudoso. Los registros se piden por la clave del nombre elegido; revisa si conviene escribir el nombre aceptado.</td></tr>
+      <tr><td><i>GBIF no reconoce el nombre: revisa la ortografía</i></td><td>No hubo coincidencia. Casi siempre es un error de tecleo o un nombre muy reciente.</td></tr>
+      <tr><td><i>datos de práctica (sin resolver en GBIF)</i></td><td>La entrada viene de los datos ficticios (sección 2.6): no tiene clave de GBIF y no la necesita.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Elegir un sistema de ejemplo empieza un estudio nuevo</div>
+    <p>Al hacer clic en uno de los siete sistemas, la lista, los registros y las interacciones publicadas se reemplazan por los del ejemplo, y los países se fijan a los suyos. Si ya tenías un estudio, guárdalo antes como proyecto (sección 2.7). Para quitar un solo nombre usa su ✕: se lleva sus registros y la app lo dice. <span class="ui">Vaciar la lista</span> borra todo el estudio.</p>
+  </div>
+
+  <!-- 2.3 -->
+  <h2 id="s2-3"><span class="num">2.3</span>Los registros de GBIF</h2>
+  <p>La segunda tarjeta pide los registros de cada nombre resuelto, <b>solo con coordenadas</b> y filtrados por país desde el servidor. Elegir los países aquí es mucho mejor que descargar el mundo y filtrar después: el conteo ya llega filtrado y la descarga es más corta.</p>
+  <figure>
+    <div class="marco"><img src="../img/b2-gbif.png" alt="La tarjeta de GBIF con los botones de región, las casillas de 31 países, el máximo de registros por nombre, los años, el tipo de registro, la casilla de problemas geoespaciales y el mensaje del conteo"></div>
+    <figcaption><b>Figura 2.2.</b> Los filtros de la descarga y el resultado de <span class="ui">Contar cuántos hay</span> para la lista de las cucurbitáceas en México: 37,185 registros con coordenadas, y un nombre (<i>Apis mellifera</i>) que pasa del máximo de 20,000.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.9in">Control</th><th>Qué hace</th></tr></thead>
+    <tbody>
+      <tr><td><b>Regiones y países</b></td><td>Los botones <span class="ui">México</span>, <span class="ui">Centroamérica</span>, <span class="ui">Norteamérica</span>, <span class="ui">Caribe</span> y <span class="ui">Sudamérica</span> marcan o desmarcan sus países; las casillas se tocan una por una. <span class="ui">sin filtro (todo el mundo)</span> las desmarca todas.</td></tr>
+      <tr><td><b>Máximo de registros por nombre</b></td><td>5,000, 20,000, 50,000 o 99,000. Un nombre con más se descarga hasta el máximo y lo marca como recortado.</td></tr>
+      <tr><td><b>Desde el año</b> y <b>Hasta el año</b></td><td>Vacíos, se piden todos los años.</td></tr>
+      <tr><td><b>Tipo de registro</b></td><td>Todos, solo ejemplares de colección, solo observaciones, o ejemplares y observaciones sin fósiles ni registros de tipo desconocido.</td></tr>
+      <tr><td><span class="ui">Excluir los registros que GBIF marca con problemas geoespaciales</span></td><td>Marcada por omisión: GBIF ya detectó en ellos coordenadas imposibles, invertidas o fuera del país. El Bloque 3 revisa además lo que GBIF no marca.</td></tr>
+      <tr><td><span class="ui">Contar cuántos hay</span></td><td>Pregunta cuántos registros hay con esos filtros, sin descargar. Conviene hacerlo siempre antes.</td></tr>
+      <tr><td><span class="ui">Descargar los registros</span> · <span class="ui">Detener</span></td><td>Descarga nombre por nombre, en páginas de 300 con reintentos, con una barra de progreso por nombre. <span class="ui">Detener</span> corta la descarga; lo ya bajado se conserva.</td></tr>
+    </tbody>
+  </table>
+  <p>Al terminar, la app dice cuántos registros llegaron y recuerda que GBIF pide citar cada descarga con su DOI. Volver a descargar un nombre reemplaza solo sus registros de GBIF, nunca los tuyos: si un nombre falló o se detuvo, basta con repetir la descarga.</p>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>La descarga de la app es para explorar; la del artículo se repite en GBIF</div>
+    <p>La app pide los registros a la interfaz pública de GBIF, que no emite un DOI. Para el artículo final, repite la descarga en el portal de GBIF con los mismos filtros —los guarda el registro de cálculo del Bloque 10— y cita el DOI que te dé. El informe lista además los conjuntos de datos que aportaron registros depurados, porque GBIF pide acreditar a cada uno.</p>
+  </div>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · cuántos registros bajar</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>Si</b> un visitante generalista (la abeja melífera) pasa del máximo</td><td><b>entonces</b> no hace falta subirlo: 20,000 registros bien repartidos bastan para su mapa, su calendario y su nicho. Anótalo en los métodos.</td></tr>
+      <tr><td><b>Si</b> la planta o el visitante que te importa pasa del máximo</td><td><b>entonces</b> súbelo a 50,000 o 99,000, o acota los años: un recorte deja fuera registros al azar del orden en que GBIF los entrega.</td></tr>
+      <tr><td><b>Si</b> un nombre tiene menos de 20 registros en el área</td><td><b>entonces</b> sus pruebas serán débiles: considera reunirlo con su género (una sola entrada) o ampliar el área.</td></tr>
+    </tbody></table>
+  </div>
+
+  <!-- 2.4 -->
+  <h2 id="s2-4"><span class="num">2.4</span>Las interacciones ya publicadas</h2>
+  <p><span class="ui">Buscar interacciones publicadas</span> consulta una base pública de interacciones bióticas, que reúne lo publicado en artículos, bases y colecciones, en las dos direcciones: los visitantes de las flores de cada planta de la lista y las plantas cuyas flores visita cada visitante. El resultado es una tabla de pares con el grupo del visitante (abeja, avispa, mosca sírfida, mosca, mariposa o polilla, escarabajo, murciélago, ave), cuántos registros lo respaldan y si al menos uno de ellos lo llama <b>polinización</b> y no solo visita.</p>
+  <figure>
+    <div class="marco"><img src="../img/b2-globi.png" alt="La tabla de interacciones publicadas: planta, visitante, grupo, registros y si alguno afirma polinización; con etiquetas que marcan los nombres que están en la lista"></div>
+    <figcaption><b>Figura 2.3.</b> Las primeras filas de 4,406 registros de interacción publicados para la lista de las cucurbitáceas (consulta real). La etiqueta <span class="ui">en la lista</span> marca los nombres que pertenecen a una entrada de tu lista; <i>Sicyos edulis</i>, un sinónimo antiguo del chayote, no la lleva.</figcaption>
+  </figure>
+  <p>Se piden hasta 4,000 registros por nombre. La tabla muestra hasta 300 pares ordenados por número de registros; <span class="ui">⤓ Interacciones (.csv)</span>, al pie, descarga todos los registros con su tipo, su fuente (cuando la base la da) y sus coordenadas (cuando las tiene). Cuando la base devuelve la cita del estudio de origen, aparece además la columna <b>Fuentes</b> con cuántos estudios respaldan cada par.</p>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Lo que la tabla enseña antes del análisis</div>
+    <p>En la Figura 2.3 ya hay tres lecturas útiles. Hay registros publicados de <i>Sechium edule</i> con la abeja melífera, pero ninguno con las abejas de la calabaza: el vínculo chayote–<i>Xenoglossa</i> que el estudio de práctica explora está sin documentar. Algunas plantas aparecen con nombres que ya no se usan (<i>Sicyos edulis</i>): el Bloque 9 puede aplicarles los sinónimos del Bloque 3. Y un mismo par aparece a nivel de especie y de género (<i>Cucurbita pepo</i> y <i>Cucurbita</i>): el Bloque 9 permite reunir plantas y visitantes por género.</p>
+  </div>
+
+  <!-- 2.5 -->
+  <h2 id="s2-5"><span class="num">2.5</span>Tus propios datos</h2>
+  <p>La cuarta tarjeta importa dos clases de tabla, cada una con su pestaña. <b>Registros de presencia</b>: una fila por planta o insecto visto, con taxón, latitud y longitud y, si los tienes, fecha, altitud, localidad y si es silvestre o cultivado. <b>Observaciones de visitas</b>: una fila por par planta–visitante observado, con cuántas visitas y, si puedes, sitio y fecha. Acepta <code>.csv</code>, <code>.txt</code>, <code>.tsv</code> y <code>.xlsx</code> —en UTF-8 o Windows-1252, con cualquier separador— o el texto que se pega al copiar celdas de una hoja de cálculo. <span class="ui">⤓ Descargar una plantilla vacía</span> da una tabla con los títulos que la app reconoce.</p>
+  <figure>
+    <div class="marco"><img src="../img/b2-importar.png" alt="La asignación de columnas de una tabla pegada: cada campo de la app con la columna de la tabla que le corresponde y su primer valor, y las opciones de papel, formato de fecha y modo de importación"></div>
+    <figcaption><b>Figura 2.4.</b> Una tabla de cuatro registros pegada desde una hoja de cálculo. La app reconoció sola las columnas <code>especie</code>, <code>latitud</code>, <code>longitud</code>, <code>fecha</code>, <code>altitud</code>, <code>localidad</code> y <code>condicion</code>; el primer valor de cada una permite comprobarlo de un vistazo. Los campos con asterisco son obligatorios.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.8in">Tabla</th><th>Campos que reconoce (por su título, en español o inglés)</th></tr></thead>
+    <tbody>
+      <tr><td><b>Registros de presencia</b></td><td><b>taxón*</b>, <b>latitud*</b>, <b>longitud*</b>, fecha (o año, mes y día por separado), altitud, incertidumbre, país, estado, localidad, tipo de registro, silvestre/cultivado, condición reproductiva, papel (planta/visitante), notas, colector u observador. Los títulos de Darwin Core (<code>scientificName</code>, <code>decimalLatitude</code>, <code>eventDate</code>…) se reconocen igual.</td></tr>
+      <tr><td><b>Observaciones de visitas</b></td><td><b>planta*</b>, <b>visitante*</b>, número de visitas (1 si falta), fecha (o año, mes y día), sitio, latitud, longitud, tipo de interacción, notas.</td></tr>
+    </tbody>
+  </table>
+  <p>Debajo de la asignación hay tres opciones. <b>Si no hay columna de papel</b>: el papel de cada registro se toma de la lista de estudio (lo normal), o todos se marcan como plantas o todos como visitantes. <b>Fechas escritas como</b>: día/mes/año o mes/día/año, para las fechas con barras; las de tipo <code>2024-09-12</code> no son ambiguas. <b>Al importar</b>: añadir a lo que hay o reemplazar tus datos anteriores de esa clase (nunca los de GBIF).</p>
+  <figure>
+    <div class="marco"><img src="../img/b2-huerfanos.png" alt="El mensaje de cuatro registros importados y la tabla de nombres que no están en la lista, con Bombus ephippiatus y el selector para añadirlo como planta o como visitante"></div>
+    <figcaption><b>Figura 2.5.</b> Tras importar, la app avisa de los nombres que ninguna entrada de la lista reclama. <i>Xenoglossa gabbii</i> entró sola porque la lista tiene la entrada <i>Xenoglossa</i>; <i>Bombus ephippiatus</i> no, y espera a que decidas.</figcaption>
+  </figure>
+  <p>Los registros de un nombre que no está en la lista no entran a los análisis hasta que pertenezcan a una entrada. En la tabla de <b>Nombres que no están en la lista</b> se elige, para cada uno, añadirlo como planta, como visitante o dejarlo fuera, y <span class="ui">Añadir a la lista</span> lo aplica.</p>
+
+  <!-- 2.6 -->
+  <h2 id="s2-6"><span class="num">2.6</span>Los datos de práctica</h2>
+  <p>Bajo la lista, el desplegable <span class="ui">¿Sin internet o solo para practicar? Datos ficticios generados por el programa</span> carga uno de los dos estudios de práctica (sección I.7) sin consultar internet: <span class="ui">Cucurbitáceas y abejas de la calabaza</span> o <span class="ui">Café y abejas sin aguijón</span>. Con ellos se reproduce este manual.</p>
+  <figure>
+    <div class="marco"><img src="../img/b2-practica.png" alt="Las listas de plantas y visitantes con los datos de práctica cargados y el mensaje que dice cuántos registros y visitas ficticios se generaron"></div>
+    <figcaption><b>Figura 2.6.</b> El estudio de práctica de las cucurbitáceas: seis plantas y tres visitantes marcados como «datos de práctica (sin resolver en GBIF)», con sus registros cargados. El mensaje lo dice sin rodeos: 2,248 registros y 354 filas de visitas <b>ficticios</b>, con errores sembrados a propósito para el Bloque 3.</figcaption>
+  </figure>
+
+  <!-- 2.7 -->
+  <h2 id="s2-7"><span class="num">2.7</span>Lo que hay, y el proyecto</h2>
+  <figure>
+    <div class="marco"><img src="../img/b2-resumen.png" alt="La tarjeta de lo que hay: seis recuadros —registros, plantas y visitantes, países, años, visitas propias e interacciones publicadas— y la tabla por entrada de la lista, con los botones de descarga, guardado y apertura del proyecto"></div>
+    <figcaption><b>Figura 2.7.</b> El resumen del estudio de práctica. La tabla da, por entrada, el papel, los registros (de GBIF y propios), cuántas especies reúne, el intervalo de años y la fracción con mes.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.7in">Recuadro</th><th>Qué dice</th><th style="width:1.7in">En la práctica</th></tr></thead>
+    <tbody>
+      <tr><td><b>Registros</b></td><td>El total y su origen: GBIF, propios, práctica.</td><td>2,248 · práctica 2,248</td></tr>
+      <tr><td><b>Plantas · Visitantes</b></td><td>Las entradas de la lista con cada papel.</td><td>6 · 3</td></tr>
+      <tr><td><b>Países</b></td><td>En cuántos países caen los registros, con sus códigos.</td><td>3 · MX GT US</td></tr>
+      <tr><td><b>Años</b></td><td>El intervalo y la fracción de registros con año. Un año futuro es el primer indicio de un error.</td><td>1975–2031 · 97 % con año</td></tr>
+      <tr><td><b>Visitas propias</b></td><td>Las visitas importadas y cuántas filas las describen.</td><td>953 en 354 filas</td></tr>
+      <tr><td><b>Interacciones publicadas</b></td><td>Los registros traídos de la base de interacciones.</td><td>0</td></tr>
+    </tbody>
+  </table>
+  <p>Los botones del pie: <span class="ui">⤓ Registros crudos (.csv)</span> descarga todos los registros tal como llegaron; <span class="ui">💾 Guardar el proyecto (.json)</span> guarda la lista, los registros, las visitas, las interacciones y los filtros de la descarga en un solo archivo; <span class="ui">📂 Abrir un proyecto</span> lo recupera en cualquier computadora; <span class="ui">Continuar a la depuración →</span> lleva al Bloque 3.</p>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Guarda el proyecto al terminar de descargar</div>
+    <p>El navegador ya recuerda el estudio (sección I.5), pero el proyecto <code>.json</code> es lo único que sobrevive a un cambio de computadora o a borrar los datos del navegador. Y es lo que permite repetir el análisis con exactamente los mismos registros meses después, cuando GBIF ya tenga otros.</p>
+  </div>
+
+  <!-- 2.8 -->
+  <h2 id="s2-8"><span class="num">2.8</span>Los avisos de este bloque</h2>
+  <table class="compacta">
+    <thead><tr><th style="width:2.6in">Mensaje</th><th>Qué significa y qué hacer</th></tr></thead>
+    <tbody>
+      <tr><td><i>Primero resuelve los nombres en GBIF (sección 1)</i></td><td>Contar y descargar necesitan la clave de GBIF de cada nombre.</td></tr>
+      <tr><td><i>No se pudo consultar GBIF… Revisa tu conexión, o practica con los datos ficticios de abajo</i></td><td>Sin internet o con el servicio caído. Los datos de práctica funcionan sin conexión.</td></tr>
+      <tr><td><i>N nombres pasan del máximo elegido</i></td><td>Se descargarán solo los primeros registros de esos nombres. Sube el máximo o acota los años (regla de la sección 2.3).</td></tr>
+      <tr><td><i>Descarga terminada… Algunos nombres fallaron o se detuvieron</i></td><td>Repite la descarga: solo se reemplazan los registros de GBIF de esos nombres. Un nombre cortado conserva lo que alcanzó a bajar y lo marca («corte: N guardados»).</td></tr>
+      <tr><td><i>N registros de interacción publicados; N consultas fallaron</i></td><td>Alguna de las consultas a la base de interacciones no respondió. Repite la búsqueda.</td></tr>
+      <tr><td><i>Falta asignar: …</i></td><td>Algún campo obligatorio (taxón, latitud y longitud; o planta y visitante) no tiene columna. Elígela en la asignación.</td></tr>
+      <tr><td><i>N registros importados. N filas sin taxón o sin coordenadas legibles se omitieron (la primera: fila N)</i></td><td>Esas filas no se importaron. Revisa la tabla original.</td></tr>
+      <tr><td><i>Ese archivo no es un proyecto de PollinationPro</i></td><td>El <code>.json</code> no viene del botón de guardar de esta app.</td></tr>
+      <tr><td><i>Se recuperó la sesión anterior…</i></td><td>No es un aviso: el navegador recordó el estudio de la última vez.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>

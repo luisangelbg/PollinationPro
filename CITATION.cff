@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "PollinationPro: a browser-based platform for analysing plants, pollinators and their overlap with occurrence data"
+abstract: >-
+  PollinationPro is a self-contained web application that carries a study of plants and their flower
+  visitors from occurrence records to a paper, in the browser, with no installation and no third-party
+  libraries. It works for any crop, crop wild relative or native plant and any group of visitors. It
+  gathers GBIF records by taxon and country, published plant–visitor interactions and the user's own
+  presence and visit tables; cleans the records (impossible and placeholder coordinates, country and state
+  centroids, swapped or unsigned coordinates, duplicates, imprecision, fossils, living collections and
+  cultivated plants, decided per plant) and harmonises synonyms; maps them offline; tests spatial
+  co-occurrence with Veech's exact hypergeometric model within a target-group universe, with
+  false-discovery-rate adjustment, cell-size sensitivity, a nearest-neighbour Monte Carlo test and range
+  overlap; analyses phenological and elevational overlap with circular statistics; compares environmental
+  niches in principal-component space with Schoener's D, Warren's I and the equivalency and similarity
+  tests, reading the user's GeoTIFF or ASCII layers; estimates potential distributions and the spatial
+  mismatch between a plant and its potential visitors, now and under future climates; and describes the
+  interaction network (connectance, NODF, H2', d', modularity, strength, null models, sampling
+  completeness). It writes a report whose methods are drawn from what was actually run.
+type: software
+authors:
+  - given-names: "Luis Ángel"
+    family-names: "Barrera-Guzmán"
+    email: lbarrerag@chapingo.mx
+    orcid: "https://orcid.org/0000-0001-8057-2583"
+version: "1.2.0"
+date-released: "2026-09-27"
+# Cuando se deposite en Zenodo, agregar aqui el DOI de concepto:
+#   doi: 10.5281/zenodo.XXXXXXX
+license: GPL-3.0-or-later
+keywords:
+  - pollination ecology
+  - plant-pollinator interactions
+  - species co-occurrence
+  - niche overlap
+  - circular statistics
+  - phenology
+  - species distribution
+  - spatial mismatch
+  - interaction networks
+  - GBIF
+  - crop wild relatives

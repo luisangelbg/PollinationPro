@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · Manual de usuario · Capítulo 1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  .formula { font-family: var(--mono); font-size: 9pt; background: var(--marino-suave); border-radius: 5px; padding: 0.07in 0.12in; margin: 0.08in 0; }
+  figure.media { width: 82%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 70%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b1" data-pestana="B1" data-orden="1" style="--acento: var(--b1)">
+  <div class="cap-apertura">
+    <div class="cap-num">1</div>
+    <div class="cap-etiqueta">Bloque 1 · Inicio</div>
+    <h1 data-corto="Inicio">Inicio: laboratorios, métodos y teoría</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">La portada no es un folleto: sus dos laboratorios generan paisajes y calendarios virtuales y corren sobre ellos las mismas pruebas que la app correrá con tus registros. Como en un paisaje virtual la verdad se conoce, se puede ver cuándo una prueba acierta y cuándo se equivoca. Aquí están también el mapa de los bloques, las preguntas que responden, los veinte métodos con su publicación de origen, lo que cada fuente de datos puede afirmar, la teoría en lenguaje claro y las referencias.</p>
+    <ul class="cap-contenido">
+      <li><b>1.1</b>Lo que se ve al abrir la app</li>
+      <li><b>1.2</b>Cómo funciona: los siete pasos de un artículo</li>
+      <li><b>1.3</b>Laboratorio 1: coocurrencia y sesgo de muestreo</li>
+      <li><b>1.4</b>Laboratorio 2: solapamiento fenológico</li>
+      <li><b>1.5</b>Los bloques, las preguntas y la galería de métodos</li>
+      <li><b>1.6</b>Cuatro fuentes de datos, cuatro preguntas</li>
+      <li><b>1.7</b>La teoría, en lenguaje claro</li>
+      <li><b>1.8</b>Cómo citar y las referencias</li>
+    </ul>
+  </div>
+
+  <!-- 1.1 -->
+  <h2 id="s1-1"><span class="num">1.1</span>Lo que se ve al abrir la app</h2>
+  <p class="lead">La primera pantalla (Figura I.2) hace una sola pregunta: <i>¿coinciden la flor y su polinizador?</i> Debajo, un párrafo resume el camino —de los registros de GBIF y tus observaciones a un artículo— y cuatro botones llevan a los cuatro lugares por donde suele empezarse.</p>
+  <table class="compacta">
+    <thead><tr><th style="width:2in">Botón</th><th>A dónde lleva</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Empezar con mis taxones →</span></td><td>Al Bloque 2, a escribir la lista de estudio.</td></tr>
+      <tr><td><span class="ui">Probar los laboratorios</span></td><td>Baja a los dos laboratorios de esta misma página (secciones 1.3 y 1.4).</td></tr>
+      <tr><td><span class="ui">Leer la teoría</span></td><td>Baja a «La teoría, en lenguaje claro» y abre su primer apartado (sección 1.7).</td></tr>
+      <tr><td><span class="ui">Cómo citar</span></td><td>Baja a la cita del programa (sección 1.8).</td></tr>
+    </tbody>
+  </table>
+  <p>La ilustración de la derecha es un resumen de la app en una imagen: una guía de cucurbitácea con flor y fruto, una abeja que llega, el mapa de México con registros de planta y polinizador, un reloj del año con la floración y el vuelo, un diagrama de nicho con su D y, abajo, una red de visitas. Su pie lo dice todo: <i>la coincidencia es la hipótesis; la visita, la evidencia</i>. Las cinco insignias de debajo de los botones resumen lo que el programa garantiza: funciona completo en el navegador, los datos no salen de la computadora, está en español e inglés, sus pruebas están verificadas y sus figuras se editan y exportan hasta 900 ppp.</p>
+
+  <!-- 1.2 -->
+  <h2 id="s1-2"><span class="num">1.2</span>Cómo funciona: los siete pasos de un artículo</h2>
+  <figure>
+    <div class="marco"><img src="../img/b1-flujo.png" alt="Los siete pasos de la ruta guiada: reunir, depurar, situar, sincronizar, comparar nichos, conectar y publicar"></div>
+    <figcaption><b>Figura 1.1.</b> La ruta guiada, en el orden en que se escribe un artículo de polinización con datos de presencia. Cada paso agrupa uno o dos bloques.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.35in">Paso</th><th style="width:1.9in">Qué se hace</th><th>Bloques</th></tr></thead>
+    <tbody>
+      <tr><td><b>1 · Reunir</b></td><td>plantas, polinizadores e interacciones</td><td>2</td></tr>
+      <tr><td><b>2 · Depurar</b></td><td>errores, cultivados y sinónimos</td><td>3</td></tr>
+      <tr><td><b>3 · Situar</b></td><td>mapa y coocurrencia</td><td>4 y 5</td></tr>
+      <tr><td><b>4 · Sincronizar</b></td><td>floración y vuelo</td><td>6</td></tr>
+      <tr><td><b>5 · Comparar nichos</b></td><td>clima, idoneidad, desajuste</td><td>7 y 8</td></tr>
+      <tr><td><b>6 · Conectar</b></td><td>la red de visitas</td><td>9</td></tr>
+      <tr><td><b>7 · Publicar</b></td><td>figuras, métodos, paquete</td><td>10</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 1.3 -->
+  <h2 id="s1-3"><span class="num">1.3</span>Laboratorio 1: coocurrencia y sesgo de muestreo</h2>
+  <p>El primer laboratorio responde la pregunta que más se equivoca en los estudios con datos de presencia: <i>¿coinciden la planta y la abeja más de lo esperado?</i> Genera un paisaje de 36 × 24 celdas con un gradiente ambiental. La planta y la abeja ocupan las celdas que les convienen según su óptimo y su amplitud de nicho. Luego alguien muestrea, más cerca de una carretera cuanto mayor es el sesgo, y solo las celdas muestreadas dan registros. Sobre esos registros se corre la prueba exacta de Veech (Capítulo 5) con tres universos distintos, y se compara con <b>la verdad</b>: la misma prueba con las presencias reales, que en el campo nunca se conocen.</p>
+  <figure>
+    <div class="marco"><img src="../img/b1-lab1.png" alt="El laboratorio de coocurrencia con sus cuatro controles, el paisaje con los registros de planta y abeja junto a la carretera, la distribución nula de celdas compartidas con dos universos y los recuadros de la verdad y de los tres universos"></div>
+    <figcaption><b>Figura 1.2.</b> El laboratorio con sus valores de inicio: separación de nichos 0.50, amplitud 0.14, sesgo hacia la carretera 80 % y esfuerzo de fondo 25 %. Los puntos llenos son registros; los círculos vacíos, presencias que nadie registró; la franja gris, la carretera.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.7in">Control</th><th>Qué cambia</th></tr></thead>
+    <tbody>
+      <tr><td><b>Separación de nichos</b></td><td>Qué tan distintos son los óptimos ambientales de la planta y de la abeja, de 0 (el mismo) a 0.8. Con 0 comparten el paisaje; con 0.8 se evitan.</td></tr>
+      <tr><td><b>Amplitud de nicho</b></td><td>Qué tanto del gradiente toleran. Amplitudes grandes hacen que casi todo coincida.</td></tr>
+      <tr><td><b>Sesgo hacia la carretera</b></td><td>Qué tanto se concentra el muestreo junto a la carretera, de 0 a 100 %.</td></tr>
+      <tr><td><b>Esfuerzo de fondo</b></td><td>La probabilidad de muestrear una celda lejos de la carretera.</td></tr>
+      <tr><td><span class="ui">↻ Otro paisaje</span></td><td>Sortea otro paisaje con los mismos controles. Con los mismos controles y el mismo paisaje, el resultado es siempre el mismo.</td></tr>
+    </tbody>
+  </table>
+  <p>Los recuadros de debajo son la lección. <b>Registros</b> y <b>Celdas compartidas</b> dicen lo que se observó —45 registros de planta y 64 de abeja, 2 celdas compartidas en la Figura 1.2— y cuántas se esperarían con dos de los universos. <b>La verdad</b> dice lo que pasa en el paisaje: las dos especies se evitan («menos de lo esperado», EEF −11.12). Los tres recuadros siguientes son la misma prueba con tres universos: <b>todo el mapa</b> la da como «al azar» y se equivoca (en rojo); el <b>grupo objetivo</b> —las 155 celdas donde el muestreador registró la planta, la abeja u otro taxón del mismo grupo— y las <b>celdas muestreadas</b> recuperan la segregación (en verde). El párrafo de abajo lo resume: <i>«El sesgo también esconde: en el paisaje las dos especies se evitan, pero como las dos se registraron junto a la carretera, con todo el mapa como universo la segregación desaparece.»</i></p>
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · el sesgo también inventa</div>
+    <p>Pon la separación de nichos en 0.20, la amplitud en 0.25 y el esfuerzo de fondo en 5 %, con el sesgo en 80 %. En el paisaje, la planta y la abeja se reparten al azar una respecto de la otra (EEF −0.37). Pero sus registros se amontonan junto a la carretera, y con todo el mapa como universo la prueba declara una asociación positiva enorme —54 celdas compartidas contra 9.3 esperadas, EEF 16.38— que no existe. Con el grupo objetivo (EEF −1.68) y con las celdas muestreadas (EEF −0.86) vuelve a salir «al azar». Es <i>la trampa del sesgo</i>, y es el error más común de los artículos con datos de presencia.</p>
+    <p>Ahora sube el esfuerzo de fondo a 100 % y baja el sesgo a 0: todo el paisaje queda muestreado y el universo de todo el mapa acierta. El grupo objetivo, en cambio, se inclina hacia «menos de lo esperado» (EEF −2.36), porque deja fuera las celdas donde nadie registró nada y con ellas las ausencias compartidas. La app lo explica en el mismo párrafo: el grupo objetivo corrige el sesgo, y cuando no hay sesgo cuesta un poco de exactitud.</p>
+  </div>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · qué universo usar</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>Si</b> tus registros vienen de GBIF o de colecciones</td><td><b>entonces</b> usa el grupo objetivo (la opción por omisión del Bloque 5): tus registros tienen el sesgo de la carretera.</td></tr>
+      <tr><td><b>Si</b> tus registros vienen de un muestreo sistemático (una rejilla o transectos recorridos por igual)</td><td><b>entonces</b> el universo son las celdas que recorriste; «toda la tierra» solo es correcto si muestreaste toda la tierra.</td></tr>
+    </tbody></table>
+    <p class="regla-pie">La ficha <span class="ui">?</span> de <i>Sesgo de muestreo</i> lo explica con referencias (Phillips et al. 2009; Kramer-Schadt et al. 2013).</p>
+  </div>
+
+  <!-- 1.4 -->
+  <h2 id="s1-4"><span class="num">1.4</span>Laboratorio 2: solapamiento fenológico</h2>
+  <p>El segundo laboratorio pone en marcha la estadística circular del Bloque 6. Una planta florece y una abeja vuela alrededor de dos fechas pico, con dos amplitudes; la app sortea registros de los dos calendarios, calcula la fecha media y la concentración de cada uno, prueba si difieren y mide cuánto se solapan mes a mes.</p>
+  <figure>
+    <div class="marco"><img src="../img/b1-lab2.png" alt="El laboratorio fenológico: cinco controles, el año como círculo con los registros de floración y de vuelo y sus vectores medios, los perfiles mensuales y los recuadros con las fechas medias, el desfase, Rayleigh, la D de Schoener y los índices I y O"></div>
+    <figcaption><b>Figura 1.3.</b> Floración con pico el 15 de septiembre (± 40 días) y vuelo con pico el 16 de agosto (± 30 días), 80 registros de cada uno. A la izquierda, cada registro es un punto sobre el círculo del año y la flecha es el vector medio; a la derecha, los perfiles mensuales y su solapamiento.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.7in">Recuadro</th><th>Qué dice</th><th style="width:1.6in">En la Figura 1.3</th></tr></thead>
+    <tbody>
+      <tr><td><b>Fecha media</b> de floración y de vuelo</td><td>La dirección del vector medio, con R̄ —de 0, fechas repartidas en todo el año, a 1, todas el mismo día— y su etiqueta de escala, y la desviación estándar circular en días.</td><td>17 sep · R̄ 0.79 <i>marcada</i> · ± 40 días; 14 ago · R̄ 0.86 · ± 32 días</td></tr>
+      <tr><td><b>Desfase</b></td><td>Los días entre las dos fechas medias y la prueba de Watson–Williams de que son la misma.</td><td>34 días · p = 2.5 × 10⁻⁸</td></tr>
+      <tr><td><b>Rayleigh</b></td><td>Si cada calendario es estacional (p pequeña) o uniforme en el año.</td><td>p ≈ 10⁻²⁷ y 10⁻³⁴</td></tr>
+      <tr><td><b>D de Schoener</b></td><td>La fracción de los dos perfiles mensuales que se comparte, de 0 a 1.</td><td>0.65 <i>alto</i></td></tr>
+      <tr><td><b>I · O</b></td><td>La I de Warren y la O de Pianka, dos índices de solapamiento más benévolos con las diferencias pequeñas.</td><td>0.82 · 0.82</td></tr>
+    </tbody>
+  </table>
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · por qué la D puede ser alta y el desfase significativo</div>
+    <p>Watson–Williams pregunta si las dos fechas <b>medias</b> son iguales; con 80 registros de cada lado, un desfase de un mes es muy significativo. La D pregunta qué fracción de los <b>calendarios completos</b> se comparte, y dos temporadas de dos meses separadas por uno se siguen solapando mucho. Las dos cosas son ciertas a la vez: la abeja vuela antes que el pico de la floración, pero la mayor parte de la floración ocurre con abejas volando. Un artículo reporta las dos. Mueve el <b>pico de vuelo</b> hacia marzo y verás que la D cae a cero mucho antes de que el desfase llegue a seis meses.</p>
+  </div>
+
+  <!-- 1.5 -->
+  <h2 id="s1-5"><span class="num">1.5</span>Los bloques, las preguntas y la galería de métodos</h2>
+  <p>Debajo de los laboratorios, la portada ofrece tres índices de la app. <b>Los nueve bloques de trabajo</b> (Figura 1.4) son tarjetas que llevan al bloque con un clic; cada una dice qué hace con un dibujo que resume su figura principal.</p>
+  <figure class="alta">
+    <div class="marco"><img src="../img/b1-bloques.png" alt="Las nueve tarjetas de los bloques de trabajo, del 2 al 10, cada una con su dibujo, su etiqueta, su título y su descripción"></div>
+    <figcaption><b>Figura 1.4.</b> Las tarjetas de los bloques 2 a 10. La etiqueta en ámbar dice la dimensión que cada bloque mira: datos, calidad, mapa, espacio, tiempo, ambiente, distribución, red e informe.</figcaption>
+  </figure>
+  <figure>
+    <div class="marco"><img src="../img/b1-preguntas.png" alt="La franja de las seis preguntas que responde la app, cada una con su dibujo y el bloque que la contesta"></div>
+    <figcaption><b>Figura 1.5.</b> Las preguntas que responde, con el bloque que contesta cada una: quién podría polinizarla, si coinciden en el tiempo, qué pasará con el clima, silvestre o cultivada, qué tan especializada es la red y dónde falta muestrear.</figcaption>
+  </figure>
+  <p>La <b>galería de métodos</b> reúne los veinte métodos de la app con su publicación de origen y el bloque donde se usan. Los botones de arriba la filtran por familia: <span class="ui">Datos y calidad</span>, <span class="ui">Espacio</span>, <span class="ui">Tiempo</span>, <span class="ui">Ambiente</span> y <span class="ui">Redes y diversidad</span>.</p>
+  <figure>
+    <div class="marco"><img src="../img/b1-metodos.png" alt="La galería de los veinte métodos, con el filtro por familia y una tarjeta por método"></div>
+    <figcaption><b>Figura 1.6.</b> La galería de métodos. Cada tarjeta dice el método, en qué consiste en una línea y el bloque donde se usa.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.2in">Familia</th><th>Métodos</th></tr></thead>
+    <tbody>
+      <tr><td><b>Datos y calidad</b></td><td>Descarga de GBIF por taxón y país · armonización taxonómica · depuración de registros · silvestre contra cultivado</td></tr>
+      <tr><td><b>Espacio</b></td><td>Coocurrencia probabilística (Veech 2013) · similitud por celdas (Jaccard, Sørensen, Simpson y cobertura) · distancia al vecino más cercano contra un nulo del grupo objetivo · solapamiento de envolventes convexas</td></tr>
+      <tr><td><b>Tiempo</b></td><td>Estadística circular (fecha media, R̄, Rayleigh, Watson–Williams) · solapamiento fenológico mes a mes corregido por esfuerzo · solapamiento altitudinal con densidades de kernel</td></tr>
+      <tr><td><b>Ambiente</b></td><td>ACP del ambiente (Broennimann et al. 2012) · D de Schoener e I de Warren · equivalencia y similitud de nicho (Warren et al. 2008) · idoneidad ambiental (envolvente, Mahalanobis y logística con fondo) · mapa de desajuste</td></tr>
+      <tr><td><b>Redes y diversidad</b></td><td>Red bipartita · anidamiento NODF (Almeida-Neto et al. 2008) · especialización H₂′ y d′ (Blüthgen et al. 2006) · riqueza de visitantes con rarefacción, Chao1 y cobertura</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 1.6 -->
+  <h2 id="s1-6"><span class="num">1.6</span>Cuatro fuentes de datos, cuatro preguntas</h2>
+  <p>Una tabla de la portada dice qué puede afirmar cada tipo de dato y qué no. Es la mejor defensa contra la frase que un revisor tacha: cada fuente contesta una pregunta distinta y un buen artículo combina al menos dos.</p>
+  <figure>
+    <div class="marco"><img src="../img/b1-fuentes.png" alt="La tabla de las cuatro fuentes de datos —GBIF, tus registros de presencia, tus observaciones de visitas y las bases de interacciones— con qué dicen, qué no dicen, su sesgo principal, para qué sirven y en qué bloques entran; y las seis tarjetas de lo que reúne la app"></div>
+    <figcaption><b>Figura 1.7.</b> Las cuatro fuentes y, debajo, las seis cosas que la app reúne en un solo lugar: el encadenamiento de los bloques, los métodos citados, la validación, las escalas para leer, las figuras editables y el trabajo sin instalar nada.</figcaption>
+  </figure>
+
+  <!-- 1.7 -->
+  <h2 id="s1-7"><span class="num">1.7</span>La teoría, en lenguaje claro</h2>
+  <p>Cinco apartados plegables explican lo que hay que entender antes de descargar el primer registro. Cada uno lleva a la derecha el bloque donde se aplica.</p>
+  <figure>
+    <div class="marco"><img src="../img/b1-teoria.png" alt="La sección de teoría con su primer apartado abierto: la cadena de evidencia de cinco eslabones entre una coincidencia de registros y la polinización"></div>
+    <figcaption><b>Figura 1.8.</b> El primer apartado, «Coincidir no es polinizar», con el diagrama de los cinco eslabones: coinciden en el espacio (Bloques 4–5), en el tiempo (Bloque 6), comparten nicho (Bloques 7–8), la visita (Bloque 9) y el transporte y depósito de polen (campo).</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:2.4in">Apartado</th><th>Qué explica</th></tr></thead>
+    <tbody>
+      <tr><td><b>Coincidir no es polinizar: la cadena de evidencia</b> <i>(empieza aquí)</i></td><td>Los cinco eslabones y por qué los Bloques 5 a 8 hablan de «polinizadores potenciales» y el 9 de interacciones registradas.</td></tr>
+      <tr><td><b>El sesgo de muestreo y el grupo objetivo</b> <i>(Bloque 5)</i></td><td>Por qué los registros coinciden donde se muestreó más, la solución del grupo objetivo y la distribución hipergeométrica.</td></tr>
+      <tr><td><b>El año es un círculo</b> <i>(Bloque 6)</i></td><td>La fecha como ángulo, el vector medio y R̄, Rayleigh, Watson–Williams y los tres índices de solapamiento.</td></tr>
+      <tr><td><b>El nicho en el espacio ambiental</b> <i>(Bloques 7 y 8)</i></td><td>El método de Broennimann et al. (2012), las pruebas de Warren et al. (2008) y la idea del desajuste.</td></tr>
+      <tr><td><b>Cultivos, parientes silvestres y sus polinizadores</b> <i>(para qué sirve)</i></td><td>Seis sistemas de cultivo con sus visitantes y su pregunta típica, por qué separar las plantas sembradas de las silvestres y el ejemplo de <i>Peponapis</i>, subgénero de <i>Xenoglossa</i> desde Freitas et al. (2023).</td></tr>
+    </tbody>
+  </table>
+  <div class="formula">P(j compartidas) = C(N₁, j) · C(N − N₁, N₂ − j) / C(N, N₂)      E[j] = N₁·N₂ / N</div>
+  <p>La fórmula de arriba es la de la prueba de Veech: si la planta ocupa N₁ de N celdas y el visitante N₂, y se colocaran al azar uno respecto del otro, el número de celdas compartidas seguiría la distribución hipergeométrica. Es la única fórmula que conviene recordar del manual, porque de ella depende la lectura de todo el Capítulo 5.</p>
+
+  <!-- 1.8 -->
+  <h2 id="s1-8"><span class="num">1.8</span>Cómo citar y las referencias</h2>
+  <figure>
+    <div class="marco"><img src="../img/b1-citar.png" alt="El recuadro de la cita del programa con el botón para copiarla y la lista de referencias con su filtro por familia"></div>
+    <figcaption><b>Figura 1.9.</b> La cita del programa, con la versión que tienes abierta, y la lista de las 60 referencias detrás de los cálculos, filtrable por familia.</figcaption>
+  </figure>
+  <p><span class="ui">Copiar la cita</span> la copia al portapapeles en el idioma de la interfaz. La cita del programa no basta: cada método se cita a su obra original —el informe del Bloque 10 los nombra por autor y año, y solo los que usaste—, y cada descarga de GBIF se cita con su DOI. La lista de referencias se filtra en siete familias: datos y calidad, espacio, tiempo, nicho, redes y diversidad, cultivos y polinizadores, y métodos numéricos. El Apéndice E la reproduce completa.</p>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Las figuras de la portada también se exportan</div>
+    <p>Las figuras de los dos laboratorios tienen sus botones ⤓ y ✎ como cualquier otra. Sirven para una clase o una presentación: el laboratorio de coocurrencia, con sesgo alto y bajo, es la forma más rápida de explicar a un comité por qué un análisis corrige por esfuerzo de muestreo.</p>
+  </div>
+</section>
+
+</body>
+</html>

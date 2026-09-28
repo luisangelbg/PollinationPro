@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · Manual de usuario · Capítulo 7</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  figure.media { width: 82%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 66%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b7" data-pestana="B7" data-orden="7" style="--acento: var(--b7)">
+  <div class="cap-apertura">
+    <div class="cap-num">7</div>
+    <div class="cap-etiqueta">Bloque 7 · Nicho ambiental</div>
+    <h1 data-corto="Nicho ambiental">Nicho ambiental</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">¿Viven la planta y el visitante en los mismos climas? Se comparan en el espacio ambiental —los dos primeros componentes principales de tus capas—, corrigiendo por lo que el ambiente de la región ofrece, con dos pruebas por aleatorización: si los nichos son idénticos y si se parecen más de lo que el solo parecido de los ambientes produciría. Después, variable por variable, qué separa a los dos.</p>
+    <ul class="cap-contenido">
+      <li><b>7.1</b>Comparar climas, no lugares</li>
+      <li><b>7.2</b>Las capas ambientales</li>
+      <li><b>7.3</b>El fondo y los parámetros</li>
+      <li><b>7.4</b>El espacio ambiental</li>
+      <li><b>7.5</b>Equivalencia y similitud</li>
+      <li><b>7.6</b>Variable por variable</li>
+      <li><b>7.7</b>Los avisos de este bloque</li>
+    </ul>
+  </div>
+
+  <!-- 7.1 -->
+  <h2 id="s7-1"><span class="num">7.1</span>Comparar climas, no lugares</h2>
+  <p class="lead">Dos especies pueden vivir en lugares distintos y compartir clima, o vivir cerca y usar ambientes distintos. Para un estudio de polinización, lo segundo importa: si el visitante tolera un intervalo de temperatura más estrecho que la planta, habrá partes del área de la planta donde el visitante no puede vivir, aunque hoy compartan región. Y el cambio climático mueve a cada especie según su propio nicho.</p>
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · el método de Broennimann et al. (2012)</div>
+    <p>1) Las celdas del fondo —el ambiente disponible— se resumen con un análisis de componentes principales de las variables estandarizadas. 2) Los registros de cada unidad se proyectan en los dos primeros ejes. 3) En una rejilla de 100 × 100 de ese plano se estima la densidad de los registros y la del fondo con un kernel gaussiano; la de los registros se conserva solo donde hay ambiente disponible y, si se pide, se divide entre la del fondo. 4) La <b>D de Schoener</b> y la <b>I de Warren</b> comparan las densidades de las dos unidades, de 0 (nichos sin nada en común) a 1 (idénticos). 5) La <b>prueba de equivalencia</b> reparte al azar los registros entre las dos unidades; la de <b>similitud</b> mueve el nicho del visitante a un lugar al azar del fondo; las dos se repiten muchas veces (Warren et al. 2008).</p>
+  </div>
+
+  <!-- 7.2 -->
+  <h2 id="s7-2"><span class="num">7.2</span>Las capas ambientales</h2>
+  <p>El bloque trabaja con <b>tus capas</b>: GeoTIFF (<code>.tif</code>) o rejillas ASCII (<code>.asc</code>), en grados, de preferencia todas con la misma resolución. Se eligen con <span class="ui">Elegir archivos…</span> o, más cómodo, <span class="ui">Elegir una carpeta…</span>. Cada capa se lee solo en la ventana que cubre los registros más un <b>margen</b> (3° por omisión): una capa mundial a 30″ tiene 933 millones de celdas y el estudio necesita unos pocos millones, así que el lector descomprime solo esa ventana. Si una capa tiene otra rejilla que la primera, se remuestrea a la de la primera y la tabla lo dice.</p>
+  <p>La app no trae capas climáticas reales: las bases climáticas globales no permiten redistribuir sus archivos, y se descargan una vez desde su sitio (las 19 variables bioclimáticas, a 10′, 5′, 2.5′ o 30″). Para aprender, el desplegable <span class="ui">¿Sin capas o solo para practicar? Capas ficticias generadas por el programa</span> carga, con <span class="ui">Cargar las capas de práctica</span>, cuatro capas inventadas para México y Centroamérica (sección I.7).</p>
+  <figure>
+    <div class="marco"><img src="../img/b7-capas.png" alt="La tarjeta de capas con las cuatro capas de práctica cargadas: altitud sin marcar y BIO1, BIO4 y BIO12 marcadas, con su archivo, resolución, celdas, mínimo y máximo; la correlación entre las variables en uso; la altitud desde una capa; y los parámetros del fondo"></div>
+    <figcaption><b>Figura 7.1.</b> Las capas de práctica recortadas al área del estudio: 29,589 celdas de 6′ (unos 11 km). La altitud se carga sin marcar porque no es una variable climática; BIO1 (temperatura media anual), BIO4 (estacionalidad de la temperatura) y BIO12 (precipitación anual) entran al análisis. El aviso ámbar recuerda que son ficticias.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.9in">Parte de la tarjeta</th><th>Qué hace</th></tr></thead>
+    <tbody>
+      <tr><td><b>La tabla de capas</b></td><td>La casilla <b>Usar</b> decide qué variables entran; el nombre se reconoce por el final del archivo (<code>…bio_1</code> → BIO1, con su nombre largo) y <code>elev</code>, <code>alt</code> o <code>dem</code> → Altitud. La ✕ quita una capa; <span class="ui">Quitar todas</span>, todas.</td></tr>
+      <tr><td><b>Correlación entre las variables en uso</b></td><td>La r de Pearson entre cada par de variables sobre las celdas del área (una muestra de hasta 20,000). Las que pasan de |r| = 0.8 salen en rojo. En la práctica, ninguna: la mayor es −0.77 (BIO4 con BIO12).</td></tr>
+      <tr><td><b>Altitud desde una capa</b></td><td>Con una capa de altitud elegida, <span class="ui">Completar la altitud de los registros que no la traen</span> la lee en el punto de cada registro sin altitud. Los que traían la suya la conservan. El Bloque 6 la usa enseguida (Figura 6.6).</td></tr>
+    </tbody>
+  </table>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · qué variables usar</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>Si</b> dos variables tienen |r| &gt; 0.8</td><td><b>entonces</b> deja una: el análisis de componentes absorbe la correlación, pero dos variables casi idénticas dan doble peso a lo que miden.</td></tr>
+      <tr><td><b>Si</b> no sabes cuáles elegir</td><td><b>entonces</b> elige pocas y con sentido para la biología del par: temperatura media, estacionalidad, precipitación anual y de la temporada seca suelen bastar para plantas y abejas.</td></tr>
+      <tr><td><b>Si</b> tus registros son de GBIF de precisión desconocida</td><td><b>entonces</b> 2.5′ o 5′ es una resolución razonable; 30″ solo tiene sentido con coordenadas de GPS.</td></tr>
+    </tbody></table>
+  </div>
+
+  <!-- 7.3 -->
+  <h2 id="s7-3"><span class="num">7.3</span>El fondo y los parámetros</h2>
+  <table class="compacta">
+    <thead><tr><th style="width:1.9in">Control</th><th>Qué hace</th></tr></thead>
+    <tbody>
+      <tr><td><b>Fondo</b></td><td><i>Celdas cerca de los registros del estudio</i> (a la distancia elegida, 200 km por omisión) o <i>toda el área de las capas</i>. El fondo es el ambiente que estaba al alcance de las especies: sobre él se calculan los componentes principales y la densidad del ambiente disponible.</td></tr>
+      <tr><td><b>Densidad</b></td><td><i>De los registros</i> (por omisión) o <i>corregida por el ambiente</i>: dividir entre la densidad del fondo corrige que un clima muy común acumule registros solo por ser común, pero amplifica los bordes del espacio disponible, donde hay pocas celdas y un solo registro pesa mucho.</td></tr>
+      <tr><td><b>Repeticiones de las pruebas</b></td><td>50, 100, 200 o 500. Con 100, la p más pequeña posible es 1/101 ≈ 0.01; para publicar, 500.</td></tr>
+      <tr><td><span class="ui">Calcular el espacio ambiental</span></td><td>Arma el fondo, el análisis de componentes, las densidades y las pruebas de todos los pares.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>El fondo cambia la D</div>
+    <p>Un fondo demasiado amplio incluye ambientes que nunca estuvieron al alcance de las especies y hace parecer los nichos más parecidos de lo que son. Declara el fondo en los métodos y, si puedes, reporta el resultado con dos fondos (por ejemplo, 200 km y toda el área). Lo mismo con la densidad: si las dos versiones dan D parecidas y las mismas conclusiones, el resultado es robusto.</p>
+  </div>
+
+  <!-- 7.4 -->
+  <h2 id="s7-4"><span class="num">7.4</span>El espacio ambiental</h2>
+  <figure>
+    <div class="marco"><img src="../img/b7-espacio.png" alt="Los recuadros del espacio ambiental —fondo, varianza en el plano, registros con ambiente y variables— y la tabla de la D de Schoener e I de Warren de los doce pares planta por visitante"></div>
+    <figcaption><b>Figura 7.2.</b> El espacio del estudio de práctica: 18,405 celdas de fondo a 200 km o menos de los registros; los dos primeros componentes explican 98.1 % de la varianza (80.7 y 17.4 %); 1,729 registros con ambiente, uno por celda y unidad. La tabla ordena los doce pares por D.</figcaption>
+  </figure>
+  <p>Los <b>registros con ambiente</b> son uno por celda y unidad: diez registros de la misma especie en la misma celda de 11 km dicen lo mismo del clima y no deben pesar diez veces. La tabla <span class="ui">D de todos los pares planta × visitante</span> da la primera lectura: <i>Cucurbita</i> comparte mucho nicho con los dos visitantes (D = 0.86 y 0.76); los parientes silvestres de áreas pequeñas, casi nada.</p>
+  <figure>
+    <div class="marco"><img src="../img/b7-plano.png" alt="El par chayote por Xenoglossa: recuadros de D, I, equivalencia, similitud y registros; y el plano de los dos primeros componentes con la densidad de cada unidad, el ambiente disponible, los centroides unidos por una línea y el círculo de correlaciones de las variables"></div>
+    <figcaption><b>Figura 7.3.</b> El chayote y <i>Xenoglossa</i> en el plano de los dos componentes. El color verde es la densidad del chayote; el ámbar, la de <i>Xenoglossa</i>; donde se mezclan, comparten ambiente. Los dos círculos son los centroides de cada nicho y la línea mide cuánto se separan. El círculo de la esquina dice hacia dónde crece cada variable en el plano.</figcaption>
+  </figure>
+  <p>En la Figura 7.3, BIO4 (estacionalidad) apunta a la derecha y BIO12 (lluvia) abajo a la izquierda: el primer componente va de los climas lluviosos y poco estacionales a los secos y estacionales. El chayote de práctica ocupa la parte lluviosa y <i>Xenoglossa</i> se extiende hacia la seca: D = 0.409, <i>moderado</i>.</p>
+
+  <!-- 7.5 -->
+  <h2 id="s7-5"><span class="num">7.5</span>Equivalencia y similitud</h2>
+  <figure>
+    <div class="marco"><img src="../img/b7-pruebas.png" alt="Los histogramas de la D bajo las pruebas de equivalencia y de similitud, con la D observada"></div>
+    <figcaption><b>Figura 7.4.</b> Las dos pruebas del chayote y <i>Xenoglossa</i> con 100 repeticiones. A la izquierda, las D que se obtienen repartiendo los registros al azar entre las dos unidades: todas por encima de 0.8, lejos de la observada (0.409). A la derecha, las D que se obtienen moviendo el nicho del visitante a lugares al azar del fondo: la observada cae en medio.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.4in">Prueba</th><th>Pregunta</th><th style="width:1.7in">Chayote × <i>Xenoglossa</i></th></tr></thead>
+    <tbody>
+      <tr><td><b>Equivalencia</b></td><td>¿Son los dos nichos idénticos? Si la D observada es menor que casi todas las de los repartos al azar (p &lt; 0.05), <b>no son equivalentes</b>.</td><td>p = 0.01 · los nichos NO son equivalentes</td></tr>
+      <tr><td><b>Similitud</b></td><td>¿Se parecen más de lo que produciría el solo parecido de los ambientes disponibles? Si la D observada es mayor que casi todas las de los nichos movidos al azar (p &lt; 0.05), son <b>más parecidos que al azar</b>: hay conservadurismo de nicho.</td><td>p = 0.267 · no más parecidos que al azar</td></tr>
+    </tbody>
+  </table>
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · cómo redactarlo</div>
+    <p style="font-style:italic">«En el espacio de los dos primeros componentes principales del ambiente (98.1 % de la varianza), el nicho de <i>Sechium edule</i> se solapó moderadamente con el de <i>Xenoglossa</i> (D = 0.41; I = 0.65). La prueba de equivalencia rechazó que los nichos fueran idénticos (p = 0.01) y la de similitud no indicó que fueran más parecidos que lo esperado por los ambientes disponibles (p = 0.27; 100 repeticiones cada una; Warren et al. 2008; Broennimann et al. 2012).»</p>
+    <p>De nuevo: son los números de las capas de práctica, útiles para aprender la redacción.</p>
+  </div>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · las dos pruebas juntas</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>Si</b> equivalencia p &lt; 0.05 y similitud p &lt; 0.05</td><td><b>entonces</b> los nichos no son idénticos, pero se parecen más de lo que los ambientes explican: comparten preferencias.</td></tr>
+      <tr><td><b>Si</b> equivalencia p &lt; 0.05 y similitud p ≥ 0.05</td><td><b>entonces</b> los nichos difieren y su parecido no va más allá del de los ambientes: cada uno usa el clima a su manera (el caso del ejemplo).</td></tr>
+      <tr><td><b>Si</b> equivalencia p ≥ 0.05</td><td><b>entonces</b> no se puede rechazar que los nichos sean idénticos. Con pocos registros la prueba tiene poca potencia: di cuántos había.</td></tr>
+    </tbody></table>
+  </div>
+
+  <!-- 7.6 -->
+  <h2 id="s7-6"><span class="num">7.6</span>Variable por variable</h2>
+  <figure>
+    <div class="marco"><img src="../img/b7-variables.png" alt="La tabla variable por variable: cada variable con su nombre, la mediana de la planta, la del visitante y la D en esa variable, ordenada de menor a mayor D"></div>
+    <figcaption><b>Figura 7.5.</b> La D en cada variable por separado, de menor a mayor. La precipitación anual es la que más separa al chayote de <i>Xenoglossa</i> en las capas de práctica (medianas de 2,270 y 1,052 mm; D = 0.49); la temperatura media, la que menos (22.7 y 21.3 °C; D = 0.81).</figcaption>
+  </figure>
+  <p>Las primeras filas son las que separan a la planta del visitante: la variable en la que vale la pena pensar al buscar dónde podría romperse la relación. <span class="ui">⤓ Valores ambientales de los registros (.csv)</span> descarga, para cada registro con ambiente, su unidad, sus coordenadas, su posición en los dos componentes y el valor de cada variable.</p>
+
+  <!-- 7.7 -->
+  <h2 id="s7-7"><span class="num">7.7</span>Los avisos de este bloque</h2>
+  <table class="compacta">
+    <thead><tr><th style="width:2.6in">Mensaje</th><th>Qué significa y qué hacer</th></tr></thead>
+    <tbody>
+      <tr><td><i>No hay archivos .tif, .tiff o .asc en lo elegido</i></td><td>La carpeta o los archivos no son capas. Revisa la extensión.</td></tr>
+      <tr><td>Un error al leer una capa (formato, compresión)</td><td>El lector acepta GeoTIFF con o sin compresión LZW, Deflate o PackBits, clásico o BigTIFF, en bandas o mosaicos, y rejillas ASCII. Una capa en metros (proyectada) no sirve: reproyéctala a grados.</td></tr>
+      <tr><td><i>the layer does not cover the study area</i></td><td>La capa no se superpone con los registros. Revisa que esté en grados y que cubra el área.</td></tr>
+      <tr><td><i>N pares con |r| &gt; 0.8 (en rojo)…</i></td><td>Dos variables casi idénticas. Deja una de cada par (regla de la sección 7.2).</td></tr>
+      <tr><td><i>Hacen falta al menos dos capas en uso y un fondo con celdas válidas</i></td><td>Marca al menos dos variables, o amplía la distancia del fondo.</td></tr>
+      <tr><td><i>Son capas ficticias: sirven para practicar, no para concluir ni para publicar</i></td><td>Se cargaron las capas de práctica. El informe del Bloque 10 lo repite en su sección del nicho.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>

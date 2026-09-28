@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · Manual de usuario · Capítulo 5</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  .formula { font-family: var(--mono); font-size: 9pt; background: var(--marino-suave); border-radius: 5px; padding: 0.07in 0.12in; margin: 0.08in 0; }
+  figure.media { width: 82%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 70%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b5" data-pestana="B5" data-orden="5" style="--acento: var(--b5)">
+  <div class="cap-apertura">
+    <div class="cap-num">5</div>
+    <div class="cap-etiqueta">Bloque 5 · Coocurrencia</div>
+    <h1 data-corto="Coocurrencia">Coocurrencia espacial</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">¿Coinciden la planta y el visitante en el territorio más de lo que el azar predice, una vez descontado dónde se muestreó? Tres lecturas independientes: las celdas que comparten, con la prueba exacta de Veech y su sensibilidad a la escala; la distancia de cada planta al visitante más cercano, contra un modelo nulo que conserva la geografía del muestreo; y el solapamiento de sus áreas.</p>
+    <ul class="cap-contenido">
+      <li><b>5.1</b>¿Más de lo que el azar predice?</li>
+      <li><b>5.2</b>Todos los pares</li>
+      <li><b>5.3</b>El par elegido y la escala</li>
+      <li><b>5.4</b>La distancia al visitante más cercano</li>
+      <li><b>5.5</b>El solapamiento de áreas</li>
+      <li><b>5.6</b>Cómo leer las tres pruebas juntas</li>
+      <li><b>5.7</b>Los avisos de este bloque</li>
+    </ul>
+  </div>
+
+  <!-- 5.1 -->
+  <h2 id="s5-1"><span class="num">5.1</span>¿Más de lo que el azar predice?</h2>
+  <p class="lead">Que la planta y el visitante tengan registros en los mismos lugares no dice nada si no se sabe cuántas coincidencias se esperarían por azar. La prueba de este bloque compara lo observado con lo esperado, y la respuesta depende de dos decisiones: <b>entre qué sitios</b> se reparte el azar (el universo) y <b>a qué escala</b> se mira (el tamaño de la celda).</p>
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · la prueba exacta de Veech</div>
+    <p>El territorio se corta en celdas. Si el universo tiene N celdas, la planta ocupa N₁ y el visitante N₂, y se colocaran al azar una respecto de la otra, el número de celdas compartidas j seguiría la distribución <b>hipergeométrica</b>. La app calcula la probabilidad de observar tantas o más (asociación positiva) y tantas o menos (asociación negativa), sin simulaciones ni supuestos de normalidad (Veech 2013). El <b>tamaño estandarizado del efecto</b> (EEF) dice a cuántas desviaciones estándar está lo observado de lo esperado; |EEF| &gt; 1.96 corresponde más o menos a p &lt; 0.05 (Gotelli 2000).</p>
+    <div class="formula">P(j) = C(N₁, j) · C(N − N₁, N₂ − j) / C(N, N₂)     E[j] = N₁·N₂ / N     EEF = (j − E[j]) / √Var[j]</div>
+  </div>
+  <p>El <b>universo</b> por omisión es el <b>grupo objetivo</b>: las celdas donde se registró cualquier unidad del estudio, que son las que de verdad se muestrearon (Phillips et al. 2009). La alternativa, toda la tierra de la extensión, reparte el azar también entre celdas que nadie visitó; el laboratorio del Bloque 1 (sección 1.3) muestra el error que eso produce.</p>
+
+  <!-- 5.2 -->
+  <h2 id="s5-2"><span class="num">5.2</span>Todos los pares</h2>
+  <p>La primera tarjeta prueba cada planta contra cada visitante con tres controles: el tamaño de la <b>celda</b> (0.1°, 0.25°, 0.5°, 1° o 2°, es decir, unos 11, 28, 55, 110 o 220 km), el <b>universo</b> y el <b>ajuste por comparaciones múltiples</b> de Benjamini–Hochberg.</p>
+  <figure>
+    <div class="marco"><img src="../img/b5-pares.png" alt="Los controles de celda, universo y ajuste; los recuadros del universo, los pares probados y los veredictos; y la matriz de pares plantas por visitantes con el EEF en cada casilla"></div>
+    <figcaption><b>Figura 5.1.</b> Los doce pares del estudio de práctica en celdas de 0.25° con el grupo objetivo: 918 celdas de universo, ningún par más de lo esperado, cuatro menos de lo esperado y ocho al azar. En la matriz, cada casilla lleva el EEF; el verde es agregación, el violeta segregación, la intensidad es |EEF| y el borde punteado marca los significativos. El par con borde grueso es el elegido.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.6in">Recuadro</th><th>Qué dice</th></tr></thead>
+    <tbody>
+      <tr><td><b>Universo</b></td><td>Cuántas celdas entran en el azar, con el tamaño y el tipo de universo.</td></tr>
+      <tr><td><b>Pares probados</b></td><td>Plantas × visitantes.</td></tr>
+      <tr><td><b>Más de lo esperado</b> · <b>Menos</b> · <b>Al azar</b></td><td>Los veredictos, con p ajustada si el ajuste está activo.</td></tr>
+      <tr><td><b>Sin clasificar</b></td><td>Los pares en los que el azar nunca podría rechazarse: los que esperan menos de una celda compartida o en los que ni el resultado más extremo alcanzaría α = 0.05. Con tan pocos datos, ninguna conclusión es posible y la app no la finge.</td></tr>
+    </tbody>
+  </table>
+  <p>Al hacer clic en una casilla de la matriz se elige ese par para las tarjetas siguientes. El desplegable <span class="ui">Tabla de todos los pares</span> los ordena por EEF, de la agregación a la segregación:</p>
+  <figure>
+    <div class="marco"><img src="../img/b5-tabla.png" alt="La tabla de todos los pares: planta, visitante, celdas de cada uno, compartidas, esperadas, EEF, p de dos colas, p ajustada, veredicto, índice de Jaccard y cobertura"></div>
+    <figcaption><b>Figura 5.2.</b> La tabla de pares. El chayote con <i>Xenoglossa</i> encabeza la lista con 51 celdas compartidas contra 46.0 esperadas (EEF 0.97, al azar); <i>Cucurbita</i> con la abeja melífera la cierra con 118 contra 173.3 (EEF −7.72, menos de lo esperado).</figcaption>
+  </figure>
+  <p>Además de la prueba, cada par lleva dos índices descriptivos: el de <b>Jaccard</b> (celdas compartidas entre celdas de cualquiera de los dos) y la <b>cobertura</b> (qué fracción de las celdas de la planta tiene al visitante). <span class="ui">⤓ Pares (.csv)</span> descarga la tabla completa, con los índices de Sørensen y de Simpson y las dos colas de p.</p>
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · por qué ajustar</div>
+    <p>Con 6 plantas y 2 visitantes se prueban 12 pares; con 30 pares, a α = 0.05, se esperaría uno o dos «significativos» aunque no hubiera ninguna asociación. El ajuste de Benjamini y Hochberg (1995) controla la proporción esperada de falsos positivos entre los pares que se declaran asociados. Usa la p ajustada para decidir y reporta las dos; si solo te interesa un par elegido de antemano por la hipótesis, su p sin ajustar es la que corresponde.</p>
+  </div>
+
+  <!-- 5.3 -->
+  <h2 id="s5-3"><span class="num">5.3</span>El par elegido y la escala</h2>
+  <figure>
+    <div class="marco"><img src="../img/b5-par.png" alt="El par Sechium edule por Xenoglossa: recuadros de celdas compartidas, esperadas, EEF, p de cada cola y cobertura; la distribución nula de celdas compartidas con lo observado y lo esperado; y la sensibilidad del EEF a cinco tamaños de celda"></div>
+    <figcaption><b>Figura 5.3.</b> El chayote y <i>Xenoglossa</i>. A la izquierda, la distribución hipergeométrica de celdas compartidas bajo el azar, con lo observado (51) y lo esperado (46.0); las barras en color son la cola que va de lo observado hacia afuera. A la derecha, el EEF con cinco tamaños de celda, la franja de ±1.96 y el veredicto de cada uno (+, − o ·).</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.6in">Recuadro</th><th>Qué dice</th><th style="width:1.35in">Chayote × <i>Xenoglossa</i></th></tr></thead>
+    <tbody>
+      <tr><td><b>Celdas compartidas</b></td><td>Las observadas, de las de la planta y las del visitante.</td><td>51 de 158 y 267</td></tr>
+      <tr><td><b>Esperadas por azar</b></td><td>N₁·N₂/N, con el tamaño del universo.</td><td>46.0 · N = 918</td></tr>
+      <tr><td><b>EEF</b></td><td>El tamaño estandarizado del efecto, con su etiqueta de escala.</td><td>0.97 · <i>azar</i></td></tr>
+      <tr><td><b>p (más)</b> · <b>p (menos)</b></td><td>La probabilidad de tantas o más celdas compartidas (prueba de asociación positiva) y de tantas o menos (negativa).</td><td>0.19 · 0.857</td></tr>
+      <tr><td><b>Cobertura</b></td><td>Qué fracción de las celdas de la planta tiene al visitante.</td><td>32 %</td></tr>
+    </tbody>
+  </table>
+  <p>La figura de <b>sensibilidad</b> repite la prueba con los cinco tamaños de celda. En el estudio de práctica, el veredicto cambia: menos de lo esperado a 0.1°, al azar a 0.25°, más de lo esperado a 0.5°, al azar a 1° y 2°. La app lo escribe debajo y aconseja: <i>«Repórtalo así: la asociación depende de la resolución a la que se mire.»</i> Cuando los cinco coinciden, dice que el resultado es robusto a la escala.</p>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · qué tamaño de celda</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>Si</b> la pregunta es si el visitante puede llegar a la flor</td><td><b>entonces</b> usa celdas pequeñas (0.1–0.25°): una abeja solitaria forrajea a cientos de metros o pocos kilómetros de su nido; un abejorro, a varios kilómetros.</td></tr>
+      <tr><td><b>Si</b> la pregunta es si comparten región (biogeografía, historia)</td><td><b>entonces</b> celdas de 0.5–1°.</td></tr>
+      <tr><td><b>Si</b> el veredicto cambia con la celda</td><td><b>entonces</b> no elijas la que te conviene: reporta la figura de sensibilidad y di a qué escala hay asociación y a cuál no.</td></tr>
+    </tbody></table>
+    <p class="regla-pie">Con celdas muy finas y pocos registros casi nada coincide y los pares quedan sin clasificar; con celdas enormes casi todo coincide. Ninguno de los extremos informa.</p>
+  </div>
+
+  <!-- 5.4 -->
+  <h2 id="s5-4"><span class="num">5.4</span>La distancia al visitante más cercano</h2>
+  <p>La tercera tarjeta no usa rejilla. Para cada punto de la planta mide la distancia al registro más cercano del visitante y toma la mediana. El <b>modelo nulo</b> reemplaza los registros del visitante por otros tantos sitios sorteados sin reemplazo entre todos los registros del estudio —el grupo objetivo—, lo que conserva la geografía del muestreo y rompe solo el vínculo entre los dos taxones; se repite 99 a 999 veces (Davison y Hinkley 1997). Antes, los puntos se adelgazan a uno por kilómetro para que un sitio muy registrado no pese por cien.</p>
+  <figure>
+    <div class="marco"><img src="../img/b5-vecino.png" alt="La tarjeta de la distancia al visitante más cercano: recuadros de la mediana observada, la mediana nula, las p de las dos colas y la fracción de puntos con visitante a 10 km o menos; y el histograma de las medianas bajo el modelo nulo con la observada"></div>
+    <figcaption><b>Figura 5.4.</b> Chayote y <i>Xenoglossa</i>: la mediana observada, 17.9 km, queda fuera de las 199 medianas del modelo nulo (mediana nula 13.9 km). p (más lejos) = 0.005: el visitante está más lejos de la planta de lo que el muestreo explicaría.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.9in">Recuadro</th><th>Qué dice</th></tr></thead>
+    <tbody>
+      <tr><td><b>Mediana observada</b></td><td>La distancia típica de un punto de la planta al visitante más cercano, con cuántos puntos de la planta entran.</td></tr>
+      <tr><td><b>Mediana nula</b></td><td>La mediana de las medianas simuladas.</td></tr>
+      <tr><td><b>p (más cerca · más lejos)</b></td><td>La fracción de simulaciones con una mediana igual o menor (el visitante está más cerca de lo esperado) y igual o mayor (más lejos). Con 199 simulaciones, la p más pequeña posible es 0.005.</td></tr>
+      <tr><td><b>Con visitante a ≤ 10 km</b></td><td>Qué fracción de los puntos de la planta tiene un registro del visitante a 10 km o menos: una cifra fácil de comunicar.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Dos pruebas, dos respuestas: no es una contradicción</div>
+    <p>A 0.25°, la prueba de celdas dice «al azar» para el chayote y <i>Xenoglossa</i>; la de distancias dice «más lejos de lo esperado». Miden cosas distintas: la primera cuenta si comparten celdas de 28 km; la segunda, qué tan cerca está cada chayote del visitante más próximo. En los datos de práctica, <i>Xenoglossa</i> se extiende por el centro y el norte, donde hay muchos registros de otras unidades, y el chayote se concentra en el centro y el sureste: dentro de las celdas que comparten, los puntos no están particularmente juntos. Reporta las dos y di qué mide cada una.</p>
+  </div>
+
+  <!-- 5.5 -->
+  <h2 id="s5-5"><span class="num">5.5</span>El solapamiento de áreas</h2>
+  <p>La cuarta tarjeta dibuja la <b>envolvente convexa</b> de cada unidad —el polígono más pequeño sin entrantes que encierra todos sus puntos (Andrew 1979)— y calcula su área sobre la esfera (Chamberlain y Duquette 2007), la de su intersección (Sutherland y Hodgman 1974) y qué fracción del área de la planta cubre la del visitante.</p>
+  <figure class="alta">
+    <div class="marco"><img src="../img/b5-areas.png" alt="Los recuadros de áreas y el mapa con las envolventes convexas del chayote y de Xenoglossa y su intersección"></div>
+    <figcaption><b>Figura 5.5.</b> El área del chayote (301,078 km²) cae casi entera (99 %) dentro de la de <i>Xenoglossa</i> (1,444,639 km²).</figcaption>
+  </figure>
+  <p>Es la lectura más gruesa de las tres: una envolvente convexa incluye todo lo que queda entre los puntos extremos —en la Figura 5.5, buena parte del Golfo de México—, así que exagera el área de las especies con registros dispersos. Sirve para decir si el visitante cubre, al menos en extensión, el área de la planta; no para decir si coinciden dentro de ella.</p>
+
+  <!-- 5.6 -->
+  <h2 id="s5-6"><span class="num">5.6</span>Cómo leer las tres pruebas juntas</h2>
+  <table>
+    <thead><tr><th style="width:1.5in">Prueba</th><th style="width:2.2in">Pregunta</th><th>En la práctica (chayote × <i>Xenoglossa</i>)</th></tr></thead>
+    <tbody>
+      <tr><td><b>Celdas (Veech)</b></td><td>¿Comparten más celdas que al azar?</td><td>Al azar a 0.25°; depende de la escala.</td></tr>
+      <tr><td><b>Vecino más cercano</b></td><td>¿Está el visitante más cerca de la planta que al azar?</td><td>Más lejos de lo esperado.</td></tr>
+      <tr><td><b>Envolventes</b></td><td>¿Cubre el visitante el área de la planta?</td><td>Sí, el 99 %.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · cómo redactarlo</div>
+    <p style="font-style:italic">«<i>Xenoglossa</i> ocupa prácticamente toda el área del chayote (99 % de su envolvente convexa), pero sus registros no coinciden con los de la planta más de lo esperado por azar dentro de las celdas muestreadas (0.25°: 51 celdas compartidas frente a 46.0 esperadas, EEF = 0.97), y el resultado depende de la escala. La distancia de cada registro de la planta al del visitante más cercano fue mayor que bajo un modelo nulo del grupo objetivo (mediana 17.9 frente a 13.9 km; p = 0.005). <i>Xenoglossa</i> es, por lo tanto, un polinizador potencial cuya coincidencia espacial con el chayote debe confirmarse con observaciones de visitas.»</p>
+    <p>Recuerda que estos números son de los datos de práctica: sirven para aprender la redacción, no para concluir nada del chayote.</p>
+  </div>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Coincidir no es interactuar</div>
+    <p>Aun con las tres pruebas a favor, lo que el bloque demuestra es <b>oportunidad de interacción</b>. La frase que un revisor tachará es «X es polinizador de Y porque sus distribuciones se solapan»; la correcta, «X y Y se solapan en el espacio, lo que hace de X un polinizador potencial a confirmar con observaciones de visitas y de carga de polen» (Blanchet et al. 2020; Dormann et al. 2018).</p>
+  </div>
+
+  <!-- 5.7 -->
+  <h2 id="s5-7"><span class="num">5.7</span>Los avisos de este bloque</h2>
+  <table class="compacta">
+    <thead><tr><th style="width:2.6in">Mensaje</th><th>Qué significa y qué hacer</th></tr></thead>
+    <tbody>
+      <tr><td><i>Hacen falta plantas y visitantes</i></td><td>La lista necesita al menos una planta y un visitante con registros depurados.</td></tr>
+      <tr><td><i>La rejilla es demasiado fina para el universo de «toda la tierra» en esta extensión</i></td><td>Con celdas de 0.1° sobre un área grande, el universo de toda la tierra tiene demasiadas celdas. Usa celdas más grandes o el grupo objetivo.</td></tr>
+      <tr><td><i>El veredicto cambia con la escala…</i></td><td>No es un error: es un resultado. Repórtalo con la figura de sensibilidad.</td></tr>
+      <tr><td>Muchos pares «sin clasificar»</td><td>Hay pocos registros para la celda elegida. Usa celdas más grandes o reúne especies en su género (Bloque 3).</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>

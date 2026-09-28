@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · Manual de usuario · Capítulo 8</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  figure.media { width: 82%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 62%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b8" data-pestana="B8" data-orden="8" style="--acento: var(--b8)">
+  <div class="cap-apertura">
+    <div class="cap-num">8</div>
+    <div class="cap-etiqueta">Bloque 8 · Distribución potencial</div>
+    <h1 data-corto="Distribución potencial">Distribución potencial y desajuste</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Dónde es idóneo el ambiente para la planta y para cada visitante, y dónde la planta queda sin ningún visitante potencial. Tres modelos de idoneidad —envolvente, Mahalanobis y logística con fondo— evaluados por validación cruzada; el mapa de la planta con y sin visitante; y, con capas de clima futuro, cómo cambia ese desajuste.</p>
+    <ul class="cap-contenido">
+      <li><b>8.1</b>Dónde podría quedarse sola la planta</li>
+      <li><b>8.2</b>Los modelos</li>
+      <li><b>8.3</b>Evaluación y mapas de idoneidad</li>
+      <li><b>8.4</b>El desajuste</li>
+      <li><b>8.5</b>Con clima futuro</li>
+      <li><b>8.6</b>Los avisos de este bloque</li>
+    </ul>
+  </div>
+
+  <!-- 8.1 -->
+  <h2 id="s8-1"><span class="num">8.1</span>Dónde podría quedarse sola la planta</h2>
+  <p class="lead">El Bloque 7 comparó los nichos en el espacio ambiental; este bloque los lleva de regreso al mapa. Con un modelo de idoneidad para la planta y otro para cada visitante potencial, cada celda cae en una de cuatro clases: idónea para los dos, solo para la planta, solo para el visitante o para ninguno. Las celdas <b>solo para la planta</b> son el <b>desajuste</b>: la parte del área de la planta que dependería de otros visitantes, o que quedaría sin polinización si la relación fuera exclusiva (Schweiger et al. 2008). Con el clima futuro, el desajuste puede crecer o encogerse (Kerr et al. 2015).</p>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Este bloque usa las capas del Bloque 7</div>
+    <p>Las variables son las marcadas en el Bloque 7 (se leen arriba de la tarjeta). Si no hay al menos dos capas cargadas, el bloque pide ir por ellas. En este capítulo son las capas de práctica —BIO1, BIO4 y BIO12—, y todo lo que se dice de sus mapas es sobre un clima inventado.</p>
+  </div>
+
+  <!-- 8.2 -->
+  <h2 id="s8-2"><span class="num">8.2</span>Los modelos</h2>
+  <figure>
+    <div class="marco"><img src="../img/b8-modelos.png" alt="La tarjeta de los modelos: las variables, la planta, el modelo, el umbral, el fondo y las casillas de los visitantes potenciales"></div>
+    <figcaption><b>Figura 8.1.</b> Los controles: la planta, el modelo, la regla del umbral, el fondo y los visitantes potenciales, que por omisión son todos los visitantes de la lista.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.9in">Modelo</th><th>Cómo decide la idoneidad</th></tr></thead>
+    <tbody>
+      <tr><td><b>Logística con fondo</b> (por omisión)</td><td>Compara las celdas con registros contra celdas de fondo con términos lineales y cuadráticos de las variables estandarizadas y una penalización de cresta, ajustada por mínimos cuadrados reponderados. Es el más flexible (Phillips et al. 2009; Elith et al. 2011).</td></tr>
+      <tr><td><b>Distancia de Mahalanobis</b></td><td>Qué tan lejos está una celda del centro climático de los registros, teniendo en cuenta cómo covarían las variables; la idoneidad es la cola superior de χ² a esa distancia (Farber y Kadmon 2003).</td></tr>
+      <tr><td><b>Envolvente bioclimática</b></td><td>Idóneo lo que cae dentro del intervalo de los registros en todas las variables, con más peso hacia el centro; el más sencillo y el más conservador (Nix 1986).</td></tr>
+    </tbody>
+  </table>
+  <table class="compacta">
+    <thead><tr><th style="width:1.9in">Control</th><th>Qué hace</th></tr></thead>
+    <tbody>
+      <tr><td><b>Umbral</b></td><td>El valor a partir del cual una celda se declara idónea: <i>máximo TSS</i> (el que mejor separa registros de fondo), <i>10 % de presencias</i> (deja fuera el 10 % de registros menos idóneos) o <i>presencia mínima</i> (incluye todos los registros; el más amplio) (Liu et al. 2005).</td></tr>
+      <tr><td><b>Fondo</b></td><td><i>Grupo objetivo</i> (las celdas con registros de cualquier unidad del estudio: corrige el sesgo de muestreo) o <i>toda el área</i>. Solo cuenta en la logística y en la evaluación.</td></tr>
+      <tr><td><b>Visitantes potenciales</b></td><td>Los visitantes que cuentan para el desajuste. Desmarcar uno pregunta qué pasaría sin él.</td></tr>
+      <tr><td><span class="ui">Ajustar y mapear</span></td><td>Ajusta el modelo de la planta y de cada visitante marcado, los evalúa y dibuja los mapas.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 8.3 -->
+  <h2 id="s8-3"><span class="num">8.3</span>Evaluación y mapas de idoneidad</h2>
+  <figure>
+    <div class="marco"><img src="../img/b8-evaluacion.png" alt="La tabla de evaluación con AUC, TSS, omisión y umbral del chayote, Xenoglossa y la abeja melífera, y los mapas de idoneidad de la planta y de los visitantes"></div>
+    <figcaption><b>Figura 8.2.</b> La evaluación de los tres modelos logísticos con las capas de práctica, y los dos mapas de idoneidad: la del chayote (con sus registros) y la mayor entre los visitantes en cada celda.</figcaption>
+  </figure>
+  <p>Cada modelo se evalúa por <b>validación cruzada en cuatro partes</b>: se ajusta con tres cuartos de las celdas con registros y se prueba con el cuarto restante, cuatro veces. Así los números dicen qué tan bien predice el modelo registros que no vio.</p>
+  <table class="compacta">
+    <thead><tr><th style="width:1.5in">Columna</th><th>Qué dice</th><th style="width:1.6in">Chayote · <i>Xenoglossa</i> · <i>Apis</i></th></tr></thead>
+    <tbody>
+      <tr><td><b>Celdas con registros</b></td><td>Las presencias del modelo (una por celda de la capa).</td><td>260 · 305 · 642</td></tr>
+      <tr><td><b>AUC (validación)</b></td><td>La probabilidad de que una celda con registro reciba más idoneidad que una del fondo al azar (Swets 1988).</td><td>0.793 · 0.609 · 0.577</td></tr>
+      <tr><td><b>TSS (validación)</b></td><td>Sensibilidad + especificidad − 1 con el umbral elegido; 0 es azar (Allouche et al. 2006).</td><td>0.477 · 0.090 · 0.111</td></tr>
+      <tr><td><b>Omisión</b></td><td>La fracción de registros de validación que caen fuera del área idónea.</td><td>13 % · 48 % · 16 %</td></tr>
+      <tr><td><b>Umbral</b></td><td>El valor de idoneidad del corte.</td><td>0.452 · 0.525 · 0.444</td></tr>
+    </tbody>
+  </table>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · AUC y TSS</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:36%"><b>AUC</b> &lt; 0.6 · 0.6–0.7 · 0.7–0.8 · 0.8–0.9 · &gt; 0.9</td><td>casi al azar · pobre · aceptable · buena · excelente.</td></tr>
+      <tr><td><b>TSS</b> &lt; 0.2 · 0.2–0.4 · 0.4–0.6 · &gt; 0.6</td><td>pobre · regular · bueno · muy bueno.</td></tr>
+      <tr><td><b>Si</b> un visitante tiene AUC casi al azar</td><td><b>entonces</b> su mapa no discrimina: suele ser un generalista que vive en casi todos los climas del área (la abeja melífera) o una unidad con registros muy dispersos. Su idoneidad alta en todas partes borrará el desajuste; di que es por falta de discriminación, no por nicho compartido.</td></tr>
+    </tbody></table>
+    <p class="regla-pie">Con datos de solo presencia, el AUC depende del tamaño del fondo: compara modelos con el mismo fondo, no contra números de otros artículos (Lobo et al. 2008).</p>
+  </div>
+  <p>En la Figura 8.2, el modelo del chayote es aceptable y su mapa sigue la vertiente húmeda del sur y del Golfo de las capas de práctica; los de los visitantes casi no discriminan, y el mapa de la derecha —la mayor idoneidad entre los dos en cada celda— sale alto casi en todas partes. El mapa de la planta muestra además un fenómeno real de estos modelos: idoneidad alta en el noreste, fuera del área de los registros, donde el modelo <b>extrapola</b> a climas que no vio.</p>
+
+  <!-- 8.4 -->
+  <h2 id="s8-4"><span class="num">8.4</span>El desajuste</h2>
+  <figure class="media">
+    <div class="marco"><img src="../img/b8-desajuste.png" alt="Los recuadros del desajuste y el mapa de clases: solo la planta, solo el visitante, planta con visitante y ninguno"></div>
+    <figcaption><b>Figura 8.3.</b> El desajuste del chayote con los dos visitantes potenciales en las capas de práctica: de 716,303 km² idóneos para la planta, 40 % tienen visitante potencial y 60 % no.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:2.1in">Recuadro</th><th>Qué dice</th><th style="width:1.3in">En la práctica</th></tr></thead>
+    <tbody>
+      <tr><td><b>Área idónea de la planta</b></td><td>La superficie de las celdas idóneas para la planta, en km² sobre la esfera.</td><td>716,303 km²</td></tr>
+      <tr><td><b>Con visitante potencial</b></td><td>La fracción y el área donde también es idónea para al menos un visitante.</td><td>40 % · 289,312 km²</td></tr>
+      <tr><td><b>Desajuste: planta sin visitante</b></td><td>La fracción y el área donde es idónea solo para la planta.</td><td>60 % · 426,991 km²</td></tr>
+      <tr><td><b>Solo el visitante</b></td><td>El área idónea para algún visitante pero no para la planta.</td><td>2,454,625 km²</td></tr>
+    </tbody>
+  </table>
+  <p>Debajo del mapa, la app dice qué fracción de las celdas queda fuera del intervalo ambiental de los registros de la planta en al menos una variable: <i>«35% de las celdas del mapa quedan fuera del intervalo ambiental de los registros de la planta en al menos una variable: ahí el modelo extrapola y su idoneidad debe leerse con cautela.»</i> <span class="ui">⤓ Clases por celda (.csv)</span> descarga cada celda con sus coordenadas, la idoneidad de la planta y su clase actual y futura.</p>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Un desajuste potencial</div>
+    <p>El mapa se basa solo en idoneidad ambiental: no considera dispersión, barreras, uso del suelo, la conducta de los visitantes ni otros visitantes que no estén en la lista. Un desajuste grande dice dónde conviene buscar en campo qué visita a la planta; no dice que ahí la planta no se poliniza.</p>
+  </div>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · cómo defender el desajuste</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>Si</b> el desajuste cambia mucho con el umbral</td><td><b>entonces</b> muéstralo con dos reglas (máximo TSS y 10 % de presencias) y usa la misma para la planta y los visitantes.</td></tr>
+      <tr><td><b>Si</b> los modelos de los visitantes tienen TSS pobre</td><td><b>entonces</b> no concluyas sobre el desajuste: el mapa de visitantes no es confiable.</td></tr>
+      <tr><td><b>Si</b> una parte grande del mapa se extrapola</td><td><b>entonces</b> recorta la interpretación al área donde hay registros y dilo en los métodos.</td></tr>
+    </tbody></table>
+  </div>
+
+  <!-- 8.5 -->
+  <h2 id="s8-5"><span class="num">8.5</span>Con clima futuro</h2>
+  <p>La cuarta tarjeta aplica los modelos ya ajustados, sin volver a ajustarlos, a las mismas variables calculadas para un periodo futuro según un modelo climático y una trayectoria de emisiones. <span class="ui">Elegir las capas futuras…</span> recibe los archivos, que se reconocen por el final de su nombre («bio_1», «bio_12»…) y deben ser las mismas variables en uso. Para practicar, <span class="ui">Usar el futuro de práctica (ficticio)</span> carga un futuro inventado, más cálido y más seco, que solo funciona con las capas de práctica.</p>
+  <figure class="alta">
+    <div class="marco"><img src="../img/b8-futuro.png" alt="La tabla del área idónea de la planta, con visitante y sin visitante, actual y futura con su cambio, y el mapa del desajuste con el futuro de práctica"></div>
+    <figcaption><b>Figura 8.4.</b> El desajuste con el futuro de práctica. El área idónea del chayote cae 62 %, la que tiene visitante potencial 44 % y el desajuste 74 %: en este futuro inventado, la planta pierde sobre todo las zonas donde ya estaba sola.</figcaption>
+  </figure>
+  <p>La tabla compara, en km², el área idónea de la planta, la que tiene visitante potencial y el desajuste, hoy y en el futuro, con su cambio en porcentaje. El informe del Bloque 10 lo retoma con los nombres de los archivos futuros.</p>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Varios modelos climáticos, no uno</div>
+    <p>Un solo modelo climático es una de muchas proyecciones posibles. Para un artículo, repite la proyección con tres o más modelos climáticos y dos trayectorias de emisiones, y reporta el intervalo del cambio. La app proyecta un conjunto de capas a la vez: vuelve a elegir las capas futuras para cada combinación y anota el resultado.</p>
+  </div>
+
+  <!-- 8.6 -->
+  <h2 id="s8-6"><span class="num">8.6</span>Los avisos de este bloque</h2>
+  <table class="compacta">
+    <thead><tr><th style="width:2.6in">Mensaje</th><th>Qué significa y qué hacer</th></tr></thead>
+    <tbody>
+      <tr><td><i>Hacen falta capas ambientales</i></td><td>Carga al menos dos capas en el Bloque 7.</td></tr>
+      <tr><td><i>Primero ajusta los modelos con el clima actual</i></td><td>El futuro se proyecta con los modelos ya ajustados: pulsa <span class="ui">Ajustar y mapear</span> antes.</td></tr>
+      <tr><td><i>Faltan capas futuras para: …</i></td><td>Las capas futuras deben ser las mismas variables en uso y llamarse igual al final («bio_1»…).</td></tr>
+      <tr><td><i>El futuro de práctica solo acompaña a las capas de práctica del Bloque 7</i></td><td>Con tus capas reales, elige tus capas futuras.</td></tr>
+      <tr><td><i>N % de las celdas del mapa quedan fuera del intervalo ambiental…</i></td><td>Ahí el modelo extrapola. Léelo con cautela y dilo en los métodos.</td></tr>
+      <tr><td>Una unidad con muy pocas celdas con registros</td><td>La validación cruzada necesita registros en cada parte; con muy pocos, el modelo y su evaluación son frágiles. Reúne especies en su género o amplía el área.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>

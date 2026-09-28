@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · Manual de usuario · Capítulo 3</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  figure.media { width: 82%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 58%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b3" data-pestana="B3" data-orden="3" style="--acento: var(--b3)">
+  <div class="cap-apertura">
+    <div class="cap-num">3</div>
+    <div class="cap-etiqueta">Bloque 3 · Depuración y taxonomía</div>
+    <h1 data-corto="Depuración y taxonomía">Depuración y taxonomía</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Los registros que llegan de cientos de colecciones traen errores que, sin depurar, se vuelven resultados. Aquí decides qué se quita, qué solo se marca y cómo se nombran las unidades de análisis: quince reglas de calidad, las plantas cultivadas decididas planta por planta, el área de estudio, los sinónimos y la unidad. El reporte sale redactado para el apartado de métodos.</p>
+    <ul class="cap-contenido">
+      <li><b>3.1</b>Por qué depurar</li>
+      <li><b>3.2</b>Las quince reglas</li>
+      <li><b>3.3</b>Plantas cultivadas y área de estudio</li>
+      <li><b>3.4</b>Sinónimos y unidades de análisis</li>
+      <li><b>3.5</b>El reporte</li>
+      <li><b>3.6</b>Revisar y descargar los registros</li>
+      <li><b>3.7</b>Los avisos de este bloque</li>
+    </ul>
+  </div>
+
+  <!-- 3.1 -->
+  <h2 id="s3-1"><span class="num">3.1</span>Por qué depurar</h2>
+  <p class="lead">Un solo registro en el centro geográfico de México —el lugar que se escribe cuando solo se sabe el país— puede crear una coincidencia entre dos especies que nunca se han visto juntas. Un chayote de traspatio en la Ciudad de México ensancha el nicho climático de la especie hacia donde nunca vivió silvestre. Y una abeja registrada como <i>Peponapis</i> en una colección y como <i>Xenoglossa</i> en otra se parte en dos unidades que no se reconocen. Depurar no es un paso de trámite: es la primera decisión científica del estudio.</p>
+  <p>La app aplica las comprobaciones en las que la literatura de depuración de registros coincide (Chapman 2005; Zizka et al. 2020) y deja cada decisión a la vista, con su conteo. Nada se aplica hasta pulsar <span class="ui">Depurar y aplicar</span>, y todo se puede rehacer: los registros crudos del Bloque 2 no se tocan.</p>
+
+  <!-- 3.2 -->
+  <h2 id="s3-2"><span class="num">3.2</span>Las quince reglas</h2>
+  <p>Para cada regla se elige si <b>quita</b> el registro, solo lo <b>marca</b> (sigue en los análisis, con la marca en la tabla) o <b>no se aplica</b>. La columna de la derecha dice a cuántos registros alcanza con los parámetros actuales, y cuántos quitaría.</p>
+  <figure class="alta">
+    <div class="marco"><img src="../img/b3-reglas.png" alt="La tarjeta de las reglas: quince filas con el nombre de la regla, su explicación, un selector de acción y el número de registros que alcanza; debajo, los cuatro parámetros"></div>
+    <figcaption><b>Figura 3.1.</b> Las quince reglas con sus acciones por omisión y lo que alcanzan en el estudio de práctica, y los cuatro parámetros de abajo: distancia a un centroide, incertidumbre máxima, decimales mínimos y año del registro antiguo.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.75in">Regla</th><th>Qué detecta</th><th style="width:0.9in">Por omisión</th><th class="c" style="width:0.75in">Práctica</th></tr></thead>
+    <tbody>
+      <tr><td><b>Sin coordenadas válidas</b></td><td>Latitud o longitud vacía o fuera de ±90 / ±180.</td><td>quitar</td><td class="c">0</td></tr>
+      <tr><td><b>Coordenadas (0, 0)</b></td><td>El valor por omisión de muchas bases: un punto en el Golfo de Guinea.</td><td>quitar</td><td class="c">1</td></tr>
+      <tr><td><b>Latitud igual a la longitud</b></td><td>Casi siempre un error de captura.</td><td>quitar</td><td class="c">0</td></tr>
+      <tr><td><b>Coordenadas invertidas o sin signo</b></td><td>El punto no cae en el país que dice el registro, pero sí al cambiar el signo o intercambiar latitud y longitud. Esta regla no quita: <b>corrige</b>.</td><td>corregir</td><td class="c">2</td></tr>
+      <tr><td><b>Centroide de país o de estado</b></td><td>A menos de la distancia elegida del centro de un país o de un estado de México, con dos definiciones de «centro» (sección 3.2.1).</td><td>quitar</td><td class="c">9</td></tr>
+      <tr><td><b>Fuera del país declarado</b></td><td>El punto cae en otro país y ninguna corrección lo explica, o cae en el mar.</td><td>solo marcar</td><td class="c">1</td></tr>
+      <tr><td><b>En el mar o fuera de los contornos</b></td><td>No cae en ningún país. Los contornos mundiales son gruesos: revisa antes de quitar registros costeros.</td><td>solo marcar</td><td class="c">1</td></tr>
+      <tr><td><b>Coordenada imprecisa</b></td><td>Incertidumbre declarada mayor que el umbral (10 km).</td><td>quitar</td><td class="c">1</td></tr>
+      <tr><td><b>Coordenada redondeada</b></td><td>Latitud y longitud con menos decimales que el mínimo (2, unos 1.1 km). Un grado entero son ~110 km.</td><td>solo marcar</td><td class="c">2</td></tr>
+      <tr><td><b>Duplicados</b></td><td>Mismo taxón, mismas coordenadas y misma fecha: se conserva uno.</td><td>quitar</td><td class="c">18</td></tr>
+      <tr><td><b>Fecha imposible</b></td><td>Año posterior al actual, o mes o día fuera de rango.</td><td>quitar</td><td class="c">1</td></tr>
+      <tr><td><b>Registro antiguo</b></td><td>Anterior al año elegido (1950): útil para la historia, dudoso para el clima actual.</td><td>solo marcar</td><td class="c">0</td></tr>
+      <tr><td><b>Fósiles y colecciones vivas</b></td><td>Un ejemplar de jardín botánico o un fósil no dice dónde vive la población silvestre.</td><td>quitar</td><td class="c">0</td></tr>
+      <tr><td><b>Plantas cultivadas</b></td><td>Solo en las plantas: medio de establecimiento «manejado» o palabras como cultivado, huerto, jardín, traspatio, vivero, invernadero, plantación, milpa, cafetal (sección 3.3).</td><td>quitar</td><td class="c">340</td></tr>
+      <tr><td><b>Fuera del área de estudio</b></td><td>El punto no cae en los países —o estados de México— elegidos como área (sección 3.3).</td><td>quitar</td><td class="c">32</td></tr>
+    </tbody>
+  </table>
+  <p>Los siete errores sembrados en el estudio de práctica salen todos: el (0, 0), la coordenada invertida y la longitud sin signo (las dos corregidas), el centro de México, la coordenada redondeada, el año 2031 y el registro con 25 km de incertidumbre, además de los 18 duplicados. La regla del centroide alcanza nueve registros y no solo el sembrado: con puntos sorteados alrededor de centros inventados, ocho cayeron a menos de 5 km del centro de algún estado. En datos reales pasa lo mismo, y por eso la distancia es un parámetro.</p>
+
+  <h3>3.2.1 Dos definiciones de «centro»</h3>
+  <p>El lugar que se escribe cuando solo se conoce el país o el estado no es siempre el mismo. Unas bases usan el <b>centroide de área</b> del polígono; otras, el <b>centro del rectángulo envolvente</b>. El «centro de México» que circula como marcador, en 23.6345° N y 102.5528° O, es el segundo, y está a decenas de kilómetros del primero. La app calcula los dos para cada país del mundo y para cada uno de los 32 estados de México a partir de sus propios contornos, y la regla alcanza un registro si cae cerca de cualquiera de ellos.</p>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · quitar o solo marcar</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>Si</b> el error hace que el punto no represente dónde estuvo el organismo (0, 0; centroide; fósil; colección viva; fecha imposible)</td><td><b>entonces</b> quítalo: dejarlo mueve los mapas, las celdas y el nicho.</td></tr>
+      <tr><td><b>Si</b> el registro es dudoso pero puede ser correcto (redondeado, antiguo, costero)</td><td><b>entonces</b> márcalo y revísalo en la tabla de la sección 3.6 antes de decidir. Si tu celda de análisis es de 0.25° o más, una coordenada con dos decimales no cambia nada.</td></tr>
+      <tr><td><b>Si</b> una regla alcanza a muchos registros de una sola entrada</td><td><b>entonces</b> mira la tabla «Por entrada de la lista»: puede ser una colección con un problema sistemático, y conviene saberlo antes de quitarla entera.</td></tr>
+    </tbody></table>
+  </div>
+
+  <!-- 3.3 -->
+  <h2 id="s3-3"><span class="num">3.3</span>Plantas cultivadas y área de estudio</h2>
+  <p>La mayoría de los registros de un cultivo son de plantas sembradas, cuya distribución refleja la agricultura y no el nicho natural. Qué hacer con ellas depende de la pregunta: si estudias el cultivo tal como se siembra (el café en sus fincas), conserva sus registros cultivados; si estudias las poblaciones silvestres o los parientes silvestres, quítalos. Por eso cada planta se decide <b>por separado</b>, y la app propone conservar cuando más de la mitad de los registros de esa planta son cultivados.</p>
+  <figure>
+    <div class="marco"><img src="../img/b3-cultivadas.png" alt="La tarjeta de plantas cultivadas: una fila por planta con sus registros, cuántos son cultivados, cuántos de colección viva y un selector para quitarlos o conservarlos; debajo, el área de estudio"></div>
+    <figcaption><b>Figura 3.2.</b> Las plantas del estudio de práctica. <i>Sechium edule</i> tiene 124 registros cultivados (29 %) y <i>Cucurbita</i> 216 (36 %); los cuatro parientes silvestres, ninguno. Con menos de la mitad cultivados, la app propone quitarlos: el estudio es de las poblaciones silvestres.</figcaption>
+  </figure>
+  <p>Un registro se considera cultivado si su medio de establecimiento es «manejado», «cultivado», «introducido» o «plantado», o si su localidad o sus notas dicen cultivado, sembrado, plantado, huerto, huerta, jardín, traspatio, vivero, invernadero, mercado, parcela, huerto frutal, milpa, cafetal, plantación, ornamental o escapado de cultivo, en español o inglés. La columna <b>Colección viva</b> cuenta aparte los ejemplares de jardines botánicos y bancos de germoplasma de campo, que se tratan en la regla «Fósiles y colecciones vivas».</p>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Los registros cultivados sin etiqueta no se detectan</div>
+    <p>La regla solo ve lo que el registro dice. Un chayote de huerto registrado sin notas pasa como silvestre. Con cultivos de amplia siembra, revisa en el mapa del Bloque 4 los puntos en ciudades y en zonas agrícolas, y considera acotar el área de estudio a la distribución natural conocida.</p>
+  </div>
+  <p><b>El área de estudio.</b> Los registros fuera del área se quitan si la regla «Fuera del área de estudio» está activa. El selector <span class="ui">Países</span> ofrece <i>los de la descarga (Bloque 2)</i> —lo normal— o <i>todos (sin área)</i>. <span class="ui">Elegir estados de México…</span> abre la lista de los 32 estados: si eliges algunos, el área son solo esos. En el estudio de práctica el área es México, y la regla quita 27 registros, casi todos del lado guatemalteco de la frontera sur.</p>
+
+  <!-- 3.4 -->
+  <h2 id="s3-4"><span class="num">3.4</span>Sinónimos y unidades de análisis</h2>
+  <figure>
+    <div class="marco"><img src="../img/b3-taxonomia.png" alt="La tarjeta de taxonomía: la regla de sinónimos Peponapis → Xenoglossa con su referencia, los campos para añadir otra, la unidad de análisis y la casilla de subespecies y variedades"></div>
+    <figcaption><b>Figura 3.3.</b> La taxonomía del estudio de práctica. La app propuso sola la regla <i>Peponapis</i> → <i>Xenoglossa</i> porque las dos están en la lista, con la obra que la sustenta.</figcaption>
+  </figure>
+  <p>Las <b>reglas de sinónimos</b> reúnen dos entradas de la lista bajo el nombre actual y reescriben los nombres de especie —<i>Peponapis crassidentata</i> pasa a <i>Xenoglossa crassidentata</i>—, guardando el nombre original en cada registro. La app trae las reglas que conoce y las propone cuando las dos entradas están en la lista; la de las abejas de la calabaza sigue a Freitas et al. (2023), que sitúan a <i>Peponapis</i> como subgénero de <i>Xenoglossa</i>. Cada regla se activa o desactiva con su casilla, y se pueden añadir otras escribiendo el <b>nombre anterior</b> y el <b>nombre actual</b> y pulsando <span class="ui">Añadir regla</span>.</p>
+  <table class="compacta">
+    <thead><tr><th style="width:2.1in">Unidad de análisis</th><th>Qué comparan los bloques siguientes</th></tr></thead>
+    <tbody>
+      <tr><td><b>Entradas de la lista</b> (un género = una unidad)</td><td>Cada entrada es una unidad: <i>Cucurbita</i> reúne todas sus especies y <i>Xenoglossa</i>, tras el sinónimo, reúne cinco. Es lo adecuado cuando la pregunta es por un grupo funcional (las abejas de la calabaza) o cuando las especies tienen pocos registros.</td></tr>
+      <tr><td><b>Especies</b> (cada especie por separado)</td><td>Cada especie es una unidad, aunque la lista tenga un género. Es lo adecuado cuando la pregunta es por especies concretas y cada una tiene registros suficientes.</td></tr>
+      <tr><td><span class="ui">Separar subespecies y variedades como unidades propias</span></td><td>Con especies como unidad, separa además las subespecies y variedades (por ejemplo, una subespecie silvestre de la cultivada).</td></tr>
+    </tbody>
+  </table>
+  <p>Al terminar, <span class="ui">Depurar y aplicar</span> corre las reglas, aplica los sinónimos, asigna las unidades y abre el reporte.</p>
+
+  <!-- 3.5 -->
+  <h2 id="s3-5"><span class="num">3.5</span>El reporte</h2>
+  <figure>
+    <div class="marco"><img src="../img/b3-reporte.png" alt="El reporte: cinco recuadros —antes, después, quitados, coordenadas corregidas y unidades de análisis— y el párrafo para los métodos"></div>
+    <figcaption><b>Figura 3.4.</b> El reporte del estudio de práctica: de 2,248 registros crudos se conservan 1,856 (82.6 %), se quitan 392, se corrigen 2 coordenadas y quedan 8 unidades de análisis.</figcaption>
+  </figure>
+  <p>El recuadro <b>Para los métodos</b> es un párrafo listo para copiar. Dice cuántos registros se conservaron, qué reglas quitaron o corrigieron cuántos, con qué distancia y qué dos definiciones se evaluaron los centroides, qué incertidumbre máxima se usó y qué reglas de sinónimos se aplicaron, con su referencia. El informe del Bloque 10 lo retoma con las citas de los métodos de depuración.</p>
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · el párrafo del estudio de práctica</div>
+    <p style="font-style:italic">«De 2,248 registros se conservaron 1,856 (82.6%). Se quitaron o corrigieron: coordenadas (0, 0) (1); coordenadas invertidas o sin signo (2); centroide de país o de estado (9); coordenada imprecisa (1); duplicados (18); fecha imposible (1); plantas cultivadas (335); fuera del área de estudio (27). Los centroides se evaluaron a 5 km con dos definiciones (centroide de área y centro del rectángulo envolvente), la incertidumbre máxima fue de 10 km y se aplicaron las reglas de sinónimos Peponapis → Xenoglossa (Freitas et al. 2023).»</p>
+  </div>
+  <figure>
+    <div class="marco"><img src="../img/b3-tablas.png" alt="Tres tablas: por regla, con la acción, los registros alcanzados y los quitados; por entrada de la lista, con los registros antes y después y la principal razón de baja; y las unidades de análisis, con los registros, las especies dentro y los nombres originales reunidos"></div>
+    <figcaption><b>Figura 3.5.</b> Las tres tablas del reporte. La de unidades muestra que <i>Xenoglossa</i> quedó con 316 registros de cinco especies y reúne los nombres originales <i>Peponapis crassidentata</i>, <i>P. azteca</i> y <i>P. pruinosa</i>.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.8in">Tabla</th><th>Para qué sirve</th></tr></thead>
+    <tbody>
+      <tr><td><b>Por regla</b></td><td>La acción de cada regla, cuántos registros alcanzó y cuántos quitó. Una regla puede alcanzar más de los que quita porque otra ya los había quitado: <i>Plantas cultivadas</i> alcanzó 340 y quitó 335.</td></tr>
+      <tr><td><b>Por entrada de la lista</b></td><td>Los registros antes y después y la principal razón de baja. En la práctica, el chayote pasa de 424 a 296 (sobre todo por cultivadas, 121) y <i>Cucurbita</i> de 605 a 377 (cultivadas, 214). La fila de <i>Peponapis</i> dice «<i>Peponapis</i> → <i>Xenoglossa</i>».</td></tr>
+      <tr><td><b>Unidades de análisis</b></td><td>Las unidades que verán los Bloques 4 a 8, con sus registros depurados, cuántas especies reúnen y qué nombres originales se juntaron en cada una.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · cuánto se puede perder</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>Si</b> la depuración conserva más del 80 % de los registros</td><td><b>entonces</b> es lo habitual con datos de GBIF bien filtrados; repórtalo y sigue.</td></tr>
+      <tr><td><b>Si</b> conserva entre 50 y 80 %</td><td><b>entonces</b> mira qué regla quita más: si son cultivadas, es una decisión de la pregunta, no un problema de calidad.</td></tr>
+      <tr><td><b>Si</b> conserva menos de la mitad, o una unidad queda con menos de 20 registros</td><td><b>entonces</b> revisa los parámetros (distancia al centroide, incertidumbre, área) y considera reunir especies en su género.</td></tr>
+    </tbody></table>
+    <p class="regla-pie">Son guías: una especie rara con 15 registros buenos vale más que una común con 1,500 dudosos.</p>
+  </div>
+
+  <!-- 3.6 -->
+  <h2 id="s3-6"><span class="num">3.6</span>Revisar y descargar los registros</h2>
+  <p>El selector <span class="ui">Mostrar</span> filtra la tabla de registros: todos los quitados, las coordenadas corregidas o los de una regla concreta, con su conteo. Cada fila da la unidad, la latitud y la longitud (ya corregidas), el país que dice el registro y el país donde cae, el estado de México, la fecha, el tipo de registro, las marcas de las reglas —con ✕ si lo quitaron— y la localidad o las notas.</p>
+  <figure>
+    <div class="marco"><img src="../img/b3-revisar.png" alt="La tabla de registros filtrada a las coordenadas corregidas, con dos registros de Cucurbita, y los botones de descarga y de continuar al mapa"></div>
+    <figcaption><b>Figura 3.6.</b> Las dos coordenadas corregidas del estudio de práctica, ya en su lugar: una en Oaxaca y otra en Jalisco. Abajo, las dos descargas y el paso al mapa.</figcaption>
+  </figure>
+  <p><span class="ui">⤓ Registros depurados (.csv)</span> descarga los que entran al análisis, con su unidad, el nombre original y el armonizado, y el estado de México; <span class="ui">⤓ Registros quitados, con la razón (.csv)</span> descarga los demás con la regla que los quitó. Los dos son el material suplementario que un revisor espera ver.</p>
+
+  <!-- 3.7 -->
+  <h2 id="s3-7"><span class="num">3.7</span>Los avisos de este bloque</h2>
+  <table class="compacta">
+    <thead><tr><th style="width:2.6in">Mensaje</th><th>Qué significa y qué hacer</th></tr></thead>
+    <tbody>
+      <tr><td><i>Primero hacen falta registros</i></td><td>El Bloque 2 está vacío. Descarga de GBIF, sube tus registros o carga los de práctica.</td></tr>
+      <tr><td>Una regla alcanza a muchos registros costeros («En el mar o fuera de los contornos»)</td><td>Los contornos del mundo son gruesos en las costas. Déjala en <i>solo marcar</i> y revisa esos puntos en el mapa del Bloque 4 antes de quitarlos.</td></tr>
+      <tr><td>Una unidad queda con muy pocos registros</td><td>Los bloques siguientes la analizarán igual, pero sus pruebas tendrán poca potencia y algunas la dejarán «sin clasificar». Reúnela en su género o amplía el área.</td></tr>
+      <tr><td>Cambié los datos del Bloque 2 después de depurar</td><td>No hace falta volver aquí: la depuración se rehace sola, con las mismas reglas, en cuanto un bloque la necesita. Si lo que cambias es una regla, un sinónimo o la unidad, pulsa <span class="ui">Depurar y aplicar</span>.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>

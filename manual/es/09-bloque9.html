@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · Manual de usuario · Capítulo 9</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  figure.media { width: 82%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 72%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b9" data-pestana="B9" data-orden="9" style="--acento: var(--b9)">
+  <div class="cap-apertura">
+    <div class="cap-num">9</div>
+    <div class="cap-etiqueta">Bloque 9 · Red de interacciones</div>
+    <h1 data-corto="Red de interacciones">Red de interacciones</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Aquí ya no se habla de coincidencias sino de visitas registradas: tus observaciones de campo y lo que otros publicaron. La red planta–visitante dice qué tan especializada es la relación —conectancia, anidamiento, especialización y módulos, contra modelos nulos—, qué visitantes son clave para cada planta y cuántos faltan por registrar.</p>
+    <ul class="cap-contenido">
+      <li><b>9.1</b>De la coincidencia a la visita</li>
+      <li><b>9.2</b>Qué interacciones entran</li>
+      <li><b>9.3</b>La red y sus modelos nulos</li>
+      <li><b>9.4</b>Plantas y visitantes, uno por uno</li>
+      <li><b>9.5</b>Una planta y sus visitantes</li>
+      <li><b>9.6</b>Los avisos de este bloque</li>
+    </ul>
+  </div>
+
+  <!-- 9.1 -->
+  <h2 id="s9-1"><span class="num">9.1</span>De la coincidencia a la visita</h2>
+  <p class="lead">Los Bloques 5 a 8 midieron oportunidad de interacción. Este bloque trabaja con el cuarto eslabón de la cadena de evidencia (sección 1.7): la visita a la flor. Una red de visitas es una matriz de plantas (filas) por visitantes (columnas) con el número de visitas observadas en cada casilla, o con un 1 cuando solo se sabe que el vínculo existe.</p>
+  <p>Las redes de polinización tienen una estructura característica: son <b>anidadas</b> —los especialistas visitan subconjuntos de las plantas que visitan los generalistas (Bascompte et al. 2003)—, más o menos <b>modulares</b> —grupos de plantas y visitantes que interactúan más entre sí— y tienen una <b>especialización</b> medible. Cada índice se compara con lo que daría una red al azar con los mismos totales: un número sin modelo nulo no dice si la estructura es notable.</p>
+
+  <!-- 9.2 -->
+  <h2 id="s9-2"><span class="num">9.2</span>Qué interacciones entran</h2>
+  <figure>
+    <div class="marco"><img src="../img/b9-entran.png" alt="La tarjeta de qué interacciones entran: el conteo de visitas propias e interacciones publicadas, cuatro casillas y dos selectores de nivel taxonómico"></div>
+    <figcaption><b>Figura 9.1.</b> Las fuentes de la red del estudio de práctica: 354 filas de visitas propias y ninguna interacción publicada (los datos de práctica no consultan internet).</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:2.2in">Control</th><th>Qué hace</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Mis observaciones de visitas</span></td><td>Las visitas importadas en el Bloque 2, con sus conteos.</td></tr>
+      <tr><td><span class="ui">Interacciones publicadas</span></td><td>Los pares traídos de la base de interacciones; cada registro publicado cuenta como una visita.</td></tr>
+      <tr><td><span class="ui">Publicadas: solo plantas de mi lista</span></td><td>Deja fuera las plantas publicadas que no pertenecen a una entrada de tu lista (la base devuelve también las otras plantas que visitan tus visitantes).</td></tr>
+      <tr><td><span class="ui">Aplicar los sinónimos del Bloque 3</span></td><td>Reescribe los nombres con las reglas de sinónimos: <i>Peponapis crassidentata</i> pasa a <i>Xenoglossa crassidentata</i>.</td></tr>
+      <tr><td><b>Visitantes como</b> · <b>Plantas como</b></td><td>Especies o géneros. Reunir por género ayuda cuando las fuentes identifican a distintos niveles.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Mezclar visitas propias y publicadas cambia qué se puede calcular</div>
+    <p>Con solo tus visitas, la red es <b>cuantitativa</b>: cada casilla es un número de visitas comparable. Al añadir las publicadas, cada registro publicado cuenta 1 y los números dejan de ser comparables: la app calcula entonces la estructura (conectancia, NODF, módulos) pero no H₂′ ni d′, que suponen conteos, y lo dice en su recuadro.</p>
+  </div>
+
+  <!-- 9.3 -->
+  <h2 id="s9-3"><span class="num">9.3</span>La red y sus modelos nulos</h2>
+  <figure>
+    <div class="marco"><img src="../img/b9-red.png" alt="Los recuadros de la red —plantas y visitantes, visitas, conectancia, NODF, H2 prima y modularidad con sus z y p—, el botón de modelos nulos y la red bipartita coloreada por módulo"></div>
+    <figcaption><b>Figura 9.2.</b> La red del estudio de práctica tras <span class="ui">Comparar contra modelos nulos</span> con 99 repeticiones: 6 plantas, 11 visitantes, 54 vínculos y 953 visitas. En el dibujo, los visitantes arriba y las plantas abajo; el grosor de cada línea es el número de visitas y el color, el módulo.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.6in">Índice</th><th>Qué mide</th><th style="width:1.45in">En la práctica</th></tr></thead>
+    <tbody>
+      <tr><td><b>Conectancia</b></td><td>Los vínculos observados entre los posibles (Jordano 1987). Las redes grandes suelen tener entre 0.15 y 0.4.</td><td>0.818 · <i>densa (red pequeña o generalista)</i></td></tr>
+      <tr><td><b>NODF</b></td><td>El anidamiento, de 0 a 100, por solapamiento y relleno decreciente de la matriz binaria (Almeida-Neto et al. 2008).</td><td>68.8 · z = −1.34, p = 0.2</td></tr>
+      <tr><td><b>H₂′</b></td><td>La especialización de toda la red, de 0 (cada visitante reparte sus visitas como la oferta) a 1 (cada uno visita plantas exclusivas) (Blüthgen et al. 2006).</td><td>0.152 · <i>generalista</i> · z = 34.71, p = 0.02</td></tr>
+      <tr><td><b>Modularidad Q</b></td><td>Qué tan dividida está la red en grupos (Barber 2007), buscada con propagación de etiquetas y reinicios (Liu y Murata 2010; Beckett 2016).</td><td>0.224 · 3 módulos · z = 24.77, p = 0.04</td></tr>
+    </tbody>
+  </table>
+  <p>Los <b>modelos nulos</b> conservan los totales de cada planta y de cada visitante y reparten los vínculos al azar: el algoritmo <i>curveball</i> para la matriz binaria (Strona et al. 2014) y el reparto al azar de visitas individuales para la cuantitativa (equivalente al de Patefield 1981). El recuadro da el <b>z</b> —a cuántas desviaciones estándar está lo observado del promedio nulo— y una p de dos colas; la de la modularidad usa hasta 49 repeticiones porque cada una exige buscar módulos.</p>
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Ejemplo · leer la red de práctica</div>
+    <p>La red de práctica es pequeña y muy conectada (0.818): casi todos los visitantes llegan a casi todas las plantas. Su anidamiento (68.8) no es distinto del de una red al azar con los mismos totales (p = 0.2). Su especialización es baja en términos absolutos (H₂′ = 0.152, <i>generalista</i>), pero mucho mayor que la del azar (z = 34.7): los visitantes reparten sus visitas con preferencias, aunque débiles. Y tiene tres módulos: las abejas de la calabaza, con <i>Halictus</i>, <i>Polistes</i> y <i>Toxomerus</i>, junto a <i>Cucurbita pepo</i> y <i>S. mexicanum</i>; las abejas sin aguijón <i>Trigona</i> y <i>Partamona</i> con <i>S. chinantlense</i> y <i>S. compositum</i>; y la abeja melífera, <i>Scaptotrigona</i> y el abejorro con el chayote y <i>S. hintonii</i>.</p>
+  </div>
+  <figure class="media">
+    <div class="marco"><img src="../img/b9-matriz.png" alt="La matriz de la red ordenada por grado, con las plantas en filas y los visitantes en columnas"></div>
+    <figcaption><b>Figura 9.3.</b> La matriz ordenada por grado: los visitantes y las plantas con más vínculos arriba y a la izquierda. En una red anidada, las casillas llenas se agolpan en la esquina superior izquierda. <span class="ui">⤓ Matriz (.csv)</span> la descarga.</figcaption>
+  </figure>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · qué reportar de la red</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>Si</b> la red es pequeña (menos de 10 especies por lado)</td><td><b>entonces</b> la conectancia será alta y el anidamiento poco informativo; reporta H₂′, los módulos y la completitud del muestreo antes que NODF.</td></tr>
+      <tr><td><b>Si</b> un índice no difiere del modelo nulo</td><td><b>entonces</b> la estructura que mide no es notable dados los totales: no la discutas como un rasgo de la red.</td></tr>
+      <tr><td><b>H₂′</b> &lt; 0.3 · 0.3–0.6 · &gt; 0.6</td><td>generalista · intermedia · especializada.</td></tr>
+    </tbody></table>
+  </div>
+
+  <!-- 9.4 -->
+  <h2 id="s9-4"><span class="num">9.4</span>Plantas y visitantes, uno por uno</h2>
+  <figure>
+    <div class="marco"><img src="../img/b9-especies.png" alt="Las tablas de plantas y de visitantes con visitas, grado, grado normalizado, fuerza y d prima con su etiqueta"></div>
+    <figcaption><b>Figura 9.4.</b> Las especies de la red. La abeja melífera tiene la mayor fuerza (2.13) y la menor especialización (d′ = 0.05): es el visitante del que más dependen las plantas de la red de práctica.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.6in">Columna</th><th>Qué dice</th></tr></thead>
+    <tbody>
+      <tr><td><b>Visitas</b> · <b>Grado</b></td><td>Cuántas visitas y con cuántas especies del otro lado interactúa.</td></tr>
+      <tr><td><b>Grado normalizado</b></td><td>El grado entre el número de especies del otro lado: 1 si interactúa con todas.</td></tr>
+      <tr><td><b>Fuerza</b></td><td>La suma de las dependencias de sus compañeros en ella (Bascompte et al. 2006): un visitante con fuerza alta es aquel del que dependen muchas plantas para una fracción grande de sus visitas. Es la medida de «visitante clave».</td></tr>
+      <tr><td><b>d′</b></td><td>La especialización de cada especie frente a la disponibilidad de sus compañeros, de 0 a 1 (Blüthgen et al. 2006): <i>generalista</i> &lt; 0.3, <i>intermedia</i> 0.3–0.6, <i>especialista</i> &gt; 0.6.</td></tr>
+    </tbody>
+  </table>
+  <p><span class="ui">⤓ Especies (.csv)</span> descarga las dos tablas. En la red de práctica ninguna especie pasa de d′ = 0.25; los más especializados son <i>Partamona bilineata</i> (0.25) y <i>S. mexicanum</i> (0.22).</p>
+
+  <!-- 9.5 -->
+  <h2 id="s9-5"><span class="num">9.5</span>Una planta y sus visitantes</h2>
+  <p>La última tarjeta mira una planta a la vez: quiénes la visitan, en qué proporción y si el muestreo ya encontró a todos sus visitantes. Funciona aunque el estudio tenga una sola planta —en ese caso es la única lectura posible, porque con una planta no hay red que describir.</p>
+  <figure>
+    <div class="marco"><img src="../img/b9-planta.png" alt="El chayote y sus visitantes: recuadros de visitantes registrados, Chao1, completitud y cobertura; las visitas por visitante en barras y la curva de rarefacción con la línea de Chao1"></div>
+    <figcaption><b>Figura 9.5.</b> El chayote de práctica: 11 visitantes en 348 visitas, la mitad de la abeja melífera. La curva de rarefacción se aplana mucho antes de las 348 visitas y alcanza la línea de Chao1: el muestreo está casi completo.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.7in">Recuadro</th><th>Qué dice</th></tr></thead>
+    <tbody>
+      <tr><td><b>Visitantes registrados</b></td><td>Cuántos visitantes distintos en cuántas visitas.</td></tr>
+      <tr><td><b>Chao1</b></td><td>El número mínimo estimado de visitantes, a partir de cuántos se vieron una vez y cuántos dos (Chao 1987).</td></tr>
+      <tr><td><b>Completitud</b></td><td>Registrados entre Chao1: qué fracción de los visitantes ya se encontró (Chacoff et al. 2012). <i>Muy incompleto</i> &lt; 50 %, <i>incompleto</i> 50–80 %, <i>bueno</i> 80–95 %, <i>casi completo</i> &gt; 95 %.</td></tr>
+      <tr><td><b>Cobertura</b></td><td>La probabilidad de que la próxima visita sea de un visitante ya visto.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · ¿hay que volver a campo?</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>Si</b> la completitud es menor de 80 %</td><td><b>entonces</b> faltan visitantes por registrar: no afirmes que la planta tiene pocos visitantes ni que depende de uno; vuelve a campo o dilo en la discusión.</td></tr>
+      <tr><td><b>Si</b> hay muchos visitantes vistos una sola vez</td><td><b>entonces</b> Chao1 es inestable: es un mínimo del total, no el total.</td></tr>
+    </tbody></table>
+  </div>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Con solo interacciones publicadas no hay completitud</div>
+    <p>La completitud necesita conteos de visitas. Con interacciones publicadas solo se sabe si el vínculo existe, y la app lo dice en lugar de la curva.</p>
+  </div>
+
+  <!-- 9.6 -->
+  <h2 id="s9-6"><span class="num">9.6</span>Los avisos de este bloque</h2>
+  <table class="compacta">
+    <thead><tr><th style="width:2.6in">Mensaje</th><th>Qué significa y qué hacer</th></tr></thead>
+    <tbody>
+      <tr><td><i>Hacen falta interacciones</i></td><td>Importa tus observaciones de visitas o busca las interacciones publicadas en el Bloque 2.</td></tr>
+      <tr><td><i>No hay interacciones con estas fuentes…</i></td><td>Las casillas elegidas dejan la red vacía. Marca otra fuente o quita el filtro de plantas de la lista.</td></tr>
+      <tr><td><i>Con una sola planta (o un solo visitante) no hay red que describir…</i></td><td>Se muestran los visitantes, sus proporciones y la completitud; los índices de red no aplican.</td></tr>
+      <tr><td><i>La completitud del muestreo necesita conteos de visitas…</i></td><td>Solo hay interacciones publicadas para esa planta.</td></tr>
+      <tr><td><i>H₂′: requiere conteos de visitas</i></td><td>La red mezcla fuentes o solo tiene publicadas (sección 9.2).</td></tr>
+      <tr><td><i>sin modelo nulo aún</i></td><td>Pulsa <span class="ui">Comparar contra modelos nulos</span>.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · Manual de usuario · Capítulo 10</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  figure.media { width: 80%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 60%; margin-left: auto; margin-right: auto; }
+  figure.estrecha { width: 52%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b10" data-pestana="B10" data-orden="10" style="--acento: var(--b10)">
+  <div class="cap-apertura">
+    <div class="cap-num">10</div>
+    <div class="cap-etiqueta">Bloque 10 · Informe</div>
+    <h1 data-corto="Figuras, informe y paquete">Figuras, informe y paquete</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Todo lo que calculaste, listo para salir de la app: cada figura del estudio en PNG, JPG o SVG hasta 900 ppp con el estilo que elijas —el de todas a la vez desde el estudio de figuras, o el de cada una con su editor ✎—; un informe que se abre en cualquier navegador y se imprime a PDF, con los métodos redactados a partir de lo que realmente corriste; y un .zip con el informe, las figuras, los cuadros y el proyecto que lo reproduce.</p>
+    <ul class="cap-contenido">
+      <li><b>10.1</b>Lo que sale de la app</li>
+      <li><b>10.2</b>El estado del estudio</li>
+      <li><b>10.3</b>El catálogo y los dos editores de figuras</li>
+      <li><b>10.4</b>El informe</li>
+      <li><b>10.5</b>El paquete reproducible</li>
+      <li><b>10.6</b>Antes de entregar</li>
+    </ul>
+  </div>
+
+  <!-- 10.1 -->
+  <h2 id="s10-1"><span class="num">10.1</span>Lo que sale de la app</h2>
+  <p class="lead">Un estudio se entrega con tres cosas: las figuras, el texto que dice qué se hizo y los datos que permiten rehacerlo. El Bloque 10 produce las tres a partir de lo que exista en ese momento en los bloques calculados. No recalcula nada: si cambias algo en un bloque, vuelve aquí y genera de nuevo.</p>
+
+  <!-- 10.2 -->
+  <h2 id="s10-2"><span class="num">10.2</span>El estado del estudio</h2>
+  <figure>
+    <div class="marco"><img src="../img/b10-estado.png" alt="La tarjeta del estado del estudio con los ocho bloques calculados y el mensaje de que el estudio está completo"></div>
+    <figcaption><b>Figura 10.1.</b> El estudio de práctica con los ocho bloques de trabajo calculados y 21 figuras dibujadas.</figcaption>
+  </figure>
+  <p>Cada bloque aparece como <i>calculado</i> (con el botón <span class="ui">Ver</span>) o <i>sin calcular</i> (con <span class="ui">Ir</span>). Un bloque se calcula al abrirlo; los que no se abrieron no aparecen en el informe ni en el catálogo, y el mensaje de arriba lo recuerda. Los Bloques 7 y 8 necesitan además capas, y el 9, interacciones.</p>
+
+  <!-- 10.3 -->
+  <h2 id="s10-3"><span class="num">10.3</span>El catálogo y los dos editores de figuras</h2>
+  <figure>
+    <div class="marco"><img src="../img/b10-catalogo.png" alt="Los controles del catálogo de figuras —formato, resolución, tema, fondo, título— y las primeras miniaturas agrupadas por bloque"></div>
+    <figcaption><b>Figura 10.2.</b> El catálogo reúne todas las figuras dibujadas, agrupadas por bloque, con una casilla para marcar cada una y un botón <span class="ui">solo estas</span> por bloque.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.7in">Control</th><th>Qué hace</th></tr></thead>
+    <tbody>
+      <tr><td><b>Formato</b></td><td>PNG, JPG o SVG (vectorial y editable).</td></tr>
+      <tr><td><b>Resolución</b></td><td>150 ppp (pantalla), 300 (impresión), 600 (revista) o 900 (cartel).</td></tr>
+      <tr><td><b>Tema</b> · <b>Fondo</b></td><td>Claro, oscuro o el de la pantalla; fondo según el estilo, blanco, el de la tarjeta o transparente.</td></tr>
+      <tr><td><span class="ui">Con título dentro de la figura</span></td><td>Escribe el título de la figura en el archivo. Para una revista, que pone el título en el pie, desmárcalo.</td></tr>
+      <tr><td><span class="ui">⤓ Exportar las seleccionadas</span> · <span class="ui">Todas las seleccionadas en un .zip</span></td><td>Descarga las marcadas; con más de seis llegan en un .zip, porque el navegador bloquea muchas descargas seguidas.</td></tr>
+    </tbody>
+  </table>
+  <p>Hay dos maneras de cambiar el aspecto de las figuras, y se combinan.</p>
+  <h3>El estudio de figuras: todas a la vez</h3>
+  <div class="dos">
+    <figure style="margin:0">
+      <div class="marco"><img src="../img/b10-estudio.png" alt="El panel del estudio de figuras con nueve paletas, la de Okabe-Ito elegida, los diez colores ajustables, la tipografía, el fondo, el tamaño del texto, el grosor de líneas y la cuadrícula"></div>
+      <figcaption><b>Figura 10.3.</b> El estudio de figuras, con la paleta Okabe–Ito.</figcaption>
+    </figure>
+    <div>
+      <p style="margin-top:0">Se abre con el botón de la paleta de la barra superior, desde cualquier bloque. Una sola regla restila todas las figuras de la app, en pantalla y al exportar, sin recalcular nada.</p>
+      <ul>
+        <li><b>Nueve paletas</b>: PollinationPro, Okabe–Ito (segura al daltonismo), Viridis, Estaciones, Tierra, Fríos, Cálidos, Alto contraste y Escala de grises.</li>
+        <li><b>Ajustar un color</b>: cualquiera de los diez de la paleta.</li>
+        <li><b>Tipografía</b> (siete familias que existen en cualquier computadora), <b>fondo</b>, <b>tamaño del texto</b>, <b>grosor de líneas</b> y <b>cuadrícula de fondo</b>.</li>
+        <li><span class="ui">↻ Volver al estilo original</span>.</li>
+      </ul>
+    </div>
+  </div>
+  <h3>El editor ✎: una figura a la vez</h3>
+  <p>Cada figura de la app tiene, junto al botón ⤓, un botón ✎ que abre su propio editor. Lo que se cambie ahí vale solo para esa figura, se conserva aunque la figura se recalcule y sale en su exportación, en el catálogo, en el informe y en el paquete.</p>
+  <figure class="media">
+    <div class="marco"><img src="../img/b10-editor-general.png" alt="El editor de la rosa circular en su pestaña General: familia tipográfica, tamaño de todos los textos, grosor de las líneas, tamaño de los puntos, color de textos y ejes, fondo y líneas de la rejilla"></div>
+    <figcaption><b>Figura 10.4.</b> La pestaña <span class="ui">General</span> del editor, abierta sobre la rosa circular del Bloque 6.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.2in">Pestaña</th><th>Qué se edita</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">General</span></td><td>La familia tipográfica, el tamaño de todos los textos (de 0.6 a 2.2 veces), el grosor de las líneas y el tamaño de los puntos (de 0.3 a 3 veces), el color de todos los textos y el de los ejes (con su casilla <i>usar</i>), el fondo y las líneas de la rejilla.</td></tr>
+      <tr><td><span class="ui">Textos</span></td><td>Cada texto de la figura, por su redacción original: se reescribe, cambia de tamaño, se pone en negrita (N) o cursiva (K), cambia de color o se oculta (⦸). Sirve para traducir una etiqueta, acortar un nombre o quitar un rótulo que la revista no quiere.</td></tr>
+      <tr><td><span class="ui">Colores</span></td><td>Cada color que usa la figura, con cuántos elementos lo llevan, para sustituirlo por otro.</td></tr>
+    </tbody>
+  </table>
+  <figure>
+    <div class="marco"><img src="../img/b10-editor.png" alt="El editor del fenograma en su pestaña Textos: una fila por cada texto de la figura con su campo, su tamaño, negrita, cursiva, color y ocultar"></div>
+    <figcaption><b>Figura 10.5.</b> La pestaña <span class="ui">Textos</span> sobre el fenograma: cada mes, cada unidad y cada «n =» se editan por separado. Al pie, <span class="ui">Deshacer todos los cambios de esta figura</span> y <span class="ui">Copiar el estilo general a todas</span>.</figcaption>
+  </figure>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Un texto se reconoce por su redacción original</div>
+    <p>El editor recuerda cada cambio de texto por lo que la figura decía. Si cambias el idioma de la app, los textos son otros y se editan aparte. Y si una figura cambia de contenido —otro par, otra celda—, los textos que ya no existen simplemente no se aplican.</p>
+  </div>
+
+  <!-- 10.4 -->
+  <h2 id="s10-4"><span class="num">10.4</span>El informe</h2>
+  <figure class="alta">
+    <div class="marco"><img src="../img/b10-informe.png" alt="La tarjeta del informe con el título, la autoría, las casillas de las secciones y la vista previa del informe con su resumen, la advertencia de datos de práctica y los primeros cuadros"></div>
+    <figcaption><b>Figura 10.6.</b> La vista previa del informe del estudio de práctica: 11 secciones, 10 figuras y 11 cuadros. El recuadro ámbar avisa que contiene datos de práctica.</figcaption>
+  </figure>
+  <p>El informe es un solo archivo <code>.html</code>, sin dependencias, que se abre en cualquier navegador. Se le da un <b>título</b> y una <b>autoría</b>, se marcan las <b>secciones</b> —una por bloque calculado— y el <b>anexo con el registro de cálculo</b>. <span class="ui">Vista previa</span> lo muestra en la tarjeta; <span class="ui">⤓ Descargar informe .html</span> lo guarda; <span class="ui">Imprimir a PDF</span> abre el diálogo de impresión del navegador (Guardar como PDF).</p>
+  <table class="compacta">
+    <thead><tr><th style="width:1.8in">Parte del informe</th><th>Qué contiene</th></tr></thead>
+    <tbody>
+      <tr><td><b>Resumen</b></td><td>Una línea por bloque: los registros depurados, los pares que coinciden más de lo esperado, el mayor solapamiento fenológico, la D del nicho, el desajuste y la especialización de la red.</td></tr>
+      <tr><td><b>Una sección por bloque</b></td><td>Lo que el bloque calculó, en prosa, con sus cuadros y sus figuras (con los cambios del editor ✎ y el estilo del estudio de figuras).</td></tr>
+      <tr><td><b>Métodos</b></td><td>Redactados a partir de lo que realmente se corrió: las reglas de depuración con sus parámetros, el universo y la celda de la coocurrencia, la corrección por esfuerzo, el fondo y la densidad del nicho, el modelo y el umbral, el modelo nulo de la red. Solo aparece lo que se usó.</td></tr>
+      <tr><td><b>Referencias</b></td><td>Solo las obras de los métodos usados.</td></tr>
+      <tr><td><b>Conjuntos de datos de GBIF</b></td><td>Los conjuntos que aportaron registros depurados, porque GBIF pide acreditarlos, y la recomendación de repetir la descarga en su portal para obtener el DOI.</td></tr>
+      <tr><td><b>Cómo citar</b> y <b>anexo</b></td><td>La cita del programa y, si se marcó, el registro de cálculo con todos los parámetros de todos los bloques.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>El informe dice cuándo los datos son de práctica</div>
+    <p>Si el estudio usa los datos de práctica, el informe lo advierte al principio; si el nicho o la distribución se calcularon con las capas de práctica, sus secciones lo advierten también. Un informe así sirve para aprender a leerlo, no para entregarlo.</p>
+  </div>
+
+  <!-- 10.5 -->
+  <h2 id="s10-5"><span class="num">10.5</span>El paquete reproducible</h2>
+  <figure>
+    <div class="marco"><img src="../img/b10-paquete.png" alt="La tarjeta del paquete con la lista de lo que contiene y el botón para construirlo"></div>
+    <figcaption><b>Figura 10.7.</b> El paquete del estudio de práctica: el informe, el proyecto, el registro de cálculo, 8 cuadros y 21 figuras.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.8in">Archivo</th><th>Contenido</th></tr></thead>
+    <tbody>
+      <tr><td><code>LEEME.txt</code></td><td>Qué contiene el paquete y cómo reproducir el estudio.</td></tr>
+      <tr><td><code>informe.html</code></td><td>El informe con las secciones marcadas.</td></tr>
+      <tr><td><code>proyecto.json</code></td><td>Los datos del estudio: se abre en el Bloque 2 con <span class="ui">📂 Abrir un proyecto</span>.</td></tr>
+      <tr><td><code>parametros.json</code></td><td>El registro de cálculo de todos los bloques: reglas, celdas, universos, fondos, modelos, umbrales, repeticiones.</td></tr>
+      <tr><td><code>cuadros/</code></td><td>Los cuadros en .csv: registros depurados y quitados, pares de coocurrencia, unidades y pares fenológicos, pares de nicho, evaluación de la distribución, especies de la red y conjuntos de GBIF.</td></tr>
+      <tr><td><code>figuras/</code></td><td>Las figuras marcadas en el catálogo, en el formato y la resolución elegidos, y además en SVG si se marca <span class="ui">y además en SVG (editable)</span>.</td></tr>
+    </tbody>
+  </table>
+  <p>El .zip lo escribe la propia app, byte a byte, sin ninguna biblioteca. Es lo que se entrega con el artículo, la tesis o el dictamen: quien lo reciba puede abrir el proyecto, leer los parámetros y rehacer cada número (Sandve et al. 2013; Wilkinson et al. 2016).</p>
+
+  <!-- 10.6 -->
+  <h2 id="s10-6"><span class="num">10.6</span>Antes de entregar</h2>
+  <ol class="pasos">
+    <li><b>Revisa el estado del estudio.</b> Si falta un bloque que el artículo usa, ábrelo.</li>
+    <li><b>Relee los métodos del informe.</b> Deben coincidir con lo que dices en el artículo: celda, universo, fondo, modelo, umbral, repeticiones.</li>
+    <li><b>Cita.</b> El programa, las obras de los métodos que usaste y cada descarga de GBIF con su DOI, repitiéndola en su portal con los mismos filtros.</li>
+    <li><b>Revisa el lenguaje.</b> Los Bloques 5 a 8 dan <i>polinizadores potenciales</i> y <i>oportunidad de interacción</i>; solo el 9 da interacciones.</li>
+    <li><b>Exporta las figuras al tamaño de la revista</b> y revisa en el editor ✎ que ningún texto se corte ni se encime.</li>
+    <li><b>Guarda el paquete</b> junto con el manuscrito. Es el material suplementario y la garantía de que el estudio se puede rehacer.</li>
+  </ol>
+</section>
+
+</body>
+</html>

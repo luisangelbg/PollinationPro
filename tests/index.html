@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>PollinationPro — tests</title>
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/i18n.js"></script>
+<style>
+  body { padding: 20px; }
+  .t { font-family: var(--mono); font-size: .8rem; padding: 2px 0; }
+  .ok { color: var(--success); } .bad { color: var(--danger); font-weight: 700; }
+  h2 { margin: 18px 0 4px; font-size: 1rem; }
+</style>
+</head>
+<body>
+<h1>PollinationPro · <span id="sum">…</span></h1>
+<div id="out"></div>
+<script src="../js/core.js"></script>
+<script src="../data/mexico-states.js"></script>
+<script src="../data/world.js"></script>
+<script src="../js/geo.js"></script>
+<script src="../js/engine.js"></script>
+<script src="../js/tableio.js"></script>
+<script src="../js/taxa.js"></script>
+<script src="../js/gbif.js"></script>
+<script src="../js/examples.js"></script>
+<script src="../js/records.js"></script>
+<script src="../js/clean.js"></script>
+<script src="../js/cooc.js"></script>
+<script src="../js/pheno.js"></script>
+<script src="../js/raster.js"></script>
+<script src="../js/niche.js"></script>
+<script src="../js/sdm.js"></script>
+<script src="../js/network.js"></script>
+<script src="tests-engine.js"></script>
+<script src="tests-data.js"></script>
+<script src="tests-env.js"></script>
+<script src="tests-net.js"></script>
+<script>
+/* Every test file registers its sections in window.TESTS; this page runs them
+   in order and counts. Open it with a double click: every line must be green. */
+(async function () {
+  const out = document.getElementById('out');
+  let pass = 0, fail = 0;
+  const ctx = {
+    section: t => out.insertAdjacentHTML('beforeend', `<h2>${t}</h2>`),
+    check(name, cond, detail) {
+      if (cond) pass++; else fail++;
+      out.insertAdjacentHTML('beforeend', `<div class="t ${cond ? 'ok' : 'bad'}">${cond ? '✓' : '✗'} ${name}${detail != null ? ' — ' + detail : ''}</div>`);
+    },
+    near: (a, b, tol) => Math.abs(a - b) <= (tol == null ? 1e-9 : tol),
+  };
+  for (const t of (window.TESTS || [])) {
+    try { await t(ctx); }
+    catch (e) { fail++; out.insertAdjacentHTML('beforeend', `<div class="t bad">✗ excepción: ${esc(e && e.stack || e)}</div>`); }
+  }
+  document.getElementById('sum').textContent = `${pass} correctas, ${fail} fallidas`;
+  document.getElementById('sum').className = fail ? 'bad' : 'ok';
+  window.TEST_RESULT = { pass, fail };
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "name": "PollinationPro",
+  "description": "A browser-based platform for analysing plants, pollinators and their overlap with occurrence data: GBIF records and published interactions, record cleaning and taxonomic harmonisation, offline maps, probabilistic co-occurrence with a target-group universe, circular phenology, environmental niche overlap (PCA-env, Schoener's D, equivalency and similarity tests), potential distribution and plant–visitor mismatch, and interaction networks. Any crop or plant, any visitors. No installation, no third-party libraries, Spanish and English.",
+  "version": "1.2.0",
+  "dateCreated": "2026-09-27",
+  "datePublished": "2026-09-27",
+  "license": "https://spdx.org/licenses/GPL-3.0-or-later",
+  "programmingLanguage": ["JavaScript", "HTML", "CSS"],
+  "runtimePlatform": "Web browser",
+  "operatingSystem": "Any",
+  "applicationCategory": "Ecology",
+  "keywords": ["pollination ecology", "plant-pollinator interactions", "co-occurrence", "niche overlap", "circular statistics", "phenology", "species distribution", "spatial mismatch", "interaction networks", "GBIF"],
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Luis Ángel",
+      "familyName": "Barrera-Guzmán",
+      "email": "lbarrerag@chapingo.mx",
+      "@id": "https://orcid.org/0000-0001-8057-2583"
+    }
+  ],
+  "softwareRequirements": ["A modern web browser (Chrome, Edge, Firefox or Safari)"],
+  "readme": "README.md",
+  "developmentStatus": "active"
+}

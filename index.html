@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<!-- PollinationPro — Copyright (C) 2026 Luis Ángel Barrera-Guzmán.
+     Free software under the GNU General Public License, version 3; see LICENSE. -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-es="PollinationPro — Plantas, polinizadores y su solapamiento" data-en="PollinationPro — Plants, pollinators and their overlap">PollinationPro — Plantas, polinizadores y su solapamiento</title>
+<meta name="description" content="Occurrence records of plants and pollinators, cleaning and taxonomic harmonisation, maps, spatial co-occurrence, phenological and elevational overlap, environmental niche overlap, potential distribution mismatch and interaction networks, in the browser.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='%23f3efcf' stroke='%235a9a3a' stroke-width='0.6'%3E%3Cpath d='M12 19 L12 9 L14 17Z'/%3E%3Cpath d='M12 19 L21.5 16 L14 20Z'/%3E%3Cpath d='M12 19 L18 27 L12.6 21Z'/%3E%3Cpath d='M12 19 L6 27 L11 21Z'/%3E%3Cpath d='M12 19 L2.5 16 L10 17.5Z'/%3E%3C/g%3E%3Ccircle cx='12' cy='19' r='2.4' fill='%23e8b83a'/%3E%3Cellipse cx='24' cy='8' rx='4' ry='2.4' fill='%23d99a1e' transform='rotate(-35 24 8)'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/i18n.js"></script>
+</head>
+<body class="on-home">
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-row">
+      <div class="brand" id="brand" data-es-title="Inicio" data-en-title="Home"><span id="brandLogo"></span><span>Pollination<span class="brand-pro">Pro</span></span>
+        <span class="brand-sub">· <span data-l="es">plantas, polinizadores y su solapamiento</span><span data-l="en">plants, pollinators and their overlap</span></span></div>
+      <div class="top-tools">
+        <button class="icon-btn" id="figStyleBtn" data-es-title="Estudio de figuras: paleta, tipografía y fondo de todas las gráficas" data-en-title="Figure studio: palette, font and background of every chart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.9 2-2 0-.6-.2-1-.6-1.4-.4-.4-.6-.8-.6-1.3 0-1 .9-1.8 2-1.8H16a5 5 0 0 0 5-5c0-3.6-4-6.5-9-6.5z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="10.5" cy="7" r="1.2"/><circle cx="15" cy="7.5" r="1.2"/></svg>
+        </button>
+        <div class="seg lang-seg" role="group" aria-label="Idioma / Language">
+          <button data-lang="es" title="Español">ES</button><button data-lang="en" title="English">EN</button>
+        </div>
+        <button class="icon-btn theme-btn" id="themeBtn" data-es-title="Cambiar a tema claro u oscuro" data-en-title="Switch between light and dark theme">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="stepper" id="stepper" aria-label="Blocks"></nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ==================== BLOCK 1 · HOME ==================== -->
+<section class="step-panel active" id="panel-1">
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow"><span data-l="es">Ecología de la polinización con datos de presencia</span><span data-l="en">Pollination ecology with occurrence data</span></div>
+        <h1><span data-l="es">¿Coinciden la <span class="accent">flor</span> y su <span class="gold">polinizador</span>?</span><span data-l="en">Do the <span class="accent">flower</span> and its <span class="gold">pollinator</span> meet?</span></h1>
+        <p class="lead"><span data-l="es">De los registros de GBIF y de tus propias observaciones a un artículo: <b>depuración</b> y armonización taxonómica, <b>mapas</b>, <b>coocurrencia</b> corregida por esfuerzo de muestreo, <b>solapamiento fenológico</b> con estadística circular, <b>nicho ambiental</b>, <b>desajustes de distribución</b> y <b>redes de interacción</b>, con la escala para leer cada número. Sin programar y sin instalar nada.</span><span data-l="en">From GBIF records and your own observations to a paper: <b>cleaning</b> and taxonomic harmonisation, <b>maps</b>, <b>co-occurrence</b> corrected for sampling effort, <b>phenological overlap</b> with circular statistics, <b>environmental niche</b>, <b>distribution mismatch</b> and <b>interaction networks</b>, with the scale to read every number. No programming and nothing to install.</span></p>
+        <div class="hero-cta">
+          <button class="btn btn-primary btn-lg" id="startBtn"><span data-l="es">Empezar con mis taxones →</span><span data-l="en">Start with my taxa →</span></button>
+          <button class="btn btn-secondary btn-lg" id="simBtn"><span data-l="es">Probar los laboratorios</span><span data-l="en">Try the labs</span></button>
+          <button class="btn btn-ghost btn-lg" id="theoryBtn"><span data-l="es">Leer la teoría</span><span data-l="en">Read the theory</span></button>
+          <button class="btn btn-ghost btn-lg" id="citeBtn"><span data-l="es">Cómo citar</span><span data-l="en">How to cite</span></button>
+        </div>
+        <div class="badge-row">
+          <span class="badge ok"><span data-l="es">Funciona completo en tu navegador</span><span data-l="en">Runs entirely in your browser</span></span>
+          <span class="badge ok"><span data-l="es">Tus datos no salen de tu computadora</span><span data-l="en">Your data never leave your computer</span></span>
+          <span class="badge ok"><span data-l="es">Español e inglés</span><span data-l="en">Spanish and English</span></span>
+          <span class="badge ok"><span data-l="es">Pruebas estadísticas verificadas</span><span data-l="en">Verified statistical tests</span></span>
+          <span class="badge ok"><span data-l="es">Figuras editables hasta 900 ppp</span><span data-l="en">Editable figures up to 900 dpi</span></span>
+        </div>
+      </div>
+      <div class="hero-art" id="heroArt" role="img" aria-label="A flowering crop vine with fruit, a pollinating bee, a map of Mexico with plant and pollinator records, a year clock and a niche diagram"></div>
+    </div>
+  </div>
+
+  <div class="messages" id="homeMessages"></div>
+
+  <h2 class="section-title"><span data-l="es">Cómo funciona</span><span data-l="en">How it works</span></h2>
+  <p class="section-sub"><span data-l="es">Una ruta guiada en el orden en que se escribe un artículo de polinización con datos de presencia. Cada bloque explica la idea, revisa si tus datos alcanzan y recomienda qué hacer después.</span><span data-l="en">A guided route in the order in which a pollination paper with occurrence data is written. Each block explains the idea, checks whether your data suffice and recommends what to do next.</span></p>
+  <div class="workflow">
+    <div class="wf-step"><div class="wf-n"><span data-l="es">PASO 1</span><span data-l="en">STEP 1</span></div><div class="wf-t"><span data-l="es">Reunir</span><span data-l="en">Gather</span></div><div class="wf-d"><span data-l="es">plantas, polinizadores e interacciones</span><span data-l="en">plants, pollinators and interactions</span></div></div>
+    <div class="wf-step"><div class="wf-n"><span data-l="es">PASO 2</span><span data-l="en">STEP 2</span></div><div class="wf-t"><span data-l="es">Depurar</span><span data-l="en">Clean</span></div><div class="wf-d"><span data-l="es">errores, cultivados y sinónimos</span><span data-l="en">errors, cultivated and synonyms</span></div></div>
+    <div class="wf-step"><div class="wf-n"><span data-l="es">PASO 3</span><span data-l="en">STEP 3</span></div><div class="wf-t"><span data-l="es">Situar</span><span data-l="en">Place</span></div><div class="wf-d"><span data-l="es">mapa y coocurrencia</span><span data-l="en">map and co-occurrence</span></div></div>
+    <div class="wf-step"><div class="wf-n"><span data-l="es">PASO 4</span><span data-l="en">STEP 4</span></div><div class="wf-t"><span data-l="es">Sincronizar</span><span data-l="en">Synchronise</span></div><div class="wf-d"><span data-l="es">floración y vuelo</span><span data-l="en">flowering and flight</span></div></div>
+    <div class="wf-step"><div class="wf-n"><span data-l="es">PASO 5</span><span data-l="en">STEP 5</span></div><div class="wf-t"><span data-l="es">Comparar nichos</span><span data-l="en">Compare niches</span></div><div class="wf-d"><span data-l="es">clima, idoneidad, desajuste</span><span data-l="en">climate, suitability, mismatch</span></div></div>
+    <div class="wf-step"><div class="wf-n"><span data-l="es">PASO 6</span><span data-l="en">STEP 6</span></div><div class="wf-t"><span data-l="es">Conectar</span><span data-l="en">Connect</span></div><div class="wf-d"><span data-l="es">la red de visitas</span><span data-l="en">the visit network</span></div></div>
+    <div class="wf-step"><div class="wf-n"><span data-l="es">PASO 7</span><span data-l="en">STEP 7</span></div><div class="wf-t"><span data-l="es">Publicar</span><span data-l="en">Publish</span></div><div class="wf-d"><span data-l="es">figuras, métodos, paquete</span><span data-l="en">figures, methods, package</span></div></div>
+  </div>
+
+  <!-- ---------- Interactive labs ---------- -->
+  <h2 class="section-title" id="labs"><span data-l="es">Pruébalo: dos laboratorios con el motor real</span><span data-l="en">Try it: two labs with the real engine</span></h2>
+  <p class="section-sub"><span data-l="es">Nada aquí es una animación: cada vez que mueves un control la app genera un paisaje o un calendario virtual y corre sobre él las mismas pruebas que correrá con tus registros. En un paisaje virtual la verdad se conoce, y por eso se puede ver cuándo una prueba acierta y cuándo se equivoca.</span><span data-l="en">Nothing here is an animation: every time you move a control the app generates a virtual landscape or calendar and runs on it the same tests it will run on your records. In a virtual landscape the truth is known, so you can see when a test is right and when it is wrong.</span></p>
+
+  <div class="playground">
+    <div class="lab-tabs" role="tablist">
+      <button class="lab-tab on" data-lab="labCooc" role="tab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <span data-l="es">Coocurrencia y sesgo de muestreo</span><span data-l="en">Co-occurrence and sampling bias</span></button>
+      <button class="lab-tab" data-lab="labPheno" role="tab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <span data-l="es">Solapamiento fenológico</span><span data-l="en">Phenological overlap</span></button>
+    </div>
+
+    <!-- lab 1: co-occurrence -->
+    <div class="lab on" id="labCooc">
+      <p class="hint" style="margin-top:0"><span data-l="es">Un paisaje de 36 × 24 celdas con un gradiente ambiental. La planta y la abeja ocupan las celdas que les convienen; la <b>separación de nichos</b> dice qué tan distintos son sus óptimos. Luego alguien muestrea, más cerca de la carretera cuanto mayor es el <b>sesgo</b>: solo las celdas muestreadas dan registros. La prueba de Veech se corre con tres universos y se compara con la verdad.</span><span data-l="en">A landscape of 36 × 24 cells with an environmental gradient. The plant and the bee occupy the cells that suit them; the <b>niche separation</b> says how different their optima are. Then someone samples, closer to the road the higher the <b>bias</b>: only sampled cells yield records. Veech's test is run with three universes and compared with the truth.</span> <span data-help="samplingbias"></span></p>
+      <div class="slider-grid">
+        <div class="slider-row"><label><span data-l="es">Separación de nichos</span><span data-l="en">Niche separation</span></label><input type="range" id="l1Sep" min="0" max="0.8" step="0.02" value="0.5"><span class="range-val" id="l1SepVal"></span></div>
+        <div class="slider-row"><label><span data-l="es">Amplitud de nicho</span><span data-l="en">Niche breadth</span></label><input type="range" id="l1Width" min="0.06" max="0.4" step="0.01" value="0.14"><span class="range-val" id="l1WidthVal"></span></div>
+        <div class="slider-row"><label><span data-l="es">Sesgo hacia la carretera</span><span data-l="en">Bias towards the road</span></label><input type="range" id="l1Bias" min="0" max="1" step="0.05" value="0.8"><span class="range-val" id="l1BiasVal"></span></div>
+        <div class="slider-row"><label><span data-l="es">Esfuerzo de fondo</span><span data-l="en">Background effort</span></label><input type="range" id="l1Effort" min="0.05" max="1" step="0.05" value="0.25"><span class="range-val" id="l1EffortVal"></span></div>
+      </div>
+      <div class="btn-row"><button class="btn btn-secondary btn-sm" id="l1New"><span data-l="es">↻ Otro paisaje</span><span data-l="en">↻ Another landscape</span></button></div>
+      <div class="lab-grid">
+        <div class="pg-pane"><div class="pg-title"><span data-l="es">El paisaje y sus registros</span><span data-l="en">The landscape and its records</span></div><svg id="l1Map"></svg></div>
+        <div class="pg-pane"><div class="pg-title"><span data-l="es">Distribución nula de celdas compartidas</span><span data-l="en">Null distribution of shared cells</span> <span data-help="hypergeo"></span></div><svg id="l1Hyper"></svg></div>
+      </div>
+      <div class="sim-readout" id="l1Readout"></div>
+      <p class="lab-note" id="l1Status"></p>
+    </div>
+
+    <!-- lab 2: phenology -->
+    <div class="lab" id="labPheno">
+      <p class="hint" style="margin-top:0"><span data-l="es">Una planta florece y una abeja vuela alrededor de dos fechas pico, con dos amplitudes. La app saca registros de los dos calendarios, calcula la fecha media y la concentración de cada uno como estadística circular, prueba si difieren y mide cuánto se solapan mes a mes.</span><span data-l="en">A plant flowers and a bee flies around two peak dates, with two spreads. The app draws records from both calendars, computes each one's mean date and concentration as circular statistics, tests whether they differ and measures how much they overlap month by month.</span> <span data-help="circular"></span></p>
+      <div class="slider-grid">
+        <div class="slider-row"><label><span data-l="es">Pico de floración</span><span data-l="en">Flowering peak</span></label><input type="range" id="l2P1" min="1" max="365" step="1" value="258"><span class="range-val" id="l2P1Val"></span></div>
+        <div class="slider-row"><label><span data-l="es">Amplitud de la floración</span><span data-l="en">Flowering spread</span></label><input type="range" id="l2S1" min="5" max="120" step="1" value="40"><span class="range-val" id="l2S1Val"></span></div>
+        <div class="slider-row"><label><span data-l="es">Pico de vuelo</span><span data-l="en">Flight peak</span></label><input type="range" id="l2P2" min="1" max="365" step="1" value="228"><span class="range-val" id="l2P2Val"></span></div>
+        <div class="slider-row"><label><span data-l="es">Amplitud del vuelo</span><span data-l="en">Flight spread</span></label><input type="range" id="l2S2" min="5" max="120" step="1" value="30"><span class="range-val" id="l2S2Val"></span></div>
+        <div class="slider-row"><label><span data-l="es">Registros de cada uno</span><span data-l="en">Records of each</span></label><input type="range" id="l2N" min="10" max="400" step="5" value="80"><span class="range-val" id="l2NVal"></span></div>
+      </div>
+      <div class="btn-row"><button class="btn btn-secondary btn-sm" id="l2New"><span data-l="es">↻ Otra muestra</span><span data-l="en">↻ Another sample</span></button></div>
+      <div class="lab-grid">
+        <div class="pg-pane"><div class="pg-title"><span data-l="es">El año como círculo</span><span data-l="en">The year as a circle</span></div><svg id="l2Clock"></svg></div>
+        <div class="pg-pane"><div class="pg-title"><span data-l="es">Perfiles mensuales y su solapamiento</span><span data-l="en">Monthly profiles and their overlap</span> <span data-help="schoenerD"></span></div><svg id="l2Months"></svg></div>
+      </div>
+      <div class="sim-readout" id="l2Readout"></div>
+    </div>
+  </div>
+
+  <!-- ---------- The blocks ---------- -->
+  <h2 class="section-title"><span data-l="es">Los nueve bloques de trabajo</span><span data-l="en">The nine working blocks</span></h2>
+  <p class="section-sub"><span data-l="es">Haz clic en una tarjeta para ir al bloque.</span><span data-l="en">Click a card to go to the block.</span></p>
+  <div class="feature-grid" id="featureGrid"></div>
+
+  <h2 class="section-title"><span data-l="es">Las preguntas que responde</span><span data-l="en">The questions it answers</span></h2>
+  <p class="section-sub"><span data-l="es">Cada pregunta de un estudio de polinización tiene su bloque. Sirve para cualquier cultivo —hortalizas, frutales, café, cacao, cucurbitáceas, oleaginosas—, para sus parientes silvestres y para cualquier planta nativa, con cualquier grupo de visitantes: abejas, abejorros, meliponinos, moscas, mariposas, murciélagos o aves.</span><span data-l="en">Every question of a pollination study has its block. It works for any crop —vegetables, fruit trees, coffee, cocoa, cucurbits, oilseeds—, for their wild relatives and for any native plant, with any group of visitors: bees, bumblebees, stingless bees, flies, butterflies, bats or birds.</span></p>
+  <div class="material-strip" id="questionStrip"></div>
+
+  <h2 class="section-title"><span data-l="es">Galería de métodos</span><span data-l="en">Method gallery</span></h2>
+  <p class="section-sub"><span data-l="es">Veinte métodos, cada uno con su publicación de origen. Filtra por familia.</span><span data-l="en">Twenty methods, each with its source publication. Filter by family.</span></p>
+  <div class="method-filter chips" id="methodFilter"></div>
+  <div class="method-gallery" id="methodGallery"></div>
+
+  <h2 class="section-title"><span data-l="es">Cuatro fuentes de datos, cuatro preguntas distintas</span><span data-l="en">Four data sources, four different questions</span></h2>
+  <p class="section-sub"><span data-l="es">Lo que cada tipo de dato puede afirmar y lo que no. Un buen artículo combina al menos dos.</span><span data-l="en">What each kind of data can assert and what it cannot. A good paper combines at least two.</span></p>
+  <div class="method-compare" id="sourceCompare"></div>
+
+  <h2 class="section-title"><span data-l="es">Lo que reúne</span><span data-l="en">What it brings together</span></h2>
+  <div class="bring-grid" id="bringGrid"></div>
+
+  <!-- ---------- Theory ---------- -->
+  <h2 class="section-title" id="theory"><span data-l="es">La teoría, en lenguaje claro</span><span data-l="en">The theory, in plain language</span></h2>
+  <p class="section-sub"><span data-l="es">Lo que hay que entender antes de descargar el primer registro.</span><span data-l="en">What has to be understood before downloading the first record.</span></p>
+
+  <div class="theory-card">
+
+    <details class="acc"><summary><span data-l="es">Coincidir no es polinizar: la cadena de evidencia</span><span data-l="en">Coinciding is not pollinating: the chain of evidence</span> <span class="acc-tag"><span data-l="es">empieza aquí</span><span data-l="en">start here</span></span></summary>
+      <div class="acc-body">
+        <div class="theory-fig" id="theoryEvidenceFig" style="float:none;max-width:none"><div class="cap"><span data-l="es">Los cinco eslabones entre una coincidencia de registros y la polinización</span><span data-l="en">The five links between a coincidence of records and pollination</span></div></div>
+        <p><span data-l="es">Para que un insecto polinice una planta tiene que <b>estar donde está la planta</b>, <b>cuando la planta florece</b>, en <b>ambientes que ambos toleran</b>; tiene que <b>visitar la flor</b> y, al hacerlo, <b>llevar y depositar polen compatible</b> en el estigma. Los registros de presencia —GBIF, colecciones, ciencia ciudadana— informan de los tres primeros eslabones. Las observaciones de visitas, del cuarto. El quinto solo se prueba en campo: carga de polen en el cuerpo del visitante, depósito tras una sola visita, fruto formado.</span><span data-l="en">For an insect to pollinate a plant it has to <b>be where the plant is</b>, <b>when the plant flowers</b>, in <b>environments both tolerate</b>; it has to <b>visit the flower</b> and, in doing so, <b>carry and deposit compatible pollen</b> on the stigma. Presence records —GBIF, collections, citizen science— inform the first three links. Visit observations, the fourth. The fifth is only proven in the field: pollen load on the visitor's body, deposition after a single visit, fruit set.</span></p>
+        <p><span data-l="es">Por eso PollinationPro separa con cuidado el lenguaje: los Bloques 5 a 8 miden <b>oportunidad de interacción</b> y hablan de «polinizadores potenciales»; el Bloque 9 trabaja con <b>interacciones registradas</b>. Un artículo con datos de presencia es valioso precisamente porque acota dónde, cuándo y en qué clima vale la pena buscar la evidencia de campo, y porque anticipa qué interacciones podrían romperse con el cambio climático.</span><span data-l="en">That is why PollinationPro is careful with language: Blocks 5 to 8 measure <b>opportunity for interaction</b> and speak of "potential pollinators"; Block 9 works with <b>recorded interactions</b>. A paper with presence data is valuable precisely because it narrows down where, when and in what climate the field evidence is worth looking for, and because it anticipates which interactions could break with climate change.</span></p>
+      </div>
+    </details>
+
+    <details class="acc"><summary><span data-l="es">El sesgo de muestreo y el grupo objetivo</span><span data-l="en">Sampling bias and the target group</span> <span class="acc-tag"><span data-l="es">Bloque 5</span><span data-l="en">Block 5</span></span></summary>
+      <div class="acc-body clearfix">
+        <div class="theory-fig" id="theoryBiasFig"><div class="cap"><span data-l="es">Dos especies que no se buscan una a la otra, registradas por el mismo muestreador</span><span data-l="en">Two species that do not seek each other, recorded by the same sampler</span></div></div>
+        <p><span data-l="es">Casi todos los registros de GBIF se concentran cerca de caminos, ciudades y estaciones de investigación. Si la planta y la abeja se registraron más donde se muestreó más, sus registros coincidirán aunque en la naturaleza no se busquen. La prueba de coocurrencia pregunta «¿más de lo esperado al azar?», y la respuesta depende de <b>entre qué sitios</b> se reparte el azar.</span><span data-l="en">Almost all GBIF records concentrate near roads, cities and research stations. If the plant and the bee were recorded more where more sampling happened, their records will coincide even if in nature they do not seek each other. The co-occurrence test asks "more than expected by chance?", and the answer depends on <b>among which sites</b> chance is distributed.</span></p>
+        <p><span data-l="es">La solución clásica es el <b>grupo objetivo</b> (Phillips et al. 2009): se usan como universo solo las celdas donde alguien registró algún taxón del mismo grupo —otras abejas, otras cucurbitáceas—, que son las que de verdad se muestrearon. El primer laboratorio de esta página lo muestra con un paisaje cuya verdad se conoce.</span><span data-l="en">The classic solution is the <b>target group</b> (Phillips et al. 2009): only the cells where someone recorded some taxon of the same group —other bees, other cucurbits— are used as the universe, since those are the ones actually sampled. The first laboratory on this page shows it with a landscape whose truth is known.</span></p>
+        <div class="formula">P(j compartidos) = C(N₁, j) · C(N − N₁, N₂ − j) / C(N, N₂)      E[j] = N₁·N₂ / N</div>
+      </div>
+    </details>
+
+    <details class="acc"><summary><span data-l="es">El año es un círculo: fenología con estadística circular</span><span data-l="en">The year is a circle: phenology with circular statistics</span> <span class="acc-tag"><span data-l="es">Bloque 6</span><span data-l="en">Block 6</span></span></summary>
+      <div class="acc-body">
+        <p><span data-l="es">Una fecha es un ángulo: el día <i>d</i> equivale a 2π(<i>d</i> − ½)/365 radianes. La fecha media es la dirección del vector promedio de todos los registros, y su longitud <b>R̄</b>, entre 0 y 1, mide qué tan concentrados están. Con esto, una especie que florece de noviembre a febrero tiene su pico en diciembre-enero, y no en junio como diría la media aritmética de los meses.</span><span data-l="en">A date is an angle: day <i>d</i> is 2π(<i>d</i> − ½)/365 radians. The mean date is the direction of the average vector of all records, and its length <b>R̄</b>, between 0 and 1, measures how concentrated they are. With this, a species flowering from November to February has its peak in December–January, and not in June as the arithmetic mean of the months would say.</span></p>
+        <div class="formula">C̄ = Σcos θᵢ / n      S̄ = Σsin θᵢ / n      R̄ = √(C̄² + S̄²)      θ̄ = atan2(S̄, C̄)      Z = n·R̄²</div>
+        <p><span data-l="es">La prueba de <b>Rayleigh</b> dice si hay estacionalidad; la de <b>Watson–Williams</b>, si dos taxones tienen la misma fecha media. El <b>solapamiento</b> mes a mes (D de Schoener, I de Warren, O de Pianka) dice qué fracción de sus calendarios comparten. Como con el espacio, el número de registros por mes refleja también cuándo se sale al campo: el Bloque 6 permite dividir entre el esfuerzo del grupo objetivo antes de comparar.</span><span data-l="en">The <b>Rayleigh</b> test says whether there is seasonality; <b>Watson–Williams</b>, whether two taxa share the same mean date. The month-by-month <b>overlap</b> (Schoener's D, Warren's I, Pianka's O) says what fraction of their calendars they share. As with space, the number of records per month also reflects when people go into the field: Block 6 lets you divide by the target group's effort before comparing.</span></p>
+      </div>
+    </details>
+
+    <details class="acc"><summary><span data-l="es">El nicho en el espacio ambiental</span><span data-l="en">The niche in environmental space</span> <span class="acc-tag"><span data-l="es">Bloques 7 y 8</span><span data-l="en">Blocks 7 and 8</span></span></summary>
+      <div class="acc-body">
+        <p><span data-l="es">Dos especies pueden vivir en lugares distintos y compartir clima, o vivir cerca y usar ambientes distintos. Para compararlas en el <b>espacio ambiental</b>, Broennimann et al. (2012) proponen resumir las variables climáticas de toda la región en dos componentes principales, estimar en ese plano la densidad de registros de cada especie con un kernel, dividirla entre la densidad de los ambientes disponibles y medir el solapamiento con la D de Schoener.</span><span data-l="en">Two species can live in different places and share a climate, or live close by and use different environments. To compare them in <b>environmental space</b>, Broennimann et al. (2012) propose summarising the climatic variables of the whole region into two principal components, estimating on that plane each species' record density with a kernel, dividing it by the density of the available environments and measuring the overlap with Schoener's D.</span></p>
+        <p><span data-l="es">Las pruebas de <b>equivalencia</b> y <b>similitud</b> de Warren et al. (2008) dicen si el solapamiento observado es menor que el de dos nichos idénticos, o mayor que el que produciría el solo parecido de los ambientes disponibles. Luego, en el Bloque 8, la idoneidad de cada taxón se proyecta al mapa: donde la planta es idónea y ningún polinizador potencial lo es, hay un <b>desajuste</b> que el cambio climático puede ensanchar.</span><span data-l="en">Warren et al.'s (2008) <b>equivalency</b> and <b>similarity</b> tests say whether the observed overlap is smaller than that of two identical niches, or larger than the mere likeness of the available environments would produce. Then, in Block 8, each taxon's suitability is projected onto the map: where the plant is suitable and no potential pollinator is, there is a <b>mismatch</b> that climate change may widen.</span></p>
+      </div>
+    </details>
+
+    <details class="acc"><summary><span data-l="es">Cultivos, parientes silvestres y sus polinizadores</span><span data-l="en">Crops, wild relatives and their pollinators</span> <span class="acc-tag"><span data-l="es">para qué sirve</span><span data-l="en">what it is for</span></span></summary>
+      <div class="acc-body">
+        <p><span data-l="es">Alrededor de tres cuartas partes de los cultivos alimentarios más importantes del mundo aumentan su producción de fruto o de semilla con la visita de animales (Klein et al. 2007). Para cada uno cabe la misma batería de preguntas: ¿qué visitantes comparten su área, su temporada de floración y su clima?, ¿dónde el cultivo o su pariente silvestre podría quedarse sin ellos?, ¿qué tan especializada es la red de visitas? PollinationPro responde esas preguntas con los mismos métodos para cualquier sistema:</span><span data-l="en">About three quarters of the world's leading food crops increase their fruit or seed production with animal visits (Klein et al. 2007). For each of them the same battery of questions applies: which visitors share its range, its flowering season and its climate?, where could the crop or its wild relative be left without them?, how specialised is the visit network? PollinationPro answers those questions with the same methods for any system:</span></p>
+        <table class="mini-table">
+          <thead><tr><th><span data-l="es">Planta</span><span data-l="en">Plant</span></th><th><span data-l="es">Visitantes que suelen estudiarse</span><span data-l="en">Visitors usually studied</span></th><th><span data-l="es">Pregunta típica</span><span data-l="en">Typical question</span></th></tr></thead>
+          <tbody>
+            <tr><td><span data-l="es">Calabazas (<i>Cucurbita</i>) y chayote (<i>Sechium</i>)</span><span data-l="en">Squashes (<i>Cucurbita</i>) and chayote (<i>Sechium</i>)</span></td><td><span data-l="es">abejas de la calabaza (<i>Xenoglossa</i>, con <i>Peponapis</i>), abeja melífera, abejas sin aguijón</span><span data-l="en">squash bees (<i>Xenoglossa</i>, with <i>Peponapis</i>), honey bee, stingless bees</span></td><td><span data-l="es">¿acompañan los especialistas a los parientes silvestres?</span><span data-l="en">do the specialists follow the wild relatives?</span></td></tr>
+            <tr><td><span data-l="es">Café (<i>Coffea</i>)</span><span data-l="en">Coffee (<i>Coffea</i>)</span></td><td><span data-l="es">abeja melífera y abejas nativas</span><span data-l="en">honey bee and native bees</span></td><td><span data-l="es">¿coincide la floración con la actividad de las abejas nativas?</span><span data-l="en">does flowering coincide with native bee activity?</span></td></tr>
+            <tr><td><span data-l="es">Cacao (<i>Theobroma cacao</i>)</span><span data-l="en">Cocoa (<i>Theobroma cacao</i>)</span></td><td><span data-l="es">mosquitas ceratopogónidas</span><span data-l="en">ceratopogonid midges</span></td><td><span data-l="es">¿dónde el clima futuro separa al cultivo de sus polinizadores?</span><span data-l="en">where does the future climate split the crop from its pollinators?</span></td></tr>
+            <tr><td><span data-l="es">Jitomate y chiles (Solanáceas)</span><span data-l="en">Tomato and peppers (Solanaceae)</span></td><td><span data-l="es">abejorros (<i>Bombus</i>) y otras abejas que vibran las anteras</span><span data-l="en">bumblebees (<i>Bombus</i>) and other buzz-pollinating bees</span></td><td><span data-l="es">¿qué especies nativas podrían sustituir a las introducidas?</span><span data-l="en">which native species could replace the introduced ones?</span></td></tr>
+            <tr><td><span data-l="es">Aguacate, frutales, oleaginosas</span><span data-l="en">Avocado, fruit trees, oilseeds</span></td><td><span data-l="es">abejas, avispas, moscas</span><span data-l="en">bees, wasps, flies</span></td><td><span data-l="es">¿qué tan diversa y redundante es la red de visitantes?</span><span data-l="en">how diverse and redundant is the visitor network?</span></td></tr>
+            <tr><td><span data-l="es">Agaves y cactáceas columnares</span><span data-l="en">Agaves and columnar cacti</span></td><td><span data-l="es">murciélagos nectarívoros</span><span data-l="en">nectar-feeding bats</span></td><td><span data-l="es">¿coinciden la floración y la ruta migratoria?</span><span data-l="en">do flowering and the migration route coincide?</span></td></tr>
+          </tbody>
+        </table>
+        <p><span data-l="es">Un punto que cambia los resultados en casi todos los cultivos: la mayoría de los registros son de <b>plantas sembradas</b>, cuya distribución refleja la agricultura y no el nicho natural. El Bloque 3 las separa de las <b>poblaciones silvestres</b> y de los parientes silvestres, que son los que informan de la relación evolutiva con sus polinizadores. Y la taxonomía se mueve: el Bloque 3 reúne los sinónimos, como <i>Peponapis</i>, que desde Freitas et al. (2023) es un subgénero de <i>Xenoglossa</i>.</span><span data-l="en">One point that changes the results in almost every crop: most records are of <b>planted individuals</b>, whose distribution reflects agriculture and not the natural niche. Block 3 separates them from <b>wild populations</b> and wild relatives, which are the ones that inform about the evolutionary relationship with their pollinators. And taxonomy moves: Block 3 merges synonyms, such as <i>Peponapis</i>, which since Freitas et al. (2023) is a subgenus of <i>Xenoglossa</i>.</span></p>
+      </div>
+    </details>
+
+  </div>
+
+  <h2 class="section-title" id="cite"><span data-l="es">Cómo citar</span><span data-l="en">How to cite</span></h2>
+  <p class="section-sub"><span data-l="es">Si PollinationPro te ayudó en una tesis o un artículo, cita el programa y las obras originales de los métodos que implementa; el informe del Bloque 10 los nombra por autor y año. Cita también cada descarga de GBIF con su DOI.</span><span data-l="en">If PollinationPro helped with a thesis or a paper, please cite the software and the original works of the methods it implements; the report of Block 10 names them by author and year. Also cite each GBIF download with its DOI.</span></p>
+  <div class="cite-box">
+    <div class="cite-ref" id="citeText"><span data-l="es">Barrera-Guzmán, L.Á. (2026). PollinationPro: plataforma en el navegador para el análisis de plantas, polinizadores y su solapamiento con datos de presencia (versión <span class="app-v"></span>) [software].</span><span data-l="en">Barrera-Guzmán, L.Á. (2026). PollinationPro: a browser-based platform for analysing plants, pollinators and their overlap with occurrence data (Version <span class="app-v"></span>) [Computer software].</span></div>
+    <button class="btn btn-secondary btn-sm" id="copyCite" data-es="Copiar la cita" data-en="Copy the citation">Copiar la cita</button>
+    <span class="hint" style="margin-left:8px"><span data-l="es">El DOI se añadirá cuando el programa se archive.</span><span data-l="en">The DOI will be added when the program is archived.</span></span>
+  </div>
+
+  <h2 class="section-title"><span data-l="es">Referencias detrás de los cálculos</span><span data-l="en">References behind the calculations</span></h2>
+  <p class="section-sub"><span data-l="es">Cada prueba de la app viene de una obra publicada, y se vuelve a nombrar en el lugar donde se usa.</span><span data-l="en">Every test in this app comes from a published work, and is named again where it is used.</span></p>
+  <div class="ref-tools chips" id="refFilter"></div>
+  <ol class="ref-list" id="refList"></ol>
+
+  <p class="footer-note"><span data-l="es">PollinationPro · versión <span class="app-v"></span> · hecha para botánicos, entomólogos y tesistas que quieren saber quién visita a quién, dónde y cuándo.</span><span data-l="en">PollinationPro · version <span class="app-v"></span> · made for botanists, entomologists and thesis students who want to know who visits whom, where and when.</span></p>
+
+</section>
+
+<!-- ==================== BLOCK 2 · DATA ==================== -->
+<section class="step-panel" id="panel-2">
+  <div class="panel-title"><div class="pt-num">2</div>
+    <div><h2><span data-l="es">Registros de plantas y visitantes</span><span data-l="en">Records of plants and visitors</span></h2>
+      <p><span data-l="es">Qué plantas y qué visitantes entran al estudio, y todos sus registros: los de GBIF, las interacciones ya publicadas y los tuyos. Nada se analiza todavía: aquí se reúne, se cuenta y se revisa qué llegó.</span><span data-l="en">Which plants and which visitors enter the study, and all their records: GBIF's, the interactions already published and your own. Nothing is analysed yet: here things are gathered, counted and checked.</span></p></div>
+  </div>
+  <div class="messages" id="b2Messages"></div>
+
+  <!-- ---------- 1 · the study list ---------- -->
+  <div class="card">
+    <h2><span data-l="es">1 · La lista de estudio</span><span data-l="en">1 · The study list</span> <span data-help="occurrence"></span></h2>
+    <p class="hint"><span data-l="es">Escribe los nombres científicos a cualquier nivel: especie (<i>Coffea arabica</i>), género (<i>Bombus</i>) o familia. Cada nombre es una unidad de análisis: un género reúne todos los registros de sus especies. O empieza con uno de los sistemas de ejemplo; son puntos de partida, no recomendaciones.</span><span data-l="en">Type the scientific names at any level: species (<i>Coffea arabica</i>), genus (<i>Bombus</i>) or family. Each name is a unit of analysis: a genus gathers the records of all its species. Or start from one of the example systems; they are starting points, not recommendations.</span></p>
+    <div class="preset-grid" id="b2Presets"></div>
+    <div class="two-col" style="margin-top:14px">
+      <div>
+        <h3><span data-l="es">🌼 Plantas</span><span data-l="en">🌼 Plants</span></h3>
+        <div class="btn-row"><input type="text" id="b2PlantIn" data-es-ph="p. ej. Cucurbita moschata" data-en-ph="e.g. Cucurbita moschata" style="flex:1"><button class="btn btn-secondary btn-sm" id="b2PlantAdd"><span data-l="es">Añadir</span><span data-l="en">Add</span></button></div>
+        <div id="b2PlantList" class="taxon-list"></div>
+      </div>
+      <div>
+        <h3><span data-l="es">🐝 Visitantes</span><span data-l="en">🐝 Visitors</span></h3>
+        <div class="btn-row"><input type="text" id="b2PollIn" data-es-ph="p. ej. Bombus, Apis mellifera" data-en-ph="e.g. Bombus, Apis mellifera" style="flex:1"><button class="btn btn-secondary btn-sm" id="b2PollAdd"><span data-l="es">Añadir</span><span data-l="en">Add</span></button></div>
+        <div id="b2PollList" class="taxon-list"></div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="b2Resolve"><span data-l="es">Resolver los nombres en GBIF</span><span data-l="en">Resolve the names in GBIF</span></button>
+      <button class="btn btn-ghost btn-sm" id="b2Clear"><span data-l="es">Vaciar la lista</span><span data-l="en">Empty the list</span></button>
+      <span class="hint" style="margin:0"><span data-l="es">Separa varios nombres con comas o punto y coma.</span><span data-l="en">Separate several names with commas or semicolons.</span></span>
+    </div>
+    <div class="messages" id="b2ListMsg"></div>
+    <details class="acc-plain" id="b2PracticeBox">
+      <summary><span data-l="es">¿Sin internet o solo para practicar? Datos ficticios generados por el programa</span><span data-l="en">No internet, or just practising? Fictional data generated by the program</span></summary>
+      <p class="hint"><span data-l="es">Registros y visitas <b>inventados</b> con un generador de números aleatorios, con errores sembrados a propósito para el Bloque 3. Sirven para aprender la app; no representan observaciones reales y no deben citarse.</span><span data-l="en"><b>Invented</b> records and visits drawn with a random-number generator, with errors seeded on purpose for Block 3. They are for learning the app; they do not represent real observations and must not be cited.</span></p>
+      <div class="btn-row">
+        <button class="btn btn-secondary btn-sm" data-example="cucurbits"><span data-l="es">Cucurbitáceas y abejas de la calabaza</span><span data-l="en">Cucurbits and squash bees</span></button>
+        <button class="btn btn-secondary btn-sm" data-example="coffee"><span data-l="es">Café y abejas sin aguijón</span><span data-l="en">Coffee and stingless bees</span></button>
+      </div>
+    </details>
+  </div>
+
+  <!-- ---------- 2 · GBIF ---------- -->
+  <div class="card">
+    <h2><span data-l="es">2 · Traer los registros de GBIF</span><span data-l="en">2 · Bring the GBIF records</span></h2>
+    <p class="hint"><span data-l="es">Elegir los países desde aquí es mucho mejor que descargar el mundo y filtrar después: el conteo ya llega filtrado. Solo se piden registros con coordenadas.</span><span data-l="en">Choosing the countries here is much better than downloading the world and filtering afterwards: the count already comes filtered. Only records with coordinates are requested.</span></p>
+    <div class="chips" id="b2RegionBtns"></div>
+    <div class="country-list" id="b2Countries"></div>
+    <div class="form-grid" style="margin-top:10px">
+      <div class="field"><label data-es="Máximo de registros por nombre" data-en="Maximum records per name">Máximo de registros por nombre</label>
+        <select id="b2Max"><option value="5000">5,000</option><option value="20000" selected>20,000</option><option value="50000">50,000</option><option value="99000">99,000</option></select></div>
+      <div class="field"><label data-es="Desde el año" data-en="From year">Desde el año</label><input type="number" id="b2YearFrom" data-es-ph="(todos)" data-en-ph="(all)"></div>
+      <div class="field"><label data-es="Hasta el año" data-en="To year">Hasta el año</label><input type="number" id="b2YearTo" data-es-ph="(todos)" data-en-ph="(all)"></div>
+      <div class="field"><label data-es="Tipo de registro" data-en="Type of record">Tipo de registro</label>
+        <select id="b2Basis"><option value="" data-es="Todos" data-en="All">Todos</option><option value="PRESERVED_SPECIMEN" data-es="Solo ejemplares de colección" data-en="Collection specimens only">Solo ejemplares de colección</option><option value="HUMAN_OBSERVATION" data-es="Solo observaciones" data-en="Observations only">Solo observaciones</option><option value="PRESERVED_SPECIMEN,HUMAN_OBSERVATION,MATERIAL_SAMPLE,OCCURRENCE" data-es="Ejemplares y observaciones (sin fósiles ni desconocidos)" data-en="Specimens and observations (no fossils or unknown)">Ejemplares y observaciones</option></select></div>
+      <div class="field wide"><label class="checkbox-label"><input type="checkbox" id="b2NoGeo" checked> <span data-l="es">Excluir los registros que GBIF marca con problemas geoespaciales</span><span data-l="en">Exclude records GBIF flags with geospatial issues</span></label></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" id="b2Count"><span data-l="es">Contar cuántos hay</span><span data-l="en">Count how many there are</span></button>
+      <button class="btn btn-primary" id="b2Fetch"><span data-l="es">Descargar los registros</span><span data-l="en">Download the records</span></button>
+      <button class="btn btn-ghost btn-sm" id="b2Stop" style="display:none"><span data-l="es">Detener</span><span data-l="en">Stop</span></button>
+    </div>
+    <div class="progress-list" id="b2Progress"></div>
+    <div class="messages" id="b2FetchMsg"></div>
+  </div>
+
+  <!-- ---------- 3 · interactions ---------- -->
+  <div class="card">
+    <h2><span data-l="es">3 · Interacciones ya publicadas</span><span data-l="en">3 · Interactions already published</span> <span data-help="cooccurnotinteraction"></span></h2>
+    <p class="hint"><span data-l="es">Las bases de interacciones bióticas reúnen lo publicado en artículos y colecciones: «tal visitante visita las flores de tal planta» o «la poliniza». Se busca en las dos direcciones: los visitantes de cada planta de la lista y las plantas que visita cada visitante. Sirven de contexto y alimentan la red del Bloque 9; casi nunca traen lugar ni fecha.</span><span data-l="en">Biotic-interaction databases gather what has been published in papers and collections: "such visitor visits the flowers of such plant" or "pollinates it". The search goes both ways: the visitors of each plant in the list and the plants each visitor visits. They give context and feed the network of Block 9; they almost never carry a place or a date.</span></p>
+    <div class="btn-row"><button class="btn btn-secondary" id="b2Globi"><span data-l="es">Buscar interacciones publicadas</span><span data-l="en">Search published interactions</span></button></div>
+    <div class="messages" id="b2GlobiMsg"></div>
+    <div id="b2GlobiTable"></div>
+  </div>
+
+  <!-- ---------- 4 · own data ---------- -->
+  <div class="card">
+    <h2><span data-l="es">4 · Tus propios datos</span><span data-l="en">4 · Your own data</span></h2>
+    <p class="hint"><span data-l="es">Dos clases de tabla, cada una con su pestaña. <b>Registros de presencia</b>: una fila por planta o insecto visto, con taxón, latitud y longitud (y, si los tienes, fecha, altitud, localidad, si es silvestre o cultivado). <b>Observaciones de visitas</b>: una fila por par planta–visitante observado, con cuántas visitas y, si puedes, sitio y fecha. Acepta .csv, .txt, .tsv, .xlsx o texto pegado de una hoja de cálculo; las columnas se reconocen solas y se pueden corregir.</span><span data-l="en">Two kinds of table, each with its tab. <b>Presence records</b>: one row per plant or insect seen, with taxon, latitude and longitude (and, if you have them, date, elevation, locality, whether wild or cultivated). <b>Visit observations</b>: one row per plant–visitor pair observed, with how many visits and, if possible, site and date. It accepts .csv, .txt, .tsv, .xlsx or text pasted from a spreadsheet; columns are recognised automatically and can be corrected.</span></p>
+    <div class="lab-tabs" role="tablist" id="b2OwnTabs">
+      <button class="lab-tab on" data-kind="presence"><span data-l="es">Registros de presencia</span><span data-l="en">Presence records</span></button>
+      <button class="lab-tab" data-kind="visits"><span data-l="es">Observaciones de visitas</span><span data-l="en">Visit observations</span></button>
+    </div>
+    <label class="src-drop" id="b2Drop"><input type="file" id="b2File" accept=".csv,.txt,.tsv,.xlsx" style="display:none">
+      <b><span data-l="es">Elige un archivo o suéltalo aquí</span><span data-l="en">Choose a file or drop it here</span></b>
+      <small><span data-l="es">.csv · .txt · .tsv · .xlsx — UTF-8 o Windows-1252, cualquier separador</span><span data-l="en">.csv · .txt · .tsv · .xlsx — UTF-8 or Windows-1252, any separator</span></small></label>
+    <details class="acc-plain"><summary><span data-l="es">…o pega la tabla</span><span data-l="en">…or paste the table</span></summary>
+      <textarea id="b2Paste" rows="6" data-es-ph="Copia las celdas en tu hoja de cálculo (con los títulos) y pégalas aquí" data-en-ph="Copy the cells in your spreadsheet (with the titles) and paste them here"></textarea>
+      <div class="btn-row"><button class="btn btn-secondary btn-sm" id="b2PasteRead"><span data-l="es">Leer lo pegado</span><span data-l="en">Read what was pasted</span></button></div>
+    </details>
+    <div class="btn-row"><button class="btn btn-ghost btn-sm" id="b2Template"><span data-l="es">⤓ Descargar una plantilla vacía</span><span data-l="en">⤓ Download an empty template</span></button></div>
+    <div id="b2Map"></div>
+    <div class="messages" id="b2OwnMsg"></div>
+    <div id="b2Orphans"></div>
+  </div>
+
+  <!-- ---------- 5 · summary ---------- -->
+  <div class="card" id="b2SummaryCard">
+    <h2><span data-l="es">5 · Lo que hay</span><span data-l="en">5 · What there is</span></h2>
+    <div id="b2Tiles"></div>
+    <div id="b2Table"></div>
+    <div class="btn-row">
+      <button class="btn btn-ghost btn-sm" id="b2Csv"><span data-l="es">⤓ Registros crudos (.csv)</span><span data-l="en">⤓ Raw records (.csv)</span></button>
+      <button class="btn btn-ghost btn-sm" id="b2Save"><span data-l="es">💾 Guardar el proyecto (.json)</span><span data-l="en">💾 Save the project (.json)</span></button>
+      <label class="btn btn-ghost btn-sm"><input type="file" id="b2Open" accept=".json" style="display:none"><span data-l="es">📂 Abrir un proyecto</span><span data-l="en">📂 Open a project</span></label>
+      <button class="btn btn-primary" id="b2Next"><span data-l="es">Continuar a la depuración →</span><span data-l="en">Continue to cleaning →</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BLOCK 3 · CLEANING AND TAXONOMY ==================== -->
+<section class="step-panel" id="panel-3">
+  <div class="panel-title"><div class="pt-num">3</div>
+    <div><h2><span data-l="es">Depuración y taxonomía</span><span data-l="en">Cleaning and taxonomy</span></h2>
+      <p><span data-l="es">Los registros que llegan de cientos de colecciones traen errores que, sin depurar, se vuelven resultados. Aquí decides qué se quita, qué solo se marca y cómo se nombran las unidades de análisis. El reporte sale listo para el apartado de métodos.</span><span data-l="en">Records arriving from hundreds of collections carry errors that, uncleaned, become results. Here you decide what is removed, what is only flagged and how the units of analysis are named. The report comes out ready for the methods section.</span></p></div>
+  </div>
+  <div class="soon-box" id="b3Empty"><div class="soon-art"></div>
+    <h3><span data-l="es">Primero hacen falta registros</span><span data-l="en">Records are needed first</span></h3>
+    <p><span data-l="es">Descárgalos de GBIF, sube los tuyos o carga los de práctica en el Bloque 2.</span><span data-l="en">Download them from GBIF, upload your own or load the practice ones in Block 2.</span></p>
+    <button class="btn btn-primary" data-goto="2"><span data-l="es">Ir al Bloque 2 →</span><span data-l="en">Go to Block 2 →</span></button>
+  </div>
+  <div id="b3Body" style="display:none">
+    <div class="card">
+      <h2><span data-l="es">1 · Las reglas</span><span data-l="en">1 · The rules</span> <span data-help="cleaning"></span></h2>
+      <p class="hint"><span data-l="es">Para cada regla elige si <b>quita</b> el registro, solo lo <b>marca</b> (sigue en los análisis, con la marca en la tabla) o <b>no se aplica</b>. El número de la derecha dice a cuántos registros alcanza con los parámetros actuales.</span><span data-l="en">For each rule choose whether it <b>removes</b> the record, only <b>flags</b> it (it stays in the analyses, with the flag in the table) or is <b>not applied</b>. The number on the right says how many records it reaches with the current parameters.</span></p>
+      <div id="b3Rules"></div>
+      <div class="form-grid" style="margin-top:12px">
+        <div class="field"><label data-es="Distancia a un centroide (km)" data-en="Distance to a centroid (km)">Distancia a un centroide (km)</label><input type="number" id="b3CentKm" value="5" min="0.5" step="0.5"></div>
+        <div class="field"><label data-es="Incertidumbre máxima (km)" data-en="Maximum uncertainty (km)">Incertidumbre máxima (km)</label><input type="number" id="b3MaxUnc" value="10" min="0.1" step="1"></div>
+        <div class="field"><label data-es="Decimales mínimos" data-en="Minimum decimals">Decimales mínimos</label><select id="b3MinDec"><option value="1">1 (~11 km)</option><option value="2" selected>2 (~1.1 km)</option><option value="3">3 (~110 m)</option></select></div>
+        <div class="field"><label data-es="Registro antiguo si es anterior a" data-en="Old record if earlier than">Registro antiguo si es anterior a</label><input type="number" id="b3MinYear" value="1950" step="1"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span data-l="es">2 · Plantas cultivadas y área de estudio</span><span data-l="en">2 · Cultivated plants and study area</span> <span data-help="wildcultivated"></span></h2>
+      <p class="hint"><span data-l="es">Si estudias el cultivo tal como se siembra (el café en sus fincas), conserva sus registros cultivados; si estudias las poblaciones silvestres o los parientes silvestres, quítalos. Cada planta se decide por separado; la app propone conservar cuando más de la mitad de los registros de esa planta son cultivados.</span><span data-l="en">If you study the crop as it is grown (coffee in its farms), keep its cultivated records; if you study the wild populations or the wild relatives, remove them. Each plant is decided separately; the app proposes keeping them when more than half of that plant's records are cultivated.</span></p>
+      <div id="b3Cult"></div>
+      <h3 style="margin-top:16px"><span data-l="es">Área de estudio</span><span data-l="en">Study area</span></h3>
+      <p class="hint"><span data-l="es">Los registros fuera del área se quitan si la regla «Fuera del área de estudio» está activa. Si eliges estados de México, el área son solo esos estados.</span><span data-l="en">Records outside the area are removed if the rule "Outside the study area" is active. If you choose Mexican states, the area is only those states.</span></p>
+      <div class="btn-row"><label class="inline-label"><span data-l="es">Países</span><span data-l="en">Countries</span> <select id="b3AreaMode"><option value="download" data-es="los de la descarga (Bloque 2)" data-en="those of the download (Block 2)">los de la descarga</option><option value="all" data-es="todos (sin área)" data-en="all (no area)">todos</option></select></label>
+        <button class="btn btn-ghost btn-sm" id="b3StatesToggle"><span data-l="es">Elegir estados de México…</span><span data-l="en">Choose Mexican states…</span></button></div>
+      <div class="country-list" id="b3States" style="display:none"></div>
+    </div>
+
+    <div class="card">
+      <h2><span data-l="es">3 · Taxonomía y unidades de análisis</span><span data-l="en">3 · Taxonomy and units of analysis</span> <span data-help="squashbees"></span></h2>
+      <p class="hint"><span data-l="es">Las reglas de sinónimos reúnen dos entradas de la lista bajo el nombre actual y reescriben los nombres de especie, guardando el original en cada registro. La unidad de análisis decide si los bloques siguientes comparan las entradas de tu lista (un género es una unidad) o cada especie por separado.</span><span data-l="en">Synonym rules merge two entries of the list under the current name and rewrite the species names, keeping the original in every record. The unit of analysis decides whether the following blocks compare the entries of your list (a genus is one unit) or each species separately.</span></p>
+      <div id="b3Syn"></div>
+      <div class="btn-row"><input type="text" id="b3SynFrom" data-es-ph="nombre anterior" data-en-ph="former name"> → <input type="text" id="b3SynTo" data-es-ph="nombre actual" data-en-ph="current name"><button class="btn btn-ghost btn-sm" id="b3SynAdd"><span data-l="es">Añadir regla</span><span data-l="en">Add rule</span></button></div>
+      <div class="form-grid">
+        <div class="field"><label data-es="Unidad de análisis" data-en="Unit of analysis">Unidad de análisis</label><select id="b3Unit"><option value="entry" data-es="Entradas de la lista (un género = una unidad)" data-en="List entries (a genus = one unit)">Entradas de la lista</option><option value="species" data-es="Especies (cada especie por separado)" data-en="Species (each species apart)">Especies</option></select></div>
+        <div class="field wide"><label class="checkbox-label"><input type="checkbox" id="b3Infra"> <span data-l="es">Separar subespecies y variedades como unidades propias (p. ej. una subespecie silvestre de la cultivada)</span><span data-l="en">Split subspecies and varieties as units of their own (e.g. a wild subspecies from the cultivated one)</span></label></div>
+      </div>
+      <div class="btn-row"><button class="btn btn-primary" id="b3Run"><span data-l="es">Depurar y aplicar</span><span data-l="en">Clean and apply</span></button></div>
+    </div>
+
+    <div class="card" id="b3Report" style="display:none">
+      <h2><span data-l="es">4 · El reporte</span><span data-l="en">4 · The report</span></h2>
+      <div id="b3Tiles"></div>
+      <div id="b3Text" class="callout tip"></div>
+      <h3><span data-l="es">Por regla</span><span data-l="en">By rule</span></h3>
+      <div id="b3RuleTable"></div>
+      <h3><span data-l="es">Por entrada de la lista</span><span data-l="en">By list entry</span></h3>
+      <div id="b3TaxTable"></div>
+      <h3><span data-l="es">Unidades de análisis</span><span data-l="en">Units of analysis</span></h3>
+      <div id="b3UnitTable"></div>
+      <h3><span data-l="es">Revisar registros</span><span data-l="en">Review records</span></h3>
+      <div class="btn-row"><label class="inline-label"><span data-l="es">Mostrar</span><span data-l="en">Show</span> <select id="b3Show"></select></label></div>
+      <div id="b3Records"></div>
+      <div class="btn-row">
+        <button class="btn btn-ghost btn-sm" id="b3CsvKeep"><span data-l="es">⤓ Registros depurados (.csv)</span><span data-l="en">⤓ Cleaned records (.csv)</span></button>
+        <button class="btn btn-ghost btn-sm" id="b3CsvDrop"><span data-l="es">⤓ Registros quitados, con la razón (.csv)</span><span data-l="en">⤓ Removed records, with the reason (.csv)</span></button>
+        <button class="btn btn-primary" id="b3Next"><span data-l="es">Continuar al mapa →</span><span data-l="en">Continue to the map →</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BLOCK 4 · MAP ==================== -->
+<section class="step-panel" id="panel-4">
+  <div class="panel-title"><div class="pt-num">4</div>
+    <div><h2><span data-l="es">Mapa de plantas y visitantes</span><span data-l="en">Map of plants and visitors</span></h2>
+      <p><span data-l="es">Los registros depurados sobre el territorio, sin conexión a internet. El mapa es el primer control de calidad —un punto en el mar o en el país equivocado salta a la vista— y la primera figura del artículo.</span><span data-l="en">The cleaned records over the territory, with no internet connection. The map is the first quality check —a point in the sea or in the wrong country catches the eye— and the first figure of the paper.</span></p></div>
+  </div>
+  <div class="soon-box" id="b4Empty"><div class="soon-art"></div>
+    <h3><span data-l="es">Primero hay que depurar</span><span data-l="en">Cleaning comes first</span></h3>
+    <p><span data-l="es">El mapa dibuja los registros que salen del Bloque 3.</span><span data-l="en">The map draws the records that leave Block 3.</span></p>
+    <button class="btn btn-primary" data-goto="3"><span data-l="es">Ir al Bloque 3 →</span><span data-l="en">Go to Block 3 →</span></button>
+  </div>
+  <div id="b4Body" style="display:none">
+    <div class="card">
+      <h2><span data-l="es">Estudio de mapa</span><span data-l="en">Map studio</span> <span data-help="mapstudio"></span></h2>
+      <p class="hint"><span data-l="es">Todo el mapa se edita desde las pestañas de la derecha: fondo y límites, encuadre y recorte, textos y fuentes, flecha del norte, escala, leyenda, retícula, forma y color de cada unidad, mapa de calor o rejillas, estilos listos y exportación a tamaño de revista. El mapa base es vectorial y propio del programa: funciona sin internet.</span><span data-l="en">The whole map is edited from the tabs on the right: background and boundaries, framing and clip, texts and fonts, north arrow, scale bar, legend, graticule, shape and colour of each unit, heat map or grids, ready-made looks and export at journal size. The base map is vector and the program's own: it works offline.</span></p>
+      <div id="b4Studio"></div>
+      <div class="btn-row"><button class="btn btn-ghost btn-sm" id="b4Csv"><span data-l="es">⤓ Puntos mostrados (.csv)</span><span data-l="en">⤓ Points shown (.csv)</span></button>
+        <button class="btn btn-primary" data-goto="5"><span data-l="es">Continuar a la coocurrencia →</span><span data-l="en">Continue to co-occurrence →</span></button></div>
+    </div>
+    <div class="card">
+      <h2><span data-l="es">Registros por territorio</span><span data-l="en">Records by territory</span> <span data-help="occurrence"></span></h2>
+      <div class="two-col"><div><h3><span data-l="es">Estados de México</span><span data-l="en">Mexican states</span></h3><div id="b4States"></div><p class="hint" id="b4Absent"></p></div>
+        <div><h3><span data-l="es">Países</span><span data-l="en">Countries</span></h3><div id="b4Countries"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BLOCK 5 · CO-OCCURRENCE ==================== -->
+<section class="step-panel" id="panel-5">
+  <div class="panel-title"><div class="pt-num">5</div>
+    <div><h2><span data-l="es">Coocurrencia espacial</span><span data-l="en">Spatial co-occurrence</span></h2>
+      <p><span data-l="es">¿Coinciden la planta y el visitante en el territorio más de lo que el azar predice, una vez descontado dónde se muestreó? Tres lecturas independientes: celdas compartidas, distancias al vecino más cercano y áreas de distribución.</span><span data-l="en">Do the plant and the visitor coincide in the territory more than chance predicts, once where sampling happened is discounted? Three independent readings: shared cells, nearest-neighbour distances and ranges.</span></p></div>
+  </div>
+  <div class="soon-box" id="b5Empty"><div class="soon-art"></div>
+    <h3><span data-l="es">Hacen falta plantas y visitantes</span><span data-l="en">Plants and visitors are needed</span></h3>
+    <p><span data-l="es">La lista de estudio necesita al menos una planta y un visitante con registros depurados.</span><span data-l="en">The study list needs at least one plant and one visitor with cleaned records.</span></p>
+    <button class="btn btn-primary" data-goto="2"><span data-l="es">Ir al Bloque 2 →</span><span data-l="en">Go to Block 2 →</span></button>
+  </div>
+  <div id="b5Body" style="display:none">
+    <div class="card">
+      <h2><span data-l="es">1 · Todos los pares</span><span data-l="en">1 · Every pair</span> <span data-help="hypergeo"></span></h2>
+      <div class="pg-controls">
+        <label class="inline-label"><span data-l="es">Celda</span><span data-l="en">Cell</span> <span data-help="cellsize"></span> <select id="b5Size"><option value="0.1">0.1° (~11 km)</option><option value="0.25">0.25° (~28 km)</option><option value="0.5">0.5° (~55 km)</option><option value="1">1° (~110 km)</option><option value="2">2° (~220 km)</option></select></label>
+        <label class="inline-label"><span data-l="es">Universo</span><span data-l="en">Universe</span> <span data-help="samplingbias"></span> <select id="b5Mode"><option value="target" data-es="grupo objetivo (celdas muestreadas)" data-en="target group (sampled cells)">grupo objetivo</option><option value="land" data-es="toda la tierra de la extensión (ingenuo)" data-en="all land in the extent (naive)">toda la tierra</option></select></label>
+        <label class="checkbox-label"><input type="checkbox" id="b5Adjust" checked> <span data-l="es">Ajustar p por comparaciones múltiples (Benjamini–Hochberg)</span><span data-l="en">Adjust p for multiple comparisons (Benjamini–Hochberg)</span> <span data-help="fdr"></span></label>
+      </div>
+      <div class="messages" id="b5Msg"></div>
+      <div id="b5Tiles"></div>
+      <div class="pg-pane"><div class="pg-title"><span data-l="es">Matriz de pares: haz clic en una casilla para ver el par</span><span data-l="en">Pair matrix: click a square to see the pair</span></div><svg id="b5Matrix"></svg></div>
+      <details class="acc-plain"><summary><span data-l="es">Tabla de todos los pares</span><span data-l="en">Table of every pair</span></summary><div id="b5Table"></div></details>
+      <div class="btn-row"><button class="btn btn-ghost btn-sm" id="b5Csv"><span data-l="es">⤓ Pares (.csv)</span><span data-l="en">⤓ Pairs (.csv)</span></button></div>
+    </div>
+    <div class="card">
+      <h2><span data-l="es">2 · El par elegido:</span><span data-l="en">2 · The chosen pair:</span> <span id="b5PairName"></span></h2>
+      <div id="b5PairTiles"></div>
+      <div class="lab-grid">
+        <div class="pg-pane"><div class="pg-title"><span data-l="es">Distribución nula de celdas compartidas</span><span data-l="en">Null distribution of shared cells</span> <span data-help="hypergeo"></span></div><svg id="b5Null"></svg></div>
+        <div class="pg-pane"><div class="pg-title"><span data-l="es">Sensibilidad al tamaño de celda</span><span data-l="en">Sensitivity to the cell size</span> <span data-help="cellsize"></span></div><svg id="b5Sens"></svg></div>
+      </div>
+      <p class="hint" id="b5SensNote"></p>
+    </div>
+    <div class="card">
+      <h2><span data-l="es">3 · Distancia al visitante más cercano</span><span data-l="en">3 · Distance to the nearest visitor</span> <span data-help="nntest"></span></h2>
+      <p class="hint"><span data-l="es">Para cada punto de la planta, la distancia al registro más cercano del visitante. El modelo nulo sortea los registros del visitante entre todos los sitios donde se registró algo del estudio, así que conserva la geografía del muestreo. Los puntos se adelgazan a uno por kilómetro.</span><span data-l="en">For each plant point, the distance to the nearest record of the visitor. The null model draws the visitor's records among all the sites where anything of the study was recorded, so it keeps the geography of sampling. Points are thinned to one per kilometre.</span></p>
+      <div class="pg-controls"><label class="inline-label"><span data-l="es">Simulaciones</span><span data-l="en">Simulations</span> <select id="b5Sim"><option value="99">99</option><option value="199">199</option><option value="499">499</option><option value="999">999</option></select></label></div>
+      <div id="b5NNTiles"></div>
+      <div class="pg-pane"><div class="pg-title"><span data-l="es">Medianas bajo el modelo nulo y la observada</span><span data-l="en">Medians under the null model and the observed one</span></div><svg id="b5NN"></svg></div>
+    </div>
+    <div class="card">
+      <h2><span data-l="es">4 · Solapamiento de áreas</span><span data-l="en">4 · Range overlap</span> <span data-help="hull"></span></h2>
+      <div id="b5RangeTiles"></div>
+      <div class="pg-pane"><div class="pg-title"><span data-l="es">Envolventes convexas y su intersección</span><span data-l="en">Convex hulls and their intersection</span></div><svg id="b5Range"></svg></div>
+      <div class="btn-row"><button class="btn btn-primary" data-goto="6"><span data-l="es">Continuar a la fenología →</span><span data-l="en">Continue to phenology →</span></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BLOCK 6 · PHENOLOGY AND ELEVATION ==================== -->
+<section class="step-panel" id="panel-6">
+  <div class="panel-title"><div class="pt-num">6</div>
+    <div><h2><span data-l="es">Fenología y altitud</span><span data-l="en">Phenology and elevation</span></h2>
+      <p><span data-l="es">¿Vuela el visitante cuando la planta florece, y a la misma altitud? Las fechas de los registros se leen como estadística circular —el año es un círculo— y los perfiles mensuales se comparan con los mismos índices de solapamiento que el nicho.</span><span data-l="en">Does the visitor fly when the plant flowers, and at the same elevation? Record dates are read as circular statistics —the year is a circle— and the monthly profiles are compared with the same overlap indices as the niche.</span></p></div>
+  </div>
+  <div class="soon-box" id="b6Empty"><div class="soon-art"></div>
+    <h3><span data-l="es">Primero hacen falta registros depurados</span><span data-l="en">Cleaned records are needed first</span></h3>
+    <button class="btn btn-primary" data-goto="2"><span data-l="es">Ir al Bloque 2 →</span><span data-l="en">Go to Block 2 →</span></button>
+  </div>
+  <div id="b6Body" style="display:none">
+    <div class="card">
+      <h2><span data-l="es">1 · El calendario de todas las unidades</span><span data-l="en">1 · The calendar of every unit</span> <span data-help="circular"></span></h2>
+      <div class="pg-controls">
+        <label class="checkbox-label"><input type="checkbox" id="b6Corr"> <span data-l="es">Corregir por el esfuerzo mensual del grupo objetivo</span><span data-l="en">Correct by the monthly effort of the target group</span> <span data-help="phenoeffort"></span></label>
+        <label class="checkbox-label"><input type="checkbox" id="b6Flow"> <span data-l="es">Plantas: solo registros con flor</span><span data-l="en">Plants: only records with flowers</span> <span data-help="flowering"></span></label>
+      </div>
+      <div id="b6Tiles"></div>
+      <div class="pg-pane"><div class="pg-title"><span data-l="es">Fenograma</span><span data-l="en">Phenogram</span></div><svg id="b6Phenogram"></svg></div>
+      <details class="acc-plain" open><summary><span data-l="es">Estadística circular por unidad</span><span data-l="en">Circular statistics by unit</span> <span data-help="rayleigh"></span></summary><div id="b6Units"></div></details>
+      <div class="btn-row"><button class="btn btn-ghost btn-sm" id="b6Csv"><span data-l="es">⤓ Unidades (.csv)</span><span data-l="en">⤓ Units (.csv)</span></button></div>
+    </div>
+    <div class="card">
+      <h2><span data-l="es">2 · Planta y visitante</span><span data-l="en">2 · Plant and visitor</span> <span data-help="schoenerD"></span></h2>
+      <div class="pg-controls">
+        <label class="inline-label"><span data-l="es">Planta</span><span data-l="en">Plant</span> <select id="b6Plant"></select></label>
+        <label class="inline-label"><span data-l="es">Visitante</span><span data-l="en">Visitor</span> <select id="b6Visitor"></select></label>
+      </div>
+      <div id="b6PairTiles"></div>
+      <div class="lab-grid">
+        <div class="pg-pane"><div class="pg-title"><span data-l="es">Rosa circular</span><span data-l="en">Circular rose</span></div><svg id="b6Rose"></svg></div>
+        <div class="pg-pane"><div class="pg-title"><span data-l="es">Perfiles mensuales y su solapamiento</span><span data-l="en">Monthly profiles and their overlap</span></div><svg id="b6Months"></svg></div>
+      </div>
+      <details class="acc-plain"><summary><span data-l="es">Todos los pares</span><span data-l="en">Every pair</span></summary><div id="b6Pairs"></div><p class="hint">* <span data-l="es">κ &lt; 1: la prueba de Watson–Williams es poco fiable con fechas tan dispersas.</span><span data-l="en">κ &lt; 1: the Watson–Williams test is unreliable with dates this spread.</span></p></details>
+      <div class="btn-row"><button class="btn btn-ghost btn-sm" id="b6CsvPairs"><span data-l="es">⤓ Pares (.csv)</span><span data-l="en">⤓ Pairs (.csv)</span></button></div>
+    </div>
+    <div class="card">
+      <h2><span data-l="es">3 · Altitud</span><span data-l="en">3 · Elevation</span></h2>
+      <p class="hint" id="b6ElevNote"></p>
+      <div class="pg-pane"><div class="pg-title"><span data-l="es">Distribución altitudinal del par</span><span data-l="en">Elevational distribution of the pair</span></div><svg id="b6Elev"></svg></div>
+      <p id="b6ElevPair"></p>
+      <div id="b6ElevTable"></div>
+      <div class="btn-row"><button class="btn btn-primary" data-goto="7"><span data-l="es">Continuar al nicho ambiental →</span><span data-l="en">Continue to the environmental niche →</span></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BLOCK 7 · ENVIRONMENTAL NICHE ==================== -->
+<section class="step-panel" id="panel-7">
+  <div class="panel-title"><div class="pt-num">7</div>
+    <div><h2><span data-l="es">Nicho ambiental</span><span data-l="en">Environmental niche</span></h2>
+      <p><span data-l="es">¿Viven la planta y el visitante en los mismos climas? Se comparan en el espacio ambiental —los dos primeros componentes principales de tus capas—, corrigiendo por lo que el ambiente de la región ofrece, con dos pruebas por aleatorización.</span><span data-l="en">Do the plant and the visitor live in the same climates? They are compared in environmental space —the first two principal components of your layers—, correcting for what the region's environment offers, with two randomisation tests.</span></p></div>
+  </div>
+  <div class="soon-box" id="b7Empty"><div class="soon-art"></div>
+    <h3><span data-l="es">Primero hacen falta registros depurados</span><span data-l="en">Cleaned records are needed first</span></h3>
+    <button class="btn btn-primary" data-goto="2"><span data-l="es">Ir al Bloque 2 →</span><span data-l="en">Go to Block 2 →</span></button>
+  </div>
+  <div id="b7Body" style="display:none">
+    <div class="card">
+      <h2><span data-l="es">1 · Tus capas ambientales</span><span data-l="en">1 · Your environmental layers</span> <span data-help="layers"></span></h2>
+      <p class="hint"><span data-l="es">Elige los archivos (o la carpeta completa) de tus capas: GeoTIFF (.tif) o rejilla ASCII (.asc), en grados, todas de la misma resolución de preferencia. Cada capa se recorta al área de los registros más un margen, así que una capa mundial a 30″ también sirve. La app no trae capas climáticas reales —las bases climáticas no permiten redistribuir sus archivos, y se descargan una vez desde sus sitios—; para practicar, abajo hay unas ficticias.</span><span data-l="en">Choose the files (or the whole folder) of your layers: GeoTIFF (.tif) or ASCII grid (.asc), in degrees, preferably all at the same resolution. Each layer is cropped to the area of the records plus a margin, so a global layer at 30″ also works. The app brings no real climate layers —the climate databases do not allow redistributing their files, and they are downloaded once from their sites—; for practising, there are fictional ones below.</span></p>
+      <div class="btn-row">
+        <label class="btn btn-primary"><input type="file" id="b7Files" accept=".tif,.tiff,.asc" multiple style="display:none"><span data-l="es">Elegir archivos…</span><span data-l="en">Choose files…</span></label>
+        <label class="btn btn-secondary"><input type="file" id="b7Folder" webkitdirectory directory multiple style="display:none"><span data-l="es">Elegir una carpeta…</span><span data-l="en">Choose a folder…</span></label>
+        <label class="inline-label"><span data-l="es">Margen alrededor de los registros (°)</span><span data-l="en">Margin around the records (°)</span> <input type="number" id="b7Margin" value="3" min="0" step="0.5" style="width:70px"></label>
+        <button class="btn btn-ghost btn-sm" id="b7Clear"><span data-l="es">Quitar todas</span><span data-l="en">Remove all</span></button>
+      </div>
+      <details class="acc-plain" id="b7PracticeBox">
+        <summary><span data-l="es">¿Sin capas o solo para practicar? Capas ficticias generadas por el programa</span><span data-l="en">No layers, or just practising? Fictional layers generated by the program</span></summary>
+        <p class="hint"><span data-l="es">Cuatro capas <b>inventadas</b> para México y Centroamérica a 0.1°: un relieve ficticio y tres variables climáticas derivadas de él con reglas simples (BIO1, BIO4 y BIO12). Parecen un clima, pero no lo son: sirven para aprender los Bloques 7 y 8 y no deben citarse ni usarse para concluir nada. La altitud se carga sin marcar, porque no es una variable climática.</span><span data-l="en">Four <b>invented</b> layers for Mexico and Central America at 0.1°: a fictional relief and three climate variables derived from it with simple rules (BIO1, BIO4 and BIO12). They look like a climate but are not one: they are for learning Blocks 7 and 8 and must not be cited or used to conclude anything. Elevation is loaded unticked, because it is not a climate variable.</span></p>
+        <div class="btn-row"><button class="btn btn-secondary btn-sm" id="b7Practice"><span data-l="es">Cargar las capas de práctica</span><span data-l="en">Load the practice layers</span></button></div>
+      </details>
+      <div class="messages" id="b7LoadMsg"></div>
+      <div id="b7Layers"></div>
+      <div id="b7AfterLoad" style="display:none">
+        <h3><span data-l="es">Correlación entre las variables en uso</span><span data-l="en">Correlation between the variables in use</span></h3>
+        <div id="b7Corr"></div>
+        <h3><span data-l="es">Altitud desde una capa</span><span data-l="en">Elevation from a layer</span></h3>
+        <div class="btn-row"><label class="inline-label"><span data-l="es">Capa de altitud</span><span data-l="en">Elevation layer</span> <select id="b7ElevLayer"></select></label>
+          <button class="btn btn-secondary btn-sm" id="b7ElevFill"><span data-l="es">Completar la altitud de los registros que no la traen</span><span data-l="en">Fill in the elevation of records that lack it</span></button></div>
+        <div class="messages" id="b7ElevMsg"></div>
+        <h3><span data-l="es">El fondo</span><span data-l="en">The background</span> <span data-help="background"></span></h3>
+        <div class="pg-controls">
+          <label class="inline-label"><span data-l="es">Fondo</span><span data-l="en">Background</span> <select id="b7Bg"><option value="buffer" data-es="celdas cerca de los registros del estudio" data-en="cells near the study's records">celdas cerca de los registros</option><option value="all" data-es="toda el área de las capas" data-en="the whole area of the layers">toda el área</option></select></label>
+          <label class="inline-label"><span data-l="es">Distancia (km)</span><span data-l="en">Distance (km)</span> <input type="number" id="b7Buf" value="200" min="10" step="10" style="width:80px"></label>
+          <label class="inline-label"><span data-l="es">Densidad</span><span data-l="en">Density</span> <span data-help="nichecorr"></span> <select id="b7Corr2"><option value="0" data-es="de los registros" data-en="of the records">de los registros</option><option value="1" data-es="corregida por el ambiente" data-en="corrected by the environment">corregida por el ambiente</option></select></label>
+          <label class="inline-label"><span data-l="es">Repeticiones de las pruebas</span><span data-l="en">Test replicates</span> <select id="b7Rep"><option value="50">50</option><option value="100">100</option><option value="200">200</option><option value="500">500</option></select></label>
+          <button class="btn btn-primary" id="b7Run"><span data-l="es">Calcular el espacio ambiental</span><span data-l="en">Compute the environmental space</span></button>
+        </div>
+        <div class="messages" id="b7RunMsg"></div>
+      </div>
+    </div>
+    <div id="b7Body2" style="display:none">
+      <div class="card">
+        <h2><span data-l="es">2 · El espacio ambiental</span><span data-l="en">2 · The environmental space</span> <span data-help="pcaenv"></span></h2>
+        <div id="b7Tiles"></div>
+        <details class="acc-plain"><summary><span data-l="es">D de todos los pares planta × visitante</span><span data-l="en">D of every plant × visitor pair</span></summary><div id="b7Matrix"></div></details>
+        <div class="pg-controls">
+          <label class="inline-label"><span data-l="es">Planta</span><span data-l="en">Plant</span> <select id="b7Plant"></select></label>
+          <label class="inline-label"><span data-l="es">Visitante</span><span data-l="en">Visitor</span> <select id="b7Visitor"></select></label>
+        </div>
+        <div id="b7PairTiles"></div>
+        <div class="pg-pane"><div class="pg-title"><span data-l="es">Nichos en el plano de los dos primeros componentes</span><span data-l="en">Niches on the plane of the first two components</span> <span data-help="nicheoverlap"></span></div><svg id="b7Space"></svg></div>
+        <div class="lab-grid">
+          <div class="pg-pane"><div class="pg-title"><span data-l="es">Prueba de equivalencia</span><span data-l="en">Equivalency test</span> <span data-help="nichetests"></span></div><svg id="b7Eq"></svg></div>
+          <div class="pg-pane"><div class="pg-title"><span data-l="es">Prueba de similitud</span><span data-l="en">Similarity test</span> <span data-help="nichetests"></span></div><svg id="b7Sim"></svg></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2><span data-l="es">3 · Variable por variable</span><span data-l="en">3 · Variable by variable</span></h2>
+        <p class="hint"><span data-l="es">El solapamiento en cada variable por separado, de menor a mayor: las primeras filas son las que separan a la planta del visitante.</span><span data-l="en">The overlap on each variable separately, from lowest to highest: the first rows are the ones that set the plant apart from the visitor.</span></p>
+        <div id="b7Uni"></div>
+        <div class="btn-row"><button class="btn btn-ghost btn-sm" id="b7Csv"><span data-l="es">⤓ Valores ambientales de los registros (.csv)</span><span data-l="en">⤓ Environmental values of the records (.csv)</span></button>
+          <button class="btn btn-primary" data-goto="8"><span data-l="es">Continuar a la distribución potencial →</span><span data-l="en">Continue to the potential distribution →</span></button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BLOCK 8 · POTENTIAL DISTRIBUTION ==================== -->
+<section class="step-panel" id="panel-8">
+  <div class="panel-title"><div class="pt-num">8</div>
+    <div><h2><span data-l="es">Distribución potencial y desajuste</span><span data-l="en">Potential distribution and mismatch</span></h2>
+      <p><span data-l="es">Dónde es idóneo el ambiente para la planta y para cada visitante, y dónde la planta queda sin ningún visitante potencial. Con capas de clima futuro, cómo cambia ese desajuste.</span><span data-l="en">Where the environment is suitable for the plant and for each visitor, and where the plant is left without any potential visitor. With future climate layers, how that mismatch changes.</span></p></div>
+  </div>
+  <div class="soon-box" id="b8Empty"><div class="soon-art"></div>
+    <h3><span data-l="es">Hacen falta capas ambientales</span><span data-l="en">Environmental layers are needed</span></h3>
+    <p><span data-l="es">Carga al menos dos capas en el Bloque 7; este bloque usa las mismas.</span><span data-l="en">Load at least two layers in Block 7; this block uses the same ones.</span></p>
+    <button class="btn btn-primary" data-goto="7"><span data-l="es">Ir al Bloque 7 →</span><span data-l="en">Go to Block 7 →</span></button>
+  </div>
+  <div id="b8Body" style="display:none">
+    <div class="card">
+      <h2><span data-l="es">1 · Los modelos</span><span data-l="en">1 · The models</span> <span data-help="sdmmodels"></span></h2>
+      <p class="hint"><span data-l="es">Variables: <b id="b8Layers"></b> (las marcadas en el Bloque 7).</span><span data-l="en">Variables: <b id="b8Layers"></b> (those ticked in Block 7).</span></p>
+      <div class="pg-controls">
+        <label class="inline-label"><span data-l="es">Planta</span><span data-l="en">Plant</span> <select id="b8Plant"></select></label>
+        <label class="inline-label"><span data-l="es">Modelo</span><span data-l="en">Model</span> <select id="b8Kind"><option value="logistic" data-es="Logística con fondo (lineal + cuadrática)" data-en="Background logistic (linear + quadratic)">Logística con fondo</option><option value="mahalanobis" data-es="Distancia de Mahalanobis" data-en="Mahalanobis distance">Distancia de Mahalanobis</option><option value="envelope" data-es="Envolvente bioclimática" data-en="Bioclimatic envelope">Envolvente bioclimática</option></select></label>
+        <label class="inline-label"><span data-l="es">Umbral</span><span data-l="en">Threshold</span> <span data-help="threshold"></span> <select id="b8Rule"><option value="maxtss" data-es="máximo TSS" data-en="maximum TSS">máximo TSS</option><option value="p10" data-es="10 % de presencias" data-en="10th percentile of presences">10 % de presencias</option><option value="p0" data-es="presencia mínima" data-en="minimum presence">presencia mínima</option></select></label>
+        <label class="inline-label"><span data-l="es">Fondo</span><span data-l="en">Background</span> <span data-help="samplingbias"></span> <select id="b8BgMode"><option value="target" data-es="grupo objetivo (celdas con registros)" data-en="target group (cells with records)">grupo objetivo</option><option value="all" data-es="toda el área" data-en="the whole area">toda el área</option></select></label>
+      </div>
+      <div><b><span data-l="es">Visitantes potenciales:</span><span data-l="en">Potential visitors:</span></b> <span id="b8Visitors"></span></div>
+      <div class="btn-row"><button class="btn btn-primary" id="b8Run"><span data-l="es">Ajustar y mapear</span><span data-l="en">Fit and map</span></button></div>
+      <div class="messages" id="b8Msg"></div>
+    </div>
+    <div id="b8Body2" style="display:none">
+      <div class="card">
+        <h2><span data-l="es">2 · Evaluación y mapas</span><span data-l="en">2 · Evaluation and maps</span> <span data-help="auc"></span></h2>
+        <div id="b8Eval"></div>
+        <div class="lab-grid">
+          <div class="pg-pane"><div class="pg-title"><span data-l="es">Idoneidad de la planta</span><span data-l="en">Plant suitability</span></div><svg id="b8MapPlant"></svg></div>
+          <div class="pg-pane"><div class="pg-title"><span data-l="es">Idoneidad para los visitantes (la mayor)</span><span data-l="en">Suitability for the visitors (the highest)</span></div><svg id="b8MapVis"></svg></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2><span data-l="es">3 · El desajuste</span><span data-l="en">3 · The mismatch</span> <span data-help="mismatch"></span></h2>
+        <div id="b8Tiles"></div>
+        <div class="pg-pane"><div class="pg-title"><span data-l="es">Planta con y sin visitante potencial</span><span data-l="en">Plant with and without a potential visitor</span></div><svg id="b8MapMM"></svg></div>
+        <p class="hint" id="b8Extra"></p>
+        <div class="btn-row"><button class="btn btn-ghost btn-sm" id="b8Csv"><span data-l="es">⤓ Clases por celda (.csv)</span><span data-l="en">⤓ Classes by cell (.csv)</span></button></div>
+      </div>
+      <div class="card">
+        <h2><span data-l="es">4 · Con clima futuro</span><span data-l="en">4 · With a future climate</span> <span data-help="futureclimate"></span></h2>
+        <p class="hint"><span data-l="es">Elige las mismas variables para un escenario futuro (por ejemplo, las 19 bioclimáticas de un modelo de circulación general y una trayectoria de emisiones). Se reconocen por el final del nombre del archivo («bio_1», «bio_12»…). Los modelos ya ajustados se proyectan sin volver a ajustarse.</span><span data-l="en">Choose the same variables for a future scenario (for instance, the 19 bioclimatic variables of a general circulation model and an emissions pathway). They are recognised by the end of the file name ("bio_1", "bio_12"…). The fitted models are projected without being refitted.</span></p>
+        <label class="btn btn-secondary"><input type="file" id="b8Fut" accept=".tif,.tiff,.asc" multiple style="display:none"><span data-l="es">Elegir las capas futuras…</span><span data-l="en">Choose the future layers…</span></label>
+        <button class="btn btn-ghost btn-sm" id="b8FutPractice"><span data-l="es">Usar el futuro de práctica (ficticio)</span><span data-l="en">Use the practice future (fictional)</span></button>
+        <div class="messages" id="b8FutMsg"></div>
+        <div id="b8FutBody" style="display:none">
+          <div id="b8FutTable"></div>
+          <div class="pg-pane"><div class="pg-title"><span data-l="es">Desajuste con el clima futuro</span><span data-l="en">Mismatch under the future climate</span></div><svg id="b8MapFut"></svg></div>
+        </div>
+        <div class="btn-row"><button class="btn btn-primary" data-goto="9"><span data-l="es">Continuar a la red de interacciones →</span><span data-l="en">Continue to the interaction network →</span></button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BLOCK 9 · INTERACTION NETWORK ==================== -->
+<section class="step-panel" id="panel-9">
+  <div class="panel-title"><div class="pt-num">9</div>
+    <div><h2><span data-l="es">Red de interacciones</span><span data-l="en">Interaction network</span></h2>
+      <p><span data-l="es">Aquí ya no hablamos de coincidencias sino de visitas registradas: tus observaciones de campo y lo que otros publicaron. La red dice qué tan especializada es la relación, qué visitantes son clave y cuántos faltan por registrar.</span><span data-l="en">Here we no longer speak of coincidences but of recorded visits: your field observations and what others have published. The network says how specialised the relationship is, which visitors are key and how many remain to be recorded.</span></p></div>
+  </div>
+  <div class="soon-box" id="b9Empty"><div class="soon-art"></div>
+    <h3><span data-l="es">Hacen falta interacciones</span><span data-l="en">Interactions are needed</span></h3>
+    <p><span data-l="es">Importa tus observaciones de visitas o busca las interacciones publicadas, en el Bloque 2.</span><span data-l="en">Import your visit observations or search the published interactions, in Block 2.</span></p>
+    <button class="btn btn-primary" data-goto="2"><span data-l="es">Ir al Bloque 2 →</span><span data-l="en">Go to Block 2 →</span></button>
+  </div>
+  <div id="b9Body" style="display:none">
+    <div class="card">
+      <h2><span data-l="es">1 · Qué interacciones entran</span><span data-l="en">1 · Which interactions go in</span> <span data-help="publishedlinks"></span></h2>
+      <p class="hint" id="b9Counts"></p>
+      <div class="pg-controls">
+        <label class="checkbox-label"><input type="checkbox" id="b9Own"> <span data-l="es">Mis observaciones de visitas</span><span data-l="en">My visit observations</span></label>
+        <label class="checkbox-label"><input type="checkbox" id="b9Pub"> <span data-l="es">Interacciones publicadas</span><span data-l="en">Published interactions</span></label>
+        <label class="checkbox-label"><input type="checkbox" id="b9OnlyList"> <span data-l="es">Publicadas: solo plantas de mi lista</span><span data-l="en">Published: only plants in my list</span></label>
+        <label class="checkbox-label"><input type="checkbox" id="b9Syn"> <span data-l="es">Aplicar los sinónimos del Bloque 3</span><span data-l="en">Apply the synonyms of Block 3</span></label>
+      </div>
+      <div class="pg-controls">
+        <label class="inline-label"><span data-l="es">Visitantes como</span><span data-l="en">Visitors as</span> <select id="b9VisLevel"><option value="species" data-es="especies" data-en="species">especies</option><option value="genus" data-es="géneros" data-en="genera">géneros</option></select></label>
+        <label class="inline-label"><span data-l="es">Plantas como</span><span data-l="en">Plants as</span> <select id="b9PlantLevel"><option value="species" data-es="especies" data-en="species">especies</option><option value="genus" data-es="géneros" data-en="genera">géneros</option></select></label>
+      </div>
+      <div class="messages" id="b9Msg"></div>
+    </div>
+    <div id="b9Body2" style="display:none">
+      <div class="card">
+        <h2><span data-l="es">2 · La red</span><span data-l="en">2 · The network</span> <span data-help="h2"></span></h2>
+        <div id="b9Tiles"></div>
+        <div class="btn-row"><label class="inline-label"><span data-l="es">Repeticiones</span><span data-l="en">Replicates</span> <select id="b9NullN"><option>99</option><option>199</option><option>499</option></select></label>
+          <button class="btn btn-secondary btn-sm" id="b9Null"><span data-l="es">Comparar contra modelos nulos</span><span data-l="en">Compare against null models</span></button> <span data-help="nullmodels"></span></div>
+        <div class="pg-pane"><div class="pg-title"><span data-l="es">Red bipartita (color = módulo; grosor = visitas)</span><span data-l="en">Bipartite network (colour = module; width = visits)</span> <span data-help="modularity"></span></div><svg id="b9Graph"></svg></div>
+        <div class="pg-pane"><div class="pg-title"><span data-l="es">Matriz ordenada por grado</span><span data-l="en">Matrix sorted by degree</span> <span data-help="nodf"></span></div><svg id="b9Matrix"></svg></div>
+        <div class="btn-row"><button class="btn btn-ghost btn-sm" id="b9Csv"><span data-l="es">⤓ Matriz (.csv)</span><span data-l="en">⤓ Matrix (.csv)</span></button></div>
+      </div>
+      <div class="card">
+        <h2><span data-l="es">3 · Especies</span><span data-l="en">3 · Species</span> <span data-help="dprime"></span></h2>
+        <div class="two-col"><div><h3><span data-l="es">Plantas</span><span data-l="en">Plants</span></h3><div id="b9SpPlants"></div></div>
+          <div><h3><span data-l="es">Visitantes</span><span data-l="en">Visitors</span> <span data-help="strength"></span></h3><div id="b9SpVisitors"></div></div></div>
+        <div class="btn-row"><button class="btn btn-ghost btn-sm" id="b9CsvSp"><span data-l="es">⤓ Especies (.csv)</span><span data-l="en">⤓ Species (.csv)</span></button></div>
+      </div>
+      <div class="card">
+        <h2><span data-l="es">4 · Una planta y sus visitantes</span><span data-l="en">4 · One plant and its visitors</span> <span data-help="completeness"></span></h2>
+        <div class="pg-controls"><label class="inline-label"><span data-l="es">Planta</span><span data-l="en">Plant</span> <select id="b9Plant"></select></label></div>
+        <div id="b9FocusTiles"></div>
+        <div class="lab-grid">
+          <div class="pg-pane"><div class="pg-title"><span data-l="es">Visitas por visitante</span><span data-l="en">Visits by visitor</span></div><svg id="b9Share"></svg></div>
+          <div class="pg-pane" id="b9RareWrap"><div class="pg-title"><span data-l="es">Curva de rarefacción de visitantes</span><span data-l="en">Visitor rarefaction curve</span></div><svg id="b9Rare"></svg></div>
+        </div>
+        <div class="btn-row"><button class="btn btn-primary" data-goto="10"><span data-l="es">Continuar al informe →</span><span data-l="en">Continue to the report →</span></button></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="step-panel" id="panel-10">
+  <div class="panel-title"><div class="pt-num">10</div>
+    <div><h2><span data-l="es">Figuras, informe y paquete</span><span data-l="en">Figures, report and package</span></h2>
+      <p><span data-l="es">Todo lo que calculaste, listo para salir de la app: cada figura del estudio en PNG, JPG o SVG hasta 900 ppp con el estilo que elijas; un informe que se abre en cualquier navegador y se imprime a PDF, con los métodos redactados a partir de lo que realmente corriste; y un .zip con el informe, las figuras, los cuadros y el proyecto que lo reproduce.</span><span data-l="en">Everything you computed, ready to leave the app: every figure of the study in PNG, JPG or SVG up to 900 dpi in the style you choose; a report that opens in any browser and prints to PDF, with the methods written from what you actually ran; and a .zip with the report, the figures, the tables and the project that reproduces it.</span></p></div>
+  </div>
+
+  <div class="soon-box" id="b10Empty"><div class="soon-art"></div>
+    <h3><span data-l="es">Primero hacen falta datos</span><span data-l="en">Data are needed first</span></h3>
+    <p><span data-l="es">Reúne registros en el Bloque 2 y visita los bloques que quieras incluir; este bloque reúne lo que exista.</span><span data-l="en">Gather records in Block 2 and visit the blocks you want to include; this block gathers whatever exists.</span></p>
+    <button class="btn btn-primary" id="b10ToData"><span data-l="es">Ir al Bloque 2 →</span><span data-l="en">Go to Block 2 →</span></button>
+  </div>
+
+  <div id="b10Body" style="display:none">
+    <div class="card">
+      <h2><span data-l="es">1 · Estado del estudio</span><span data-l="en">1 · State of the study</span> <span data-help="reproducible"></span></h2>
+      <p class="callout" id="b10StateMsg"></p>
+      <div class="b10-state" id="b10State"></div>
+    </div>
+
+    <div class="card">
+      <h2><span data-l="es">2 · Catálogo de figuras</span><span data-l="en">2 · Catalogue of figures</span> <span data-help="figformat"></span></h2>
+      <p class="hint"><span data-l="es">Todas las figuras dibujadas hasta ahora. Marca las que quieras, elige formato y resolución, y expórtalas de una vez; el estilo (paleta, fuente, fondo) es el del estudio de figuras y se aplica a todas por igual. Con más de seis figuras la descarga llega en un .zip, porque el navegador bloquea muchas descargas seguidas.</span><span data-l="en">Every figure drawn so far. Tick the ones you want, choose format and resolution, and export them at once; the style (palette, font, background) is the one of the figure studio and applies to all alike. With more than six figures the download comes as a .zip, because the browser blocks many downloads in a row.</span></p>
+      <div class="pg-controls b10-controls">
+        <label class="inline-label"><span data-l="es">Formato</span><span data-l="en">Format</span><select id="b10Format"><option value="png">PNG</option><option value="jpg">JPG</option><option value="svg">SVG</option></select></label>
+        <label class="inline-label" id="b10DpiWrap"><span data-l="es">Resolución</span><span data-l="en">Resolution</span> <span data-help="dpi"></span><select id="b10Dpi"><option value="150" data-es="150 ppp · pantalla" data-en="150 dpi · screen">150 ppp · pantalla</option><option value="300" selected data-es="300 ppp · impresión" data-en="300 dpi · print">300 ppp · impresión</option><option value="600" data-es="600 ppp · revista" data-en="600 dpi · journal">600 ppp · revista</option><option value="900" data-es="900 ppp · cartel" data-en="900 dpi · poster">900 ppp · cartel</option></select></label>
+        <label class="inline-label"><span data-l="es">Tema</span><span data-l="en">Theme</span><select id="b10Theme"><option value="light" data-es="claro" data-en="light">claro</option><option value="dark" data-es="oscuro" data-en="dark">oscuro</option><option value="auto" data-es="el de la pantalla" data-en="the one on screen">el de la pantalla</option></select></label>
+        <label class="inline-label"><span data-l="es">Fondo</span><span data-l="en">Background</span><select id="b10Bg"><option value="auto" data-es="según el estilo" data-en="as styled">según el estilo</option><option value="white" data-es="blanco" data-en="white">blanco</option><option value="card" data-es="tarjeta" data-en="card">tarjeta</option><option value="none" data-es="transparente" data-en="transparent">transparente</option></select></label>
+        <label class="checkbox-label"><input type="checkbox" id="b10WithTitle" checked> <span data-l="es">Con título dentro de la figura</span><span data-l="en">With the title inside the figure</span></label>
+        <button class="btn btn-secondary btn-sm" id="b10Style"><span data-l="es">Estudio de figuras</span><span data-l="en">Figure studio</span></button>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="b10ExportSel"><span data-l="es">⤓ Exportar las seleccionadas</span><span data-l="en">⤓ Export the selected ones</span></button>
+        <button class="btn btn-secondary" id="b10ZipFigs"><span data-l="es">Todas las seleccionadas en un .zip</span><span data-l="en">All the selected ones in a .zip</span></button>
+        <button class="btn btn-ghost btn-sm" id="b10SelAll"><span data-l="es">Marcar todas</span><span data-l="en">Select all</span></button>
+        <button class="btn btn-ghost btn-sm" id="b10SelNone"><span data-l="es">Ninguna</span><span data-l="en">None</span></button>
+        <span class="chip" id="b10CatCount"></span>
+      </div>
+      <div class="pg-status" id="b10CatStatus"></div>
+      <div class="b10-catalogue" id="b10Catalogue"></div>
+    </div>
+
+    <div class="card">
+      <h2><span data-l="es">3 · Informe</span><span data-l="en">3 · Report</span> <span data-help="reportmethods"></span></h2>
+      <p class="hint"><span data-l="es">Un solo archivo .html, sin dependencias, con el resumen, una sección por bloque calculado (cuadros y figuras incluidos), los métodos redactados a partir de lo que realmente se corrió, las referencias de esos métodos y el registro de cálculo. Ábrelo en cualquier navegador; para el PDF usa Imprimir → Guardar como PDF.</span><span data-l="en">One .html file, no dependencies, with the summary, one section per computed block (tables and figures included), the methods written from what was actually run, the references of those methods and the calculation record. Open it in any browser; for the PDF use Print → Save as PDF.</span></p>
+      <div class="form-grid">
+        <div class="field"><label data-es="Título del informe" data-en="Report title">Título del informe</label><input type="text" id="b10Title" placeholder=""></div>
+        <div class="field"><label data-es="Autoría" data-en="Authorship">Autoría</label><input type="text" id="b10Author" placeholder="—"></div>
+      </div>
+      <div class="b10-sections" id="b10Sections"></div>
+      <label class="checkbox-label"><input type="checkbox" id="b10Appendix" checked> <span data-l="es">Anexo con el registro de cálculo (todos los parámetros)</span><span data-l="en">Appendix with the calculation record (every parameter)</span></label>
+      <div class="btn-row">
+        <button class="btn btn-secondary" id="b10Preview_btn"><span data-l="es">Vista previa</span><span data-l="en">Preview</span></button>
+        <button class="btn btn-primary" id="b10Download"><span data-l="es">⤓ Descargar informe .html</span><span data-l="en">⤓ Download report .html</span></button>
+        <button class="btn btn-secondary" id="b10Print"><span data-l="es">Imprimir a PDF</span><span data-l="en">Print to PDF</span></button>
+      </div>
+      <div class="pg-status" id="b10ReportStatus"></div>
+      <div id="b10PreviewWrap" style="display:none"><iframe id="b10Preview" class="b10-preview" title="Report preview"></iframe></div>
+    </div>
+
+    <div class="card">
+      <h2><span data-l="es">4 · Paquete reproducible</span><span data-l="en">4 · Reproducible package</span> <span data-help="reproducible"></span></h2>
+      <p class="hint"><span data-l="es">Un .zip escrito por la propia app: el informe, el proyecto que lo reproduce, el registro de cálculo, los cuadros en .csv y las figuras seleccionadas en el catálogo (en el formato y la resolución elegidos arriba). Es lo que se entrega con el artículo, la tesis o el dictamen.</span><span data-l="en">A .zip written by the app itself: the report, the project that reproduces it, the calculation record, the tables as .csv and the figures selected in the catalogue (in the format and resolution chosen above). It is what goes with the paper, the thesis or the technical opinion.</span></p>
+      <ul class="b10-pkglist" id="b10PkgList"></ul>
+      <div class="pg-controls">
+        <label class="checkbox-label"><input type="checkbox" id="b10PkgFigs" checked> <span data-l="es">Incluir las figuras seleccionadas</span><span data-l="en">Include the selected figures</span></label>
+        <label class="checkbox-label"><input type="checkbox" id="b10PkgSvgToo" checked> <span data-l="es">y además en SVG (editable)</span><span data-l="en">and also as SVG (editable)</span></label>
+      </div>
+      <div class="btn-row"><button class="btn btn-accent btn-lg" id="b10Build"><span data-l="es">⤓ Construir y descargar el paquete .zip</span><span data-l="en">⤓ Build and download the .zip package</span></button></div>
+      <div class="pg-status" id="b10PkgStatus"></div>
+    </div>
+
+    <div id="helpGuideHost10"></div>
+  </div>
+</section>
+
+</main>
+
+<script src="js/core.js"></script>
+<script src="data/mexico-states.js"></script>
+<script src="data/world.js"></script>
+<script src="js/geo.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/art.js"></script>
+<script src="js/plotkit.js"></script>
+<script src="js/figstyle.js"></script>
+<script src="js/figure.js"></script>
+<script src="js/figedit.js"></script>
+<script src="js/help.js"></script>
+<script src="js/helpdata.js"></script>
+<script src="js/playground.js"></script>
+<script src="js/tableio.js"></script>
+<script src="js/taxa.js"></script>
+<script src="js/gbif.js"></script>
+<script src="js/examples.js"></script>
+<script src="js/records.js"></script>
+<script src="js/block2.js"></script>
+<script src="js/clean.js"></script>
+<script src="js/block3.js"></script>
+<script src="js/mapstudio.js"></script>
+<script src="js/block4.js"></script>
+<script src="js/cooc.js"></script>
+<script src="js/block5.js"></script>
+<script src="js/pheno.js"></script>
+<script src="js/block6.js"></script>
+<script src="js/raster.js"></script>
+<script src="js/niche.js"></script>
+<script src="js/block7.js"></script>
+<script src="js/sdm.js"></script>
+<script src="js/block8.js"></script>
+<script src="js/network.js"></script>
+<script src="js/block9.js"></script>
+<script src="js/zip.js"></script>
+<script src="js/report.js"></script>
+<script src="js/block10.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

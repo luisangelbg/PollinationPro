@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · Manual de usuario · Capítulo 6</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  .formula { font-family: var(--mono); font-size: 9pt; background: var(--marino-suave); border-radius: 5px; padding: 0.07in 0.12in; margin: 0.08in 0; }
+  figure.media { width: 82%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 66%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b6" data-pestana="B6" data-orden="6" style="--acento: var(--b6)">
+  <div class="cap-apertura">
+    <div class="cap-num">6</div>
+    <div class="cap-etiqueta">Bloque 6 · Fenología y altitud</div>
+    <h1 data-corto="Fenología y altitud">Fenología y altitud</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">¿Vuela el visitante cuando la planta florece, y a la misma altitud? Las fechas de los registros se leen como estadística circular —el año es un círculo—: fecha media, concentración, estacionalidad y diferencia entre calendarios. Los perfiles mensuales se comparan con los mismos índices de solapamiento que el nicho, con la opción de corregir por el esfuerzo de muestreo de cada mes. Y la altitud se compara con densidades a lo largo del gradiente.</p>
+    <ul class="cap-contenido">
+      <li><b>6.1</b>El año es un círculo</li>
+      <li><b>6.2</b>El calendario de todas las unidades</li>
+      <li><b>6.3</b>La estadística circular de cada unidad</li>
+      <li><b>6.4</b>Planta y visitante</li>
+      <li><b>6.5</b>La altitud</li>
+      <li><b>6.6</b>Los avisos de este bloque</li>
+    </ul>
+  </div>
+
+  <!-- 6.1 -->
+  <h2 id="s6-1"><span class="num">6.1</span>El año es un círculo</h2>
+  <p class="lead">El 31 de diciembre y el 1 de enero están a un día. Tratar las fechas como números de 1 a 365 hace que una planta que florece de noviembre a febrero tenga su «media» en junio. La estadística circular convierte cada fecha en un ángulo y resuelve el problema (Batschelet 1981; Fisher 1993; Morellato et al. 2010).</p>
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Teoría en breve · fecha media, R̄ y las dos pruebas</div>
+    <p>El día <i>d</i> equivale al ángulo θ = 2π(<i>d</i> − ½)/365. La <b>fecha media</b> es la dirección del vector promedio de todos los registros y su longitud <b>R̄</b>, de 0 a 1, mide la concentración: 1 si todos caen el mismo día, 0 si se reparten por igual en el año. La <b>desviación estándar circular</b>, en días, es su versión más intuitiva. La prueba de <b>Rayleigh</b> dice si la distribución es estacional (p pequeña) o uniforme; la de <b>Watson–Williams</b>, si dos calendarios tienen la misma fecha media (Zar 2010), y exige que no estén demasiado dispersos (κ ≥ 1).</p>
+    <div class="formula">C̄ = Σcos θᵢ / n     S̄ = Σsin θᵢ / n     R̄ = √(C̄² + S̄²)     θ̄ = atan2(S̄, C̄)     Z = n·R̄²</div>
+  </div>
+  <p>Un registro con fecha no dice necesariamente que la planta estaba en flor: un ejemplar de herbario puede ser vegetativo o con fruto. Por eso la casilla <span class="ui">Plantas: solo registros con flor</span> usa solo los registros cuya condición reproductiva dice flor o antesis. Y el número de registros por mes refleja también cuándo se sale al campo: la casilla <span class="ui">Corregir por el esfuerzo mensual del grupo objetivo</span> divide cada perfil entre los registros de todo el estudio en ese mes (sección 6.2).</p>
+
+  <!-- 6.2 -->
+  <h2 id="s6-2"><span class="num">6.2</span>El calendario de todas las unidades</h2>
+  <figure>
+    <div class="marco"><img src="../img/b6-fenograma.png" alt="Los recuadros de registros con mes, plantas con flor registrada, unidades y perfil, y el fenograma: una fila por unidad y una columna por mes, con la intensidad del color proporcional a la fracción del mes y un triángulo en la fecha media"></div>
+    <figcaption><b>Figura 6.1.</b> El fenograma del estudio de práctica. Cada fila es una unidad y cada casilla un mes; la intensidad del color es la fracción de los registros de esa unidad en ese mes, y el triángulo marca la fecha media cuando la prueba de Rayleigh es significativa. La franja gris de arriba es el esfuerzo de todo el estudio.</figcaption>
+  </figure>
+  <p>Los recuadros dicen cuántos registros traen mes (los 1,856 depurados, el 100 %), cuántas plantas tienen flor registrada en su condición reproductiva (331), cuántas unidades entran (6 plantas y 2 visitantes) y si el perfil es crudo o corregido. En el fenograma se ve lo esencial de un vistazo: las cinco especies de <i>Sechium</i> y las calabazas florecen de julio a octubre; <i>Xenoglossa</i> vuela de junio a septiembre; la abeja melífera se registra todo el año.</p>
+  <figure>
+    <div class="marco"><img src="../img/b6-esfuerzo.png" alt="El fenograma con la corrección por esfuerzo activada: los perfiles cambian y la abeja melífera aparece concentrada en los meses de invierno"></div>
+    <figcaption><b>Figura 6.2.</b> El mismo fenograma corregido por el esfuerzo mensual. La abeja melífera, que se registraba todo el año, aparece concentrada en invierno: en esos meses el estudio tiene pocos registros, y sus registros pesan más al dividir entre el esfuerzo.</figcaption>
+  </figure>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>La corrección por esfuerzo también se equivoca</div>
+    <p>Corregir divide la fracción de cada mes entre el esfuerzo de ese mes, y los meses con muy pocos registros de todo el estudio (menos de cinco) se dejan en cero para no dividir entre casi nada. Aun así, con pocos registros la corrección amplifica el ruido, como en la Figura 6.2. La corrección cambia los <b>perfiles mensuales</b> y los índices de solapamiento; la fecha media y R̄ se calculan siempre con las fechas de los registros. Reporta el resultado crudo y el corregido, y di cuál usas para concluir.</p>
+  </div>
+
+  <!-- 6.3 -->
+  <h2 id="s6-3"><span class="num">6.3</span>La estadística circular de cada unidad</h2>
+  <figure>
+    <div class="marco"><img src="../img/b6-circular.png" alt="La tabla de estadística circular: papel, unidad, registros con fecha, fecha media, R̄ con su etiqueta, desviación circular en días, p de Rayleigh y posible segundo pico"></div>
+    <figcaption><b>Figura 6.3.</b> La estadística circular de las ocho unidades. Las plantas tienen floraciones marcadas (R̄ de 0.65 a 0.91); <i>Xenoglossa</i> vuela concentrada (R̄ 0.80, fecha media 11 de agosto); la abeja melífera se registra casi todo el año (R̄ 0.12, <i>difusa</i>).</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.7in">Columna</th><th>Qué dice</th></tr></thead>
+    <tbody>
+      <tr><td><b>Con fecha</b></td><td>Cuántos registros de la unidad entran, de cuántos tiene.</td></tr>
+      <tr><td><b>Fecha media</b></td><td>La dirección del vector medio, en día y mes.</td></tr>
+      <tr><td><b>R̄</b></td><td>La concentración, con su etiqueta: <i>difusa</i>, <i>moderada</i> o <i>marcada</i>.</td></tr>
+      <tr><td><b>DE circular (días)</b></td><td>La dispersión alrededor de la fecha media.</td></tr>
+      <tr><td><b>Rayleigh p</b></td><td>Si hay estacionalidad. Con cientos de registros casi siempre es muy pequeña: mira R̄.</td></tr>
+      <tr><td><b>¿Dos picos?</b></td><td>«posible» cuando la segunda armónica es fuerte (R̄₂ &gt; 0.3 y mayor que R̄ + 0.15): dos floraciones al año, o dos poblaciones con calendarios distintos. Con dos picos, la fecha media cae entre ellos y no describe a ninguno.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · qué tan estacional es</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>Si</b> R̄ &lt; 0.3</td><td><b>entonces</b> la unidad se registra casi todo el año o tiene dos temporadas (<i>difusa</i>): su fecha media dice poco y no conviene compararla con Watson–Williams.</td></tr>
+      <tr><td><b>Si</b> R̄ está entre 0.3 y 0.6</td><td><b>entonces</b> hay una temporada preferida, pero amplia (<i>moderada</i>).</td></tr>
+      <tr><td><b>Si</b> R̄ &gt; 0.6</td><td><b>entonces</b> hay una temporada definida (<i>marcada</i>) y la fecha media la resume bien.</td></tr>
+    </tbody></table>
+    <p class="regla-pie">La ficha <span class="ui">?</span> de R̄ trae esta escala. Son convenciones de lectura, no leyes.</p>
+  </div>
+
+  <!-- 6.4 -->
+  <h2 id="s6-4"><span class="num">6.4</span>Planta y visitante</h2>
+  <p>La segunda tarjeta compara una planta con un visitante, elegidos en sus dos selectores.</p>
+  <figure>
+    <div class="marco"><img src="../img/b6-par.png" alt="El chayote y Xenoglossa: recuadros de la D de Schoener, I y O, el desfase de las fechas medias con Watson–Williams, la floración con vuelo y los meses en común; la rosa circular con los dos calendarios y sus vectores medios, y los perfiles mensuales"></div>
+    <figcaption><b>Figura 6.4.</b> El chayote y <i>Xenoglossa</i>. En la rosa, el área de cada sector es proporcional a la fracción del mes y la flecha es el vector medio; en las barras, los perfiles mensuales y, en claro, su solapamiento (el mínimo de los dos en cada mes, cuya suma es la D).</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.8in">Recuadro</th><th>Qué dice</th><th style="width:1.35in">Chayote × <i>Xenoglossa</i></th></tr></thead>
+    <tbody>
+      <tr><td><b>D de Schoener</b></td><td>La fracción de los dos calendarios que se comparte: Σ mín(pᵢ, qᵢ) sobre los doce meses, de 0 a 1 (Schoener 1968).</td><td>0.79 · <i>alto</i></td></tr>
+      <tr><td><b>I de Warren · O de Pianka</b></td><td>Dos índices de solapamiento más benévolos con las diferencias pequeñas (Warren et al. 2008; Pianka 1973). Se reportan junto a la D.</td><td>0.94 · 0.91</td></tr>
+      <tr><td><b>Desfase de las fechas medias</b></td><td>Los días entre las dos fechas medias, con la p de Watson–Williams.</td><td>26 días · p ≈ 7 × 10⁻¹³</td></tr>
+      <tr><td><b>Floración con vuelo</b></td><td>Qué fracción del perfil de la planta cae en meses con registros del visitante.</td><td>97 %</td></tr>
+      <tr><td><b>Meses en común</b></td><td>Los meses en que los dos tienen al menos el 5 % de su perfil.</td><td>jun a oct</td></tr>
+    </tbody>
+  </table>
+  <p>La lectura es la de la sección 1.4: el chayote de práctica florece en promedio el 5 de septiembre y <i>Xenoglossa</i> vuela en promedio el 11 de agosto; con cientos de registros, ese desfase de 26 días es muy significativo, y sin embargo el 97 % de la floración cae en meses con abejas volando y los dos calendarios comparten el 79 % de su perfil. El visitante se adelanta a la planta, pero la acompaña.</p>
+  <figure>
+    <div class="marco"><img src="../img/b6-pares.png" alt="La tabla de todos los pares fenológicos, ordenada por la D de Schoener, con I, O, desfase, p de Watson–Williams marcada con asterisco cuando es poco fiable, y floración con vuelo"></div>
+    <figcaption><b>Figura 6.5.</b> Todos los pares, de mayor a menor D. Los pares con la abeja melífera llevan un asterisco en la p de Watson–Williams: con fechas tan dispersas (κ &lt; 1), la prueba es poco fiable.</figcaption>
+  </figure>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · la D de Schoener</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>Si</b> D &lt; 0.2</td><td><b>entonces</b> solapamiento nulo o muy limitado: floración y vuelo casi no coinciden.</td></tr>
+      <tr><td><b>Si</b> D está entre 0.2 y 0.4</td><td><b>entonces</b> bajo.</td></tr>
+      <tr><td><b>Si</b> D está entre 0.4 y 0.6</td><td><b>entonces</b> moderado.</td></tr>
+      <tr><td><b>Si</b> D está entre 0.6 y 0.8</td><td><b>entonces</b> alto.</td></tr>
+      <tr><td><b>Si</b> D &gt; 0.8</td><td><b>entonces</b> muy alto: los calendarios son casi el mismo.</td></tr>
+    </tbody></table>
+    <p class="regla-pie">La escala es la de Rödder y Engler (2011) para el nicho, aplicada al calendario. Un generalista de todo el año (la abeja melífera) tiene D moderada con casi todas las plantas porque su perfil se reparte: lee siempre la D junto con la floración con vuelo.</p>
+  </div>
+  <p><span class="ui">⤓ Unidades (.csv)</span> y <span class="ui">⤓ Pares (.csv)</span> descargan las dos tablas, con los perfiles mensuales de cada unidad.</p>
+
+  <!-- 6.5 -->
+  <h2 id="s6-5"><span class="num">6.5</span>La altitud</h2>
+  <p>La tercera tarjeta compara la distribución altitudinal del par con densidades de kernel (Silverman 1986) y calcula su D. Necesita registros con altitud, que GBIF trae solo a veces: en el estudio de práctica, solo el 23 % de los registros la traen, y ninguno de los visitantes. El Bloque 7 puede completarla desde una capa de altitud (sección 7.2); la Figura 6.6 se hizo después de hacerlo con la capa de altitud de práctica.</p>
+  <figure class="alta">
+    <div class="marco"><img src="../img/b6-altitud.png" alt="La distribución altitudinal del chayote y de Xenoglossa como dos densidades superpuestas, la frase del solapamiento altitudinal y la tabla de altitudes de las ocho unidades"></div>
+    <figcaption><b>Figura 6.6.</b> La altitud del chayote y de <i>Xenoglossa</i> con la altitud completada desde la capa de práctica: D = 0.78 (<i>alto</i>), y el 96 % de los registros de la planta cae dentro del 90 % central del intervalo del visitante. La tabla da mínimo, cuartiles, mediana y máximo de cada unidad.</figcaption>
+  </figure>
+  <p>La frase de debajo de la figura da la D altitudinal y qué fracción de los registros de la planta cae dentro del 90 % central del intervalo del visitante. La tabla ayuda a leer los parientes silvestres: en los datos de práctica, <i>S. chinantlense</i> es de tierras bajas (mediana 317 m) y <i>S. mexicanum</i> de tierras altas (1,687 m).</p>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>La altitud de una capa no es la del registro</div>
+    <p>La altitud leída de un modelo digital de elevación es la de la celda (a 0.1°, un promedio de unos 11 km), no la del punto exacto: en montaña puede diferir cientos de metros. Los registros que traían su propia altitud la conservan; la capa solo completa los que no la tienen.</p>
+  </div>
+
+  <!-- 6.6 -->
+  <h2 id="s6-6"><span class="num">6.6</span>Los avisos de este bloque</h2>
+  <table class="compacta">
+    <thead><tr><th style="width:2.6in">Mensaje</th><th>Qué significa y qué hacer</th></tr></thead>
+    <tbody>
+      <tr><td><i>Solo N % de los registros traen altitud: el perfil puede no representar a toda la unidad</i></td><td>Complétala desde una capa en el Bloque 7, o lee la altitud con cautela.</td></tr>
+      <tr><td><i>Ningún registro trae altitud…</i></td><td>Carga un modelo digital de elevación en el Bloque 7 y completa la altitud desde ahí.</td></tr>
+      <tr><td><i>El par elegido no tiene altitudes</i></td><td>Una de las dos unidades no tiene ningún registro con altitud.</td></tr>
+      <tr><td>* κ &lt; 1 en la tabla de pares</td><td>Las fechas de una de las unidades son tan dispersas que Watson–Williams es poco fiable. Usa la D y la floración con vuelo.</td></tr>
+      <tr><td>«posible» en ¿Dos picos?</td><td>La unidad puede tener dos temporadas. Revisa el fenograma y considera separar poblaciones o subespecies (Bloque 3).</td></tr>
+      <tr><td>Pocos registros con flor</td><td>Con <span class="ui">Plantas: solo registros con flor</span> activada, una planta con pocos registros con flor puede quedar con un perfil ruidoso. Úsala para confirmar, no como único análisis.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>

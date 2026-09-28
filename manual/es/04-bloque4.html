@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · Manual de usuario · Capítulo 4</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  figure.media { width: 82%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 74%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b4" data-pestana="B4" data-orden="4" style="--acento: var(--b4)">
+  <div class="cap-apertura">
+    <div class="cap-num">4</div>
+    <div class="cap-etiqueta">Bloque 4 · Mapa</div>
+    <h1 data-corto="Mapa">El mapa y su estudio</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Los registros depurados sobre el territorio, sin conexión a internet. El mapa es el primer control de calidad —un punto en el mar o en el país equivocado salta a la vista— y la primera figura del artículo. Todo se edita desde un estudio de ocho pestañas: fondo y límites, encuadre y recorte, textos y fuentes, flecha, escala y leyenda, puntos, calor o rejillas, colores, estilos listos y exportación a tamaño de revista, hasta GeoTIFF.</p>
+    <ul class="cap-contenido">
+      <li><b>4.1</b>El mapa como control y como figura</li>
+      <li><b>4.2</b>El estudio de mapa</li>
+      <li><b>4.3</b>Mapa base, encuadre y recorte</li>
+      <li><b>4.4</b>Textos, flecha, escala y leyenda</li>
+      <li><b>4.5</b>Datos y colores</li>
+      <li><b>4.6</b>Estilos listos y exportación</li>
+      <li><b>4.7</b>Registros por territorio</li>
+    </ul>
+  </div>
+
+  <!-- 4.1 -->
+  <h2 id="s4-1"><span class="num">4.1</span>El mapa como control y como figura</h2>
+  <p class="lead">Antes de medir coincidencias hay que ver dónde están los puntos. Un registro en el mar, una nube de puntos en el centro de un estado, una especie de montaña que aparece en la costa, una abeja del desierto en la selva: todo eso se ve en el mapa en segundos y en una tabla nunca. Si aparece algo así, se vuelve al Bloque 3 y se ajusta una regla.</p>
+  <p>El mismo mapa es la primera figura del artículo. Por eso el Bloque 4 no es un visor sino un estudio de edición completo, con un <b>mapa base vectorial propio del programa</b>: los contornos de los países del mundo y de los 32 estados de México (Natural Earth, de dominio público) viajan con la app. No se descargan teselas de ningún servicio, así que funciona sin internet, se exporta sin pedir permiso a nadie y se ve igual en cualquier computadora.</p>
+
+  <!-- 4.2 -->
+  <h2 id="s4-2"><span class="num">4.2</span>El estudio de mapa</h2>
+  <figure>
+    <div class="marco"><img src="../img/b4-estudio.png" alt="El estudio de mapa: a la izquierda el mapa de México con los registros depurados de las ocho unidades, con flecha del norte, escala, retícula y leyenda; a la derecha las ocho pestañas con la de Mapa base abierta"></div>
+    <figcaption><b>Figura 4.1.</b> El estudio con sus valores de inicio: extensión ajustada a los registros, plantas como círculos y visitantes como triángulos, un color por unidad, flecha, escala en bloques alternos, retícula con grados y leyenda clara. A la derecha, la pestaña <span class="ui">Mapa base</span>.</figcaption>
+  </figure>
+  <p>El mapa de la izquierda se redibuja con cada cambio de la derecha. Las ocho pestañas agrupan los controles; todo lo que se elige se recuerda en ese navegador, de modo que el mapa se encuentra igual la próxima vez, y un estilo completo se puede guardar en un archivo (sección 4.6).</p>
+  <table class="compacta">
+    <thead><tr><th style="width:1.5in">Pestaña</th><th>Qué se edita</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Mapa base</span></td><td>Fondo de la figura, mar, tierra de México y de otros países; límites de estados y países; nombres de los estados; retícula; marco.</td></tr>
+      <tr><td><span class="ui">Encuadre y recorte</span></td><td>La extensión del mapa, el margen, la leyenda fuera del mapa y el recorte a México o a estados elegidos.</td></tr>
+      <tr><td><span class="ui">Textos y fuentes</span></td><td>Título, subtítulo, fuente o crédito, título de la leyenda, la familia tipográfica y los tamaños y estilos.</td></tr>
+      <tr><td><span class="ui">Elementos</span></td><td>Flecha del norte (ocho diseños), escala gráfica (ocho formatos) y leyenda.</td></tr>
+      <tr><td><span class="ui">Datos</span></td><td>Qué se dibuja (puntos, calor, rejillas, envolventes), los símbolos y cada unidad.</td></tr>
+      <tr><td><span class="ui">Colores</span></td><td>La paleta de las unidades, la rampa de densidad y el color de cada unidad.</td></tr>
+      <tr><td><span class="ui">Estilos</span></td><td>Seis estilos listos, guardar y cargar un estilo, restablecer todo.</td></tr>
+      <tr><td><span class="ui">Exportar</span></td><td>Formato, tamaño de papel y resolución, y la descarga.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 4.3 -->
+  <h2 id="s4-3"><span class="num">4.3</span>Mapa base, encuadre y recorte</h2>
+  <p><b>Mapa base.</b> El <b>fondo de la figura</b> puede ser blanco, el del tema de la app, un color propio o transparente. Se eligen los colores del mar, de la tierra de México y de la tierra de otros países (distinguirlos ayuda a leer un mapa de México); si se dibujan los límites de los estados y de los países, con su color y grosor; si se escriben los <b>nombres de los estados</b> —no, abreviatura o nombre completo—, con su tamaño y color; la <b>retícula</b> de meridianos y paralelos, cada cuántos grados (automático, 1°, 2°, 5°, 10° o 20°), su color, su opacidad y sus etiquetas de grados; y el <b>marco</b> alrededor del mapa.</p>
+  <p><b>Encuadre.</b> La <b>extensión</b> puede ajustarse a los registros (con un margen en porcentaje), cubrir México completo, los estados elegidos, el mundo o unas coordenadas propias (norte, sur, oeste y este). <span class="ui">Leyenda fuera del mapa, a la derecha</span> saca la leyenda del área del mapa para que no tape puntos.</p>
+  <figure>
+    <div class="marco"><img src="../img/b4-recorte.png" alt="El mapa recortado a México con título y subtítulo, y la pestaña Encuadre y recorte con la extensión México completo y el recorte activado"></div>
+    <figcaption><b>Figura 4.2.</b> México completo, recortado a su silueta, con título y subtítulo. Fuera del recorte desaparecen el mar, los otros países y los puntos que caían fuera; la flecha, la escala, la retícula y la leyenda se dibujan igual.</figcaption>
+  </figure>
+  <p><b>Recorte.</b> <span class="ui">Recortar el mapa a México o a los estados elegidos</span> dibuja solo lo que cae dentro de esa silueta. Fuera del recorte queda el color de fondo o nada (transparente, útil para poner el mapa sobre otra figura). <span class="ui">Dibujar el contorno del recorte</span> traza la silueta exterior —no las fronteras internas— con el color y el grosor que se elijan. Al elegir <i>estados elegidos</i> en la extensión o en el recorte aparece la lista de los 32 estados para marcarlos.</p>
+
+  <!-- 4.4 -->
+  <h2 id="s4-4"><span class="num">4.4</span>Textos, flecha, escala y leyenda</h2>
+  <p><b>Textos y fuentes.</b> Cuatro textos —título, subtítulo, fuente o crédito, título de la leyenda— y seis familias tipográficas genéricas (sans del sistema, sans humanista, serif, serif clásica, sans estrecha y monoespaciada), que existen en cualquier computadora y por eso se ven igual en la del revisor. Se eligen el color del texto, el tamaño del título (con negritas, cursivas y alineación), del subtítulo y del crédito, y la esquina del crédito. Los nombres de las unidades se escriben en cursiva en la leyenda, como corresponde a los nombres científicos.</p>
+  <figure>
+    <div class="marco"><img src="../img/b4-elementos.png" alt="El mapa con una rosa de los vientos de ocho puntas arriba a la derecha, una escala en forma de regla abajo a la derecha y la leyenda en dos columnas abajo a la izquierda; a la derecha, la pestaña Elementos"></div>
+    <figcaption><b>Figura 4.3.</b> La pestaña <span class="ui">Elementos</span> con una rosa de ocho puntas, la escala en forma de regla y la leyenda en dos columnas. Cada elemento se coloca en cualquiera de las cuatro esquinas.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.4in">Elemento</th><th>Opciones</th></tr></thead>
+    <tbody>
+      <tr><td><b>Flecha del norte</b></td><td>Sin flecha, flecha, flecha partida, aguja, triángulo, círculo, rosa de 4 puntas, rosa de 8 puntas y mínima; posición, tamaño y color.</td></tr>
+      <tr><td><b>Escala gráfica</b></td><td>Bloques alternos, escalonada (dos filas), barra sólida, línea con topes, regla, kilómetros y millas, solo texto y escala numérica (1:n); unidad (kilómetros o millas), posición, divisiones, grosor y tamaño del texto. La escala numérica se calcula para el tamaño de papel elegido en <span class="ui">Exportar</span> y cambia si cambia el papel.</td></tr>
+      <tr><td><b>Leyenda</b></td><td>Dibujarla o no, posición, recuadro (claro, oscuro, solo contorno o sin recuadro), tamaño del texto y de una a tres columnas.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 4.5 -->
+  <h2 id="s4-5"><span class="num">4.5</span>Datos y colores</h2>
+  <p>La pestaña <span class="ui">Datos</span> decide qué se dibuja. Cada <b>representación</b> responde una pregunta distinta:</p>
+  <table class="compacta">
+    <thead><tr><th style="width:1.9in">Representación</th><th>Para qué sirve</th></tr></thead>
+    <tbody>
+      <tr><td><b>Puntos</b></td><td>La figura estándar de distribución: un símbolo por registro, con color y forma por unidad o por papel.</td></tr>
+      <tr><td><b>Mapa de calor (densidad)</b></td><td>Dónde se concentran los registros, con radio e intensidad ajustables. Muestra el esfuerzo de muestreo tanto como la abundancia.</td></tr>
+      <tr><td><b>Rejilla: registros por celda</b></td><td>Cuántos registros hay en cada celda (0.1° a 2°), con la rampa de densidad.</td></tr>
+      <tr><td><b>Rejilla: dónde coinciden planta y visitante</b></td><td>Las celdas con planta y visitante, solo plantas o solo visitantes: la versión visual de la prueba del Bloque 5.</td></tr>
+      <tr><td><b>Envolventes convexas con puntos</b></td><td>El área mínima que encierra los puntos de cada unidad y su solapamiento.</td></tr>
+    </tbody>
+  </table>
+  <div class="dos">
+    <figure style="margin:0">
+      <div class="marco"><img src="../img/b4-calor.png" alt="Mapa de calor de todos los registros sobre México"></div>
+      <figcaption><b>Figura 4.4.</b> Mapa de calor con la rampa «Calor».</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <div class="marco"><img src="../img/b4-coinciden.png" alt="Rejilla de celdas de 0.5 grados coloreadas según tengan planta y visitante, solo plantas o solo visitantes"></div>
+      <figcaption><b>Figura 4.5.</b> Dónde coinciden planta y visitante, en celdas de 0.5°.</figcaption>
+    </figure>
+  </div>
+  <p>En la Figura 4.5 las celdas compartidas (en rojo óxido) se concentran en el centro y el sur de México, donde se muestreó más; las de solo visitantes (ámbar claro) dominan el norte, donde <i>Xenoglossa</i> y la abeja melífera se registran sin cucurbitáceas silvestres. Es una lectura visual; el Bloque 5 dice si esa coincidencia es más o menos de la que el azar predice.</p>
+  <p><b>Los símbolos.</b> Tamaño, opacidad, color y grosor del contorno, halo (un borde claro que separa los puntos del fondo) y la forma de las plantas y de los visitantes: círculo, cuadrado, triángulo, rombo, cruz o estrella. Con <i>Color por papel</i>, todas las plantas van en un color y todos los visitantes en otro.</p>
+  <figure class="media">
+    <div class="marco"><img src="../img/b4-envolventes.png" alt="Las envolventes convexas de Sechium edule y de Xenoglossa sobre México, con la tabla de unidades donde solo esas dos están marcadas para verse"></div>
+    <figcaption><b>Figura 4.6.</b> Envolventes convexas con solo dos unidades visibles: el chayote y <i>Xenoglossa</i>. La tabla <b>Cada unidad</b> permite ocultar unidades, cambiar su color y su forma, y dice cuántos registros tiene cada una.</figcaption>
+  </figure>
+  <p><b>Cada unidad.</b> La tabla de la pestaña <span class="ui">Datos</span> —repetida en <span class="ui">Colores</span>— tiene una fila por unidad con la casilla <b>Ver</b>, su color, su forma y su número de registros. Los botones <span class="ui">Mostrar todas</span>, <span class="ui">Solo plantas</span> y <span class="ui">Solo visitantes</span> cambian la visibilidad de un golpe. Las tablas por territorio de la sección 4.7 y la descarga de puntos siguen lo que se ve.</p>
+  <p><b>Colores.</b> Seis paletas para las unidades —PollinationPro, Okabe–Ito (segura al daltonismo), Tierra, Vivos, Suaves y Grises— y seis rampas para la densidad —Verdes, Ámbar, Violetas, Calor, Fríos y Grises—. Un color cambiado a mano en una unidad se conserva al cambiar de paleta; <span class="ui">Volver a los colores de la paleta</span> lo deshace.</p>
+
+  <!-- 4.6 -->
+  <h2 id="s4-6"><span class="num">4.6</span>Estilos listos y exportación</h2>
+  <p>Un <b>estilo</b> aplica de una vez el fondo, los colores, la tipografía y los elementos; los textos (título, crédito) y los colores propios de cada unidad se conservan.</p>
+  <table class="compacta">
+    <thead><tr><th style="width:1.5in">Estilo</th><th>Cómo es</th><th style="width:1.8in">Para qué</th></tr></thead>
+    <tbody>
+      <tr><td><b>Publicación</b></td><td>Blanco, marco fino, retícula y leyenda clara.</td><td>La figura de un artículo.</td></tr>
+      <tr><td><b>Blanco y negro</b></td><td>Grises y formas distintas por unidad.</td><td>Revistas que cobran el color.</td></tr>
+      <tr><td><b>Presentación oscura</b></td><td>Fondo oscuro, puntos grandes con halo.</td><td>Diapositivas.</td></tr>
+      <tr><td><b>Guía de campo</b></td><td>Tonos tierra, serif, rosa de los vientos, abreviaturas de los estados.</td><td>Libros, carteles de divulgación.</td></tr>
+      <tr><td><b>Cartel</b></td><td>Textos y puntos grandes, título en recuadro.</td><td>Carteles de congreso.</td></tr>
+      <tr><td><b>Solo datos</b></td><td>Sin mar ni retícula, límites tenues.</td><td>Figuras compuestas, recuadros.</td></tr>
+    </tbody>
+  </table>
+  <div class="dos">
+    <figure style="margin:0">
+      <div class="marco"><img src="../img/b4-byn.png" alt="El mapa con el estilo Blanco y negro: tierra gris, unidades en negros y grises con formas distintas"></div>
+      <figcaption><b>Figura 4.7.</b> El estilo <i>Blanco y negro</i>.</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <div class="marco"><img src="../img/b4-campo.png" alt="El mapa con el estilo Guía de campo recortado a seis estados del sur de México, con rosa de los vientos y abreviaturas de los estados"></div>
+      <figcaption><b>Figura 4.8.</b> <i>Guía de campo</i>, recortado a seis estados del sur.</figcaption>
+    </figure>
+  </div>
+  <p><span class="ui">⤓ Guardar este estilo (.json)</span> guarda todas las opciones del mapa —menos los datos— en un archivo; <span class="ui">Cargar un estilo…</span> lo aplica a otro estudio o en otra computadora. Así todas las figuras de mapa de una tesis salen iguales. <span class="ui">Restablecer todo</span> vuelve a los valores de inicio.</p>
+  <figure>
+    <div class="marco"><img src="../img/b4-exportar.png" alt="La pestaña Exportar con el formato PNG, el tamaño de una columna de revista y 600 ppp; el mapa ya tiene la proporción del papel elegido"></div>
+    <figcaption><b>Figura 4.9.</b> La exportación a una columna de revista (85 × 70 mm) a 600 ppp: «Saldrá de 2,006 × 1,656 píxeles». La vista de la izquierda tomó la forma del papel: lo que se ve es lo que se descarga.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.3in">Opción</th><th>Valores</th></tr></thead>
+    <tbody>
+      <tr><td><b>Formato</b></td><td>PNG, JPEG, WebP, SVG (vectorial, editable), TIFF y GeoTIFF (con coordenadas).</td></tr>
+      <tr><td><b>Tamaño</b></td><td>Pantalla (960 × 620 px), A4 horizontal y vertical, carta horizontal, revista a una columna (85 × 70 mm), a columna y media (120 × 90 mm) y a doble columna (175 × 120 mm), diapositiva 16:9 y personalizado (en milímetros).</td></tr>
+      <tr><td><b>Resolución</b></td><td>150, 300, 600 o 900 ppp. Debajo se lee el tamaño en píxeles que saldrá.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>El GeoTIFF se abre en su lugar</div>
+    <p>El GeoTIFF lleva las claves de georreferencia de una rejilla en longitud y latitud sobre WGS 84 (EPSG 4326): en un sistema de información geográfica cae exactamente sobre sus capas. Para que el amarre sea exacto en toda la imagen, quita el título y deja la leyenda dentro del mapa; la app lo recuerda al descargar.</p>
+  </div>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión · qué formato entregar</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>Si</b> la revista pide la figura final</td><td><b>entonces</b> TIFF o PNG a 600 ppp al ancho de columna que pida (una, una y media o dos).</td></tr>
+      <tr><td><b>Si</b> vas a retocar la figura en otro programa</td><td><b>entonces</b> SVG: cada texto y cada punto sigue siendo editable.</td></tr>
+      <tr><td><b>Si</b> la figura va a un sistema de información geográfica o a otro mapa</td><td><b>entonces</b> GeoTIFF, sin título.</td></tr>
+    </tbody></table>
+  </div>
+
+  <!-- 4.7 -->
+  <h2 id="s4-7"><span class="num">4.7</span>Registros por territorio</h2>
+  <figure class="alta">
+    <div class="marco"><img src="../img/b4-territorio.png" alt="La tarjeta de registros por territorio: una tabla de estados de México con el total y los registros de cada unidad, la lista de estados sin registros y la tabla de países"></div>
+    <figcaption><b>Figura 4.10.</b> Los registros de lo que se ve en el mapa, por estado de México y por país. Oaxaca (194), Chiapas (175), Puebla (174) y Veracruz (168) concentran más registros; Baja California, Baja California Sur y Nuevo León no tienen ninguno.</figcaption>
+  </figure>
+  <p>Las tablas siguen lo que el mapa muestra: si se ocultan unidades, se recalculan. La de los estados da el total y una columna por unidad (hasta diez); la frase de debajo nombra los estados sin ningún registro de lo mostrado. Es la primera respuesta a «¿dónde falta muestrear?»: un estado sin registros de una planta que debería estar ahí es un hueco de muestreo o un límite real de distribución, y conviene saber cuál antes de interpretar los bloques siguientes. <span class="ui">⤓ Puntos mostrados (.csv)</span>, bajo el estudio, descarga los puntos visibles con su unidad y sus coordenadas.</p>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Lo que el mapa no dice</div>
+    <p>Un mapa de registros de presencia no es un mapa de distribución: muestra dónde alguien registró la especie, no dónde vive. Los huecos pueden ser ausencias o falta de muestreo, y las concentraciones pueden ser abundancia o esfuerzo. El pie de la figura del artículo debe decirlo («registros depurados de…, GBIF y observaciones propias») y el Bloque 8 es el que estima la distribución potencial.</p>
+  </div>
+</section>
+
+</body>
+</html>

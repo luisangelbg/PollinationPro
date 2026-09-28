@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · Manual de usuario · Preliminares e introducción</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<!-- reparte el contenido en hojas tamaño carta, con encabezados, números de página e índice -->
+<script src="../paginar.js"></script>
+<style>
+  figure.reducida { width: 78%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== CRÉDITOS -->
+<section class="preliminares creditos" id="creditos">
+  <div class="cred-titulo">PollinationPro</div>
+  <div class="cred-sub">Manual de usuario · Plantas, polinizadores y su solapamiento</div>
+
+  <dl>
+    <dt>Autor</dt><dd><b>Luis Ángel Barrera-Guzmán</b><br><span class="small">ORCID 0000-0001-8057-2583</span></dd>
+    <dt>Programa</dt><dd>PollinationPro, versión 1.2.0 (septiembre de 2026)</dd>
+    <dt>Manual</dt><dd>Primera edición en español, 2026. Describe la versión 1.2 del programa.</dd>
+    <dt>Licencia del programa</dt><dd>Licencia Pública General de GNU, versión 3 o posterior (GPL-3.0-or-later).</dd>
+    <dt>Derechos del manual</dt><dd>© 2026 Luis Ángel Barrera-Guzmán. Todos los derechos reservados.</dd>
+    <dt>Idioma de la interfaz</dt><dd>Español o inglés, con el botón <span class="ui">ES</span> · <span class="ui">EN</span> de la barra superior. En este manual los nombres de botones, campos y menús se escriben como aparecen en pantalla en español, por ejemplo <span class="ui">Depurar y aplicar</span>.</dd>
+  </dl>
+
+  <h4>Cómo citar el programa</h4>
+  <div class="cita">Barrera-Guzmán, L. Á. (2026). <i>PollinationPro: plataforma en el navegador para el análisis de plantas, polinizadores y su solapamiento con datos de presencia</i> (versión 1.2) [Programa de cómputo].</div>
+  <h4>Cómo citar este manual</h4>
+  <div class="cita">Barrera-Guzmán, L. Á. (2026). <i>PollinationPro. Manual de usuario</i> (1.ª ed.). Distribuido con PollinationPro, versión 1.2.</div>
+  <p class="small">El identificador de objeto digital (DOI) se añadirá a ambas citas cuando el programa se archive. Mientras tanto, la cita del programa aparece en la sección <span class="ui">Cómo citar</span> de la portada de la app y al final de cada informe del Bloque 10.</p>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Privacidad</div>
+    <p>PollinationPro funciona por completo dentro de tu navegador. Tus registros de presencia, tus observaciones de visitas y tus capas climáticas se leen en tu computadora y <b>nunca se envían a ningún servidor</b>. Solo cuando tú lo pides, el programa consulta dos servicios públicos —GBIF, para los nombres y los registros, y una base pública de interacciones bióticas— y lo que devuelven se queda en tu equipo. Todo lo demás funciona sin internet.</p>
+  </div>
+
+  <p class="small" style="margin-top:0.35in;color:var(--gris)">Las ilustraciones, los diagramas y las capturas de pantalla de este manual son originales: se generaron con el propio programa o con código escrito para el manual. Todos los resultados que se muestran salen del <b>estudio de práctica</b> que trae el programa —«Cucurbitáceas y abejas de la calabaza»— y de sus <b>capas ambientales de práctica</b>. Los dos son <b>ficticios</b>: los nombres de los taxones son reales para que el ejemplo se lea como un estudio, pero ningún punto, fecha, conteo de visitas ni valor climático reproduce una observación, y así lo dice la app cada vez que se cargan. No deben citarse ni usarse para concluir nada sobre esas especies.</p>
+</section>
+
+<!-- ====================================================================== ÍNDICE -->
+<section class="preliminares indice" id="indice" data-nueva-hoja>
+  <h1>Índice</h1>
+  <div class="indice-sub">Contenido general del manual</div>
+
+  <ol class="toc">
+    <li>
+      <div class="toc-cap"><span class="chip k0">P</span><a href="#como-leer">Cómo leer este manual</a><a class="pag" href="#como-leer"></a></div>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k0">In</span><a href="#cap-intro">Introducción a PollinationPro</a><a class="pag" href="#cap-intro"></a></div>
+      <ul>
+        <li><span class="n">I.1</span><a href="#si-1"><span class="t">¿Qué es PollinationPro?</span></a></li>
+        <li><span class="n">I.2</span><a href="#si-2"><span class="t">Preguntas que responde</span></a></li>
+        <li><span class="n">I.3</span><a href="#si-3"><span class="t">Cinco ideas que sostienen el manual</span></a></li>
+        <li><span class="n">I.4</span><a href="#si-4"><span class="t">Datos que acepta y qué entrega</span></a></li>
+        <li><span class="n">I.5</span><a href="#si-5"><span class="t">Qué necesitas y cómo abrirlo</span></a></li>
+        <li><span class="n">I.6</span><a href="#si-6"><span class="t">Recorrido por la interfaz</span></a></li>
+        <li><span class="n">I.7</span><a href="#si-7"><span class="t">El estudio de práctica y las capas de práctica</span></a></li>
+        <li><span class="n">I.8</span><a href="#si-8"><span class="t">Cómo se recorre un estudio</span></a></li>
+        <li><span class="n">I.9</span><a href="#si-9"><span class="t">Lo que el programa no hace</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k1">1</span><a href="#cap-b1">Inicio: laboratorios, métodos y teoría</a><a class="pag" href="#cap-b1"></a></div>
+      <ul>
+        <li><span class="n">1.1</span><a href="#s1-1"><span class="t">Lo que se ve al abrir la app</span></a></li>
+        <li><span class="n">1.2</span><a href="#s1-2"><span class="t">Cómo funciona: los siete pasos de un artículo</span></a></li>
+        <li><span class="n">1.3</span><a href="#s1-3"><span class="t">Laboratorio 1: coocurrencia y sesgo de muestreo</span></a></li>
+        <li><span class="n">1.4</span><a href="#s1-4"><span class="t">Laboratorio 2: solapamiento fenológico</span></a></li>
+        <li><span class="n">1.5</span><a href="#s1-5"><span class="t">Los bloques, las preguntas y la galería de métodos</span></a></li>
+        <li><span class="n">1.6</span><a href="#s1-6"><span class="t">Cuatro fuentes de datos, cuatro preguntas</span></a></li>
+        <li><span class="n">1.7</span><a href="#s1-7"><span class="t">La teoría, en lenguaje claro</span></a></li>
+        <li><span class="n">1.8</span><a href="#s1-8"><span class="t">Cómo citar y las referencias</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k2">2</span><a href="#cap-b2">Registros de plantas y visitantes</a><a class="pag" href="#cap-b2"></a></div>
+      <ul>
+        <li><span class="n">2.1</span><a href="#s2-1"><span class="t">De dónde vienen los datos</span></a></li>
+        <li><span class="n">2.2</span><a href="#s2-2"><span class="t">La lista de estudio</span></a></li>
+        <li><span class="n">2.3</span><a href="#s2-3"><span class="t">Los registros de GBIF</span></a></li>
+        <li><span class="n">2.4</span><a href="#s2-4"><span class="t">Las interacciones ya publicadas</span></a></li>
+        <li><span class="n">2.5</span><a href="#s2-5"><span class="t">Tus propios datos</span></a></li>
+        <li><span class="n">2.6</span><a href="#s2-6"><span class="t">Los datos de práctica</span></a></li>
+        <li><span class="n">2.7</span><a href="#s2-7"><span class="t">Lo que hay, y el proyecto</span></a></li>
+        <li><span class="n">2.8</span><a href="#s2-8"><span class="t">Los avisos de este bloque</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k3">3</span><a href="#cap-b3">Depuración y taxonomía</a><a class="pag" href="#cap-b3"></a></div>
+      <ul>
+        <li><span class="n">3.1</span><a href="#s3-1"><span class="t">Por qué depurar</span></a></li>
+        <li><span class="n">3.2</span><a href="#s3-2"><span class="t">Las quince reglas</span></a></li>
+        <li><span class="n">3.3</span><a href="#s3-3"><span class="t">Plantas cultivadas y área de estudio</span></a></li>
+        <li><span class="n">3.4</span><a href="#s3-4"><span class="t">Sinónimos y unidades de análisis</span></a></li>
+        <li><span class="n">3.5</span><a href="#s3-5"><span class="t">El reporte</span></a></li>
+        <li><span class="n">3.6</span><a href="#s3-6"><span class="t">Revisar y descargar los registros</span></a></li>
+        <li><span class="n">3.7</span><a href="#s3-7"><span class="t">Los avisos de este bloque</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k4">4</span><a href="#cap-b4">El mapa y su estudio</a><a class="pag" href="#cap-b4"></a></div>
+      <ul>
+        <li><span class="n">4.1</span><a href="#s4-1"><span class="t">El mapa como control y como figura</span></a></li>
+        <li><span class="n">4.2</span><a href="#s4-2"><span class="t">El estudio de mapa</span></a></li>
+        <li><span class="n">4.3</span><a href="#s4-3"><span class="t">Mapa base, encuadre y recorte</span></a></li>
+        <li><span class="n">4.4</span><a href="#s4-4"><span class="t">Textos, flecha, escala y leyenda</span></a></li>
+        <li><span class="n">4.5</span><a href="#s4-5"><span class="t">Datos y colores</span></a></li>
+        <li><span class="n">4.6</span><a href="#s4-6"><span class="t">Estilos listos y exportación</span></a></li>
+        <li><span class="n">4.7</span><a href="#s4-7"><span class="t">Registros por territorio</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k5">5</span><a href="#cap-b5">Coocurrencia espacial</a><a class="pag" href="#cap-b5"></a></div>
+      <ul>
+        <li><span class="n">5.1</span><a href="#s5-1"><span class="t">¿Más de lo que el azar predice?</span></a></li>
+        <li><span class="n">5.2</span><a href="#s5-2"><span class="t">Todos los pares</span></a></li>
+        <li><span class="n">5.3</span><a href="#s5-3"><span class="t">El par elegido y la escala</span></a></li>
+        <li><span class="n">5.4</span><a href="#s5-4"><span class="t">La distancia al visitante más cercano</span></a></li>
+        <li><span class="n">5.5</span><a href="#s5-5"><span class="t">El solapamiento de áreas</span></a></li>
+        <li><span class="n">5.6</span><a href="#s5-6"><span class="t">Cómo leer las tres pruebas juntas</span></a></li>
+        <li><span class="n">5.7</span><a href="#s5-7"><span class="t">Los avisos de este bloque</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k6">6</span><a href="#cap-b6">Fenología y altitud</a><a class="pag" href="#cap-b6"></a></div>
+      <ul>
+        <li><span class="n">6.1</span><a href="#s6-1"><span class="t">El año es un círculo</span></a></li>
+        <li><span class="n">6.2</span><a href="#s6-2"><span class="t">El calendario de todas las unidades</span></a></li>
+        <li><span class="n">6.3</span><a href="#s6-3"><span class="t">La estadística circular de cada unidad</span></a></li>
+        <li><span class="n">6.4</span><a href="#s6-4"><span class="t">Planta y visitante</span></a></li>
+        <li><span class="n">6.5</span><a href="#s6-5"><span class="t">La altitud</span></a></li>
+        <li><span class="n">6.6</span><a href="#s6-6"><span class="t">Los avisos de este bloque</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k7">7</span><a href="#cap-b7">Nicho ambiental</a><a class="pag" href="#cap-b7"></a></div>
+      <ul>
+        <li><span class="n">7.1</span><a href="#s7-1"><span class="t">Comparar climas, no lugares</span></a></li>
+        <li><span class="n">7.2</span><a href="#s7-2"><span class="t">Las capas ambientales</span></a></li>
+        <li><span class="n">7.3</span><a href="#s7-3"><span class="t">El fondo y los parámetros</span></a></li>
+        <li><span class="n">7.4</span><a href="#s7-4"><span class="t">El espacio ambiental</span></a></li>
+        <li><span class="n">7.5</span><a href="#s7-5"><span class="t">Equivalencia y similitud</span></a></li>
+        <li><span class="n">7.6</span><a href="#s7-6"><span class="t">Variable por variable</span></a></li>
+        <li><span class="n">7.7</span><a href="#s7-7"><span class="t">Los avisos de este bloque</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k8">8</span><a href="#cap-b8">Distribución potencial y desajuste</a><a class="pag" href="#cap-b8"></a></div>
+      <ul>
+        <li><span class="n">8.1</span><a href="#s8-1"><span class="t">Dónde podría quedarse sola la planta</span></a></li>
+        <li><span class="n">8.2</span><a href="#s8-2"><span class="t">Los modelos</span></a></li>
+        <li><span class="n">8.3</span><a href="#s8-3"><span class="t">Evaluación y mapas de idoneidad</span></a></li>
+        <li><span class="n">8.4</span><a href="#s8-4"><span class="t">El desajuste</span></a></li>
+        <li><span class="n">8.5</span><a href="#s8-5"><span class="t">Con clima futuro</span></a></li>
+        <li><span class="n">8.6</span><a href="#s8-6"><span class="t">Los avisos de este bloque</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k9">9</span><a href="#cap-b9">Red de interacciones</a><a class="pag" href="#cap-b9"></a></div>
+      <ul>
+        <li><span class="n">9.1</span><a href="#s9-1"><span class="t">De la coincidencia a la visita</span></a></li>
+        <li><span class="n">9.2</span><a href="#s9-2"><span class="t">Qué interacciones entran</span></a></li>
+        <li><span class="n">9.3</span><a href="#s9-3"><span class="t">La red y sus modelos nulos</span></a></li>
+        <li><span class="n">9.4</span><a href="#s9-4"><span class="t">Plantas y visitantes, uno por uno</span></a></li>
+        <li><span class="n">9.5</span><a href="#s9-5"><span class="t">Una planta y sus visitantes</span></a></li>
+        <li><span class="n">9.6</span><a href="#s9-6"><span class="t">Los avisos de este bloque</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip k10">10</span><a href="#cap-b10">Figuras, informe y paquete</a><a class="pag" href="#cap-b10"></a></div>
+      <ul>
+        <li><span class="n">10.1</span><a href="#s10-1"><span class="t">Lo que sale de la app</span></a></li>
+        <li><span class="n">10.2</span><a href="#s10-2"><span class="t">El estado del estudio</span></a></li>
+        <li><span class="n">10.3</span><a href="#s10-3"><span class="t">El catálogo y los dos editores de figuras</span></a></li>
+        <li><span class="n">10.4</span><a href="#s10-4"><span class="t">El informe</span></a></li>
+        <li><span class="n">10.5</span><a href="#s10-5"><span class="t">El paquete reproducible</span></a></li>
+        <li><span class="n">10.6</span><a href="#s10-6"><span class="t">Antes de entregar</span></a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="toc-cap"><span class="chip kx">Ap</span><a href="#cap-ap">Apéndices</a><a class="pag" href="#cap-ap"></a></div>
+      <ul>
+        <li><span class="n">A</span><a href="#ap-a"><span class="t">Los archivos que la app lee y escribe</span></a></li>
+        <li><span class="n">B</span><a href="#ap-b"><span class="t">Las reglas de decisión, reunidas</span></a></li>
+        <li><span class="n">C</span><a href="#ap-c"><span class="t">Glosario</span></a></li>
+        <li><span class="n">D</span><a href="#ap-d"><span class="t">Cuando algo no sale</span></a></li>
+        <li><span class="n">E</span><a href="#ap-e"><span class="t">Referencias</span></a></li>
+        <li><span class="n">F</span><a href="#ap-f"><span class="t">La herramienta: licencia y cómo citarla</span></a></li>
+      </ul>
+    </li>
+  </ol>
+</section>
+
+<!-- ====================================================================== CÓMO LEER -->
+<section class="preliminares" id="como-leer" data-nueva-hoja style="--acento: var(--b0)">
+  <h2 style="margin-top:0.2in">Cómo leer este manual</h2>
+  <p class="lead">El manual sigue el mismo orden que la app: diez bloques numerados que se recorren de izquierda a derecha en la barra de arriba. Cada capítulo explica un bloque y lleva su mismo número —el capítulo 5 es el Bloque 5, y sus secciones, figuras y tablas se numeran 5.1, 5.2…—. Cada uno empieza con la idea ecológica que el bloque necesita, sigue con lo que la pantalla calcula y cómo se lee, y termina con los avisos que el bloque puede mostrar y qué hacer con ellos. Esta introducción no lleva número: sus secciones van como I.1, I.2…</p>
+
+  <h3>Un color para cada bloque</h3>
+  <p>El color del bloque aparece en la apertura de su capítulo, en el número de cada sección, en la pestaña del borde de la hoja y en el índice, y es el mismo de la franja de la portada y de la app.</p>
+  <table class="compacta">
+    <thead><tr><th style="width:0.6in">Bloque</th><th style="width:1.7in">Nombre en la app</th><th>Qué hace</th></tr></thead>
+    <tbody>
+      <tr><td><span class="chip k1">1</span></td><td><span class="ui">Inicio</span></td><td>Portada, dos laboratorios que calculan con el motor real, veinte métodos, la teoría en lenguaje claro y las 60 referencias</td></tr>
+      <tr><td><span class="chip k2">2</span></td><td><span class="ui">Datos</span></td><td>La lista de estudio, los registros de GBIF por país, las interacciones publicadas, tus registros de presencia y de visitas, y los datos de práctica</td></tr>
+      <tr><td><span class="chip k3">3</span></td><td><span class="ui">Depuración y taxonomía</span></td><td>Quince reglas de calidad, plantas cultivadas decididas planta por planta, área de estudio, sinónimos, unidades de análisis y la frase para los métodos</td></tr>
+      <tr><td><span class="chip k4">4</span></td><td><span class="ui">Mapa</span></td><td>Un estudio de mapa sin internet: fondo vectorial propio, encuadre y recorte, flecha, escala, leyenda, calor o rejillas, estilos y exportación hasta GeoTIFF</td></tr>
+      <tr><td><span class="chip k5">5</span></td><td><span class="ui">Coocurrencia</span></td><td>La prueba exacta de Veech con universo del grupo objetivo, la distancia al visitante más cercano contra un modelo nulo y el solapamiento de áreas</td></tr>
+      <tr><td><span class="chip k6">6</span></td><td><span class="ui">Fenología y altitud</span></td><td>Estadística circular de las fechas, fenograma, rosa circular, solapamiento mes a mes con corrección por esfuerzo y la distribución altitudinal</td></tr>
+      <tr><td><span class="chip k7">7</span></td><td><span class="ui">Nicho ambiental</span></td><td>Tus capas (o las de práctica), el espacio de componentes principales, la D de Schoener, las pruebas de equivalencia y similitud y el análisis por variable</td></tr>
+      <tr><td><span class="chip k8">8</span></td><td><span class="ui">Distribución potencial</span></td><td>Tres modelos de idoneidad con validación cruzada, el mapa de la planta con y sin visitante potencial y el mismo mapa con clima futuro</td></tr>
+      <tr><td><span class="chip k9">9</span></td><td><span class="ui">Red de interacciones</span></td><td>La red planta–visitante de las visitas registradas: conectancia, anidamiento, especialización, módulos, modelos nulos y completitud del muestreo</td></tr>
+      <tr><td><span class="chip k10">10</span></td><td><span class="ui">Informe</span></td><td>El catálogo de figuras hasta 900 ppp, el informe con los métodos redactados y el paquete .zip que reproduce el estudio</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Tipos de recuadros</h3>
+  <div class="dos">
+    <div class="caja nota" style="margin:0"><div class="caja-t"><span class="ico">i</span>Nota</div><p>Aclaraciones y consejos prácticos que ahorran tiempo.</p></div>
+    <div class="caja importante" style="margin:0"><div class="caja-t"><span class="ico">!</span>Importante</div><p>Lo que puede cambiar tus conclusiones si se pasa por alto.</p></div>
+    <div class="caja teoria" style="margin:0"><div class="caja-t"><span class="ico">θ</span>Teoría en breve</div><p>La idea detrás de un cálculo, sin fórmulas innecesarias.</p></div>
+    <div class="caja ejemplo" style="margin:0"><div class="caja-t"><span class="ico">▸</span>Ejemplo</div><p>Un caso con los datos de práctica del programa, paso a paso.</p></div>
+  </div>
+  <div class="caja regla" style="margin-top:0.18in">
+    <div class="caja-t"><span class="ico">✓</span>Regla de decisión</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:40%"><b>Si</b> el resultado cae en este caso…</td><td><b>entonces</b> esta es la lectura recomendada.</td></tr>
+    </tbody></table>
+    <p class="regla-pie">Son guías para interpretar, no leyes: lo que sabes de la planta, del visitante y del muestreo siempre manda.</p>
+  </div>
+  <div class="caja dato">
+    <div class="dato-cifra">1.96</div>
+    <div class="dato-txt"><div class="caja-t">Dato clave</div>Una cifra o un hecho que conviene recordar; por ejemplo, el tamaño estandarizado del efecto a partir del cual una coincidencia se aparta del azar más o menos con p &lt; 0.05.</div>
+  </div>
+
+  <h3>Convenciones de escritura</h3>
+  <table class="compacta">
+    <thead><tr><th style="width:38%">Así se escribe</th><th>Significa</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Depurar y aplicar</span></td><td>Un botón, casilla o menú de la app, con su texto tal como aparece en pantalla en español.</td></tr>
+      <tr><td><span class="ruta">Bloque 4<span class="sep">›</span>Exportar</span></td><td>Una ruta: abre lo primero y dentro busca lo segundo.</td></tr>
+      <tr><td><code>decimalLatitude</code>, <code>.csv</code></td><td>Un nombre de columna, de archivo o un valor que se escribe tal cual.</td></tr>
+      <tr><td><i>Sechium edule</i>, <i>Xenoglossa</i></td><td>Los nombres científicos, en cursiva; la app también los escribe así en tablas, leyendas y figuras.</td></tr>
+      <tr><td>planta · visitante · unidad</td><td>Los dos <b>papeles</b> de la lista de estudio, y la <b>unidad de análisis</b>: una especie o una entrada de la lista (un género entero, por ejemplo) según se elija en el Bloque 3.</td></tr>
+      <tr><td>EEF · D · R̄ · AUC · TSS · NODF · H₂′</td><td>Las siglas y los símbolos de los índices; cada uno se define la primera vez que aparece y el glosario (Apéndice C) los reúne.</td></tr>
+      <tr><td>1,856 registros · 0.25° · 5 sep</td><td>Miles con coma y decimales con punto, celdas en grados, fechas con el día y el mes abreviado, como en la app.</td></tr>
+    </tbody>
+  </table>
+
+</section>
+
+<!-- ====================================================================== INTRODUCCIÓN -->
+<section class="capitulo" id="cap-intro" data-pestana="In" data-orden="0" style="--acento: var(--b0)">
+  <div class="cap-apertura">
+    <div class="cap-num">In</div>
+    <div class="cap-etiqueta">Introducción · Antes de los bloques</div>
+    <h1 data-corto="Introducción">Introducción a PollinationPro</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Qué es el programa, qué preguntas de la ecología de la polinización responde con datos de presencia, qué datos acepta y cómo se recorre de principio a fin. Incluye las cinco ideas que sostienen todo lo demás —coincidir no es polinizar, el registro refleja al que registra, el año es un círculo, el nicho se compara en el ambiente y la visita es la evidencia— y una lista honesta de lo que el programa no hace.</p>
+    <div class="cap-franja"><span class="k1"></span><span class="k2"></span><span class="k3"></span><span class="k4"></span><span class="k5"></span><span class="k6"></span><span class="k7"></span><span class="k8"></span><span class="k9"></span><span class="k10"></span></div>
+    <ul class="cap-contenido">
+      <li><b>I.1</b>¿Qué es PollinationPro?</li>
+      <li><b>I.2</b>Preguntas que responde</li>
+      <li><b>I.3</b>Cinco ideas que sostienen el manual</li>
+      <li><b>I.4</b>Datos que acepta y qué entrega</li>
+      <li><b>I.5</b>Qué necesitas y cómo abrirlo</li>
+      <li><b>I.6</b>Recorrido por la interfaz</li>
+      <li><b>I.7</b>El estudio de práctica y las capas de práctica</li>
+      <li><b>I.8</b>Cómo se recorre un estudio</li>
+      <li><b>I.9</b>Lo que el programa no hace</li>
+    </ul>
+  </div>
+
+  <!-- I.1 -->
+  <h2 id="si-1"><span class="num">I.1</span>¿Qué es PollinationPro?</h2>
+  <p class="lead">PollinationPro es una plataforma para llevar un estudio de plantas y sus visitantes florales <b>de los registros de presencia al artículo</b>: reúne los registros de GBIF, las interacciones ya publicadas y tus propias observaciones; los depura y armoniza su taxonomía; los pone en un mapa; mide si la planta y el visitante coinciden en el espacio más de lo que el azar predice, si vuelan y florecen en los mismos meses y a la misma altitud, si comparten el mismo clima y dónde la planta podría quedarse sin ningún visitante potencial, hoy y con el clima futuro; analiza la red de visitas registradas; y entrega un informe con figuras, métodos redactados y un paquete que lo reproduce.</p>
+  <p>Sirve para <b>cualquier cultivo</b> —hortalizas, frutales, café, cacao, cucurbitáceas, oleaginosas—, para sus parientes silvestres y para cualquier planta nativa, con cualquier grupo de visitantes: abejas, abejorros, meliponinos, moscas, mariposas, murciélagos o aves. Todo ocurre dentro del navegador: no hay que instalar nada ni saber programar. Está escrito para botánicos, entomólogos y tesistas que saben que la mayoría de los registros de un cultivo son de plantas sembradas, que la taxonomía de las abejas cambia, que los registros se amontonan donde hay caminos, y que un revisor tachará la frase «es su polinizador porque sus distribuciones se solapan».</p>
+
+  <figure>
+    <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" font-family="Jost, sans-serif" role="img"
+         aria-label="El camino de un estudio de polinización a través de los bloques de PollinationPro: los registros y las visitas entran por el Bloque 2 y se depuran en el 3; los registros depurados alimentan el mapa, la coocurrencia, la fenología, el nicho y la distribución potencial, que miden la oportunidad de interacción; las visitas alimentan la red, que mide interacciones registradas; todo desemboca en el informe.">
+      <defs>
+        <marker id="fi" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#5a6b7a"/></marker>
+      </defs>
+      <!-- the two readings -->
+      <rect x="236" y="22" width="304" height="196" rx="12" fill="#f5f8f3" stroke="#bccdb6" stroke-dasharray="4 3"/>
+      <text x="388" y="40" text-anchor="middle" font-size="10.5" fill="#1f5a3a" font-weight="500">OPORTUNIDAD DE INTERACCIÓN · dónde, cuándo y en qué clima</text>
+      <rect x="236" y="232" width="304" height="58" rx="12" fill="#f7f8ee" stroke="#c6cf97" stroke-dasharray="4 3"/>
+      <text x="388" y="286" text-anchor="middle" font-size="10.5" fill="#5f6a1c" font-weight="500">INTERACCIONES REGISTRADAS · quién visita a quién</text>
+
+      <g font-size="10" text-anchor="middle">
+        <rect x="10" y="96" width="98" height="78" rx="9" fill="#fbf3e2" stroke="#d99a1e"/>
+        <text x="59" y="118" font-weight="600" fill="#8a5a0c" font-size="11.5">Los datos</text>
+        <text x="59" y="134" fill="#5a4a30">GBIF, tus registros,</text><text x="59" y="147" fill="#5a4a30">tus visitas,</text><text x="59" y="160" fill="#5a4a30">interacciones publicadas</text>
+
+        <rect x="124" y="104" width="94" height="62" rx="9" fill="#f1edf7" stroke="#7b5ea7"/>
+        <text x="171" y="126" font-weight="600" fill="#523a7a" font-size="11.5">Depuración</text>
+        <text x="171" y="142" fill="#463a5a">15 reglas, cultivadas,</text><text x="171" y="155" fill="#463a5a">sinónimos, unidades</text>
+
+        <rect x="250" y="52" width="86" height="48" rx="9" fill="#e9f0f8" stroke="#2f6fb0"/>
+        <text x="293" y="72" font-weight="600" fill="#214f82" font-size="11.5">Mapa</text><text x="293" y="88" fill="#33405a">estudio de mapa</text>
+
+        <rect x="346" y="52" width="86" height="48" rx="9" fill="#f8ebe8" stroke="#b8452f"/>
+        <text x="389" y="72" font-weight="600" fill="#86301f" font-size="11.5">Espacio</text><text x="389" y="88" fill="#5a3a35">coocurrencia</text>
+
+        <rect x="442" y="52" width="86" height="48" rx="9" fill="#e9f5f4" stroke="#3aa39a"/>
+        <text x="485" y="72" font-weight="600" fill="#1f6f68" font-size="11.5">Tiempo</text><text x="485" y="88" fill="#33504d">fenología, altitud</text>
+
+        <rect x="290" y="122" width="96" height="48" rx="9" fill="#f4efe9" stroke="#8a6a4a"/>
+        <text x="338" y="142" font-weight="600" fill="#5a4230" font-size="11.5">Ambiente</text><text x="338" y="158" fill="#4a4036">nicho ambiental</text>
+
+        <rect x="400" y="122" width="116" height="48" rx="9" fill="#faeaf0" stroke="#c0406a"/>
+        <text x="458" y="142" font-weight="600" fill="#8a2a4a" font-size="11.5">Distribución</text><text x="458" y="158" fill="#5a3a45">idoneidad, desajuste</text>
+
+        <rect x="342" y="240" width="96" height="30" rx="9" fill="#f3f5e6" stroke="#8a9a2a"/>
+        <text x="390" y="259" font-weight="600" fill="#5f6a1c" font-size="11.5">Red de visitas</text>
+
+        <rect x="574" y="112" width="116" height="80" rx="9" fill="#eef0f4" stroke="#5f6b86"/>
+        <text x="632" y="136" font-weight="600" fill="#3e4859" font-size="11.5">Informe</text>
+        <text x="632" y="153" fill="#4a5262">figuras hasta 900 ppp,</text><text x="632" y="165" fill="#4a5262">métodos redactados,</text><text x="632" y="177" fill="#4a5262">paquete .zip</text>
+      </g>
+
+      <g fill="none" stroke="#5a6b7a" stroke-width="1.4" marker-end="url(#fi)">
+        <path d="M108 135 L 122 135"/>
+        <path d="M218 128 L 248 80"/>
+        <path d="M218 136 L 288 146"/>
+        <path d="M218 144 C 260 200 300 250 340 255"/>
+        <path d="M336 76 L 344 76"/>
+        <path d="M432 76 L 440 76"/>
+        <path d="M386 146 L 398 146"/>
+        <path d="M528 80 C 556 90 560 110 572 130"/>
+        <path d="M516 150 L 572 152"/>
+        <path d="M438 255 C 520 255 560 220 590 194"/>
+      </g>
+      <g font-size="9" fill="#5a6b7a">
+        <text x="30" y="190">Bloque 2</text><text x="148" y="182">Bloque 3</text><text x="272" y="112">B4</text><text x="370" y="112">B5</text><text x="466" y="112">B6</text>
+        <text x="322" y="182">B7</text><text x="446" y="182">B8</text><text x="448" y="265">B9</text><text x="610" y="208">Bloque 10</text>
+      </g>
+    </svg>
+    <figcaption><b>Figura I.1.</b> El camino de un estudio a través de los bloques. Los registros de presencia, una vez depurados, alimentan cinco lecturas de la <b>oportunidad de interacción</b> —dónde, cuándo y en qué clima podrían encontrarse la planta y el visitante—; las visitas registradas alimentan la red, que es la única lectura de <b>interacciones</b>. El informe recoge lo que se haya calculado.</figcaption>
+  </figure>
+
+  <!-- I.2 -->
+  <h2 id="si-2"><span class="num">I.2</span>Preguntas que responde</h2>
+  <p>Cada bloque contesta una pregunta que un estudio de polinización con datos de presencia se hace de verdad. Estas son, en el orden en que se recorren:</p>
+  <table>
+    <thead><tr><th style="width:0.55in">Bloque</th><th style="width:2.6in">La pregunta</th><th>Con qué la contesta</th></tr></thead>
+    <tbody>
+      <tr><td><span class="chip k2">2</span></td><td>¿Qué hay publicado sobre mis plantas y sus visitantes? ¿Cuántos registros tengo y de dónde?</td><td>Nombres resueltos en GBIF, registros por país, interacciones publicadas en las dos direcciones, y tus datos importados</td></tr>
+      <tr><td><span class="chip k3">3</span></td><td>¿Qué registros son errores? ¿Estudio el cultivo o sus poblaciones silvestres? ¿Cómo se llama hoy cada taxón?</td><td>Quince reglas con su conteo, cultivadas por planta, sinónimos y la frase para los métodos</td></tr>
+      <tr><td><span class="chip k4">4</span></td><td>¿Dónde están? ¿Qué estados no tienen registros?</td><td>El mapa editable y las tablas por estado y por país</td></tr>
+      <tr><td><span class="chip k5">5</span></td><td>¿Coinciden en el territorio más de lo que predice el azar, una vez descontado dónde se muestreó?</td><td>Prueba exacta de Veech con universo del grupo objetivo, sensibilidad a la celda, vecino más cercano y envolventes</td></tr>
+      <tr><td><span class="chip k6">6</span></td><td>¿Vuela el visitante cuando la planta florece, y a la misma altitud?</td><td>Fecha media y concentración de cada uno, Rayleigh, Watson–Williams, D de Schoener mes a mes y perfiles altitudinales</td></tr>
+      <tr><td><span class="chip k7">7</span></td><td>¿Viven en los mismos climas? ¿Qué variable los separa?</td><td>El espacio ambiental, D e I, equivalencia y similitud, y el solapamiento por variable</td></tr>
+      <tr><td><span class="chip k8">8</span></td><td>¿Dónde la planta es idónea y ningún visitante lo es? ¿Qué pasará con el clima futuro?</td><td>Modelos de idoneidad validados, mapa de desajuste y su cambio con capas futuras</td></tr>
+      <tr><td><span class="chip k9">9</span></td><td>¿Qué tan especializada es la relación? ¿Qué visitantes son clave? ¿Cuántos faltan por registrar?</td><td>Conectancia, NODF, H₂′, d′, módulos contra modelos nulos, fuerza y completitud</td></tr>
+      <tr><td><span class="chip k10">10</span></td><td>¿Cómo lo entrego en una tesis o un artículo?</td><td>Figuras en el formato que pidan, informe con métodos redactados y referencias, paquete reproducible</td></tr>
+    </tbody>
+  </table>
+
+  <!-- I.3 -->
+  <h2 id="si-3"><span class="num">I.3</span>Cinco ideas que sostienen el manual</h2>
+  <p>No hace falta ser especialista en ecología de la polinización para usar la app, pero hay cinco ideas que vuelven una y otra vez. Entenderlas hace que los resultados dejen de ser números y se vuelvan argumentos.</p>
+
+  <h3>1. Coincidir no es polinizar</h3>
+  <p>Para que un insecto polinice una planta tiene que <b>estar donde está la planta</b>, <b>cuando la planta florece</b>, en <b>ambientes que ambos toleran</b>; tiene que <b>visitar la flor</b> y, al hacerlo, <b>llevar y depositar polen compatible</b>. Los registros de presencia informan de los tres primeros eslabones; las observaciones de visitas, del cuarto; el quinto solo se prueba en campo. Por eso los Bloques 5 a 8 hablan de <b>oportunidad de interacción</b> y de <b>polinizadores potenciales</b>, y solo el Bloque 9 habla de interacciones. Un artículo con datos de presencia es valioso precisamente porque acota dónde, cuándo y en qué clima vale la pena buscar la evidencia de campo.</p>
+
+  <h3>2. El registro refleja al que registra</h3>
+  <p>Los registros de GBIF se amontonan cerca de caminos, ciudades, universidades y estaciones de investigación. Si la planta y la abeja se registraron más donde se muestreó más, sus registros coincidirán aunque en la naturaleza no se busquen. Todas las pruebas de la app que comparan un observado con un esperado lo hacen dentro del <b>grupo objetivo</b>: las celdas, los meses o el fondo ambiental donde alguien registró algo del estudio, que son los que de verdad se muestrearon. El primer laboratorio del Bloque 1 muestra, con un paisaje cuya verdad se conoce, qué pasa cuando no se hace.</p>
+
+  <h3>3. El año es un círculo</h3>
+  <p>El 31 de diciembre y el 1 de enero están a un día, no a 364. Una especie que florece de noviembre a febrero tiene su pico en diciembre-enero, no en junio como diría la media aritmética de los meses. Por eso las fechas se leen con <b>estadística circular</b>: cada fecha es un ángulo, la fecha media es la dirección del vector promedio y su longitud <b>R̄</b>, de 0 a 1, dice qué tan concentrada está la temporada.</p>
+
+  <h3>4. El nicho se compara en el ambiente, no en el mapa</h3>
+  <p>Dos especies pueden vivir en lugares distintos y compartir clima, o vivir cerca y usar ambientes distintos. El Bloque 7 las compara en el <b>espacio ambiental</b> —los dos primeros componentes principales de las variables climáticas de la región—, corrige por lo que el ambiente ofrece y pregunta si los nichos son idénticos (equivalencia) o más parecidos de lo que el solo parecido de los ambientes disponibles produciría (similitud). El Bloque 8 lleva esa idoneidad de regreso al mapa.</p>
+
+  <h3>5. La visita es la evidencia, y el muestreo tiene un final</h3>
+  <p>La red del Bloque 9 no se construye con coincidencias sino con visitas observadas: tuyas o publicadas. Y una red siempre está incompleta: cuántos visitantes faltan por registrar se estima con la curva de rarefacción y con Chao1, y la <b>completitud</b> dice si conviene volver a campo antes de afirmar que una planta tiene pocos visitantes.</p>
+
+  <!-- I.4 -->
+  <h2 id="si-4"><span class="num">I.4</span>Datos que acepta y qué entrega</h2>
+  <h4>Lo que entra</h4>
+  <ul>
+    <li><b>Una lista de estudio</b>: los nombres científicos de las plantas y de los visitantes, a cualquier nivel (especie, género o familia), escritos a mano o tomados de uno de los siete sistemas de ejemplo. Cada nombre es una unidad de análisis.</li>
+    <li><b>Registros de GBIF</b>, descargados desde la app por nombre y por país, solo con coordenadas, con filtros de años, tipo de registro y problemas geoespaciales.</li>
+    <li><b>Interacciones publicadas</b> de una base pública de interacciones bióticas, buscadas en las dos direcciones (visitantes de cada planta y plantas de cada visitante).</li>
+    <li><b>Tus registros de presencia</b> —una fila por planta o insecto visto, con taxón, latitud y longitud— y <b>tus observaciones de visitas</b> —una fila por par planta–visitante con cuántas visitas—, desde <code>.csv</code>, <code>.txt</code>, <code>.tsv</code>, <code>.xlsx</code> o texto pegado de una hoja de cálculo.</li>
+    <li><b>Capas ambientales</b> en GeoTIFF (<code>.tif</code>) o rejilla ASCII (<code>.asc</code>), en grados, para los Bloques 7 y 8, y las mismas variables de un escenario futuro.</li>
+    <li><b>Un proyecto</b> guardado antes en <code>.json</code>: la lista, los registros, las interacciones y las visitas, tal como salieron del Bloque 2.</li>
+  </ul>
+  <h4>Lo que sale</h4>
+  <ul>
+    <li><b>Cuadros en pantalla</b> con escalas de lectura: casi todo número lleva al lado una etiqueta —<i>moderado</i>, <i>marcada</i>, <i>aceptable</i>, <i>generalista</i>— con la escala que la justifica a un clic de distancia.</li>
+    <li><b>Figuras</b> en cada bloque, cada una con su botón ⤓ para exportarla y su botón ✎ para editar sus textos, colores y tamaños; y el mapa con su propio estudio.</li>
+    <li><b>Archivos .csv</b> de cada cuadro importante: registros crudos, depurados y quitados con la razón, puntos del mapa, pares de coocurrencia, estadística circular, pares fenológicos, valores ambientales, clases del desajuste, matriz de la red y especies.</li>
+    <li><b>El informe</b>: un solo archivo <code>.html</code> que se abre en cualquier navegador y se imprime a PDF, con una sección por bloque calculado, los métodos redactados a partir de lo que realmente se corrió, las referencias de esos métodos, los conjuntos de GBIF que hay que citar y el registro de cálculo.</li>
+    <li><b>El paquete</b>: un <code>.zip</code> con el informe, el proyecto, los parámetros, los cuadros y las figuras. Quien lo reciba puede rehacer el estudio.</li>
+  </ul>
+
+  <!-- I.5 -->
+  <h2 id="si-5"><span class="num">I.5</span>Qué necesitas y cómo abrirlo</h2>
+  <p>Una computadora con un navegador reciente —Edge, Chrome, Firefox o Safari de los últimos dos o tres años— y la carpeta del programa. No hay instalación: se copia la carpeta y se abre <span class="ruta">index.html</span> con doble clic. Funciona desde una memoria USB y, salvo la descarga de GBIF y la búsqueda de interacciones publicadas, sin internet.</p>
+  <ol class="pasos">
+    <li>Copia la carpeta <span class="ruta">PollinationPro</span> completa a tu computadora. Dentro deben estar <span class="ruta">index.html</span> y las carpetas <span class="ruta">js</span>, <span class="ruta">css</span>, <span class="ruta">data</span> (los contornos de los países y de los estados de México) y <span class="ruta">tests</span>.</li>
+    <li>Abre <span class="ruta">index.html</span> con doble clic. La primera pantalla es el Bloque 1, la portada. En Windows, <span class="ruta">Open PollinationPro.bat</span> la abre además como un pequeño servidor local (puerto 9750), útil para abrirla desde otro equipo de la red.</li>
+    <li>Elige el idioma con <span class="ui">ES</span> · <span class="ui">EN</span> y el tema claro u oscuro con el botón del sol. Ambos se recuerdan para la próxima vez.</li>
+    <li>Si quieres comprobar que el motor calcula bien en tu navegador, abre <span class="ruta">tests/index.html</span>: son 162 pruebas contra valores publicados, aritmética exacta, fórmulas resueltas a mano, implementaciones independientes y simulaciones bajo la hipótesis nula. Todas deben salir en verde.</li>
+  </ol>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>La app recuerda el estudio</div>
+    <p>La lista, los registros, las interacciones y las visitas se guardan en el navegador de esa computadora (en su base de datos local), de modo que al volver a abrir la app aparece «Se recuperó la sesión anterior». También se recuerdan las opciones de cada bloque, el estilo del mapa y los cambios hechos a cada figura. Es solo una comodidad: el respaldo de verdad es el proyecto <code>.json</code> del Bloque 2, que se abre en cualquier otra máquina. Las capas ambientales no se guardan: se vuelven a elegir en el Bloque 7.</p>
+  </div>
+
+  <!-- I.6 -->
+  <h2 id="si-6"><span class="num">I.6</span>Recorrido por la interfaz</h2>
+  <figure>
+    <div class="marco"><img src="../img/inicio.png" alt="La pantalla inicial de PollinationPro: la barra superior con la marca, el estudio de figuras, el idioma y el tema; la barra de los diez pasos; y la portada con su pregunta, sus cuatro botones y su ilustración"></div>
+    <figcaption><b>Figura I.2.</b> La pantalla inicial. Arriba, la barra fija con la marca, el botón de la paleta (el estudio de figuras), el selector de idioma y el del tema; debajo, la barra de los diez pasos; y la portada del Bloque 1 con la pregunta que el programa contesta: <i>¿coinciden la flor y su polinizador?</i></figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.7in">Elemento</th><th>Para qué sirve</th></tr></thead>
+    <tbody>
+      <tr><td><b>La barra de pasos</b></td><td>Diez botones numerados, siempre visibles; en pantallas angostas la barra se desliza de lado. Se puede saltar a cualquier bloque en cualquier momento; el que necesita algo que todavía no existe lo dice y ofrece el botón para ir a resolverlo.</td></tr>
+      <tr><td><b>Las tarjetas</b></td><td>Cada bloque se divide en tarjetas numeradas —«1 · La lista de estudio», «2 · Traer los registros de GBIF»…— que se leen de arriba abajo: primero lo que se elige, luego lo que se calcula.</td></tr>
+      <tr><td><b>Los recuadros de resultados</b></td><td>Una fila de cifras grandes con su etiqueta y una línea de contexto debajo. Es el resumen de la tarjeta.</td></tr>
+      <tr><td><b>El signo <span class="ui">?</span></b></td><td>Junto a un título, una cifra o una columna, abre una ficha de ayuda: qué mide, cómo se lee, la escala que dice si el valor es bajo o alto y el error más común, con sus referencias. Hay 50 fichas; cada bloque termina con su <span class="ui">📖 Guía de interpretación de este bloque</span>, que reúne las suyas.</td></tr>
+      <tr><td><b>Las etiquetas de escala</b></td><td>Al lado de muchos números aparece una palabra en color —<i>moderado</i>, <i>marcada</i>, <i>aceptable</i>, <i>generalista</i>—. Sale de la escala de la ficha correspondiente, aplicada al valor que tienes en pantalla.</td></tr>
+      <tr><td><b>Los botones ⤓ y ✎ de cada figura</b></td><td>En la esquina de cada figura. ⤓ la exporta (PNG, JPG o SVG, 150 a 900 ppp, claro u oscuro). ✎ abre su editor: cualquier texto se reescribe, cambia de tamaño o de color o se oculta; cualquier color se sustituye; la fuente, el grosor de las líneas y el tamaño de los puntos se ajustan (sección 10.3).</td></tr>
+      <tr><td><b>El estudio de figuras</b></td><td>El botón de la paleta en la barra superior. Cambia la paleta (nueve, entre ellas la de Okabe–Ito para daltónicos y una en grises), la fuente, las escalas y el fondo de <b>todas</b> las figuras a la vez, en pantalla y en lo que se exporta.</td></tr>
+      <tr><td><b><span class="ui">Continuar a … →</span></b></td><td>Al pie de cada bloque. Lleva al siguiente.</td></tr>
+      <tr><td><b>Los mensajes</b></td><td>Bandas de color bajo una tarjeta: azul o verde para información, ámbar para un aviso, rojo para un error que impide seguir. Cada capítulo termina con los de su bloque.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- I.7 -->
+  <h2 id="si-7"><span class="num">I.7</span>El estudio de práctica y las capas de práctica</h2>
+  <p>El Bloque 2 trae dos estudios de práctica que el propio programa genera con una semilla fija, sin consultar internet: <b>«Cucurbitáceas y abejas de la calabaza»</b> —cinco especies de <i>Sechium</i> y el género <i>Cucurbita</i>, con <i>Xenoglossa</i>, <i>Peponapis</i> y la abeja melífera, en México— y <b>«Café y abejas sin aguijón»</b> —<i>Coffea arabica</i> con la abeja melífera y cuatro abejas sin aguijón, en el sur de México y Centroamérica—. Cada uno trae registros de presencia y una tabla de visitas. Son <b>ficticios</b>: los puntos se sortean alrededor de centros inventados, las fechas alrededor de picos inventados y las visitas con conteos de Poisson; los nombres son reales para que el ejemplo se lea como un estudio. Y llevan <b>errores sembrados a propósito</b> —duplicados, un (0, 0), coordenadas invertidas, una longitud sin signo, el centro de México, coordenadas redondeadas, un año futuro, plantas cultivadas— para que el Bloque 3 tenga qué encontrar.</p>
+  <p>El Bloque 7 trae además cuatro <b>capas ambientales de práctica</b> para México y Centroamérica a 0.1°: un relieve inventado y tres variables climáticas derivadas de él con reglas simples (más fresco con la altura y hacia el norte, más lluvioso hacia el sureste y en la vertiente del Golfo), con los nombres de las variables bioclimáticas BIO1, BIO4 y BIO12, y un <b>futuro de práctica</b> más cálido y más seco para el Bloque 8. Parecen un clima, pero no lo son.</p>
+  <table class="compacta">
+    <thead><tr><th style="width:2in">En el estudio de práctica</th><th class="c" style="width:0.8in">Registros</th><th>Qué papel juega en el manual</th></tr></thead>
+    <tbody>
+      <tr><td><i>Sechium edule</i></td><td class="c">424</td><td>La planta principal: el chayote, con 29 % de registros cultivados</td></tr>
+      <tr><td><i>S. compositum</i>, <i>S. chinantlense</i>, <i>S. hintonii</i>, <i>S. mexicanum</i></td><td class="c">71 · 46 · 40 · 35</td><td>Los parientes silvestres, con áreas pequeñas</td></tr>
+      <tr><td><i>Cucurbita</i> (género)</td><td class="c">605</td><td>Las calabazas, con 36 % de cultivadas: la planta de la que dependen las abejas de la calabaza</td></tr>
+      <tr><td><i>Xenoglossa</i> y <i>Peponapis</i></td><td class="c">106 · 216</td><td>Las abejas de la calabaza, que el Bloque 3 reúne bajo <i>Xenoglossa</i></td></tr>
+      <tr><td><i>Apis mellifera</i></td><td class="c">705</td><td>La abeja melífera: un generalista de temporada larga, para contrastar</td></tr>
+      <tr><td>Visitas en cinco sitios</td><td class="c">354 filas</td><td>953 visitas de 11 visitantes a 6 plantas: la red del Bloque 9</td></tr>
+    </tbody>
+  </table>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Los datos de práctica no se citan</div>
+    <p>Los resultados de este manual —que el chayote y <i>Xenoglossa</i> coinciden al azar en el espacio, que florecen y vuelan con 26 días de desfase, que el futuro de práctica reduce 62 % el área idónea— son propiedades de los datos inventados, no de las especies. Sirven para aprender a leer la pantalla. Tu estudio real empieza con <span class="ui">Resolver los nombres en GBIF</span>.</p>
+  </div>
+
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>Las cifras de este manual</div>
+    <p>Todos los resultados que aparecen en el texto se obtuvieron corriendo la app con el estudio de práctica <b>«Cucurbitáceas y abejas de la calabaza»</b>, depurado con los valores por omisión del Bloque 3, y —en los Bloques 7 y 8— con las <b>capas de práctica</b> del programa; se copiaron de la pantalla. Si repites los pasos, debes ver los mismos números: los datos de práctica se generan con una semilla fija. Solo las pruebas por aleatorización (los modelos nulos de los Bloques 5, 7 y 9) pueden variar en el último decimal de un valor p de una corrida a otra.</p>
+  </div>
+
+  <!-- I.8 -->
+  <h2 id="si-8"><span class="num">I.8</span>Cómo se recorre un estudio</h2>
+  <p>El orden de los bloques es el orden en que se escribe un artículo de polinización con datos de presencia. No es obligatorio hacerlo completo: un estudio de distribución y fenología termina en el Bloque 6; uno de red de visitas necesita los Bloques 2 y 9. Lo que un bloque necesita de otro lo calcula solo al abrirlo.</p>
+  <ol class="pasos">
+    <li><b>Bloque 2.</b> Arma la lista de estudio, resuelve los nombres en GBIF, elige los países, cuenta y descarga. Busca las interacciones publicadas e importa tus registros y tus visitas. Guarda el proyecto.</li>
+    <li><b>Bloque 3.</b> Revisa las quince reglas, decide planta por planta qué hacer con las cultivadas, fija el área de estudio, confirma los sinónimos y la unidad de análisis, y aplica. Copia la frase de los métodos.</li>
+    <li><b>Bloque 4.</b> Mira el mapa: un punto en el mar o en el país equivocado salta a la vista y te devuelve al Bloque 3. Arma la figura del artículo y exporta.</li>
+    <li><b>Bloques 5 y 6.</b> Lee la matriz de pares y la sensibilidad a la celda; luego el fenograma, los pares fenológicos y la altitud. Anota qué pares coinciden en el espacio y en el tiempo.</li>
+    <li><b>Bloques 7 y 8.</b> Carga tus capas, calcula el espacio ambiental y las pruebas; ajusta los modelos de idoneidad, revisa su AUC y su TSS, lee el desajuste y, si tienes capas futuras, cómo cambia.</li>
+    <li><b>Bloque 9.</b> Con tus visitas y las publicadas, lee la red contra los modelos nulos, los visitantes clave y la completitud de cada planta.</li>
+    <li><b>Bloque 10.</b> Recorre el estado del estudio, exporta las figuras, revisa el informe en la vista previa y descarga el paquete.</li>
+  </ol>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Lo de arriba manda sobre lo de abajo</div>
+    <p>Si cambias la lista o los registros en el Bloque 2, la depuración se rehace. Si cambias una regla, un sinónimo o la unidad de análisis en el Bloque 3 y vuelves a aplicar, todo lo de abajo se recalcula al abrirlo —el mapa, los pares, los calendarios, el espacio ambiental—. El informe del Bloque 10 se redacta con lo que exista en ese momento: por eso conviene generarlo al final y volver a generarlo si se tocó algo.</p>
+  </div>
+
+  <!-- I.9 -->
+  <h2 id="si-9"><span class="num">I.9</span>Lo que el programa no hace</h2>
+  <ul>
+    <li><b>No prueba que un visitante poliniza.</b> Mide oportunidad de interacción y analiza visitas registradas. La carga de polen, el depósito tras una sola visita y el fruto formado se prueban en campo, y el programa lo dice en cada guía de interpretación.</li>
+    <li><b>No trae capas climáticas reales.</b> Las bases climáticas no permiten redistribuir sus archivos: se descargan una vez desde su sitio y se eligen en el Bloque 7. Las capas de práctica son inventadas y solo sirven para aprender.</li>
+    <li><b>No sustituye la descarga oficial de GBIF para el artículo final.</b> La descarga desde la app es para explorar; GBIF pide citar cada descarga con su DOI, que se obtiene repitiéndola en su portal con los mismos filtros. El informe lista los conjuntos de datos que aportaron registros y lo recuerda.</li>
+    <li><b>No es un programa de modelos de distribución completo.</b> Los tres modelos del Bloque 8 son sencillos y transparentes, pensados para comparar la planta con sus visitantes con el mismo método; un estudio centrado en la distribución de una especie merece un programa especializado y más variables.</li>
+    <li><b>No corrige la taxonomía por sí solo.</b> Resuelve los nombres contra el esqueleto taxonómico de GBIF y aplica las reglas de sinónimos que tú confirmas; la decisión de qué nombre es el correcto sigue siendo del especialista.</li>
+    <li><b>No decide por ti.</b> Las reglas de decisión y las escalas son guías para leer un número, no veredictos. Ningún aviso bloquea el trabajo: lo señala, explica qué significa y deja la decisión a quien conoce las especies.</li>
+  </ul>
+</section>
+
+</body>
+</html>
