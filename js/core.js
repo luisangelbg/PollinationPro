@@ -79,6 +79,8 @@ function showMessage(container, type, text) {
   if (typeof container === 'string') container = el(container);
   if (!container) return null;
   const div = mk('div', { class: 'msg msg-' + type }, text);
+  /* errors and warnings are announced to screen readers */
+  if (window.LABG) LABG.messageRole(div, type);
   container.appendChild(div);
   return div;
 }
@@ -223,20 +225,101 @@ function slug(s) {
 }
 
 /* ---------------- step navigation ---------------- */
+const stepBtn = n => document.querySelector('.step-btn[data-step="' + n + '"]');
+const stepOn = n => { const b = stepBtn(n); return !!b && !b.disabled; };
+
 function goStep(n) {
   n = String(n);
   els('.step-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + n));
   els('.step-btn').forEach(b => b.classList.toggle('active', b.dataset.step === n));
   document.body.classList.toggle('on-home', n === '1');
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  const btn = document.querySelector('.step-btn[data-step="' + n + '"]');
-  if (btn && btn.scrollIntoView) btn.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  const btn = stepBtn(n);
+  if (window.LABG) {
+    LABG.setCurrentStep(n);                  // aria-current and brought into view
+    const s = STEPS.find(x => String(x.n) === n);
+    if (s) LABG.announce(T('Bloque ', 'Block ') + s.n + ': ' + T(s.es, s.en));
+  } else if (btn && btn.scrollIntoView) btn.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   document.dispatchEvent(new CustomEvent('stepchange', { detail: { step: Number(n) } }));
+  refreshStepMarks();
+  refreshStepFooters();
 }
 function enableStep(n, on) {
-  const b = document.querySelector('.step-btn[data-step="' + n + '"]');
+  const b = stepBtn(n);
   if (b) b.disabled = (on === false);
+  refreshStepMarks();
+  refreshStepFooters();
 }
+
+/* A block is marked «done» when it is available and its result exists: the
+   blocks of this app open as soon as there are records, so availability alone
+   would tick blocks that were never run. */
+const STEP_DONE = {
+  2: () => state.raw.length > 0 || state.visits.length > 0 || state.interactions.length > 0,
+  3: () => !!state.clean, 4: () => !!state.map, 5: () => !!state.cooc, 6: () => !!state.pheno,
+  7: () => !!state.niche, 8: () => !!state.sdm, 9: () => !!state.network, 10: () => false,
+};
+function refreshStepMarks() {
+  if (!window.LABG) return;
+  STEPS.forEach(s => { if (STEP_DONE[s.n]) LABG.markStep(s.n, stepOn(s.n) && STEP_DONE[s.n]() ? 'done' : null); });
+}
+
+/* Footer of every block: Previous / Next, with the name of the block. Both
+   languages are written side by side, so a change of language needs no redraw. */
+function refreshStepFooters() {
+  if (!window.LABG) return;
+  const order = STEPS.map(s => String(s.n));
+  const label = n => { const s = STEPS.find(x => String(x.n) === n); return s.n + ' · ' + L2(esc(s.es), esc(s.en)); };
+  els('.step-panel').forEach(p => {
+    const n = p.id.replace('panel-', '');
+    const i = order.indexOf(n);
+    if (i < 0) return;
+    let f = p.querySelector(':scope > .step-footer');
+    if (!f) {
+      f = mk('nav', { class: 'step-footer no-print' });
+      f.innerHTML = '<button type="button" class="btn btn-secondary prev"></button><button type="button" class="btn btn-primary next"></button>';
+      f.addEventListener('click', e => { const b = e.target.closest('button[data-go]'); if (b && !b.disabled) goStep(b.dataset.go); });
+      p.appendChild(f);
+    }
+    f.setAttribute('aria-label', T('Bloques', 'Blocks'));
+    const prev = order.slice(0, i).reverse().find(stepOn);
+    const next = order.slice(i + 1).find(s => stepBtn(s));
+    const bp = f.querySelector('.prev'), bn = f.querySelector('.next');
+    bp.hidden = !prev;
+    if (prev) { bp.dataset.go = prev; bp.innerHTML = `← <span><small>${L2('Anterior', 'Previous')}</small>${label(prev)}</span>`; }
+    bn.hidden = !next;
+    if (next) {
+      bn.dataset.go = next; bn.disabled = !stepOn(next);
+      bn.innerHTML = `<span><small>${L2('Siguiente', 'Next')}</small>${label(next)}</span> →`;
+    }
+  });
+}
+
+/* The common bar of the LABG Suite: theme button tooltip, shortcuts panel,
+   keyboard, warning before closing with data. Only in the app: the tests load
+   core.js without labg-core.js. The theme itself is switched by Theme (i18n.js),
+   which keeps its own key and the 'themechange' event the blocks listen to. */
+document.addEventListener('DOMContentLoaded', () => {
+  if (!window.LABG) return;
+  LABG.theme.init('pollinationpro:theme');
+  const hb = el('helpBtn');
+  if (hb) hb.addEventListener('click', () => LABG.showShortcuts());
+  LABG.shortcuts([]);
+  LABG.bindStepKeys(goStep);
+  LABG.guardUnload(() => state.raw.length > 0 || state.visits.length > 0 || state.interactions.length > 0);
+  const stepperLabel = () => { const nav = el('stepper'); if (nav) nav.setAttribute('aria-label', T('Bloques', 'Blocks')); };
+  document.addEventListener('themechange', () => LABG.theme.paint());
+  document.addEventListener('langchange', () => { LABG.theme.paint(); stepperLabel(); refreshStepMarks(); refreshStepFooters(); });
+  document.addEventListener('restored', () => { refreshStepMarks(); refreshStepFooters(); });
+  /* the stepper is drawn by home.js, which starts after this file */
+  setTimeout(() => {
+    LABG.theme.paint();
+    stepperLabel();
+    LABG.setCurrentStep((document.querySelector('.step-btn.active') || { dataset: {} }).dataset.step || '1');
+    refreshStepMarks();
+    refreshStepFooters();
+  }, 0);
+});
 
 /* Persisted preferences (figure style, last settings) */
 const Prefs = {
