@@ -117,7 +117,7 @@ const B2 = {};
     else if (t.status === 'example') sub = L2('datos de práctica (sin resolver en GBIF)', 'practice data (not resolved in GBIF)');
     else sub = L2('sin resolver', 'not resolved');
     const cand = t.candidates && t.candidates.length > 1
-      ? `<select data-cand="${t.id}">${t.candidates.map(c => `<option value="${c.key}"${res && c.key === res.key ? ' selected' : ''}>${esc(c.scientificName)} · ${esc(c.family || c.order || c.kingdom || '')}${c.nOcc != null ? ' · ' + c.nOcc.toLocaleString('en-US') + ' reg.' : ''}</option>`).join('')}</select>` : '';
+      ? `<select data-cand="${t.id}" aria-label="${esc(T('Nombre aceptado para ', 'Accepted name for ') + t.name)}">${t.candidates.map(c => `<option value="${c.key}"${res && c.key === res.key ? ' selected' : ''}>${esc(c.scientificName)} · ${esc(c.family || c.order || c.kingdom || '')}${c.nOcc != null ? ' · ' + c.nOcc.toLocaleString('en-US') + ' reg.' : ''}</option>`).join('')}</select>` : '';
     const count = t.count != null ? T(`${t.count.toLocaleString('en-US')} en GBIF`, `${t.count.toLocaleString('en-US')} in GBIF`) : (res && res.nOcc != null ? T(`${res.nOcc.toLocaleString('en-US')} en el mundo`, `${res.nOcc.toLocaleString('en-US')} worldwide`) : '');
     return `<div class="taxon-row ${cls}"><div><div class="tx-name">${TX().italic(TX().label(t), res && res.rank)}</div><div class="tx-sub">${sub}</div>${cand}</div>
       <div class="tx-n">${count}${nRec ? `<br><b>${nRec.toLocaleString('en-US')}</b> ${T('cargados', 'loaded')}` : ''}</div>

@@ -54,7 +54,7 @@ const B3 = {};
       const opts = (R.kind === 'fix' ? ['fix', 'off'] : ['drop', 'flag', 'off']).map(a => `<option value="${a}"${a === cur ? ' selected' : ''}>${T(...ACTIONS[a])}</option>`).join('');
       const c = last ? last.count[R.id] : null;
       const n = !c ? '' : R.kind === 'fix' ? (last.fixes ? `${last.fixes} ${T('corregidos', 'corrected')}` : '0') : `${c.flagged.toLocaleString('en-US')}${c.removed ? ` <small>(${c.removed.toLocaleString('en-US')} ${T('quitados', 'removed')})</small>` : ''}`;
-      return `<tr><td><b>${two(R.t)}</b><div class="hint" style="margin:0">${two(R.d)}</div></td><td><select data-rule="${R.id}">${opts}</select></td><td class="num">${n}</td></tr>`;
+      return `<tr><td><b>${two(R.t)}</b><div class="hint" style="margin:0">${two(R.d)}</div></td><td><select data-rule="${R.id}" aria-label="${esc(T('Acción de la regla: ', 'Action for the rule: ') + T(R.t[0], R.t[1]))}">${opts}</select></td><td class="num">${n}</td></tr>`;
     }).join('');
     el('b3Rules').innerHTML = `<div class="table-scroll"><table class="map-table"><thead><tr><th>${L2('Regla', 'Rule')}</th><th>${L2('Acción', 'Action')}</th><th class="num">${L2('Registros', 'Records')}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
   }
@@ -63,7 +63,7 @@ const B3 = {};
     if (!st.length) { el('b3Cult').innerHTML = `<p class="hint">${L2('No hay plantas en la lista.', 'There are no plants in the list.')}</p>`; return; }
     el('b3Cult').innerHTML = `<div class="table-scroll"><table class="map-table"><thead><tr><th>${L2('Planta', 'Plant')}</th><th class="num">${L2('Registros', 'Records')}</th><th class="num">${L2('Cultivados', 'Cultivated')}</th><th class="num">${L2('Colección viva', 'Living collection')}</th><th>${L2('Registros cultivados', 'Cultivated records')}</th></tr></thead><tbody>` +
       st.map(s => `<tr><td>${Taxa.italic(Taxa.label(s.t), s.t.resolved && s.t.resolved.rank)}</td><td class="num">${s.n.toLocaleString('en-US')}</td><td class="num">${s.c.toLocaleString('en-US')} (${fmtPct(s.share, 0)})</td><td class="num">${s.living.toLocaleString('en-US')}</td>
-        <td><select data-cult="${s.t.id}"><option value="remove"${cultDecision(s) === 'remove' ? ' selected' : ''}>${T('quitar (estudio silvestre)', 'remove (wild study)')}</option><option value="keep"${cultDecision(s) === 'keep' ? ' selected' : ''}>${T('conservar (estudio del cultivo)', 'keep (crop study)')}</option></select></td></tr>`).join('') + '</tbody></table></div>' +
+        <td><select data-cult="${s.t.id}" aria-label="${esc(T('Qué hacer con los cultivados de ', 'What to do with the cultivated records of ') + Taxa.label(s.t))}"><option value="remove"${cultDecision(s) === 'remove' ? ' selected' : ''}>${T('quitar (estudio silvestre)', 'remove (wild study)')}</option><option value="keep"${cultDecision(s) === 'keep' ? ' selected' : ''}>${T('conservar (estudio del cultivo)', 'keep (crop study)')}</option></select></td></tr>`).join('') + '</tbody></table></div>' +
       `<p class="hint">${L2('Las colecciones vivas (jardines botánicos, bancos de germoplasma de campo) se tratan en la regla «Fósiles y colecciones vivas».', 'Living collections (botanical gardens, field genebanks) are handled by the rule "Fossils and living collections".')}</p>`;
   }
   function renderStates() {

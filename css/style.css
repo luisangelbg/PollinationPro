@@ -15,6 +15,7 @@
   --primary-rgb: 46, 125, 79; --primary: #2e7d4f; --primary-dark: #225f3b;
   --accent-rgb: 217, 154, 30; --accent: #d99a1e;
   --accent-soft: rgba(var(--accent-rgb), 0.14);
+  --accent-text: color-mix(in srgb, var(--accent) 62%, #000);   /* this amber needs a little more than the common 68 % to reach 4.5:1 */
   --gold: #e8b23a;
   --leaf-rgb: 90, 154, 58;
   --leaf: #5a9a3a;
@@ -25,6 +26,9 @@
   --soil: #8a6a4a;
   --frost: #6fb7e0;
   --heat: #d9552c;
+  /* text in illustration colours: darker in the light theme so it reaches 4.5:1 (fills keep the original) */
+  --leaf-text: color-mix(in srgb, var(--leaf) 68%, #000); --rose-text: color-mix(in srgb, var(--rose) 68%, #000);
+  --rain-text: color-mix(in srgb, var(--rain) 68%, #000); --soil-text: color-mix(in srgb, var(--soil) 68%, #000);
   /* figure colours, in the order the plots use them (the studio overrides them on svg) */
   --c1: #2e7d4f; --c2: #d99a1e; --c3: #7b5ea7; --c4: #2f6fb0; --c5: #b8452f;
   --c6: #3aa39a; --c7: #8a6a4a; --c8: #c0406a; --c9: #8a9a2a; --c10: #5f6b86;
@@ -36,6 +40,7 @@
     --accent-rgb: 240, 180, 73; --accent: #f0b449;
     --gold: #f4c65a; --leaf-rgb: 134, 197, 106; --leaf: #86c56a; --sky: #74c4f0; --rose: #d68ac4;
     --rain: #7aa2ff; --sun: #ffc457; --soil: #c7a684; --frost: #9ad4f5; --heat: #ff8a5c;
+    --leaf-text: var(--leaf); --rose-text: var(--rose); --rain-text: var(--rain); --soil-text: var(--soil);
     --c1: #70c48a; --c2: #f0b449; --c3: #b49ae0; --c4: #7aa8f0; --c5: #ff8a5c;
     --c6: #5fd0c3; --c7: #c7a684; --c8: #ef7ca3; --c9: #c4d05a; --c10: #9aa6c2;
     --heat-lo: #172116; --heat-mid: #3f7f52; --heat-hi: #dcf2d8;
@@ -46,6 +51,7 @@
   --accent-rgb: 240, 180, 73; --accent: #f0b449;
   --gold: #f4c65a; --leaf-rgb: 134, 197, 106; --leaf: #86c56a; --sky: #74c4f0; --rose: #d68ac4;
   --rain: #7aa2ff; --sun: #ffc457; --soil: #c7a684; --frost: #9ad4f5; --heat: #ff8a5c;
+  --leaf-text: var(--leaf); --rose-text: var(--rose); --rain-text: var(--rain); --soil-text: var(--soil);
   --c1: #70c48a; --c2: #f0b449; --c3: #b49ae0; --c4: #7aa8f0; --c5: #ff8a5c;
   --c6: #5fd0c3; --c7: #c7a684; --c8: #ef7ca3; --c9: #c4d05a; --c10: #9aa6c2;
   --heat-lo: #172116; --heat-mid: #3f7f52; --heat-hi: #dcf2d8;
@@ -128,7 +134,7 @@ sub, sup { line-height: 0; }
 .material .mt-s { font-size: 0.76rem; color: var(--text-muted); }
 .material .mt-k { display: inline-block; font-size: 0.64rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 1px 7px; border-radius: 999px; margin-top: 6px; background: var(--primary-soft); color: var(--primary-text); }
 .material .mt-k.g { background: var(--accent-soft); color: var(--accent-text); }
-.material .mt-k.l { background: rgba(var(--leaf-rgb), .14); color: var(--leaf); }
+.material .mt-k.l { background: rgba(var(--leaf-rgb), .14); color: var(--leaf-text); }
 
 /* ---------- Method gallery ---------- */
 .method-filter { display: flex; gap: 6px; flex-wrap: wrap; margin: 0 0 12px; }
@@ -140,10 +146,10 @@ sub, sup { line-height: 0; }
 .method-card .m-sub { font-size: 0.74rem; color: var(--text-muted); }
 .method-card .m-fam { display: inline-block; font-size: 0.62rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; padding: 1px 7px; border-radius: 999px; margin-bottom: 6px; }
 .m-fam.dat { background: var(--accent-soft); color: var(--accent-text); }
-.m-fam.esp { background: rgba(47, 95, 196, .13); color: var(--rain); }
-.m-fam.tie { background: rgba(var(--leaf-rgb), .14); color: var(--leaf); }
+.m-fam.esp { background: rgba(47, 95, 196, .13); color: var(--rain-text); }
+.m-fam.tie { background: rgba(var(--leaf-rgb), .14); color: var(--leaf-text); }
 .m-fam.amb { background: var(--primary-soft); color: var(--primary-text); }
-.m-fam.red { background: rgba(164, 80, 143, .13); color: var(--rose); }
+.m-fam.red { background: rgba(164, 80, 143, .13); color: var(--rose-text); }
 
 /* ---------- Playground (interactive labs) ---------- */
 .playground { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px 20px 20px; }
@@ -244,7 +250,7 @@ input[type=text], input[type=number], input[type=date], select, textarea {
   border: 1px solid var(--border-strong); background: var(--card-bg); color: var(--text);
 }
 input[type=color] { width: 30px; height: 26px; padding: 0; border: 1px solid var(--border-strong); border-radius: 6px; background: transparent; cursor: pointer; }
-.btn-accent { background: var(--accent); color: var(--card-bg); }
+.btn-accent { background: var(--accent); color: #14161c; }  /* amber is light in both themes: dark text reaches 4.5:1 */
 .btn-row { gap: 10px; margin: 14px 0 0; }
 .inline-label { font-size: 0.86rem; color: var(--text-muted); display: inline-flex; gap: 7px; align-items: center; flex-wrap: wrap; }
 .nc { text-transform: none; letter-spacing: 0; }
@@ -330,8 +336,9 @@ tbody tr:last-child td { border-bottom: none; }
 .field-help { font-size: 0.76rem; color: var(--text-muted); }
 textarea { resize: vertical; font-family: var(--mono); font-size: 0.82rem; }
 .checkbox-label { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; cursor: pointer; margin-bottom: 4px; }
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+.two-col { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
+.two-col > * { min-width: 0; }
+@media (max-width: 900px) { .two-col { grid-template-columns: minmax(0, 1fr); } }
 details.acc-plain { margin-top: 14px; border-top: 1px solid var(--border); padding-top: 8px; }
 details.acc-plain > summary { cursor: pointer; font-weight: 600; font-size: 0.9rem; padding: 6px 0; color: var(--primary-text); }
 .is-busy { position: relative; }
@@ -448,11 +455,11 @@ details.acc-plain > summary { cursor: pointer; font-weight: 600; font-size: 0.9r
 .preset b { font-size: 0.86rem; }
 .preset small { font-size: 0.74rem; color: var(--text-muted); line-height: 1.35; }
 .taxon-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
-.taxon-row { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; align-items: center; padding: 7px 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-soft); font-size: 0.84rem; }
+.taxon-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; align-items: center; padding: 7px 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-soft); font-size: 0.84rem; }
 .taxon-row .tx-name { font-weight: 600; }
 .taxon-row .tx-sub { font-size: 0.74rem; color: var(--text-muted); }
 .taxon-row .tx-n { font-variant-numeric: tabular-nums; font-size: 0.78rem; color: var(--text-muted); text-align: right; white-space: nowrap; }
-.taxon-row select { font-size: 0.74rem; padding: 2px 4px; max-width: 260px; margin-top: 3px; }
+.taxon-row select { font-size: 0.74rem; padding: 2px 4px; max-width: min(260px, 100%); margin-top: 3px; }
 .taxon-row .tx-x { border: 0; background: transparent; color: var(--text-muted); cursor: pointer; font-size: 1rem; }
 .taxon-row .tx-x:hover { color: var(--danger-text); }
 .taxon-row.ok { border-left: 4px solid var(--success); }

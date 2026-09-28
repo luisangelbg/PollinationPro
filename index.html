@@ -108,10 +108,10 @@
     <div class="lab on" id="labCooc">
       <p class="hint" style="margin-top:0"><span data-l="es">Un paisaje de 36 × 24 celdas con un gradiente ambiental. La planta y la abeja ocupan las celdas que les convienen; la <b>separación de nichos</b> dice qué tan distintos son sus óptimos. Luego alguien muestrea, más cerca de la carretera cuanto mayor es el <b>sesgo</b>: solo las celdas muestreadas dan registros. La prueba de Veech se corre con tres universos y se compara con la verdad.</span><span data-l="en">A landscape of 36 × 24 cells with an environmental gradient. The plant and the bee occupy the cells that suit them; the <b>niche separation</b> says how different their optima are. Then someone samples, closer to the road the higher the <b>bias</b>: only sampled cells yield records. Veech's test is run with three universes and compared with the truth.</span> <span data-help="samplingbias"></span></p>
       <div class="slider-grid">
-        <div class="slider-row"><label><span data-l="es">Separación de nichos</span><span data-l="en">Niche separation</span></label><input type="range" id="l1Sep" min="0" max="0.8" step="0.02" value="0.5"><span class="range-val" id="l1SepVal"></span></div>
-        <div class="slider-row"><label><span data-l="es">Amplitud de nicho</span><span data-l="en">Niche breadth</span></label><input type="range" id="l1Width" min="0.06" max="0.4" step="0.01" value="0.14"><span class="range-val" id="l1WidthVal"></span></div>
-        <div class="slider-row"><label><span data-l="es">Sesgo hacia la carretera</span><span data-l="en">Bias towards the road</span></label><input type="range" id="l1Bias" min="0" max="1" step="0.05" value="0.8"><span class="range-val" id="l1BiasVal"></span></div>
-        <div class="slider-row"><label><span data-l="es">Esfuerzo de fondo</span><span data-l="en">Background effort</span></label><input type="range" id="l1Effort" min="0.05" max="1" step="0.05" value="0.25"><span class="range-val" id="l1EffortVal"></span></div>
+        <div class="slider-row"><label for="l1Sep"><span data-l="es">Separación de nichos</span><span data-l="en">Niche separation</span></label><input type="range" id="l1Sep" min="0" max="0.8" step="0.02" value="0.5"><span class="range-val" id="l1SepVal"></span></div>
+        <div class="slider-row"><label for="l1Width"><span data-l="es">Amplitud de nicho</span><span data-l="en">Niche breadth</span></label><input type="range" id="l1Width" min="0.06" max="0.4" step="0.01" value="0.14"><span class="range-val" id="l1WidthVal"></span></div>
+        <div class="slider-row"><label for="l1Bias"><span data-l="es">Sesgo hacia la carretera</span><span data-l="en">Bias towards the road</span></label><input type="range" id="l1Bias" min="0" max="1" step="0.05" value="0.8"><span class="range-val" id="l1BiasVal"></span></div>
+        <div class="slider-row"><label for="l1Effort"><span data-l="es">Esfuerzo de fondo</span><span data-l="en">Background effort</span></label><input type="range" id="l1Effort" min="0.05" max="1" step="0.05" value="0.25"><span class="range-val" id="l1EffortVal"></span></div>
       </div>
       <div class="btn-row"><button class="btn btn-secondary btn-sm" id="l1New"><span data-l="es">↻ Otro paisaje</span><span data-l="en">↻ Another landscape</span></button></div>
       <div class="lab-grid">
@@ -253,12 +253,12 @@
     <div class="two-col" style="margin-top:14px">
       <div>
         <h3><span data-l="es">🌼 Plantas</span><span data-l="en">🌼 Plants</span></h3>
-        <div class="btn-row"><input type="text" id="b2PlantIn" data-es-ph="p. ej. Cucurbita moschata" data-en-ph="e.g. Cucurbita moschata" style="flex:1"><button class="btn btn-secondary btn-sm" id="b2PlantAdd"><span data-l="es">Añadir</span><span data-l="en">Add</span></button></div>
+        <div class="btn-row"><input type="text" id="b2PlantIn" data-es-aria="Nombre de la planta que se añade" data-en-aria="Name of the plant to add" data-es-ph="p. ej. Cucurbita moschata" data-en-ph="e.g. Cucurbita moschata" style="flex:1"><button class="btn btn-secondary btn-sm" id="b2PlantAdd"><span data-l="es">Añadir</span><span data-l="en">Add</span></button></div>
         <div id="b2PlantList" class="taxon-list"></div>
       </div>
       <div>
         <h3><span data-l="es">🐝 Visitantes</span><span data-l="en">🐝 Visitors</span></h3>
-        <div class="btn-row"><input type="text" id="b2PollIn" data-es-ph="p. ej. Bombus, Apis mellifera" data-en-ph="e.g. Bombus, Apis mellifera" style="flex:1"><button class="btn btn-secondary btn-sm" id="b2PollAdd"><span data-l="es">Añadir</span><span data-l="en">Add</span></button></div>
+        <div class="btn-row"><input type="text" id="b2PollIn" data-es-aria="Nombre del polinizador que se añade" data-en-aria="Name of the pollinator to add" data-es-ph="p. ej. Bombus, Apis mellifera" data-en-ph="e.g. Bombus, Apis mellifera" style="flex:1"><button class="btn btn-secondary btn-sm" id="b2PollAdd"><span data-l="es">Añadir</span><span data-l="en">Add</span></button></div>
         <div id="b2PollList" class="taxon-list"></div>
       </div>
     </div>
@@ -323,7 +323,7 @@
       <b><span data-l="es">Elige un archivo o suéltalo aquí</span><span data-l="en">Choose a file or drop it here</span></b>
       <small><span data-l="es">.csv · .txt · .tsv · .xlsx — UTF-8 o Windows-1252, cualquier separador</span><span data-l="en">.csv · .txt · .tsv · .xlsx — UTF-8 or Windows-1252, any separator</span></small></label>
     <details class="acc-plain"><summary><span data-l="es">…o pega la tabla</span><span data-l="en">…or paste the table</span></summary>
-      <textarea id="b2Paste" rows="6" data-es-ph="Copia las celdas en tu hoja de cálculo (con los títulos) y pégalas aquí" data-en-ph="Copy the cells in your spreadsheet (with the titles) and paste them here"></textarea>
+      <textarea id="b2Paste" data-es-aria="Tabla pegada desde una hoja de cálculo" data-en-aria="Table pasted from a spreadsheet" rows="6" data-es-ph="Copia las celdas en tu hoja de cálculo (con los títulos) y pégalas aquí" data-en-ph="Copy the cells in your spreadsheet (with the titles) and paste them here"></textarea>
       <div class="btn-row"><button class="btn btn-secondary btn-sm" id="b2PasteRead"><span data-l="es">Leer lo pegado</span><span data-l="en">Read what was pasted</span></button></div>
     </details>
     <div class="btn-row"><button class="btn btn-ghost btn-sm" id="b2Template"><span data-l="es">⤓ Descargar una plantilla vacía</span><span data-l="en">⤓ Download an empty template</span></button></div>
@@ -385,7 +385,7 @@
       <h2><span data-l="es">3 · Taxonomía y unidades de análisis</span><span data-l="en">3 · Taxonomy and units of analysis</span> <span data-help="squashbees"></span></h2>
       <p class="hint"><span data-l="es">Las reglas de sinónimos reúnen dos entradas de la lista bajo el nombre actual y reescriben los nombres de especie, guardando el original en cada registro. La unidad de análisis decide si los bloques siguientes comparan las entradas de tu lista (un género es una unidad) o cada especie por separado.</span><span data-l="en">Synonym rules merge two entries of the list under the current name and rewrite the species names, keeping the original in every record. The unit of analysis decides whether the following blocks compare the entries of your list (a genus is one unit) or each species separately.</span></p>
       <div id="b3Syn"></div>
-      <div class="btn-row"><input type="text" id="b3SynFrom" data-es-ph="nombre anterior" data-en-ph="former name"> → <input type="text" id="b3SynTo" data-es-ph="nombre actual" data-en-ph="current name"><button class="btn btn-ghost btn-sm" id="b3SynAdd"><span data-l="es">Añadir regla</span><span data-l="en">Add rule</span></button></div>
+      <div class="btn-row"><input type="text" id="b3SynFrom" data-es-aria="Nombre anterior del sinónimo" data-en-aria="Former name of the synonym" data-es-ph="nombre anterior" data-en-ph="former name"> → <input type="text" id="b3SynTo" data-es-aria="Nombre actual del sinónimo" data-en-aria="Current name of the synonym" data-es-ph="nombre actual" data-en-ph="current name"><button class="btn btn-ghost btn-sm" id="b3SynAdd"><span data-l="es">Añadir regla</span><span data-l="en">Add rule</span></button></div>
       <div class="form-grid">
         <div class="field"><label data-es="Unidad de análisis" data-en="Unit of analysis">Unidad de análisis</label><select id="b3Unit"><option value="entry" data-es="Entradas de la lista (un género = una unidad)" data-en="List entries (a genus = one unit)">Entradas de la lista</option><option value="species" data-es="Especies (cada especie por separado)" data-en="Species (each species apart)">Especies</option></select></div>
         <div class="field wide"><label class="checkbox-label"><input type="checkbox" id="b3Infra"> <span data-l="es">Separar subespecies y variedades como unidades propias (p. ej. una subespecie silvestre de la cultivada)</span><span data-l="en">Split subspecies and varieties as units of their own (e.g. a wild subspecies from the cultivated one)</span></label></div>
@@ -625,7 +625,7 @@
   <div id="b8Body" style="display:none">
     <div class="card">
       <h2><span data-l="es">1 · Los modelos</span><span data-l="en">1 · The models</span> <span data-help="sdmmodels"></span></h2>
-      <p class="hint"><span data-l="es">Variables: <b id="b8Layers"></b> (las marcadas en el Bloque 7).</span><span data-l="en">Variables: <b id="b8Layers"></b> (those ticked in Block 7).</span></p>
+      <p class="hint"><span data-l="es">Variables: <b id="b8Layers"></b> (las marcadas en el Bloque 7).</span><span data-l="en">Variables: <b id="b8LayersEn"></b> (those ticked in Block 7).</span></p>
       <div class="pg-controls">
         <label class="inline-label"><span data-l="es">Planta</span><span data-l="en">Plant</span> <select id="b8Plant"></select></label>
         <label class="inline-label"><span data-l="es">Modelo</span><span data-l="en">Model</span> <select id="b8Kind"><option value="logistic" data-es="Logística con fondo (lineal + cuadrática)" data-en="Background logistic (linear + quadratic)">Logística con fondo</option><option value="mahalanobis" data-es="Distancia de Mahalanobis" data-en="Mahalanobis distance">Distancia de Mahalanobis</option><option value="envelope" data-es="Envolvente bioclimática" data-en="Bioclimatic envelope">Envolvente bioclimática</option></select></label>

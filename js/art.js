@@ -310,10 +310,12 @@
     s += txt(120, 10, T('ACP del ambiente', 'PCA of the environment'), V('text-muted'), 7.5, 'middle', 'y="108"');
     return card(s);
   }
+  let sdmClipN = 0;
   function bSdm() {
     let s = '';
+    const clipId = 'bsdmClip' + (++sdmClipN);   /* unique per drawing: the art appears more than once */
     const mx = mexicoPath(10, 8, 150, 96);
-    if (mx.d) s += `<clipPath id="bsdmClip"><path d="${mx.d}"/></clipPath>`;
+    if (mx.d) s += `<clipPath id="${clipId}"><path d="${mx.d}"/></clipPath>`;
     if (mx.d) {
       /* suitability bands clipped to the country */
       let bands = '';
@@ -321,7 +323,7 @@
       let bands2 = '';
       for (let k = 0; k < 7; k++) bands2 += `<ellipse cx="${f1(mx.X(-101))}" cy="${f1(mx.Y(21))}" rx="${f1(60 - k * 8)}" ry="${f1(30 - k * 4)}" fill="${V('accent')}" opacity="0.12"/>`;
       s += fillPath(mx.d, V('card-bg'), `stroke="${V('border-strong')}" stroke-width="0.5"`);
-      s += `<g clip-path="url(#bsdmClip)">${bands}${bands2}</g>`;
+      s += `<g clip-path="url(#${clipId})">${bands}${bands2}</g>`;
     }
     s += rect(170, 22, 10, 10, V('primary'), 'opacity="0.6"') + txt(184, 30, T('solo planta', 'plant only'), V('text-muted'), 7.5);
     s += rect(170, 42, 10, 10, V('gold'), 'opacity="0.8"') + txt(184, 50, T('ambos', 'both'), V('text-muted'), 7.5);

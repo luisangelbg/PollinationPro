@@ -222,7 +222,7 @@ const B8 = {};
     const checked = new Set(els('#b8Visitors input:checked').map(i => i.value));
     el('b8Visitors').innerHTML = visitors.map(u => `<label style="margin-right:12px"><input type="checkbox" value="${esc(u)}"${checked.size ? (checked.has(u) ? ' checked' : '') : ' checked'}> <i>${esc(u)}</i></label>`).join('');
     el('b8Kind').value = opt.kind; el('b8Rule').value = opt.rule; el('b8BgMode').value = opt.bgMode;
-    el('b8Layers').textContent = Ls.map(L => L.label).join(', ');
+    el('b8Layers').textContent = el('b8LayersEn').textContent = Ls.map(L => L.label).join(', ');
   }
   function wire() {
     if (!el('panel-8')) return;
