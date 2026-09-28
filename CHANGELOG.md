@@ -1,5 +1,13 @@
 # Cambios · Changelog
 
+## 1.2.1 — 27 de septiembre de 2026
+
+- El DOI de Zenodo (de concepto: 10.5281/zenodo.23004694, que lleva siempre a
+  la versión más reciente) en la cita de la portada, en el informe, en
+  `README.md`, `CITATION.cff`, `codemeta.json` y en el manual de usuario.
+- Publicada en GitHub (`luisangelbg/PollinationPro`, con GitHub Pages) y en la
+  LABG Suite.
+
 ## 1.2.0 — 27 de septiembre de 2026
 
 - **Capas ambientales de práctica** (`Examples.layers` en `js/examples.js`):

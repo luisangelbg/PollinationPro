@@ -1,5 +1,7 @@
 # PollinationPro
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23004694.svg)](https://doi.org/10.5281/zenodo.23004694)
+
 **Plantas, polinizadores y su solapamiento · Plants, pollinators and their overlap**
 
 Plataforma en el navegador para llevar un estudio de plantas y sus visitantes
@@ -15,6 +17,8 @@ native plant and any group of visitors. Spanish and English, light and dark
 theme, nothing to install and no third-party libraries.
 
 ## Cómo abrirla · How to open it
+
+En línea: https://luisangelbg.github.io/PollinationPro/ · On line.
 
 Doble clic en `index.html`. Solo la descarga de GBIF y la búsqueda de
 interacciones publicadas necesitan internet. Para abrirla desde otro equipo de
@@ -83,7 +87,8 @@ geográficos son de Natural Earth (dominio público). Ver `PROCEDENCIA.md`.
 
 Barrera-Guzmán, L.Á. (2026). PollinationPro: a browser-based platform for
 analysing plants, pollinators and their overlap with occurrence data
-(Version 1.2.0) [Computer software].
+(Version 1.2.1) [Computer software]. Zenodo.
+https://doi.org/10.5281/zenodo.23004694
 
 ## Licencia · Licence
 
