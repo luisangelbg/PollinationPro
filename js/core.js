@@ -81,6 +81,8 @@ function showMessage(container, type, text) {
   const div = mk('div', { class: 'msg msg-' + type }, text);
   /* errors and warnings are announced to screen readers */
   if (window.LABG) LABG.messageRole(div, type);
+  /* an error inside an open waiting window ends it without the tick */
+  if (type === 'error' && poWork.current) poWork.current._failed = true;
   container.appendChild(div);
   return div;
 }
@@ -302,6 +304,15 @@ function refreshStepFooters() {
 document.addEventListener('DOMContentLoaded', () => {
   if (!window.LABG) return;
   LABG.theme.init('pollinationpro:theme');
+  /* the waiting window: a sprouting plant and a few true tips of the app */
+  if (LABG.work) {
+    LABG.work.scene = 'grow';
+    LABG.work.tips = [
+      ['Las capas de práctica del Bloque 7 son ficticias: sirven para aprender el flujo, no para concluir ni publicar.', 'The Block 7 practice layers are fictional: they are for learning the workflow, not for drawing conclusions or publishing.'],
+      ['La especialización H₂′ del Bloque 9 necesita conteos de visitas propios; los registros publicados cuentan 1 cada uno.', 'The Block 9 specialisation H₂′ needs your own visit counts; published records count 1 each.'],
+      ['Si detienes la descarga de GBIF en el Bloque 2, se conservan los registros que ya llegaron.', 'If you stop the GBIF download in Block 2, the records that already arrived are kept.'],
+    ];
+  }
   const hb = el('helpBtn');
   if (hb) hb.addEventListener('click', () => LABG.showShortcuts());
   LABG.shortcuts([]);
@@ -461,7 +472,27 @@ const Store = {
   },
 };
 
+/* ---------------- waiting window ----------------
+   A long analysis opens the common LABG window (it only shows after 300 ms, so
+   a quick one never flashes). poAfterPaint lets the window paint, runs the
+   unchanged body and closes it: with the tick, or quietly if it failed. The
+   tests load core.js without labg-core.js: everything checks window.LABG. */
+function poWork(es, en) { if (!window.LABG || !LABG.work) return null; const w = LABG.work({ title: LABG.t(es, en || es), delay: 300 }); poWork.current = w; return w; }
+poWork.current = null;
+function poAfterPaint(f, w) {
+  const done = () => { if (poWork.current === w) poWork.current = null; if (w && !w.ended) { if (w._failed) w.close(); else w.done(); } };
+  return (window.LABG ? LABG.nextPaint() : new Promise(r => setTimeout(r, 30))).then(f).then(done, e => { console.error(e); if (w) w._failed = true; done(); });
+}
+/* an export button: dots while it works and a tick at the end (the plain
+   pulse when the common core is missing) */
+function poBusy(btn, task) {
+  if (window.LABG && LABG.busyButton) return LABG.busyButton(btn, task).catch(e => { if (e) console.error(e); });
+  btn.disabled = true; btn.classList.add('is-busy');
+  return Promise.resolve().then(task).catch(e => { if (e) console.error(e); }).then(() => { btn.disabled = false; btn.classList.remove('is-busy'); });
+}
+
 Object.assign(window, {
+  poWork, poAfterPaint, poBusy,
   STEPS, el, els, mk, esc, L2, keepGreek, svgEl, showMessage, clearMessages, notice,
   fmtNum, fmtFixed, fmtPct, plural, parseNum,
   MONTHS, MONTHS_SHORT, monthName, isLeap, daysInMonth, daysInYear, doy, fromDoy, dayNumber, fromDayNumber, addDays, parseISO, toISO, fmtDate, fmtDoy,

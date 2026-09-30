@@ -28,9 +28,12 @@ const B7 = {};
     if (!state.rasters) state.rasters = { layers: [], box };
     clearMessages('b7LoadMsg');
     const msg = showMessage('b7LoadMsg', 'info', '…');
-    let ok = 0;
+    let ok = 0, k = 0;
+    /* reading and cropping large rasters takes a while: the common window counts the files */
+    const w = poWork('Leyendo las capas', 'Reading the layers');
     for (const f of list.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))) {
       msg.innerHTML = L2(`Leyendo <b>${esc(f.name)}</b>…`, `Reading <b>${esc(f.name)}</b>…`);
+      if (w) w.update(k++ / list.length, f.name);
       await new Promise(r => setTimeout(r, 0));
       try {
         let L = await Raster.readFile(f, state.rasters.layers.length ? Raster.bboxOf(state.rasters.layers[0]) : box);
@@ -46,6 +49,7 @@ const B7 = {};
       }
     }
     msg.remove();
+    if (w) { if (poWork.current === w) poWork.current = null; if (!w.ended) { if (w._failed || !ok) w.close(); else w.done(); } }
     if (ok) showMessage('b7LoadMsg', 'success', L2(`${ok} capas leídas y recortadas al área de estudio (±${opt.margin}° alrededor de los registros).`, `${ok} layers read and cropped to the study area (±${opt.margin}° around the records).`));
     state.niche = null; bgCells = null; S = null;
     render();
@@ -134,6 +138,7 @@ const B7 = {};
       { key: 'I', label: T('I de Warren', 'Warren\'s I'), num: true, fmt: v => fmtFixed(v, 3) },
     ], matrix.slice().sort((a, b) => b.D - a.D));
     runPair();
+    return true;
   }
   function runPair() {
     const pick = u => occAll.map((o, i) => [o, S.sOcc[i]]).filter(([o]) => o.unit === u).map(([, s]) => s);
@@ -270,9 +275,10 @@ const B7 = {};
     el('b7Buf').addEventListener('change', () => { opt.bufferKm = Math.max(10, parseNum(el('b7Buf').value) || 200); keep(); });
     el('b7Rep').addEventListener('change', () => { opt.nRep = +el('b7Rep').value; keep(); });
     el('b7Corr2').addEventListener('change', () => { opt.corrected = el('b7Corr2').value === '1'; keep(); });
-    el('b7Run').addEventListener('click', () => { const b = el('b7Run'); b.disabled = true; setTimeout(() => { try { run(); } finally { b.disabled = false; } }, 30); });
-    el('b7Plant').addEventListener('change', () => { sel.plant = el('b7Plant').value; runPair(); });
-    el('b7Visitor').addEventListener('change', () => { sel.visitor = el('b7Visitor').value; runPair(); });
+    el('b7Run').addEventListener('click', () => { const b = el('b7Run'); b.disabled = true; const w = poWork('Comparando los nichos', 'Comparing the niches'); poAfterPaint(() => { try { if (!run() && w) w._failed = true; } finally { b.disabled = false; } }, w); });
+    /* changing the pair runs its equivalence and similarity tests again */
+    el('b7Plant').addEventListener('change', () => { sel.plant = el('b7Plant').value; const w = poWork('Comparando el par', 'Comparing the pair'); poAfterPaint(() => { runPair(); }, w); });
+    el('b7Visitor').addEventListener('change', () => { sel.visitor = el('b7Visitor').value; const w = poWork('Comparando el par', 'Comparing the pair'); poAfterPaint(() => { runPair(); }, w); });
     el('b7ElevFill').addEventListener('click', fillElevation);
     el('b7Csv').addEventListener('click', () => {
       if (!occAll) return;

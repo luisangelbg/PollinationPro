@@ -45,7 +45,10 @@ const B8 = {};
   }
 
   /* ---------------- running ---------------- */
-  function run() {
+  /* `w` (optional) is the waiting window: between one unit and the next the
+     page may repaint; every model keeps its own seed, so the result is the
+     same as in one go */
+  async function run(w) {
     clearMessages('b8Msg');
     const Ls = layers();
     if (Ls.length < 2) { showMessage('b8Msg', 'warning', L2('Carga al menos dos capas en el Bloque 7.', 'Load at least two layers in Block 7.')); return; }
@@ -54,7 +57,8 @@ const B8 = {};
     const bg = backgroundRows(Ls);
     const units = [plant].concat(visitors);
     const out = { plant, visitors, kind: opt.kind, rule: opt.rule, units: {}, nBg: bg.length, layers: Ls.map(L => L.label) };
-    for (const u of units) {
+    for (const [k, u] of units.entries()) {
+      if (w && window.LABG) { w.update(k / units.length, T(`Modelo ${k + 1} de ${units.length}: ${u}`, `Model ${k + 1} of ${units.length}: ${u}`)); await LABG.nextPaint(); }
       const pres = presencesOf(u, Ls);
       if (pres.length < 8) { showMessage('b8Msg', 'warning', L2(`<i>${esc(u)}</i> tiene ${pres.length} celdas con registros: hacen falta al menos 8 para modelar.`, `<i>${esc(u)}</i> has ${pres.length} cells with records: at least 8 are needed to model.`)); continue; }
       const cv = SDM.crossValidate(opt.kind, pres, bg, opt.folds, opt.rule, 7);
@@ -74,6 +78,7 @@ const B8 = {};
       units: Object.fromEntries(Object.entries(out.units).map(([u, x]) => [u, { n: x.n, auc: x.cv.auc, tss: x.cv.tss, omission: x.cv.omission, aucTrain: x.aucTrain, threshold: x.t }])),
       area: out.mm.area };
     render();
+    return true;
   }
 
   /* ---------------- drawing a raster inside an SVG ---------------- */
@@ -230,9 +235,9 @@ const B8 = {};
     el('b8Kind').addEventListener('change', () => { opt.kind = el('b8Kind').value; keep(); });
     el('b8Rule').addEventListener('change', () => { opt.rule = el('b8Rule').value; keep(); });
     el('b8BgMode').addEventListener('change', () => { opt.bgMode = el('b8BgMode').value; keep(); });
-    el('b8Run').addEventListener('click', () => { const b = el('b8Run'); b.disabled = true; el('b8Msg').innerHTML = `<div class="msg msg-info">${L2('Ajustando modelos…', 'Fitting models…')}</div>`; setTimeout(() => { try { run(); } finally { b.disabled = false; } }, 30); });
-    el('b8Fut').addEventListener('change', e => { loadFuture(e.target.files); e.target.value = ''; });
-    el('b8FutPractice').addEventListener('click', () => { if (!state.rasters || !state.rasters.practice) { showMessage('b8FutMsg', 'warning', L2('El futuro de práctica solo acompaña a las capas de práctica del Bloque 7.', 'The practice future only goes with the practice layers of Block 7.')); return; } loadFuture(Examples.layers('future').map(f => new File([f.text], f.name, { type: 'text/plain' }))); });
+    el('b8Run').addEventListener('click', () => { const b = el('b8Run'); b.disabled = true; el('b8Msg').innerHTML = `<div class="msg msg-info">${L2('Ajustando modelos…', 'Fitting models…')}</div>`; const w = poWork('Ajustando los modelos', 'Fitting the models'); poAfterPaint(async () => { try { if (!(await run(w)) && w) w._failed = true; } finally { b.disabled = false; } }, w); });
+    el('b8Fut').addEventListener('change', e => { const files = [...e.target.files]; const w = poWork('Proyectando al futuro', 'Projecting to the future'); poAfterPaint(() => loadFuture(files), w); e.target.value = ''; });
+    el('b8FutPractice').addEventListener('click', () => { if (!state.rasters || !state.rasters.practice) { showMessage('b8FutMsg', 'warning', L2('El futuro de práctica solo acompaña a las capas de práctica del Bloque 7.', 'The practice future only goes with the practice layers of Block 7.')); return; } const w = poWork('Proyectando al futuro', 'Projecting to the future'); poAfterPaint(() => loadFuture(Examples.layers('future').map(f => new File([f.text], f.name, { type: 'text/plain' }))), w); });
     el('b8Csv').addEventListener('click', () => {
       if (!res) return;
       const L0 = layers()[0], rows = [];

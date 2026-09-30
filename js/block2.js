@@ -177,7 +177,7 @@ const B2 = {};
 
   /* ---------------- GBIF: count and download ---------------- */
   let abort = null;
-  function progRow(t) { return `<div class="prog" id="prog_${t.id}"><div>${TX().italic(TX().label(t), t.resolved && t.resolved.rank)}</div><div class="bar"><i></i></div><div class="pl">…</div></div>`; }
+  function progRow(t) { return `<div class="prog" id="prog_${t.id}"><div>${TX().italic(TX().label(t), t.resolved && t.resolved.rank)}</div><div class="bar"><i></i></div><div class="pl">…</div><span class="lw-imark" aria-hidden="true"><svg viewBox="0 0 52 52"><circle class="lw-disc" cx="26" cy="26" r="26"/><path class="lw-check" d="M14.5 27.5l8 8L38 19"/><path class="lw-cross" d="M18 18L34 34M34 18L18 34"/></svg></span></div>`; }
   function setProg(t, frac, text, cls) {
     const row = el('prog_' + t.id); if (!row) return;
     row.querySelector('i').style.width = Math.round(100 * Math.min(1, frac || 0)) + '%';
@@ -218,7 +218,7 @@ const B2 = {};
         replaceGbif(t, res.records);
         state.fetchMeta[t.id] = { total: res.total, fetched: res.records.length, truncated: res.truncated, filters: f, date: new Date().toISOString().slice(0, 10) };
         t.count = res.total;
-        setProg(t, 1, `${res.records.length.toLocaleString('en-US')}${res.truncated ? T(` de ${res.total.toLocaleString('en-US')}`, ` of ${res.total.toLocaleString('en-US')}`) : ''} ✓`, 'done');
+        setProg(t, 1, `${res.records.length.toLocaleString('en-US')}${res.truncated ? T(` de ${res.total.toLocaleString('en-US')}`, ` of ${res.total.toLocaleString('en-US')}`) : ''}`, 'done');
         got += res.records.length;
       } catch (e) {
         failed++;

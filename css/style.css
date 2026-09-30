@@ -475,6 +475,15 @@ details.acc-plain > summary { cursor: pointer; font-weight: 600; font-size: 0.9r
 .prog.done .bar i { background: var(--success); }
 .prog.fail .bar i { background: var(--danger); }
 .prog .pl { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+/* each finished bar gets the common mark: a tick in green, a cross in red */
+.prog { grid-template-columns: minmax(140px, 220px) 1fr minmax(120px, auto) 18px; }
+.prog .lw-imark { width: 18px; height: 18px; }
+.prog.done .lw-imark, .prog.fail .lw-imark { opacity: 1; transform: none; }
+.prog.done .lw-check { stroke-dashoffset: 0; }
+.prog.done .pl { color: var(--success-text, var(--success)); font-weight: 600; }
+.prog.fail .lw-disc { fill: var(--danger); }
+.prog.fail .lw-check { display: none; }
+.prog.fail .lw-cross { display: inline; }
 .map-table { font-size: 0.8rem; }
 .map-table select { font-size: 0.78rem; padding: 3px 5px; max-width: 220px; }
 .map-table td.ex { color: var(--text-muted); max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

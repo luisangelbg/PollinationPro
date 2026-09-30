@@ -63,18 +63,27 @@ const B9 = {};
   function runNulls() {
     if (!N || !N.full) return;
     const b = el('b9Null'); b.disabled = true;
-    setTimeout(() => {
+    /* each test keeps its own seed (11, 12, 13): letting the page repaint
+       between one and the next gives the same numbers as in one go */
+    const w = poWork('Modelos nulos de la red', 'Network null models');
+    const step = async (f, es, en) => { if (w && window.LABG) { w.update(f, T(es, en)); await LABG.nextPaint(); } };
+    poAfterPaint(async () => {
       try {
         const n = opt.nNull;
-        N.nulls = {
-          nodf: Net2.nullTest(N.A, A => Net2.nodf(A).nodf, 'curveball', n, 11),
-          h2: N.quantitative ? Net2.nullTest(N.A, A => Net2.h2prime(A).H2p, 'pairing', n, 12) : null,
-          q: Net2.nullTest(N.A, A => Net2.modules(A, { restarts: 3, seed: 1 }).Q, N.quantitative ? 'pairing' : 'curveball', Math.min(n, 49), 13),
-        };
+        const Nn = N;
+        await step(0, `Anidamiento NODF · ${n} réplicas`, `Nestedness NODF · ${n} replicates`);
+        const nodf = Net2.nullTest(Nn.A, A => Net2.nodf(A).nodf, 'curveball', n, 11);
+        await step(1 / 3, Nn.quantitative ? `Especialización H₂′ · ${n} réplicas` : 'Especialización H₂′', Nn.quantitative ? `Specialisation H₂′ · ${n} replicates` : 'Specialisation H₂′');
+        const h2 = Nn.quantitative ? Net2.nullTest(Nn.A, A => Net2.h2prime(A).H2p, 'pairing', n, 12) : null;
+        await step(2 / 3, `Modularidad Q · ${Math.min(n, 49)} réplicas`, `Modularity Q · ${Math.min(n, 49)} replicates`);
+        const q = Net2.nullTest(Nn.A, A => Net2.modules(A, { restarts: 3, seed: 1 }).Q, Nn.quantitative ? 'pairing' : 'curveball', Math.min(n, 49), 13);
+        /* the network may have been rebuilt meanwhile: its old tests do not apply */
+        if (N !== Nn) { if (w) w._failed = true; return; }
+        N.nulls = { nodf, h2, q };
         state.network.nulls = { nodf: slim(N.nulls.nodf), h2: N.nulls.h2 ? slim(N.nulls.h2) : null, q: slim(N.nulls.q), n };
         renderTiles();
-      } finally { b.disabled = false; }
-    }, 30);
+      } finally { b.disabled = !(N && N.full); }
+    }, w);
   }
   const slim = t => ({ obs: t.obs, mean: t.mean, sd: t.sd, z: t.z, pGreater: t.pGreater, pLess: t.pLess });
 
