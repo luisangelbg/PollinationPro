@@ -522,24 +522,3 @@ details.acc-plain > summary { cursor: pointer; font-weight: 600; font-size: 0.9r
 .ms-pane .map-table input[type=color] { width: 36px; height: 22px; padding: 0; }
 @media (max-width: 1000px) { .ms-wrap { grid-template-columns: 1fr; } .ms-view { position: static; } }
 
-/* ---------- the editor of each figure ---------- */
-.fig-ed { position: absolute; top: 5px; right: 34px; width: 24px; height: 24px; border-radius: 7px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-muted); font: inherit; font-size: 0.82rem; line-height: 1; cursor: pointer; opacity: 0; transition: opacity .15s; z-index: 2; }
-.pg-pane:hover .fig-ed, [data-fig]:hover .fig-ed, .fig-ed:focus-visible { opacity: 1; }
-.fig-ed:hover { color: var(--primary-text); border-color: var(--primary); }
-.fe-panel { position: absolute; z-index: 90; width: 390px; max-height: 78vh; overflow-y: auto; }
-.fe-tabs { display: flex; gap: 4px; margin: 6px 0 10px; }
-.fe-tab { font: inherit; font-size: 0.76rem; border: 1px solid var(--border); background: var(--bg-soft); color: var(--text-muted); padding: 4px 10px; border-radius: 8px; cursor: pointer; }
-.fe-tab.on { background: var(--primary-soft); color: var(--primary-text); border-color: var(--primary); font-weight: 700; }
-.fe-grid { display: flex; flex-direction: column; gap: 8px; }
-.fe-row { display: grid !important; grid-template-columns: 150px 1fr auto; align-items: center; gap: 6px; font-size: 0.76rem; }
-.fe-row select { font-size: 0.76rem; }
-.fe-row b { font-size: 0.72rem; color: var(--text-muted); min-width: 38px; text-align: right; }
-.fe-texts { display: flex; flex-direction: column; gap: 5px; }
-.fe-t { display: grid; grid-template-columns: 1fr 70px 24px 24px 30px 24px; gap: 4px; align-items: center; }
-.fe-t input[type=text] { font-size: 0.76rem; padding: 3px 6px; min-width: 0; }
-.fe-t input[type=color] { width: 30px; height: 22px; padding: 0; }
-.fe-b { font: inherit; font-size: 0.74rem; border: 1px solid var(--border); background: var(--card-bg); border-radius: 6px; height: 22px; cursor: pointer; color: var(--text); padding: 0; }
-.fe-b.on { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
-.fe-colors { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-.fe-c { display: flex; align-items: center; gap: 6px; font-size: 0.74rem; color: var(--text-muted); }
-.fe-c input[type=color] { width: 40px; height: 24px; padding: 0; }
