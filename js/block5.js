@@ -69,6 +69,8 @@ const B5 = {};
     svg.style.maxWidth = Math.round(Math.max(W, 520) * 1.25) + 'px';
     Plot.clear(svg);
     svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    /* the matrix of pairs is the plot area, for the figure studio */
+    svg.setAttribute('data-plot', [left, top, cols.length * cw, rows.length * ch].map(v => +v.toFixed(2)).join(' '));
     const add = (tag, a, text, parent) => { const n = svgEl(tag, a, text); (parent || svg).appendChild(n); return n; };
     cols.forEach((c, j) => {
       const x = left + j * cw + cw / 2;
@@ -87,13 +89,14 @@ const B5 = {};
       if (v === 'positive' || v === 'negative') add('rect', { x: x + 3, y: y + 3, width: cw - 6, height: ch - 6, rx: 3, fill: 'none', stroke: V('text'), 'stroke-width': 1.2, 'stroke-dasharray': '3 2' }, null, g);
       add('text', { x: x + cw / 2, y: y + ch / 2 + 4, 'font-size': 11, 'text-anchor': 'middle', class: 'art-txt', 'font-weight': v === 'positive' || v === 'negative' ? 700 : 400 }, v === 'unclassified' ? '?' : (isFinite(p.ses) ? fmtFixed(p.ses, 1) : ''), g);
     });
-    /* legend */
+    /* legend: one group (data-role="legend"), each entry (swatch and label) with its data-li */
     const ly = H - 22;
+    const lg = add('g', { 'data-role': 'legend' });
     [[V('primary'), T('agregación (EEF > 0)', 'aggregation (SES > 0)')], [V('rose'), T('segregación (EEF < 0)', 'segregation (SES < 0)')], [V('bg-soft'), T('sin clasificar', 'unclassified')]].forEach(([c, lab], k) => {
-      add('rect', { x: 12 + k * 190, y: ly - 9, width: 12, height: 12, rx: 3, fill: c, stroke: V('border') });
-      add('text', { x: 30 + k * 190, y: ly + 1, 'font-size': 10, class: 'art-mut' }, lab);
+      add('rect', { x: 12 + k * 190, y: ly - 9, width: 12, height: 12, rx: 3, fill: c, stroke: V('border'), 'data-li': k }, null, lg);
+      add('text', { x: 30 + k * 190, y: ly + 1, 'font-size': 10, class: 'art-mut', 'data-li': k }, lab, lg);
     });
-    add('text', { x: 12, y: H - 5, 'font-size': 9.5, class: 'art-mut' }, T('número = EEF; intensidad del color = |EEF|; borde punteado = significativo; ? = sin clasificar', 'number = SES; colour intensity = |SES|; dotted border = significant; ? = unclassified'));
+    add('text', { x: 12, y: H - 5, 'font-size': 9.5, class: 'art-mut' }, T('número = EEF; intensidad del color = |EEF|; borde punteado = significativo; ? = sin clasificar', 'number = SES; colour intensity = |SES|; dotted border = significant; ? = unclassified'), lg);
   }
 
   /* ---------------- the table of pairs ---------------- */

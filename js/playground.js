@@ -122,6 +122,8 @@
     const W = 420, H = 290, m = 6, cw = (W - 2 * m) / NX, ch = (H - 2 * m - 20) / NY;
     Plot.clear(svg);
     svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    /* the grid of cells is the plot area, for the figure studio */
+    svg.setAttribute('data-plot', [m, m, NX * cw, NY * ch].map(v => +v.toFixed(2)).join(' '));
     const g = svgEl('g');
     L.cells.forEach(c => {
       const x = m + c.i * cw, y = m + (NY - 1 - c.j) * ch;
@@ -140,13 +142,13 @@
     let d = '';
     for (let i = 0; i <= NX; i += 0.5) { const x = m + i * cw, y = m + (NY - 1 - L.roadY(i)) * ch + ch / 2; d += (i ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1); }
     svg.appendChild(svgEl('path', { d, stroke: 'var(--text-muted)', 'stroke-width': 3.2, fill: 'none', opacity: 0.35, 'stroke-linecap': 'round' }));
-    /* legend */
-    const ly = H - 8, lg = svgEl('g');
-    const item = (x, shape, lab) => { lg.appendChild(shape(x)); lg.appendChild(svgEl('text', { x: x + 8, y: ly + 3, 'font-size': 9, class: 'art-mut' }, lab)); };
-    item(10, x => svgEl('circle', { cx: x, cy: ly, r: 3, fill: V('primary') }), T('registro de planta', 'plant record'));
-    item(116, x => svgEl('circle', { cx: x, cy: ly, r: 3, fill: V('accent') }), T('registro de abeja', 'bee record'));
-    item(214, x => svgEl('rect', { x: x - 4, y: ly - 4, width: 8, height: 8, fill: V('gold'), opacity: 0.6 }), T('compartida', 'shared'));
-    item(292, x => svgEl('circle', { cx: x, cy: ly, r: 2.5, fill: 'none', stroke: V('text-muted') }), T('presente sin registro', 'present, unrecorded'));
+    /* legend: one group (data-role="legend"), each entry (mark and label) with its data-li, for the figure studio */
+    const ly = H - 8, lg = svgEl('g', { 'data-role': 'legend' });
+    const item = (x, shape, lab, k) => { lg.appendChild(shape(x)).setAttribute('data-li', k); lg.appendChild(svgEl('text', { x: x + 8, y: ly + 3, 'font-size': 9, class: 'art-mut', 'data-li': k }, lab)); };
+    item(10, x => svgEl('circle', { cx: x, cy: ly, r: 3, fill: V('primary') }), T('registro de planta', 'plant record'), 0);
+    item(116, x => svgEl('circle', { cx: x, cy: ly, r: 3, fill: V('accent') }), T('registro de abeja', 'bee record'), 1);
+    item(214, x => svgEl('rect', { x: x - 4, y: ly - 4, width: 8, height: 8, fill: V('gold'), opacity: 0.6 }), T('compartida', 'shared'), 2);
+    item(292, x => svgEl('circle', { cx: x, cy: ly, r: 2.5, fill: 'none', stroke: V('text-muted') }), T('presente sin registro', 'present, unrecorded'), 3);
     svg.appendChild(lg);
   }
   /* the hypergeometric distributions of two universes, with the observed value */
@@ -206,6 +208,8 @@
     const W = 420, H = 250, cx = 140, cy = 128, R = 92;
     Plot.clear(svg);
     svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    /* the square of the clock is the plot area, for the figure studio */
+    svg.setAttribute('data-plot', `${cx - R} ${cy - R} ${2 * R} ${2 * R}`);
     const g = svgEl('g');
     g.appendChild(svgEl('circle', { cx, cy, r: R, fill: 'none', stroke: 'var(--border-strong)' }));
     for (let m = 0; m < 12; m++) {
@@ -225,15 +229,17 @@
     g.appendChild(svgEl('circle', { cx, cy, r: 2.5, fill: 'var(--text)' }));
     /* the legend and the two mean dates, to the right of the clock */
     const lx = 272;
+    /* in one group (data-role="legend"), each entry (dot and its three lines) with its data-li, for the figure studio */
+    const lg = g.appendChild(svgEl('g', { 'data-role': 'legend' }));
     [[mP, 'primary', T('floración', 'flowering')], [mB, 'accent', T('vuelo', 'flight')]].forEach(([mm, tone, lab], k) => {
       const y = 70 + k * 58;
-      g.appendChild(svgEl('circle', { cx: lx, cy: y - 3, r: 4, fill: V(tone) }));
-      g.appendChild(svgEl('text', { x: lx + 10, y, 'font-size': 11, class: 'art-txt', 'font-weight': 700 }, lab));
-      g.appendChild(svgEl('text', { x: lx + 10, y: y + 15, 'font-size': 10, class: 'art-mut' }, `${T('media', 'mean')}: ${fmtDoy(mm.meanDoy)}`));
-      g.appendChild(svgEl('text', { x: lx + 10, y: y + 29, 'font-size': 10, class: 'art-mut' }, `R̄ = ${fmtFixed(mm.R, 2)}`));
+      lg.appendChild(svgEl('circle', { cx: lx, cy: y - 3, r: 4, fill: V(tone), 'data-li': k }));
+      lg.appendChild(svgEl('text', { x: lx + 10, y, 'font-size': 11, class: 'art-txt', 'font-weight': 700, 'data-li': k }, lab));
+      lg.appendChild(svgEl('text', { x: lx + 10, y: y + 15, 'font-size': 10, class: 'art-mut', 'data-li': k }, `${T('media', 'mean')}: ${fmtDoy(mm.meanDoy)}`));
+      lg.appendChild(svgEl('text', { x: lx + 10, y: y + 29, 'font-size': 10, class: 'art-mut', 'data-li': k }, `R̄ = ${fmtFixed(mm.R, 2)}`));
     });
-    g.appendChild(svgEl('text', { x: lx - 6, y: 200, 'font-size': 9, class: 'art-mut' }, T('flecha: vector medio', 'arrow: mean vector')));
-    g.appendChild(svgEl('text', { x: lx - 6, y: 213, 'font-size': 9, class: 'art-mut' }, T('(su largo es R̄)', '(its length is R̄)')));
+    lg.appendChild(svgEl('text', { x: lx - 6, y: 200, 'font-size': 9, class: 'art-mut' }, T('flecha: vector medio', 'arrow: mean vector')));
+    lg.appendChild(svgEl('text', { x: lx - 6, y: 213, 'font-size': 9, class: 'art-mut' }, T('(su largo es R̄)', '(its length is R̄)')));
     svg.appendChild(g);
   }
   function drawMonths(hP, hB) {

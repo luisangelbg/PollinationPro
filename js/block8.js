@@ -120,8 +120,8 @@ const B8 = {};
     placeImage(svg, pr, L, href);
     outlines(svg, pr, box);
     x.pres.length && state.clean.records.filter(r => r.unit === u).slice(0, 3000).forEach(r => svg.appendChild(svgEl('circle', { cx: pr.X(r.lon).toFixed(1), cy: pr.Y(r.lat).toFixed(1), r: 1.3, fill: V('text'), opacity: 0.55 })));
-    /* the colour ramp */
-    const g = svgEl('g');
+    /* the colour ramp (a key without entries: data-legend, for the figure studio) */
+    const g = svgEl('g', { 'data-legend': 'colorbar' });
     for (let k = 0; k < 20; k++) g.appendChild(svgEl('rect', { x: 12 + k * 6, y: H - 18, width: 6, height: 8, fill: `rgb(${lo.map((c, j) => Math.round(c + (hi[j] - c) * k / 19)).join(',')})` }));
     g.appendChild(svgEl('text', { x: 12, y: H - 22, 'font-size': 9, class: 'art-mut' }, T('idoneidad 0 → 1', 'suitability 0 → 1')));
     svg.appendChild(g);
@@ -134,11 +134,12 @@ const B8 = {};
     const href = rasterImage(L, i => { const c = mm.cls[i]; if (c === 255) return null; return cols[c].concat([c === 0 ? 150 : 235]); });
     placeImage(svg, pr, L, href);
     outlines(svg, pr, box);
-    const g = svgEl('g');
+    /* the legend (data-role="legend"), each entry (swatch and label) with its data-li, for the figure studio */
+    const g = svgEl('g', { 'data-role': 'legend' });
     MM.slice(1).concat([MM[0]]).forEach((m, k) => {
       const c = MM.indexOf(m);
-      g.appendChild(svgEl('rect', { x: 12, y: H - 64 + k * 14, width: 10, height: 10, rx: 2, fill: `rgb(${cols[c].join(',')})` }));
-      g.appendChild(svgEl('text', { x: 27, y: H - 55 + k * 14, 'font-size': 9.5, class: 'art-txt' }, T(...m[2])));
+      g.appendChild(svgEl('rect', { x: 12, y: H - 64 + k * 14, width: 10, height: 10, rx: 2, fill: `rgb(${cols[c].join(',')})`, 'data-li': k }));
+      g.appendChild(svgEl('text', { x: 27, y: H - 55 + k * 14, 'font-size': 9.5, class: 'art-txt', 'data-li': k }, T(...m[2])));
     });
     svg.appendChild(g);
   }

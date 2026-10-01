@@ -109,6 +109,8 @@ const B6 = {};
     const svg = el('b6Rose');
     const W = 420, H = 300, cx = 150, cy = 150, R = 120;
     Plot.clear(svg); svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    /* the square of the rose is the plot area, for the figure studio */
+    svg.setAttribute('data-plot', `${cx - R} ${cy - R} ${2 * R} ${2 * R}`);
     const add = (tag, a, text) => { const n = svgEl(tag, a, text); svg.appendChild(n); return n; };
     [0.25, 0.5, 0.75, 1].forEach(k => add('circle', { cx, cy, r: R * k, fill: 'none', stroke: V('border'), 'stroke-width': 0.6 }));
     const mx = Math.max(...p.prof, ...v.prof) || 1;
@@ -131,15 +133,17 @@ const B6 = {};
       add('circle', { cx: cx + Math.cos(a) * L, cy: cy + Math.sin(a) * L, r: 4, fill: V(tone), stroke: V('card-bg') });
     });
     const lx = 292;
+    /* the legend in one group (data-role="legend"); each entry (swatch and its three lines) with its data-li */
+    const lg = add('g', { 'data-role': 'legend' });
     [[p, 'primary'], [v, 'accent']].forEach(([u, tone], k) => {
       const y = 60 + k * 70;
-      add('rect', { x: lx, y: y - 9, width: 12, height: 12, rx: 3, fill: V(tone), opacity: 0.7 });
-      add('text', { x: lx + 18, y: y + 1, 'font-size': 11, class: 'art-txt', 'font-style': 'italic', 'font-weight': 700 }, u.unit.length > 18 ? u.unit.slice(0, 17) + '…' : u.unit);
-      add('text', { x: lx + 18, y: y + 16, 'font-size': 10, class: 'art-mut' }, `${T('media', 'mean')}: ${u.circ.meanDoy != null ? fmtDoy(u.circ.meanDoy) : '—'}`);
-      add('text', { x: lx + 18, y: y + 30, 'font-size': 10, class: 'art-mut' }, `R̄ = ${u.circ.R != null ? fmtFixed(u.circ.R, 2) : '—'} · n = ${u.recs.length}`);
+      lg.appendChild(svgEl('rect', { x: lx, y: y - 9, width: 12, height: 12, rx: 3, fill: V(tone), opacity: 0.7, 'data-li': k }));
+      lg.appendChild(svgEl('text', { x: lx + 18, y: y + 1, 'font-size': 11, class: 'art-txt', 'font-style': 'italic', 'font-weight': 700, 'data-li': k }, u.unit.length > 18 ? u.unit.slice(0, 17) + '…' : u.unit));
+      lg.appendChild(svgEl('text', { x: lx + 18, y: y + 16, 'font-size': 10, class: 'art-mut', 'data-li': k }, `${T('media', 'mean')}: ${u.circ.meanDoy != null ? fmtDoy(u.circ.meanDoy) : '—'}`));
+      lg.appendChild(svgEl('text', { x: lx + 18, y: y + 30, 'font-size': 10, class: 'art-mut', 'data-li': k }, `R̄ = ${u.circ.R != null ? fmtFixed(u.circ.R, 2) : '—'} · n = ${u.recs.length}`));
     });
-    add('text', { x: lx, y: 220, 'font-size': 9, class: 'art-mut' }, T('área del sector ∝ proporción', 'sector area ∝ proportion'));
-    add('text', { x: lx, y: 233, 'font-size': 9, class: 'art-mut' }, T('flecha: vector medio (R̄)', 'arrow: mean vector (R̄)'));
+    lg.appendChild(svgEl('text', { x: lx, y: 220, 'font-size': 9, class: 'art-mut' }, T('área del sector ∝ proporción', 'sector area ∝ proportion')));
+    lg.appendChild(svgEl('text', { x: lx, y: 233, 'font-size': 9, class: 'art-mut' }, T('flecha: vector medio (R̄)', 'arrow: mean vector (R̄)')));
   }
   function drawMonths(p, v) {
     const svg = el('b6Months');
