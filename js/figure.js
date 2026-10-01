@@ -106,7 +106,8 @@ ${fs.lineScale !== 1 ? `path,polyline{stroke-width:${(1.8 * fs.lineScale).toFixe
       t.textContent = title; svg.appendChild(t);
     }
     const g = document.createElementNS(NS, 'g');
-    g.setAttribute('transform', `translate(0 ${pad + titleH})`);
+    /* the figure editor may have moved the origin of the box (a title inside the figure) */
+    g.setAttribute('transform', `translate(${-(vb[0] || 0)} ${pad + titleH - (vb[1] || 0)})`);
     [...source.childNodes].forEach(n => g.appendChild(n.cloneNode(true)));
     svg.appendChild(g);
     noteLines.forEach((line, i) => {
@@ -122,6 +123,7 @@ ${fs.lineScale !== 1 ? `path,polyline{stroke-width:${(1.8 * fs.lineScale).toFixe
   function serialize(svg) {
     const clone = svg.cloneNode(true);
     clone.setAttribute('xmlns', NS);
+    if (window.FigEdit && FigEdit.strip) FigEdit.strip(clone);
     clone.removeAttribute('data-w'); clone.removeAttribute('data-h'); clone.removeAttribute('data-theme');
     const text = new XMLSerializer().serializeToString(clone);
     return '<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n' + bake(text, svg.__vars || readVars());
