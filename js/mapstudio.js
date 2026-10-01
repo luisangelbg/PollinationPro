@@ -794,6 +794,68 @@ const MapStudio = {};
     save(); redraw();
   }
 
+  /* =====================================================================
+     THE LABG FIGURE STUDIO: the map opens there too, and this studio draws
+     it at the output size with the same render() as the Export tab (PNG,
+     SVG and GeoTIFF; the figure studio makes the PDF and the TIFF from the
+     PNG). Its eight tabs go to the figure studio's inspector.
+     ===================================================================== */
+  function studioDraw(fmt, o) {
+    const [W0, H0] = sizePx();
+    const W = o.wmm * PX_PER_MM, H = (o.hmm || o.wmm * H0 / W0) * PX_PER_MM;
+    /* the paper of the figure studio: transparent, or white instead of a dark theme or a transparent background */
+    const was = S.bgMode;
+    if (o.transparent) S.bgMode = 'transparent';
+    else if (o.bg === 'white' && (was === 'transparent' || (was === 'theme' && lum(ink().bg) < 0.4))) S.bgMode = 'white';
+    let R;
+    try { R = render({ size: [W, H] }); } finally { S.bgMode = was; }
+    if (fmt === 'svg') {
+      const mm = v => +(v / PX_PER_MM).toFixed(3);
+      const svg = R.svg.replace(/^<svg([^>]*?) width="[^"]*" height="[^"]*"/, (m, a) => `<svg${a} width="${mm(W)}mm" height="${mm(H)}mm"`);
+      return new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+    }
+    let cw = Math.max(1, Math.round(o.wmm / 25.4 * o.dpi)), ch = Math.max(1, Math.round(H / PX_PER_MM / 25.4 * o.dpi));
+    const lim = Math.min(1, 16000 / cw, 16000 / ch, Math.sqrt(150e6 / (cw * ch)));
+    if (lim < 1) { cw = Math.floor(cw * lim); ch = Math.floor(ch * lim); }
+    const url = URL.createObjectURL(new Blob([R.svg], { type: 'image/svg+xml;charset=utf-8' }));
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        URL.revokeObjectURL(url);
+        const c = document.createElement('canvas'); c.width = cw; c.height = ch;
+        const ctx = c.getContext('2d');
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(img, 0, 0, cw, ch);
+        if (fmt === 'geotiff') {
+          const sx = cw / W, sy = ch / H;
+          resolve(tiff(ctx, cw, ch, Math.round(cw / (o.wmm / 25.4)), { x0: R.geo.x0, y0: R.geo.y0, dx: R.geo.dx / sx, dy: R.geo.dy / sy }));
+        } else c.toBlob(b => (b ? resolve(b) : reject(new Error('png'))), 'image/png');
+      };
+      img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('svg')); };
+      img.src = url;
+    });
+  }
+  const prevHook = window.LABG_FIGSTUDIO && window.LABG_FIGSTUDIO.nativeExport;
+  window.LABG_FIGSTUDIO = Object.assign(window.LABG_FIGSTUDIO || {}, {
+    nativeExport: rec => {
+      const wrap = host && host.querySelector('.ms-wrap');
+      const mine = !!(wrap && rec && [rec.el, rec.host].some(n => n && n.isConnected && wrap.contains(n) && n.closest('.ms-view')));
+      if (!mine) return typeof prevHook === 'function' ? prevHook(rec) : null;
+      return {
+        label: T('el estudio de mapas de la app', 'the app’s map studio'),
+        formats: ['png', 'svg', 'geotiff'],
+        extra: [['geotiff', ['GeoTIFF', 'GeoTIFF']]],
+        notes: { geotiff: ['GeoTIFF en WGS 84 (EPSG 4326), para abrirlo en su lugar en un sistema de información geográfica. El título y la leyenda de fuera desplazan el amarre: quítalos para que sea exacto.', 'GeoTIFF on WGS 84 (EPSG 4326), to open in place in a geographic information system. The title and an outside legend shift the fit: remove them for an exact one.'] },
+        studioStyles: false,
+        lift: false,
+        title: () => (S.title || '').trim() || T('Mapa', 'Map'),
+        aspect: () => { const [w, h] = sizePx(); return h / w; },   // the shape of the paper chosen in Export
+        controls: () => { const p = host && host.querySelector('.ms-panel'); return p ? { node: p, title: ['Estudio del mapa (de la app)', 'Map studio (the app’s)'] } : null; },
+        render: (fmt, o) => studioDraw(fmt, o),
+      };
+    },
+  });
+
   Object.assign(MapStudio, { mount, redraw, render, renderPane, exportFile, tiff, get: () => S, set: (k, v) => set(k, v), units, LOOKS, PALETTES, RAMPS, NORTH, SCALES, shapePath });
   window.MapStudio = MapStudio;
 })();
