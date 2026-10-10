@@ -69,15 +69,15 @@
     <thead><tr><th style="width:1.6in">Índice</th><th>Qué mide</th><th style="width:1.45in">En la práctica</th></tr></thead>
     <tbody>
       <tr><td><b>Conectancia</b></td><td>Los vínculos observados entre los posibles (Jordano 1987). Las redes grandes suelen tener entre 0.15 y 0.4.</td><td>0.818 · <i>densa (red pequeña o generalista)</i></td></tr>
-      <tr><td><b>NODF</b></td><td>El anidamiento, de 0 a 100, por solapamiento y relleno decreciente de la matriz binaria (Almeida-Neto et al. 2008).</td><td>68.8 · z = −1.34, p = 0.2</td></tr>
-      <tr><td><b>H₂′</b></td><td>La especialización de toda la red, de 0 (cada visitante reparte sus visitas como la oferta) a 1 (cada uno visita plantas exclusivas) (Blüthgen et al. 2006).</td><td>0.152 · <i>generalista</i> · z = 34.71, p = 0.02</td></tr>
-      <tr><td><b>Modularidad Q</b></td><td>Qué tan dividida está la red en grupos (Barber 2007), buscada con propagación de etiquetas y reinicios (Liu y Murata 2010; Beckett 2016).</td><td>0.224 · 3 módulos · z = 24.77, p = 0.04</td></tr>
+      <tr><td><b>NODF</b></td><td>El anidamiento, de 0 a 100, por solapamiento y relleno decreciente de la matriz binaria (Almeida-Neto et al. 2008).</td><td>68.8 · z = −1.03, p = 0.26</td></tr>
+      <tr><td><b>H₂′</b></td><td>La especialización de toda la red, de 0 (cada visitante reparte sus visitas como la oferta) a 1 (cada uno visita plantas exclusivas) (Blüthgen et al. 2006).</td><td>0.153 · <i>generalista</i> · z = 34.71, p = 0.02</td></tr>
+      <tr><td><b>Modularidad Q</b></td><td>Qué tan dividida está la red en grupos (Barber 2007), buscada con propagación de etiquetas y reinicios (Liu y Murata 2010; Beckett 2016).</td><td>0.224 · 3 módulos · z = 24.48, p = 0.04</td></tr>
     </tbody>
   </table>
   <p>Los <b>modelos nulos</b> conservan los totales de cada planta y de cada visitante y reparten los vínculos al azar: el algoritmo <i>curveball</i> para la matriz binaria (Strona et al. 2014) y el reparto al azar de visitas individuales para la cuantitativa (equivalente al de Patefield 1981). El recuadro da el <b>z</b> —a cuántas desviaciones estándar está lo observado del promedio nulo— y una p de dos colas; la de la modularidad usa hasta 49 repeticiones porque cada una exige buscar módulos.</p>
   <div class="caja ejemplo">
     <div class="caja-t"><span class="ico">▸</span>Ejemplo · leer la red de práctica</div>
-    <p>La red de práctica es pequeña y muy conectada (0.818): casi todos los visitantes llegan a casi todas las plantas. Su anidamiento (68.8) no es distinto del de una red al azar con los mismos totales (p = 0.2). Su especialización es baja en términos absolutos (H₂′ = 0.152, <i>generalista</i>), pero mucho mayor que la del azar (z = 34.7): los visitantes reparten sus visitas con preferencias, aunque débiles. Y tiene tres módulos: las abejas de la calabaza, con <i>Halictus</i>, <i>Polistes</i> y <i>Toxomerus</i>, junto a <i>Cucurbita pepo</i> y <i>S. mexicanum</i>; las abejas sin aguijón <i>Trigona</i> y <i>Partamona</i> con <i>S. chinantlense</i> y <i>S. compositum</i>; y la abeja melífera, <i>Scaptotrigona</i> y el abejorro con el chayote y <i>S. hintonii</i>.</p>
+    <p>La red de práctica es pequeña y muy conectada (0.818): casi todos los visitantes llegan a casi todas las plantas. Su anidamiento (68.8) no es distinto del de una red al azar con los mismos totales (p = 0.26). Su especialización es baja en términos absolutos (H₂′ = 0.153, <i>generalista</i>), pero mucho mayor que la del azar (z = 34.7): los visitantes reparten sus visitas con preferencias, aunque débiles. Y tiene tres módulos: las abejas de la calabaza, con <i>Halictus</i>, <i>Polistes</i> y <i>Toxomerus</i>, junto a <i>Cucurbita pepo</i> y <i>S. mexicanum</i>; las abejas sin aguijón <i>Trigona</i> y <i>Partamona</i> con <i>S. chinantlense</i> y <i>S. compositum</i>; y la abeja melífera, <i>Scaptotrigona</i> y el abejorro con el chayote y <i>S. hintonii</i>.</p>
   </div>
   <figure class="media">
     <div class="marco"><img src="../img/b9-matriz.png" alt="La matriz de la red ordenada por grado, con las plantas en filas y los visitantes en columnas"></div>
@@ -96,7 +96,7 @@
   <h2 id="s9-4"><span class="num">9.4</span>Plantas y visitantes, uno por uno</h2>
   <figure>
     <div class="marco"><img src="../img/b9-especies.png" alt="Las tablas de plantas y de visitantes con visitas, grado, grado normalizado, fuerza y d prima con su etiqueta"></div>
-    <figcaption><b>Figura 9.4.</b> Las especies de la red. La abeja melífera tiene la mayor fuerza (2.13) y la menor especialización (d′ = 0.05): es el visitante del que más dependen las plantas de la red de práctica.</figcaption>
+    <figcaption><b>Figura 9.4.</b> Las especies de la red. La abeja melífera tiene la mayor fuerza (2.13) y la menor especialización (d′ = 0.04): es el visitante del que más dependen las plantas de la red de práctica.</figcaption>
   </figure>
   <table class="compacta">
     <thead><tr><th style="width:1.6in">Columna</th><th>Qué dice</th></tr></thead>
@@ -107,7 +107,7 @@
       <tr><td><b>d′</b></td><td>La especialización de cada especie frente a la disponibilidad de sus compañeros, de 0 a 1 (Blüthgen et al. 2006): <i>generalista</i> &lt; 0.3, <i>intermedia</i> 0.3–0.6, <i>especialista</i> &gt; 0.6.</td></tr>
     </tbody>
   </table>
-  <p><span class="ui">⤓ Especies (.csv)</span> descarga las dos tablas. En la red de práctica ninguna especie pasa de d′ = 0.25; los más especializados son <i>Partamona bilineata</i> (0.25) y <i>S. mexicanum</i> (0.22).</p>
+  <p><span class="ui">⤓ Especies (.csv)</span> descarga las dos tablas. En la red de práctica ninguna especie pasa de d′ = 0.22; los más especializados son <i>Partamona bilineata</i> y <i>S. mexicanum</i> (0.22).</p>
 
   <!-- 9.5 -->
   <h2 id="s9-5"><span class="num">9.5</span>Una planta y sus visitantes</h2>

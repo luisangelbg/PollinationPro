@@ -69,10 +69,19 @@ estudio de práctica. Las partes en HTML están en `manual/es/`.
 
 ## Validación · Validation
 
-`tests/index.html` ejecuta 162 pruebas contra valores publicados, aritmética
+`tests/index.html` ejecuta 168 pruebas contra valores publicados, aritmética
 exacta, fórmulas resueltas a mano, implementaciones independientes y
 simulaciones bajo la hipótesis nula. Ábrela con doble clic: todo debe salir en
 verde.
+
+`validation/` compara el motor de cálculo, número por número, con paquetes de R
+escritos por otras personas (cooccur, vegan, geosphere, sf, circular, dismo,
+spaa, ecospat, terra, glmnet, pROC, bipartite, SpadeR): **34 299 comparaciones,
+0 en desacuerdo**. `validation/index.html` muestra el informe con doble clic y
+`validation/LEEME.md` explica cada comparación, los errores que atrapó y las
+diferencias que no son errores. · `validation/` checks the engine, number by
+number, against independent R packages: 34,299 comparisons, none in
+disagreement.
 
 ## Datos · Data
 
@@ -87,7 +96,7 @@ geográficos son de Natural Earth (dominio público). Ver `PROCEDENCIA.md`.
 
 Barrera-Guzmán, L.Á. (2026). PollinationPro: a browser-based platform for
 analysing plants, pollinators and their overlap with occurrence data
-(Version 1.2.1) [Computer software]. Zenodo.
+(Version 1.2.2) [Computer software]. Zenodo.
 https://doi.org/10.5281/zenodo.23004694
 
 ## Licencia · Licence

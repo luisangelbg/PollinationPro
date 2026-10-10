@@ -64,7 +64,45 @@ const Net2 = {};
 
   /* H2 and its extremes for the observed marginals */
   const H = cells => { const T = sum(cells); let h = 0; cells.forEach(v => { if (v > 0) { const p = v / T; h -= p * Math.log(p); } }); return h; };
-  function h2max(r, c) {
+  /* The extremes are those of the tables of whole visits with the observed
+     totals. No formula gives them, so each is searched: a first table by a
+     greedy rule, then improved by moving visits around the corners of a
+     2 × 2 square (which keeps every total) for as long as the entropy moves
+     the right way. With every total fixed, the entropy rises exactly when
+     Σ x ln x falls. */
+  const xlx = v => (v > 0 ? v * Math.log(v) : 0);
+  function climb(M, up) {
+    const m = M.length, n = M[0].length;
+    for (let pass = 0; pass < 500; pass++) {
+      let moved = false;
+      for (let i = 0; i < m; i++) for (let k = i + 1; k < m; k++) for (let j = 0; j < n; j++) for (let l = j + 1; l < n; l++) {
+        /* two directions: towards the diagonal (i,j),(k,l) or away from it */
+        for (let dir = 0; dir < 2; dir++) {
+          const [a1, a2, b1, b2] = dir ? [[i, l], [k, j], [i, j], [k, l]] : [[i, j], [k, l], [i, l], [k, j]];
+          const g1 = M[a1[0]][a1[1]], g2 = M[a2[0]][a2[1]], t1 = M[b1[0]][b1[1]], t2 = M[b2[0]][b2[1]];
+          /* one visit at a time towards the even table; a whole cell at a time towards the uneven one */
+          const t = up ? 1 : Math.min(t1, t2);
+          if (t < 1 || t1 < t || t2 < t) continue;
+          const delta = xlx(g1 + t) + xlx(g2 + t) + xlx(t1 - t) + xlx(t2 - t) - xlx(g1) - xlx(g2) - xlx(t1) - xlx(t2);
+          if (up ? delta < -1e-11 : delta > 1e-11) {
+            M[a1[0]][a1[1]] += t; M[a2[0]][a2[1]] += t; M[b1[0]][b1[1]] -= t; M[b2[0]][b2[1]] -= t; moved = true;
+          }
+        }
+      }
+      if (!moved) break;
+    }
+    return M;
+  }
+  /* the null models keep the totals, so the same extremes are asked for a thousand times */
+  const memo = new Map();
+  function remember(tag, r, c, f) {
+    const key = tag + r.join(',') + '|' + c.join(',');
+    if (!memo.has(key)) { if (memo.size > 400) memo.clear(); memo.set(key, f()); }
+    return memo.get(key);
+  }
+  function h2max(r, c) { return remember('max', r, c, () => h2maxSearch(r, c)); }
+  function h2min(r, c) { return remember('min', r, c, () => h2minSearch(r, c)); }
+  function h2maxSearch(r, c) {
     /* integers as close as possible to the independence expectation r_i c_j / T,
        whose continuous version maximises the entropy */
     const T = sum(r), m = r.length, n = c.length;
@@ -78,18 +116,29 @@ const Net2 = {};
     while (left > 0 && guard++ < 50) {
       for (const [, i, j] of cand) { if (left <= 0) break; if (rr[i] > 0 && cc[j] > 0) { M[i][j]++; rr[i]--; cc[j]--; left--; } }
     }
-    return H([].concat(...M));
+    return H([].concat(...climb(M, true)));
   }
-  function h2min(r, c) {
-    /* greedy: the largest possible block first (Blüthgen et al. 2006) */
-    const rr = r.slice(), cc = c.slice(), cells = [];
-    for (;;) {
-      let bi = -1, bj = -1, best = 0;
-      for (let i = 0; i < rr.length; i++) if (rr[i] > 0) for (let j = 0; j < cc.length; j++) if (cc[j] > 0) { const v = Math.min(rr[i], cc[j]); if (v > best) { best = v; bi = i; bj = j; } }
-      if (bi < 0) break;
-      cells.push(best); rr[bi] -= best; cc[bj] -= best;
-    }
-    return H(cells);
+  function h2minSearch(r, c) {
+    /* greedy: the largest possible block first (Blüthgen et al. 2006). Two
+       readings of "largest" give two starting tables: the first pair of
+       plant and visitor that can hold it, or the plant and the visitor with
+       the most visits left; the lower entropy after improving both is kept */
+    const start = byTotals => {
+      const rr = r.slice(), cc = c.slice(), M = r.map(() => new Array(c.length).fill(0));
+      for (;;) {
+        let bi = -1, bj = -1, best = 0;
+        if (byTotals) {
+          bi = rr.indexOf(Math.max(...rr)); bj = cc.indexOf(Math.max(...cc)); best = Math.min(rr[bi], cc[bj]);
+          if (!(best > 0)) break;
+        } else {
+          for (let i = 0; i < rr.length; i++) if (rr[i] > 0) for (let j = 0; j < cc.length; j++) if (cc[j] > 0) { const v = Math.min(rr[i], cc[j]); if (v > best) { best = v; bi = i; bj = j; } }
+          if (bi < 0) break;
+        }
+        M[bi][bj] += best; rr[bi] -= best; cc[bj] -= best;
+      }
+      return H([].concat(...climb(M, false)));
+    };
+    return Math.min(start(false), start(true));
   }
   function h2prime(A) {
     const r = rowSums(A), c = colSums(A);
@@ -140,17 +189,43 @@ const Net2 = {};
       }
       /* the merging stage: join two modules while that raises Q */
       let q = modularityQ(A, rl, cl);
-      for (let guard = 0; guard < 50; guard++) {
-        const labs = [...new Set(rl.concat(cl))];
-        let gain = 0, pair = null;
-        for (let a = 0; a < labs.length; a++) for (let b = a + 1; b < labs.length; b++) {
-          const R2 = rl.map(x => (x === labs[b] ? labs[a] : x)), C2 = cl.map(x => (x === labs[b] ? labs[a] : x));
-          const q2 = modularityQ(A, R2, C2);
-          if (q2 - q > gain + 1e-12) { gain = q2 - q; pair = [labs[a], labs[b]]; }
+      const merge = () => {
+        for (let guard = 0; guard < 50; guard++) {
+          const labs = [...new Set(rl.concat(cl))];
+          let gain = 0, pair = null;
+          for (let a = 0; a < labs.length; a++) for (let b = a + 1; b < labs.length; b++) {
+            const R2 = rl.map(x => (x === labs[b] ? labs[a] : x)), C2 = cl.map(x => (x === labs[b] ? labs[a] : x));
+            const q2 = modularityQ(A, R2, C2);
+            if (q2 - q > gain + 1e-12) { gain = q2 - q; pair = [labs[a], labs[b]]; }
+          }
+          if (!pair) break;
+          rl = rl.map(x => (x === pair[1] ? pair[0] : x)); cl = cl.map(x => (x === pair[1] ? pair[0] : x));
+          q += gain;
         }
-        if (!pair) break;
-        rl = rl.map(x => (x === pair[1] ? pair[0] : x)); cl = cl.map(x => (x === pair[1] ? pair[0] : x));
-        q += gain;
+      };
+      merge();
+      /* the refining stage: after a merge a species may sit better elsewhere;
+         each one moves alone to the module (or to a module of its own) where Q
+         is highest, and merging is tried again, until nothing changes */
+      for (let round = 0; round < 30; round++) {
+        let moved = false;
+        const tryMove = (isRow, i) => {
+          const own = isRow ? rl[i] : cl[i];
+          const labs = [...new Set(rl.concat(cl))]; labs.push(Math.max(...labs) + 1);
+          let bl = own, bq = q;
+          labs.forEach(lab => {
+            if (lab === own) return;
+            if (isRow) rl[i] = lab; else cl[i] = lab;
+            const q2 = modularityQ(A, rl, cl);
+            if (q2 > bq + 1e-12) { bq = q2; bl = lab; }
+          });
+          if (isRow) rl[i] = bl; else cl[i] = bl;
+          if (bl !== own) { q = bq; moved = true; }
+        };
+        for (let i = 0; i < nr; i++) tryMove(true, i);
+        for (let j = 0; j < nc; j++) tryMove(false, j);
+        if (!moved) break;
+        merge();
       }
       if (!best || q > best.Q + 1e-12) best = { Q: q, rl: rl.slice(), cl: cl.slice() };
     }
@@ -170,14 +245,30 @@ const Net2 = {};
     if (!Ai) return NaN;
     const d = v => v.reduce((s, x, j) => (x > 0 ? s + (x / Ai) * Math.log((x / Ai) / q[j]) : s), 0);
     const dRaw = d(a);
-    /* extremes for Ai interactions: most even = proportional to q (integers);
-       most specialised = all into the rarest partners, limited by their totals */
+    /* The maximum is the theoretical one of Blüthgen et al. (2006), ln(T / Ai).
+       The minimum is that of the most even way of sharing out Ai whole visits
+       in proportion to q; it is searched in two ways — the largest remainders
+       first, and one visit at a time where d grows least, without exceeding a
+       partner's total — and the lower is kept. It never exceeds the observed d. */
     const tot = byRow ? c : r;
-    const even = q.map(x => Math.floor(x * Ai)); let rem = Ai - sum(even);
+    const floors = q.map(x => Math.floor(x * Ai));
+    const even = floors.slice(); let rem = Ai - sum(even);
     q.map((x, j) => [x * Ai - even[j], j]).sort((u, v) => v[0] - u[0]).forEach(([, j]) => { if (rem > 0) { even[j]++; rem--; } });
-    const spec = new Array(q.length).fill(0); let left = Ai;
-    q.map((x, j) => [x, j]).sort((u, v) => u[0] - v[0]).forEach(([, j]) => { const t = Math.min(left, tot[j]); spec[j] = t; left -= t; });
-    const dmin = d(even), dmax = d(spec);
+    const step = floors.slice();
+    for (let left = Ai - sum(step); left > 0; left--) {
+      const S = sum(step) + 1;
+      let bj = -1, bd = Infinity;
+      for (let j = 0; j < step.length; j++) {
+        if (step[j] >= tot[j]) continue;
+        let v = 0;
+        for (let t = 0; t < step.length; t++) { const x = step[t] + (t === j ? 1 : 0); if (x > 0) v += (x / S) * Math.log((x / S) / q[t]); }
+        if (v < bd) { bd = v; bj = j; }
+      }
+      if (bj < 0) break;
+      step[bj]++;
+    }
+    const dOf = v => { const S = sum(v); return v.reduce((s, x, j) => (x > 0 ? s + (x / S) * Math.log((x / S) / q[j]) : s), 0); };
+    const dmin = Math.min(dOf(even), sum(step) === Ai ? dOf(step) : Infinity, dRaw), dmax = Math.log(T / Ai);
     return dmax > dmin ? Math.min(1, Math.max(0, (dRaw - dmin) / (dmax - dmin))) : 0;
   }
   function species(A, rows, cols) {
@@ -199,7 +290,8 @@ const Net2 = {};
   function curveball(A0, r, steps) {
     const sets = bin(A0).map(row => row.map((v, j) => (v ? j : -1)).filter(j => j >= 0));
     const n = sets.length;
-    for (let s = 0; s < (steps || 5 * n); s++) {
+    /* twenty trades per row: with five the result still leaned towards the observed matrix */
+    for (let s = 0; s < (steps || 20 * n); s++) {
       const a = Math.floor(r() * n); let b = Math.floor(r() * (n - 1)); if (b >= a) b++;
       const A = new Set(sets[a]), B = new Set(sets[b]);
       const onlyA = sets[a].filter(x => !B.has(x)), onlyB = sets[b].filter(x => !A.has(x));

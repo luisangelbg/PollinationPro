@@ -77,7 +77,7 @@
     <tbody>
       <tr><td><b>Celdas con registros</b></td><td>Las presencias del modelo (una por celda de la capa).</td><td>260 · 305 · 642</td></tr>
       <tr><td><b>AUC (validación)</b></td><td>La probabilidad de que una celda con registro reciba más idoneidad que una del fondo al azar (Swets 1988).</td><td>0.793 · 0.609 · 0.577</td></tr>
-      <tr><td><b>TSS (validación)</b></td><td>Sensibilidad + especificidad − 1 con el umbral elegido; 0 es azar (Allouche et al. 2006).</td><td>0.477 · 0.090 · 0.111</td></tr>
+      <tr><td><b>TSS (validación)</b></td><td>Sensibilidad + especificidad − 1 con el umbral elegido; 0 es azar (Allouche et al. 2006).</td><td>0.477 · 0.090 · 0.114</td></tr>
       <tr><td><b>Omisión</b></td><td>La fracción de registros de validación que caen fuera del área idónea.</td><td>13 % · 48 % · 16 %</td></tr>
       <tr><td><b>Umbral</b></td><td>El valor de idoneidad del corte.</td><td>0.452 · 0.525 · 0.444</td></tr>
     </tbody>
@@ -97,15 +97,15 @@
   <h2 id="s8-4"><span class="num">8.4</span>El desajuste</h2>
   <figure class="media">
     <div class="marco"><img src="../img/b8-desajuste.png" alt="Los recuadros del desajuste y el mapa de clases: solo la planta, solo el visitante, planta con visitante y ninguno"></div>
-    <figcaption><b>Figura 8.3.</b> El desajuste del chayote con los dos visitantes potenciales en las capas de práctica: de 716,303 km² idóneos para la planta, 40 % tienen visitante potencial y 60 % no.</figcaption>
+    <figcaption><b>Figura 8.3.</b> El desajuste del chayote con los dos visitantes potenciales en las capas de práctica: de 716,078 km² idóneos para la planta, 40 % tienen visitante potencial y 60 % no.</figcaption>
   </figure>
   <table class="compacta">
     <thead><tr><th style="width:2.1in">Recuadro</th><th>Qué dice</th><th style="width:1.3in">En la práctica</th></tr></thead>
     <tbody>
-      <tr><td><b>Área idónea de la planta</b></td><td>La superficie de las celdas idóneas para la planta, en km² sobre la esfera.</td><td>716,303 km²</td></tr>
-      <tr><td><b>Con visitante potencial</b></td><td>La fracción y el área donde también es idónea para al menos un visitante.</td><td>40 % · 289,312 km²</td></tr>
-      <tr><td><b>Desajuste: planta sin visitante</b></td><td>La fracción y el área donde es idónea solo para la planta.</td><td>60 % · 426,991 km²</td></tr>
-      <tr><td><b>Solo el visitante</b></td><td>El área idónea para algún visitante pero no para la planta.</td><td>2,454,625 km²</td></tr>
+      <tr><td><b>Área idónea de la planta</b></td><td>La superficie de las celdas idóneas para la planta, en km² sobre la esfera.</td><td>716,078 km²</td></tr>
+      <tr><td><b>Con visitante potencial</b></td><td>La fracción y el área donde también es idónea para al menos un visitante.</td><td>40 % · 284,500 km²</td></tr>
+      <tr><td><b>Desajuste: planta sin visitante</b></td><td>La fracción y el área donde es idónea solo para la planta.</td><td>60 % · 431,578 km²</td></tr>
+      <tr><td><b>Solo el visitante</b></td><td>El área idónea para algún visitante pero no para la planta.</td><td>2,450,600 km²</td></tr>
     </tbody>
   </table>
   <p>Debajo del mapa, la app dice qué fracción de las celdas queda fuera del intervalo ambiental de los registros de la planta en al menos una variable: <i>«35% de las celdas del mapa quedan fuera del intervalo ambiental de los registros de la planta en al menos una variable: ahí el modelo extrapola y su idoneidad debe leerse con cautela.»</i> <span class="ui">⤓ Clases por celda (.csv)</span> descarga cada celda con sus coordenadas, la idoneidad de la planta y su clase actual y futura.</p>

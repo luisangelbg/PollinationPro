@@ -1,5 +1,32 @@
 # Cambios · Changelog
 
+## 1.2.2 — 10 de octubre de 2026
+
+- **Validación contra R** (`validation/`): el motor de cálculo se compara
+  número por número con paquetes de R escritos por otras personas (cooccur,
+  vegan, circular, dismo, ecospat, terra, glmnet, pROC, bipartite y otros):
+  34 299 comparaciones, 0 en desacuerdo. `validation/index.html` muestra el
+  informe con doble clic; `validation/LEEME.md` explica cada comparación, los
+  errores que atrapó y las diferencias que no son errores.
+- Corregido: **d′** usaba como máximo el reparto más desigual que permitían
+  los totales de los compañeros; ahora usa el máximo publicado por Blüthgen
+  et al. (2006), ln(T/Aᵢ). Los valores anteriores salían más altos
+  (`js/network.js`).
+- Corregido: el umbral de **máxima TSS** se buscaba entre a lo más 400
+  candidatos redondeados a cuatro decimales y podía quedar lejos del máximo;
+  ahora cada puntaje es candidato (`js/sdm.js`).
+- Corregido: la idoneidad de **Mahalanobis** se volvía cero por debajo de
+  1e-16; la cola superior de ji cuadrada se calcula ahora directamente
+  (`js/engine.js`).
+- Corregido: el modelo nulo binario de la red hacía cinco intercambios por
+  fila y la matriz simulada aún se parecía a la observada; ahora hace veinte.
+- Mejorado: los extremos de **H₂′** se afinan moviendo visitas sin alterar
+  los totales, y la búsqueda de **módulos** tiene una etapa de refinamiento.
+- En el estudio de práctica las cifras cambian poco y ninguna interpretación
+  cambia: H₂′ 0.152 → 0.153; NODF frente al modelo nulo p = 0.2 → 0.26; d′
+  de la abeja melífera 0.05 → 0.04; desajuste 426,991 → 431,578 km² (60 %).
+- 6 pruebas nuevas (168 en total). Manual actualizado.
+
 ## 1.2.1 — 27 de septiembre de 2026
 
 - El DOI de Zenodo (de concepto: 10.5281/zenodo.23004694, que lleva siempre a

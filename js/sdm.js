@@ -136,10 +136,19 @@ const SDM = {};
   function threshold(sp, sb, rule) {
     if (rule === 'p10') return Stat.quantile(sp, 0.1);
     if (rule === 'p0') return Math.min(...sp);
-    const cands = [...new Set(sp.concat(sb).map(v => +v.toFixed(4)))].sort((a, b) => a - b);
-    let best = 0.5, bt = -2;
-    const step = Math.max(1, Math.floor(cands.length / 400));
-    for (let i = 0; i < cands.length; i += step) { const t = tss(sp, sb, cands[i]).tss; if (t > bt) { bt = t; best = cands[i]; } }
+    /* every score is a candidate: both lists sorted once, then one sweep that
+       counts the presences at or above each score and the background below it */
+    const p = sp.slice().sort((a, b) => a - b), b = sb.slice().sort((x, y) => x - y);
+    let best = 0.5, bt = -2, ip = 0, ib = 0;
+    const cands = p.concat(b).sort((x, y) => x - y);
+    for (let i = 0; i < cands.length; i++) {
+      const t = cands[i];
+      if (i && t === cands[i - 1]) continue;
+      while (ip < p.length && p[ip] < t) ip++;
+      while (ib < b.length && b[ib] < t) ib++;
+      const v = (p.length - ip) / p.length + ib / b.length - 1;
+      if (v > bt) { bt = v; best = t; }
+    }
     return best;
   }
   /* k-fold cross-validation, presences split at random (seeded) */

@@ -1,0 +1,198 @@
+PollinationPro 1.2.1 · validación contra R version 4.4.2 (2024-10-31 ucrt)
+
+Motor numérico
+--------------
+  ✓ log Γ: 14 comparaciones, mayor error relativo: 3.2e-16 (se acepta 1e-13)
+  ✓ log C(n, k): 36 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-11)
+  ✓ normal: acumulada: 49 comparaciones, mayor error relativo: 9.0e-8 (se acepta 2e-7)
+  ✓ normal: cuantil: 19 comparaciones, mayor error relativo: 0.0e+0 (se acepta 2e-7)
+  ✓ gamma incompleta P(a, x): 49 comparaciones, mayor error relativo: 1.2e-13 (se acepta 1e-12)
+  ✓ ji cuadrada: cola superior: 72 comparaciones, mayor error relativo: 2.7e-15 (se acepta 1e-10)
+  ✓ beta incompleta I_x(a, b): 175 comparaciones, mayor error relativo: 1.5e-13 (se acepta 1e-10)
+  ✓ F: cola superior: 140 comparaciones, mayor error relativo: 4.8e-12 (se acepta 1e-10)
+  ✓ hipergeométrica: P(j): 130 comparaciones, mayor error relativo: 1.5e-11 (se acepta 1e-9)
+  ✓ hipergeométrica: P(X ≤ j): 130 comparaciones, mayor error relativo: 1.2e-11 (se acepta 1e-9)
+  ✓ hipergeométrica: P(X ≥ j): 130 comparaciones, mayor error relativo: 1.4e-11 (se acepta 1e-9)
+  ✓ media: 6 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-13)
+  ✓ desviación estándar: 6 comparaciones, mayor error relativo: 2.0e-16 (se acepta 1e-13)
+  ✓ mediana: 6 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-13)
+  ✓ cuantiles (tipo 7): 30 comparaciones, mayor error relativo: 2.1e-16 (se acepta 1e-13)
+  ✓ ancho de banda de Silverman: 6 comparaciones, mayor error relativo: 2.4e-16 (se acepta 1e-13)
+  ✓ Benjamini-Hochberg: 63 comparaciones, mayor error relativo: 2.4e-16 (se acepta 1e-13)
+  ✓ densidad de núcleo en una dimensión (fracción del máximo): 384 comparaciones, mayor diferencia: 7.6e-7 (se acepta 1e-5)
+  ✓ densidad de núcleo en dos dimensiones (fracción del máximo): 4800 comparaciones, mayor diferencia: 6.3e-5 (se acepta 2e-3)
+  ✓ componentes: valores propios: 13 comparaciones, mayor error relativo: 1.8e-14 (se acepta 1e-10)
+  ✓ componentes: vectores propios: 61 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-8)
+  ✓ componentes: puntajes: 5660 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-7)
+  ✓ componentes: puntajes de puntos nuevos: 65 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-7)
+
+Bloque 5 · Coocurrencia
+-----------------------
+  ✓ celdas del universo: 3 comparaciones, idénticos
+  ✓ celdas ocupadas y compartidas: 60 comparaciones, idénticos
+  ✓ celdas compartidas (cooccur): 60 comparaciones, idénticos
+  ✓ compartidas esperadas: 60 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-13)
+  ✓ compartidas esperadas (cooccur, a un decimal): 60 comparaciones, mayor diferencia: 4.9e-2 (se acepta 5e-2)
+  ✓ P(X ≤ observado) (phyper): 60 comparaciones, mayor error relativo: 1.3e-12 (se acepta 1e-9)
+  ✓ P(X ≥ observado) (phyper): 60 comparaciones, mayor error relativo: 1.3e-12 (se acepta 1e-9)
+  ✓ P(X ≤ observado) (cooccur, a 5 decimales): 60 comparaciones, mayor diferencia: 4.9e-6 (se acepta 5e-6)
+  ✓ P(X ≥ observado) (cooccur, a 5 decimales): 60 comparaciones, mayor diferencia: 4.8e-6 (se acepta 5e-6)
+  ✓ tamaño del efecto estandarizado: 60 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ Jaccard (vegan): 60 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-13)
+  ✓ Sørensen (vegan): 60 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-13)
+  ✓ Simpson (vegan): 60 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-13)
+  ✓ par clasificable: 60 comparaciones, idénticos
+  ✓ p ajustada de Benjamini-Hochberg: 60 comparaciones, mayor error relativo: 9.6e-13 (se acepta 1e-9)
+  ✓ veredicto: 60 comparaciones, idénticos
+  ✓ veredicto tras el ajuste: 60 comparaciones, idénticos
+  ✓ distancia en la esfera (geosphere): 65 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-11)
+  ✓ distancia al visitante más cercano: 120 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-11)
+  ✓ vecino más cercano: mediana observada: 3 comparaciones, mayor error relativo: 1.9e-14 (se acepta 1e-11)
+  ✓ vecino más cercano: proporción a menos de 5, 10, 25 y 50 km: 12 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-13)
+  ✓ vecino más cercano: media del modelo nulo: 3 comparaciones, peor: 1.71 errores estándar (se aceptan 5)
+  ✓ vecino más cercano: desviación del modelo nulo: 3 comparaciones, peor: 0.88 errores estándar (se aceptan 5)
+  ✓ vecino más cercano: p (más cerca): 3 comparaciones, peor: 0.54 errores estándar (se aceptan 5)
+  ✓ vecino más cercano: p (más lejos): 3 comparaciones, peor: 0.58 errores estándar (se aceptan 5)
+  ✓ envolvente convexa: mismos vértices (chull): 5 comparaciones, idénticos
+  ✓ área de la envolvente (sf, proyección equivalente): 10 comparaciones, mayor error relativo: 1.2e-14 (se acepta 1e-10)
+  ✓ área compartida (sf): 5 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-8)
+  ✓ área con lados de círculo máximo (geosphere): 10 comparaciones, mayor error relativo: 7.8e-3 (se acepta 2e-2)
+
+Bloque 6 · Fenología y altitud
+------------------------------
+  ✓ día del año de cada registro: 1005 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-15)
+  ✓ registros por mes (esfuerzo): 1 comparaciones, idénticos
+  ✓ circular: n: 9 comparaciones, idénticos
+  ✓ circular: longitud del vector medio R̄: 9 comparaciones, mayor error relativo: 2.2e-15 (se acepta 1e-12)
+  ✓ circular: dirección media (radianes): 9 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-11)
+  ✓ circular: fecha media (día del año): 9 comparaciones, mayor error relativo: 1.4e-15 (se acepta 1e-11)
+  ✓ circular: desviación estándar circular: 9 comparaciones, mayor error relativo: 1.7e-15 (se acepta 1e-11)
+  ✓ Rayleigh: Z = n R̄²: 9 comparaciones, mayor error relativo: 4.3e-15 (se acepta 1e-11)
+  ✓ Rayleigh: p (circular): 9 comparaciones, mayor diferencia: 8.7e-4 (se acepta 5e-3)
+  ✓ Rayleigh: p (CircStats): 9 comparaciones, mayor diferencia: 8.7e-4 (se acepta 5e-3)
+  ✓ circular: R̄ de los ángulos dobles: 9 comparaciones, mayor error relativo: 4.4e-16 (se acepta 1e-11)
+  ✓ concentración κ (circular::A1inv): 11 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-13)
+  ✓ concentración κ contra la raíz exacta de I₁/I₀: 11 comparaciones, mayor error relativo: 9.2e-3 (se acepta 2e-2)
+  ✓ Watson-Williams: F con el factor de Zar: 20 comparaciones, mayor error relativo: 7.2e-12 (se acepta 1e-10)
+  ✓ Watson-Williams: F de circular (con su factor): 20 comparaciones, mayor error relativo: 7.2e-12 (se acepta 1e-10)
+  ✓ Watson-Williams: grados de libertad: 20 comparaciones, idénticos
+  ✓ Watson-Williams: p: 20 comparaciones, mayor error relativo: 1.4e-12 (se acepta 1e-8)
+  ✓ perfil mensual: D de Schoener (dismo): 20 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ perfil mensual: D de Schoener (spaa): 20 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ perfil mensual: I de Warren (dismo): 20 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ perfil mensual: O de Pianka (spaa): 20 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ perfil corregido por esfuerzo: D: 20 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ perfil corregido por esfuerzo: I: 20 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ perfil corregido por esfuerzo: O: 20 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ desfase entre fechas medias (días): 20 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-10)
+  ✓ amplitud de Levins B (spaa): 9 comparaciones, mayor error relativo: 2.4e-16 (se acepta 1e-13)
+  ✓ altitud: límites de las clases: 1 comparaciones, idénticos
+  ✓ altitud: registros con dato: 9 comparaciones, idénticos
+  ✓ altitud: mínimo, cuartiles y máximo: 45 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-13)
+  ✓ altitud: D de Schoener (dismo): 20 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ altitud: I de Warren (dismo): 20 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ altitud: registros de la planta dentro del 90 % central del visitante: 20 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-13)
+
+Bloque 7 · Capas
+----------------
+  ✓ GeoTIFF: columnas y filas: 11 comparaciones, idénticos
+  ✓ GeoTIFF: origen y tamaño de celda: 44 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ GeoTIFF: valor de cada celda: 11143 comparaciones, mayor error relativo: 5.8e-8 (se acepta 1e-7)
+  ✓ GeoTIFF: celdas sin dato: 660 comparaciones, idénticos
+  ✓ GeoTIFF recortado: columnas y filas: 11 comparaciones, idénticos
+  ✓ GeoTIFF recortado: origen: 22 comparaciones, mayor error relativo: 1.9e-16 (se acepta 1e-12)
+  ✓ GeoTIFF recortado: valor de cada celda: 2640 comparaciones, mayor error relativo: 5.8e-8 (se acepta 1e-7)
+  ✓ GeoTIFF recortado: celdas sin dato: 165 comparaciones, idénticos
+  ✓ rejilla ASCII: columnas y filas: 1 comparaciones, idénticos
+  ✓ rejilla ASCII: origen y tamaño de celda: 3 comparaciones, mayor error relativo: 3.2e-15 (se acepta 1e-9)
+  ✓ rejilla ASCII: valor de cada celda: 1013 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-6)
+  ✓ rejilla ASCII: celdas sin dato: 60 comparaciones, idénticos
+  ✓ valor en un punto: la celda que lo contiene (terra): 371 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-7)
+  ✓ valor en un punto: interpolación bilineal (terra): 294 comparaciones, mayor error relativo: 2.0e-14 (se acepta 1e-6)
+  ✓ valor en un punto: celda sin dato: 29 comparaciones, idénticos
+
+Bloque 7 · Nichos
+-----------------
+  ✓ varianza explicada por los dos ejes (prcomp): 2 comparaciones, mayor error relativo: 2.2e-16 (se acepta 1e-10)
+  ✓ límites del plano ambiental: 4 comparaciones, mayor error relativo: 2.8e-15 (se acepta 1e-8)
+  ✓ ancho de banda del fondo (bw.nrd0): 2 comparaciones, mayor error relativo: 6.6e-16 (se acepta 1e-9)
+  ✓ máximo de la densidad del fondo (ks): 1 comparaciones, mayor error relativo: 2.4e-5 (se acepta 1e-3)
+  ✓ celdas del plano con ambiente disponible: 1 comparaciones, mayor diferencia: 0.0e+0 (se acepta 5e+0)
+  ✓ D de Schoener en el plano ambiental (ks + dismo): 10 comparaciones, mayor diferencia: 1.1e-5 (se acepta 2e-3)
+  ✓ I de Warren en el plano ambiental (ks + dismo): 10 comparaciones, mayor diferencia: 2.8e-4 (se acepta 2e-3)
+  ✓ D con la densidad corregida por el ambiente (ks + dismo): 10 comparaciones, mayor diferencia: 4.1e-5 (se acepta 5e-3)
+  ✓ I con la densidad corregida por el ambiente (ks + dismo): 10 comparaciones, mayor diferencia: 5.4e-4 (se acepta 5e-3)
+  ✓ D frente a ecospat (otro suavizado): 10 comparaciones, mayor diferencia: 1.2e-1 (se acepta 1e-1)
+  ✓ I frente a ecospat (otro suavizado): 10 comparaciones, mayor diferencia: 7.9e-2 (se acepta 1e-1)
+  ✓ correlación entre la D de la app y la de ecospat mayor que 0.95: 1 comparaciones, idénticos
+  ✓ correlación entre las D corregidas de la app y de ecospat mayor que 0.9: 1 comparaciones, idénticos
+
+Bloque 8 · Distribuciones potenciales
+-------------------------------------
+  ✓ envolvente climática (dismo::bioclim): 600 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ Mahalanobis: idoneidad (stats): 600 comparaciones, mayor error relativo: 2.1e-7 (se acepta 1e-6)
+  ✓ logística: idoneidad (óptimo hallado por optim): 600 comparaciones, mayor diferencia: 3.7e-8 (se acepta 1e-5)
+  ✓ logística: coeficientes (optim): 18 comparaciones, mayor diferencia: 2.6e-7 (se acepta 1e-4)
+  ✓ logística: coeficientes (glmnet): 18 comparaciones, mayor diferencia: 2.6e-7 (se acepta 2e-3)
+  ✓ AUC (pROC): 4 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ AUC (dismo): 4 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ umbral del percentil 10 de las presencias: 4 comparaciones, mayor error relativo: 1.7e-16 (se acepta 1e-13)
+  ✓ sensibilidad en el umbral (dismo): 4 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-13)
+  ✓ especificidad en el umbral (dismo): 4 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-13)
+  ✓ TSS en el umbral que la maximiza (pROC): 4 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ área de una celda: zona esférica entre dos paralelos: 60 comparaciones, mayor error relativo: 1.2e-13 (se acepta 1e-12)
+  ✓ área de una celda en la esfera (geosphere): 60 comparaciones, mayor error relativo: 1.3e-6 (se acepta 1e-5)
+  ✓ área de una celda frente al elipsoide WGS84 (terra): 60 comparaciones, mayor error relativo: 3.7e-3 (se acepta 5e-3)
+
+Bloque 9 · Redes
+----------------
+  ✓ conectancia (bipartite): 7 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-13)
+  ✓ NODF (vegan): 7 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ NODF (bipartite): 7 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ NODF entre plantas (vegan): 7 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ NODF entre visitantes (vegan): 7 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ H₂ sin estandarizar (bipartite): 7 comparaciones, mayor error relativo: 1.6e-15 (se acepta 1e-12)
+  ✓ H₂ máxima: la de la app no queda por debajo de la de bipartite: 7 comparaciones, idénticos
+  ✓ H₂ mínima: la de la app no queda por encima de la de bipartite: 7 comparaciones, idénticos
+  ✓ H₂′ de bipartite, con la fórmula de la app y los extremos de bipartite: 7 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-10)
+  ✓ H₂′ (bipartite): 7 comparaciones, mayor diferencia: 5.5e-3 (se acepta 2e-2)
+  ✓ grado: 155 comparaciones, idénticos
+  ✓ grado normalizado (bipartite): 155 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-13)
+  ✓ fuerza (bipartite): 155 comparaciones, mayor error relativo: 3.5e-16 (se acepta 1e-12)
+  ✓ d′: no queda por debajo del de bipartite: 155 comparaciones, idénticos
+  ✓ d′ (bipartite): 155 comparaciones, mayor diferencia: 1.1e-16 (se acepta 1e-2)
+  ✓ Q de la partición de bipartite, calculada por la app: 7 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-10)
+  ✓ Q de la partición de la app, recalculada: 7 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-10)
+  ✓ la búsqueda de módulos de la app llega al menos a 0.01 de la Q de bipartite: 7 comparaciones, idénticos
+  ✓ modelo nulo de totales fijos (binario): media de NODF: 7 comparaciones, peor: 2.43 errores estándar (se aceptan 5)
+  ✓ modelo nulo de totales fijos (binario): desviación de NODF: 7 comparaciones, peor: 0.49 errores estándar (se aceptan 5)
+  ✓ modelo nulo de totales fijos (visitas): media de H₂: 7 comparaciones, peor: 1.87 errores estándar (se aceptan 5)
+  ✓ modelo nulo de totales fijos (visitas): desviación de H₂: 7 comparaciones, peor: 0.93 errores estándar (se aceptan 5)
+  ✓ modelo nulo de totales fijos (visitas): media de la conectancia: 7 comparaciones, peor: 1.87 errores estándar (se aceptan 5)
+  ✓ modelo nulo de totales fijos (visitas): desviación de la conectancia: 7 comparaciones, peor: 0.82 errores estándar (se aceptan 5)
+  ✓ riqueza observada, únicos y dobles: 6 comparaciones, idénticos
+  ✓ Chao1 con corrección de sesgo (SpadeR): 6 comparaciones, mayor error relativo: 3.3e-5 (se acepta 5e-4)
+  ✓ Chao1 (vegan, llevado al factor (N − 1)/N): 6 comparaciones, mayor error relativo: 0.0e+0 (se acepta 1e-12)
+  ✓ rarefacción de Hurlbert (vegan): 72 comparaciones, mayor error relativo: 7.4e-13 (se acepta 1e-9)
+
+Resumen
+-------
+  Motor numérico: 12044 comparaciones, 0 en desacuerdo
+  Bloque 5 · Coocurrencia: 1205 comparaciones, 0 en desacuerdo
+  Bloque 6 · Fenología y altitud: 1473 comparaciones, 0 en desacuerdo
+  Bloque 7 · Capas: 16467 comparaciones, 0 en desacuerdo
+  Bloque 7 · Nichos: 72 comparaciones, 0 en desacuerdo
+  Bloque 8 · Distribuciones potenciales: 2040 comparaciones, 0 en desacuerdo
+  Bloque 9 · Redes: 998 comparaciones, 0 en desacuerdo
+  TOTAL: 34299 comparaciones, 0 en desacuerdo
+
+Notas
+-----
+  Bloque 5 · Coocurrencia: el área de una envolvente difiere a lo más 0.78 % de la que resulta con lados de círculo máximo; es otra definición del polígono, no un error de cálculo.
+  Bloque 6 · Fenología y altitud: el valor p de Rayleigh sale de una aproximación (Zar 2010, ec. 27.4); la de circular es otra y la mayor diferencia entre ambas fue 8.7e-4.
+  Bloque 6 · Fenología y altitud: Watson-Williams: la app usa el factor de corrección de Zar (κ de la media ponderada de los vectores de cada grupo); circular toma κ de la muestra reunida. Con el mismo factor los dos F coinciden; con factores distintos difieren hasta 38 %, cuando las fechas medias están muy separadas.
+  Bloque 7 · Nichos: frente a ecospat, que suaviza con otro ancho de banda, la D de los 10 pares difiere a lo más 0.120 (correlación 0.988); con la densidad corregida, 0.154 (correlación 0.957).
+  Bloque 8 · Distribuciones potenciales: el área de las celdas se mide en una esfera; frente al elipsoide WGS84 difiere a lo más 0.37 % entre 14° y 29° de latitud.
+  Bloque 9 · Redes: H₂′: la app encontró una H₂ máxima más alta que bipartite en 4 de 7 redes y una mínima más baja en 4; por eso H₂′ difiere, a lo más 0.0055.
+  Bloque 9 · Redes: d′: idéntico al de bipartite en 155 de 155 especies; la mayor diferencia fue 1.1e-16 (donde difiera, es porque la app halló un mínimo más bajo).
+  Bloque 9 · Redes: módulos: la mayor ventaja de bipartite sobre la app fue Q = 0.0021; la app encontró una partición mejor en 1 de 7 redes.

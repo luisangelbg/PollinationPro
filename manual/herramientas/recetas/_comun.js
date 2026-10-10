@@ -3,7 +3,7 @@
    del Bloque 3, y, en los Bloques 7 y 8, las capas de práctica del programa. */
 var W = ms => new Promise(r => setTimeout(r, ms));
 /* the sticky top bar would cover whatever is scrolled under it: in the captures it scrolls with the page */
-(function () { const t = document.querySelector('.topbar'); if (t) t.style.position = 'relative'; })();
+(function () { document.querySelectorAll('.topbar, .lnav-bar').forEach(t => { t.style.position = 'relative'; }); })();
 var q = s => document.querySelector(s);
 var top_ = n => n.getBoundingClientRect().top + window.scrollY;
 var irA = (n, off = 96) => window.scrollTo({ top: top_(n) - off, behavior: 'instant' });

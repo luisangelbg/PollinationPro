@@ -91,7 +91,9 @@ const Poll = {};
     }
     return Math.exp(-x + a * Math.log(x) - lgamma(a)) * h;
   }
-  const pchisqUpper = (x, df) => (x <= 0 ? 1 : 1 - gammaP(df / 2, x / 2));
+  /* the upper tail directly from the continued fraction when it is the small
+     side: 1 − P would lose every digit of a probability below 1e-16 */
+  const pchisqUpper = (x, df) => (x <= 0 ? 1 : x / 2 < df / 2 + 1 ? 1 - gammaP(df / 2, x / 2) : gammaQcf(df / 2, x / 2));
 
   /* the regularised incomplete beta I_x(a, b) by Lentz's continued fraction
      (Press et al. 2007, §6.4) — gives the F and t distributions */

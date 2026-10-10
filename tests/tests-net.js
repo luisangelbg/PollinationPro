@@ -56,4 +56,15 @@ window.TESTS.push(async function ({ section, check, near }) {
   const L0 = { w: 2, h: 2, x0: 0, y0: 0, dx: 1, dy: 1 };
   const mm = SDM.mismatch(Uint8Array.of(1, 1, 0, 255), [Uint8Array.of(1, 0, 0, 1)], L0);
   check('Clases de desajuste: ambos, solo planta, ninguno, sin dato', mm.cls[0] === 3 && mm.cls[1] === 1 && mm.cls[2] === 0 && mm.cls[3] === 255);
+  /* values of the validation against R (validation/LEEME.md) kept here so that they are checked on every run */
+  const Wv = [[12, 3, 0, 1], [2, 9, 4, 0], [0, 1, 7, 6]];
+  const spv = Net2.species(Wv, ['a', 'b', 'c'], ['p', 'q', 'r', 's']);
+  check('d′ de las plantas igual al de bipartite (máximo ln(T/Aᵢ))', [0.502674083427, 0.314773738213, 0.591232816094].every((v, i) => near(spv.plants[i].dprime, v, 1e-10)), spv.plants.map(x => fmtFixed(x.dprime, 4)).join(' '));
+  check('d′ de los visitantes igual al de bipartite', [0.541540948676, 0.239261070166, 0.343900731096, 0.393027997629].every((v, i) => near(spv.visitors[i].dprime, v, 1e-10)));
+  check('d′ = 1 cuando cada planta tiene un visitante exclusivo', near(Net2.dprime([[10, 0], [0, 10]], 0, true), 1, 1e-12));
+  const hv = Net2.h2prime([[9, 1, 0], [1, 8, 2], [0, 2, 7]]);
+  check('H₂: mínima ≤ observada ≤ máxima', hv.H2min <= hv.H2 + 1e-12 && hv.H2 <= hv.H2max + 1e-12);
+  check('Cola superior de ji cuadrada muy pequeña sin volverse cero (R: 4.218541e-43)', Math.abs(Poll.pchisqUpper(200, 3) / 4.218541e-43 - 1) < 1e-6, Poll.pchisqUpper(200, 3).toExponential(4));
+  const tp = [0.2001, 0.20012, 0.20013, 0.9], tb = [0.2, 0.20005, 0.20011, 0.1];
+  check('Umbral de máxima TSS: distingue puntajes que difieren en la quinta cifra', near(SDM.tss(tp, tb, SDM.threshold(tp, tb, 'maxTSS')).tss, 0.75, 1e-12), String(SDM.threshold(tp, tb, 'maxTSS')));
 });

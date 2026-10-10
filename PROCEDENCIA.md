@@ -5,7 +5,7 @@ obra propia y cuáles no lo son, de dónde salen estas últimas y en qué situac
 quedan. Se escribió para acompañar el registro de la obra ante el INDAUTOR y
 para que cualquiera pueda comprobar lo que aquí se afirma sin tener que creerlo.
 
-Última revisión: 27 de septiembre de 2026 (versión 1.2.1).
+Última revisión: 10 de octubre de 2026 (versión 1.2.2).
 
 ---
 

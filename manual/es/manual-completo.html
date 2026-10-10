@@ -255,7 +255,7 @@
 
   <dl>
     <dt>Autor</dt><dd><b>Luis Ángel Barrera-Guzmán</b><br><span class="small">ORCID 0000-0001-8057-2583</span></dd>
-    <dt>Programa</dt><dd>PollinationPro, versión 1.2.1 (septiembre de 2026) · DOI 10.5281/zenodo.23004694</dd>
+    <dt>Programa</dt><dd>PollinationPro, versión 1.2.2 (octubre de 2026) · DOI 10.5281/zenodo.23004694</dd>
     <dt>Manual</dt><dd>Primera edición en español, 2026. Describe la versión 1.2 del programa.</dd>
     <dt>Licencia del programa</dt><dd>Licencia Pública General de GNU, versión 3 o posterior (GPL-3.0-or-later).</dd>
     <dt>Derechos del manual</dt><dd>© 2026 Luis Ángel Barrera-Guzmán. Todos los derechos reservados.</dd>
@@ -645,7 +645,7 @@
     <li>Copia la carpeta <span class="ruta">PollinationPro</span> completa a tu computadora. Dentro deben estar <span class="ruta">index.html</span> y las carpetas <span class="ruta">js</span>, <span class="ruta">css</span>, <span class="ruta">data</span> (los contornos de los países y de los estados de México) y <span class="ruta">tests</span>.</li>
     <li>Abre <span class="ruta">index.html</span> con doble clic. La primera pantalla es el Bloque 1, la portada. En Windows, <span class="ruta">Open PollinationPro.bat</span> la abre además como un pequeño servidor local (puerto 9750), útil para abrirla desde otro equipo de la red.</li>
     <li>Elige el idioma con <span class="ui">ES</span> · <span class="ui">EN</span> y el tema claro u oscuro con el botón del sol. Ambos se recuerdan para la próxima vez.</li>
-    <li>Si quieres comprobar que el motor calcula bien en tu navegador, abre <span class="ruta">tests/index.html</span>: son 162 pruebas contra valores publicados, aritmética exacta, fórmulas resueltas a mano, implementaciones independientes y simulaciones bajo la hipótesis nula. Todas deben salir en verde.</li>
+    <li>Si quieres comprobar que el motor calcula bien en tu navegador, abre <span class="ruta">tests/index.html</span>: son 168 pruebas contra valores publicados, aritmética exacta, fórmulas resueltas a mano, implementaciones independientes y simulaciones bajo la hipótesis nula. Todas deben salir en verde.</li>
   </ol>
   <div class="caja nota">
     <div class="caja-t"><span class="ico">i</span>La app recuerda el estudio</div>
@@ -1894,7 +1894,7 @@
     <tbody>
       <tr><td><b>Celdas con registros</b></td><td>Las presencias del modelo (una por celda de la capa).</td><td>260 · 305 · 642</td></tr>
       <tr><td><b>AUC (validación)</b></td><td>La probabilidad de que una celda con registro reciba más idoneidad que una del fondo al azar (Swets 1988).</td><td>0.793 · 0.609 · 0.577</td></tr>
-      <tr><td><b>TSS (validación)</b></td><td>Sensibilidad + especificidad − 1 con el umbral elegido; 0 es azar (Allouche et al. 2006).</td><td>0.477 · 0.090 · 0.111</td></tr>
+      <tr><td><b>TSS (validación)</b></td><td>Sensibilidad + especificidad − 1 con el umbral elegido; 0 es azar (Allouche et al. 2006).</td><td>0.477 · 0.090 · 0.114</td></tr>
       <tr><td><b>Omisión</b></td><td>La fracción de registros de validación que caen fuera del área idónea.</td><td>13 % · 48 % · 16 %</td></tr>
       <tr><td><b>Umbral</b></td><td>El valor de idoneidad del corte.</td><td>0.452 · 0.525 · 0.444</td></tr>
     </tbody>
@@ -1914,15 +1914,15 @@
   <h2 id="s8-4"><span class="num">8.4</span>El desajuste</h2>
   <figure class="media">
     <div class="marco"><img src="../img/b8-desajuste.png" alt="Los recuadros del desajuste y el mapa de clases: solo la planta, solo el visitante, planta con visitante y ninguno"></div>
-    <figcaption><b>Figura 8.3.</b> El desajuste del chayote con los dos visitantes potenciales en las capas de práctica: de 716,303 km² idóneos para la planta, 40 % tienen visitante potencial y 60 % no.</figcaption>
+    <figcaption><b>Figura 8.3.</b> El desajuste del chayote con los dos visitantes potenciales en las capas de práctica: de 716,078 km² idóneos para la planta, 40 % tienen visitante potencial y 60 % no.</figcaption>
   </figure>
   <table class="compacta">
     <thead><tr><th style="width:2.1in">Recuadro</th><th>Qué dice</th><th style="width:1.3in">En la práctica</th></tr></thead>
     <tbody>
-      <tr><td><b>Área idónea de la planta</b></td><td>La superficie de las celdas idóneas para la planta, en km² sobre la esfera.</td><td>716,303 km²</td></tr>
-      <tr><td><b>Con visitante potencial</b></td><td>La fracción y el área donde también es idónea para al menos un visitante.</td><td>40 % · 289,312 km²</td></tr>
-      <tr><td><b>Desajuste: planta sin visitante</b></td><td>La fracción y el área donde es idónea solo para la planta.</td><td>60 % · 426,991 km²</td></tr>
-      <tr><td><b>Solo el visitante</b></td><td>El área idónea para algún visitante pero no para la planta.</td><td>2,454,625 km²</td></tr>
+      <tr><td><b>Área idónea de la planta</b></td><td>La superficie de las celdas idóneas para la planta, en km² sobre la esfera.</td><td>716,078 km²</td></tr>
+      <tr><td><b>Con visitante potencial</b></td><td>La fracción y el área donde también es idónea para al menos un visitante.</td><td>40 % · 284,500 km²</td></tr>
+      <tr><td><b>Desajuste: planta sin visitante</b></td><td>La fracción y el área donde es idónea solo para la planta.</td><td>60 % · 431,578 km²</td></tr>
+      <tr><td><b>Solo el visitante</b></td><td>El área idónea para algún visitante pero no para la planta.</td><td>2,450,600 km²</td></tr>
     </tbody>
   </table>
   <p>Debajo del mapa, la app dice qué fracción de las celdas queda fuera del intervalo ambiental de los registros de la planta en al menos una variable: <i>«35% de las celdas del mapa quedan fuera del intervalo ambiental de los registros de la planta en al menos una variable: ahí el modelo extrapola y su idoneidad debe leerse con cautela.»</i> <span class="ui">⤓ Clases por celda (.csv)</span> descarga cada celda con sus coordenadas, la idoneidad de la planta y su clase actual y futura.</p>
@@ -2025,15 +2025,15 @@
     <thead><tr><th style="width:1.6in">Índice</th><th>Qué mide</th><th style="width:1.45in">En la práctica</th></tr></thead>
     <tbody>
       <tr><td><b>Conectancia</b></td><td>Los vínculos observados entre los posibles (Jordano 1987). Las redes grandes suelen tener entre 0.15 y 0.4.</td><td>0.818 · <i>densa (red pequeña o generalista)</i></td></tr>
-      <tr><td><b>NODF</b></td><td>El anidamiento, de 0 a 100, por solapamiento y relleno decreciente de la matriz binaria (Almeida-Neto et al. 2008).</td><td>68.8 · z = −1.34, p = 0.2</td></tr>
-      <tr><td><b>H₂′</b></td><td>La especialización de toda la red, de 0 (cada visitante reparte sus visitas como la oferta) a 1 (cada uno visita plantas exclusivas) (Blüthgen et al. 2006).</td><td>0.152 · <i>generalista</i> · z = 34.71, p = 0.02</td></tr>
-      <tr><td><b>Modularidad Q</b></td><td>Qué tan dividida está la red en grupos (Barber 2007), buscada con propagación de etiquetas y reinicios (Liu y Murata 2010; Beckett 2016).</td><td>0.224 · 3 módulos · z = 24.77, p = 0.04</td></tr>
+      <tr><td><b>NODF</b></td><td>El anidamiento, de 0 a 100, por solapamiento y relleno decreciente de la matriz binaria (Almeida-Neto et al. 2008).</td><td>68.8 · z = −1.03, p = 0.26</td></tr>
+      <tr><td><b>H₂′</b></td><td>La especialización de toda la red, de 0 (cada visitante reparte sus visitas como la oferta) a 1 (cada uno visita plantas exclusivas) (Blüthgen et al. 2006).</td><td>0.153 · <i>generalista</i> · z = 34.71, p = 0.02</td></tr>
+      <tr><td><b>Modularidad Q</b></td><td>Qué tan dividida está la red en grupos (Barber 2007), buscada con propagación de etiquetas y reinicios (Liu y Murata 2010; Beckett 2016).</td><td>0.224 · 3 módulos · z = 24.48, p = 0.04</td></tr>
     </tbody>
   </table>
   <p>Los <b>modelos nulos</b> conservan los totales de cada planta y de cada visitante y reparten los vínculos al azar: el algoritmo <i>curveball</i> para la matriz binaria (Strona et al. 2014) y el reparto al azar de visitas individuales para la cuantitativa (equivalente al de Patefield 1981). El recuadro da el <b>z</b> —a cuántas desviaciones estándar está lo observado del promedio nulo— y una p de dos colas; la de la modularidad usa hasta 49 repeticiones porque cada una exige buscar módulos.</p>
   <div class="caja ejemplo">
     <div class="caja-t"><span class="ico">▸</span>Ejemplo · leer la red de práctica</div>
-    <p>La red de práctica es pequeña y muy conectada (0.818): casi todos los visitantes llegan a casi todas las plantas. Su anidamiento (68.8) no es distinto del de una red al azar con los mismos totales (p = 0.2). Su especialización es baja en términos absolutos (H₂′ = 0.152, <i>generalista</i>), pero mucho mayor que la del azar (z = 34.7): los visitantes reparten sus visitas con preferencias, aunque débiles. Y tiene tres módulos: las abejas de la calabaza, con <i>Halictus</i>, <i>Polistes</i> y <i>Toxomerus</i>, junto a <i>Cucurbita pepo</i> y <i>S. mexicanum</i>; las abejas sin aguijón <i>Trigona</i> y <i>Partamona</i> con <i>S. chinantlense</i> y <i>S. compositum</i>; y la abeja melífera, <i>Scaptotrigona</i> y el abejorro con el chayote y <i>S. hintonii</i>.</p>
+    <p>La red de práctica es pequeña y muy conectada (0.818): casi todos los visitantes llegan a casi todas las plantas. Su anidamiento (68.8) no es distinto del de una red al azar con los mismos totales (p = 0.26). Su especialización es baja en términos absolutos (H₂′ = 0.153, <i>generalista</i>), pero mucho mayor que la del azar (z = 34.7): los visitantes reparten sus visitas con preferencias, aunque débiles. Y tiene tres módulos: las abejas de la calabaza, con <i>Halictus</i>, <i>Polistes</i> y <i>Toxomerus</i>, junto a <i>Cucurbita pepo</i> y <i>S. mexicanum</i>; las abejas sin aguijón <i>Trigona</i> y <i>Partamona</i> con <i>S. chinantlense</i> y <i>S. compositum</i>; y la abeja melífera, <i>Scaptotrigona</i> y el abejorro con el chayote y <i>S. hintonii</i>.</p>
   </div>
   <figure class="media">
     <div class="marco"><img src="../img/b9-matriz.png" alt="La matriz de la red ordenada por grado, con las plantas en filas y los visitantes en columnas"></div>
@@ -2052,7 +2052,7 @@
   <h2 id="s9-4"><span class="num">9.4</span>Plantas y visitantes, uno por uno</h2>
   <figure>
     <div class="marco"><img src="../img/b9-especies.png" alt="Las tablas de plantas y de visitantes con visitas, grado, grado normalizado, fuerza y d prima con su etiqueta"></div>
-    <figcaption><b>Figura 9.4.</b> Las especies de la red. La abeja melífera tiene la mayor fuerza (2.13) y la menor especialización (d′ = 0.05): es el visitante del que más dependen las plantas de la red de práctica.</figcaption>
+    <figcaption><b>Figura 9.4.</b> Las especies de la red. La abeja melífera tiene la mayor fuerza (2.13) y la menor especialización (d′ = 0.04): es el visitante del que más dependen las plantas de la red de práctica.</figcaption>
   </figure>
   <table class="compacta">
     <thead><tr><th style="width:1.6in">Columna</th><th>Qué dice</th></tr></thead>
@@ -2063,7 +2063,7 @@
       <tr><td><b>d′</b></td><td>La especialización de cada especie frente a la disponibilidad de sus compañeros, de 0 a 1 (Blüthgen et al. 2006): <i>generalista</i> &lt; 0.3, <i>intermedia</i> 0.3–0.6, <i>especialista</i> &gt; 0.6.</td></tr>
     </tbody>
   </table>
-  <p><span class="ui">⤓ Especies (.csv)</span> descarga las dos tablas. En la red de práctica ninguna especie pasa de d′ = 0.25; los más especializados son <i>Partamona bilineata</i> (0.25) y <i>S. mexicanum</i> (0.22).</p>
+  <p><span class="ui">⤓ Especies (.csv)</span> descarga las dos tablas. En la red de práctica ninguna especie pasa de d′ = 0.22; los más especializados son <i>Partamona bilineata</i> y <i>S. mexicanum</i> (0.22).</p>
 
   <!-- 9.5 -->
   <h2 id="s9-5"><span class="num">9.5</span>Una planta y sus visitantes</h2>
@@ -2496,7 +2496,7 @@
   <!-- F -->
   <h2 id="ap-f"><span class="num">F</span>La herramienta: licencia y cómo citarla</h2>
   <h3>F.1 · Qué lleva la app por dentro</h3>
-  <p>PollinationPro está escrita en HTML, CSS y JavaScript sin ninguna biblioteca de terceros: ni para las gráficas, ni para los mapas, ni para leer GeoTIFF u hojas de cálculo, ni para escribir el .zip. Los métodos son los de las publicaciones originales, citadas en el código, en la portada y en el informe. Los contornos de los países y de los estados de México son de Natural Earth (dominio público). Los datos de práctica y las capas de práctica son ficticios y los genera el propio programa. El archivo <span class="ruta">PROCEDENCIA.md</span> de la carpeta del programa detalla el origen de cada cosa, y <span class="ruta">tests/index.html</span> comprueba el motor con 162 pruebas.</p>
+  <p>PollinationPro está escrita en HTML, CSS y JavaScript sin ninguna biblioteca de terceros: ni para las gráficas, ni para los mapas, ni para leer GeoTIFF u hojas de cálculo, ni para escribir el .zip. Los métodos son los de las publicaciones originales, citadas en el código, en la portada y en el informe. Los contornos de los países y de los estados de México son de Natural Earth (dominio público). Los datos de práctica y las capas de práctica son ficticios y los genera el propio programa. El archivo <span class="ruta">PROCEDENCIA.md</span> de la carpeta del programa detalla el origen de cada cosa, y <span class="ruta">tests/index.html</span> comprueba el motor con 168 pruebas, y la carpeta <span class="ruta">validation/</span> lo compara número por número con paquetes de R escritos por otras personas (34,299 comparaciones, ninguna en desacuerdo).</p>
   <h3>F.2 · Licencia</h3>
   <p>El programa se distribuye bajo la <b>Licencia Pública General de GNU, versión 3 o posterior</b> (GPL-3.0-or-later): se puede usar, copiar, estudiar y modificar libremente, con la condición de que las versiones modificadas se distribuyan bajo la misma licencia y conserven la atribución. El texto completo está en el archivo <span class="ruta">LICENSE</span>. Este manual es © 2026 Luis Ángel Barrera-Guzmán, todos los derechos reservados.</p>
   <h3>F.3 · Cómo citarla</h3>
