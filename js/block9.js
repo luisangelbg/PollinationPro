@@ -47,15 +47,20 @@ const B9 = {};
     if (!L.length) { N = null; el('b9Body2').style.display = 'none'; showMessage('b9Msg', 'warning', L2('No hay interacciones con estas fuentes. Importa tus observaciones de visitas o busca las interacciones publicadas en el Bloque 2.', 'There are no interactions with these sources. Import your visit observations or search the published interactions in Block 2.')); return; }
     const M = Net2.matrix(L);
     const A = M.A;
+    /* published records say that a link exists, not how often it happens: with them the indices are those of the
+       matrix of links (1/0), and the counts of records are kept only to be shown */
+    const quant = opt.own && !opt.pub;
+    const B = quant ? A : A.map(r => r.map(v => (v > 0 ? 1 : 0)));
     /* a single crop with its visitors is a common study: the plant-level
        results still hold, but the network-level indices need at least two
        plants and two visitors to mean anything */
     const full = M.rows.length >= 2 && M.cols.length >= 2;
     if (!full) showMessage('b9Msg', 'info', L2('Con una sola planta (o un solo visitante) no hay red que describir: se muestran los visitantes, sus proporciones y la completitud del muestreo; los índices de red no aplican.', 'With a single plant (or a single visitor) there is no network to describe: the visitors, their shares and the sampling completeness are shown; the network indices do not apply.'));
-    const nodf = full ? Net2.nodf(A) : { nodf: NaN }, h2 = full ? Net2.h2prime(A) : { H2p: NaN };
-    const mod = full ? Net2.modules(A, { restarts: 20, seed: 5 }) : { Q: NaN, n: 1, rows: M.rows.map(() => 1), cols: M.cols.map(() => 1) };
-    const sp = Net2.species(A, M.rows, M.cols);
-    N = { L, M, A, nodf, h2, mod, sp, conn: Net2.connectance(A), nulls: null, quantitative: opt.own && !opt.pub, full };
+    const nodf = full ? Net2.nodf(A) : { nodf: NaN }, h2 = full && quant ? Net2.h2prime(A) : { H2p: NaN };
+    const mod = full ? Net2.modules(B, { restarts: 20, seed: 5 }) : { Q: NaN, n: 1, rows: M.rows.map(() => 1), cols: M.cols.map(() => 1) };
+    const sp = Net2.species(B, M.rows, M.cols);
+    if (!quant) { const rs = Net2.rowSums(A), cs = Net2.colSums(A); sp.plants.forEach((s, i) => { s.visits = rs[i]; }); sp.visitors.forEach((s, j) => { s.visits = cs[j]; }); }
+    N = { L, M, A, B, nodf, h2, mod, sp, conn: Net2.connectance(A), nulls: null, quantitative: quant, full };
     if (!focus || !M.rows.includes(focus)) focus = M.rows.slice().sort((a, b) => Net2.rowSums(A)[M.rows.indexOf(b)] - Net2.rowSums(A)[M.rows.indexOf(a)])[0];
     state.network = { opt: Object.assign({}, opt), plants: M.rows.length, visitors: M.cols.length, links: L.length, visits: Net2.rowSums(A).reduce((a, b) => a + b, 0), connectance: N.conn, nodf: nodf.nodf, H2p: h2.H2p, Q: mod.Q, modules: mod.n, species: sp, focus };
     render();
@@ -76,7 +81,7 @@ const B9 = {};
         await step(1 / 3, Nn.quantitative ? `Especialización H₂′ · ${n} réplicas` : 'Especialización H₂′', Nn.quantitative ? `Specialisation H₂′ · ${n} replicates` : 'Specialisation H₂′');
         const h2 = Nn.quantitative ? Net2.nullTest(Nn.A, A => Net2.h2prime(A).H2p, 'pairing', n, 12) : null;
         await step(2 / 3, `Modularidad Q · ${Math.min(n, 49)} réplicas`, `Modularity Q · ${Math.min(n, 49)} replicates`);
-        const q = Net2.nullTest(Nn.A, A => Net2.modules(A, { restarts: 3, seed: 1 }).Q, Nn.quantitative ? 'pairing' : 'curveball', Math.min(n, 49), 13);
+        const q = Net2.nullTest(Nn.B, A => Net2.modules(A, { restarts: 3, seed: 1 }).Q, Nn.quantitative ? 'pairing' : 'curveball', Math.min(n, 49), 13);
         /* the network may have been rebuilt meanwhile: its old tests do not apply */
         if (N !== Nn) { if (w) w._failed = true; return; }
         N.nulls = { nodf, h2, q };

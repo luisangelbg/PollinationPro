@@ -260,7 +260,7 @@ const B2 = {};
     msg.remove();
     /* each published record once, even if both of its ends are in the list */
     const seen = new Set();
-    state.interactions = all.filter(x => { const k = [x.plant, x.visitor, x.type, x.ref].join('|'); if (seen.has(k)) return false; seen.add(k); return true; });
+    state.interactions = all.filter(x => { const k = [x.plant, x.visitor, x.type, x.ref, x.lat, x.lon].join('|'); if (seen.has(k)) return false; seen.add(k); return true; });
     btn.disabled = false;
     showMessage('b2GlobiMsg', failed ? 'warning' : 'success', L2(`${state.interactions.length.toLocaleString('en-US')} registros de interacción publicados${failed ? `; ${failed} consultas fallaron` : ''}.`, `${state.interactions.length.toLocaleString('en-US')} published interaction records${failed ? `; ${failed} queries failed` : ''}.`));
     renderInteractions();

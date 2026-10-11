@@ -1,4 +1,4 @@
-PollinationPro 1.2.1 · validación contra R version 4.4.2 (2024-10-31 ucrt)
+PollinationPro 1.2.3 · validación contra R version 4.4.2 (2024-10-31 ucrt)
 
 Motor numérico
 --------------

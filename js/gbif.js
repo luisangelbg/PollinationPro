@@ -187,7 +187,9 @@ const Net = {};
     const type = role === 'plant' ? 'flowersVisitedBy' : 'visitsFlowersOf';
     const out = [];
     for (let offset = 0; offset < 4000; offset += 1000) {
-      const q = new URLSearchParams({ sourceTaxon: name, interactionType: type, limit: '1000', offset: String(offset), fields: FIELDS });
+      /* includeObservations: every record with its study and its place; without it the service answers
+         with one row per pair of taxa and no source to cite */
+      const q = new URLSearchParams({ sourceTaxon: name, interactionType: type, limit: '1000', offset: String(offset), includeObservations: 'true', fields: FIELDS });
       const r = await getJSON(`${GLOBI}/interaction?${q}`, { retries: 3, signal });
       const cols = r.columns || [], rows = r.data || [];
       rows.forEach(row => {
@@ -198,7 +200,7 @@ const Net = {};
           plant: o[plantSide + '_taxon_name'] || '', visitor: o[visSide + '_taxon_name'] || '',
           vg: visitorGroup(o[visSide + '_taxon_path'], o[visSide + '_taxon_name']), plantFamily: familyOf(o[plantSide + '_taxon_path']), visitorFamily: familyOf(o[visSide + '_taxon_path']),
           type: o.interaction_type || '', lat: o.latitude ?? null, lon: o.longitude ?? null,
-          ref: o.study_citation || o.study_source_citation || '', src: 'globi', n: 1,
+          ref: o.study_citation || o.study_source_citation || '', source: o.study_source_citation || o.study_citation || '', src: 'globi', n: 1,
         });
       });
       if (rows.length < 1000) break;

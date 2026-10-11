@@ -83,6 +83,12 @@ diferencias que no son errores. · `validation/` checks the engine, number by
 number, against independent R packages: 34,299 comparisons, none in
 disagreement.
 
+## Caso de estudio · Case study
+
+`casos/cucurbita_xenoglossa/` recorre los diez bloques con datos reales: las calabazas (*Cucurbita*) y sus
+abejas (*Xenoglossa*) en México, con 10,254 registros de GBIF y 1,061 interacciones publicadas. · A worked
+example with real data: squashes and squash bees in Mexico ([README](casos/cucurbita_xenoglossa/README.md)).
+
 ## Datos · Data
 
 El programa no trae datos de terceros. Los registros de GBIF y las
@@ -96,7 +102,7 @@ geográficos son de Natural Earth (dominio público). Ver `PROCEDENCIA.md`.
 
 Barrera-Guzmán, L.Á. (2026). PollinationPro: a browser-based platform for
 analysing plants, pollinators and their overlap with occurrence data
-(Version 1.2.2) [Computer software]. Zenodo.
+(Version 1.2.3) [Computer software]. Zenodo.
 https://doi.org/10.5281/zenodo.23004694
 
 ## Licencia · Licence

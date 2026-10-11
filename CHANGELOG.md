@@ -1,5 +1,20 @@
 # Cambios · Changelog
 
+## 1.2.3 — 10 de octubre de 2026
+
+- Corregido: la búsqueda de **interacciones publicadas** (Bloque 2) recibía
+  una fila por par de taxones, sin estudio ni lugar; ahora pide cada registro
+  con su fuente y sus coordenadas. La tabla cuenta registros reales, la
+  columna «Fuentes» aparece, y el informe lista las fuentes que hay que citar
+  (`js/gbif.js`, `js/block2.js`, `js/report.js`).
+- Corregido: con interacciones publicadas, la red se analiza como matriz de
+  vínculos (1/0) en todos sus índices; antes la modularidad observada usaba
+  los conteos y se comparaba con modelos nulos binarios. H₂′ ya no se anota
+  en el informe cuando no hay conteos de visitas (`js/block9.js`).
+- **Caso de estudio** con datos reales: *Cucurbita* × *Xenoglossa* en México
+  (`casos/cucurbita_xenoglossa/`), con los pasos, las opciones, las cifras y
+  las figuras.
+
 ## 1.2.2 — 10 de octubre de 2026
 
 - **Validación contra R** (`validation/`): el motor de cálculo se compara
