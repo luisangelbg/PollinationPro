@@ -1,6 +1,6 @@
 # PollinationPro
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23004694.svg)](https://doi.org/10.5281/zenodo.23004694)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23004694.svg)](https://doi.org/10.5281/zenodo.23004694) [![Pruebas](https://github.com/luisangelbg/PollinationPro/actions/workflows/pruebas.yml/badge.svg)](https://github.com/luisangelbg/PollinationPro/actions/workflows/pruebas.yml)
 
 **Plantas, polinizadores y su solapamiento** · *English: [README.md](README.md)*
 
@@ -67,6 +67,10 @@ estudio de práctica. Las partes en HTML están en `manual/es/`.
 exacta, fórmulas resueltas a mano, implementaciones independientes y
 simulaciones bajo la hipótesis nula. Ábrela con doble clic: todo debe salir en
 verde.
+
+En cada cambio, GitHub corre solas las pruebas y la validación en un navegador
+sin ventana (`.github/workflows/pruebas.yml`); la insignia de arriba muestra el
+último resultado.
 
 `validation/` compara el motor de cálculo, número por número, con paquetes de R
 escritos por otras personas (cooccur, vegan, geosphere, sf, circular, dismo,

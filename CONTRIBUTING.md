@@ -71,6 +71,10 @@ package to install: edit a file and reload the page.
 3. Walk through the practice study in both languages and in both themes.
 4. Add a line to `CHANGELOG.md`.
 
+The same two checks run by themselves on every push and pull request
+(`node .github/scripts/pruebas.mjs` runs them on your computer if you have
+Node 22 and Chrome).
+
 Then open a pull request against `main` that says what changed and why. Small,
 single-purpose changes are reviewed faster.
 

@@ -1,6 +1,6 @@
 # PollinationPro
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23004694.svg)](https://doi.org/10.5281/zenodo.23004694)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23004694.svg)](https://doi.org/10.5281/zenodo.23004694) [![Pruebas](https://github.com/luisangelbg/PollinationPro/actions/workflows/pruebas.yml/badge.svg)](https://github.com/luisangelbg/PollinationPro/actions/workflows/pruebas.yml)
 
 **Plants, pollinators and their overlap** · *Español: [LEEME.md](LEEME.md)*
 
@@ -88,6 +88,9 @@ interaction records.
   against published values, exact arithmetic, hand-solved formulas,
   independent implementations and simulations under the null hypothesis.
   Every line must be green.
+- **Continuous integration.** On every push and pull request, GitHub runs
+  the unit tests and the validation in a headless browser
+  (`.github/workflows/pruebas.yml`); the badge above shows the last result.
 - **Validation against R.** `validation/` checks the engine, number by
   number, against R packages written by other people (cooccur, vegan,
   geosphere, sf, circular, dismo, spaa, ecospat, terra, glmnet, pROC,
