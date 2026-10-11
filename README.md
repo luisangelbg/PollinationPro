@@ -111,6 +111,7 @@ interaction records.
 | Help cards inside the app (the **?** next to each result) | English and Spanish | What each number means and how to read it |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | English | How to report a problem and how to test a change |
 | [`CHANGELOG.md`](CHANGELOG.md) | Spanish | What changed in each version |
+| [`docs/ai-usage.md`](docs/ai-usage.md) | English and Spanish | How generative AI was used in the development and how the results were verified |
 
 ## Data and third-party material
 

@@ -106,3 +106,9 @@ Los errores y las propuestas se reciben en
 https://github.com/luisangelbg/PollinationPro/issues (el botón «Reportar un
 problema» de la app abre uno con el bloque y el navegador ya anotados). `CONTRIBUTING.md`
 explica cómo probar un cambio antes de enviarlo.
+
+## Uso de inteligencia artificial
+
+El programa se desarrolló con la asistencia de un sistema de IA generativa.
+`docs/ai-usage.md` dice con qué herramienta, en qué partes, qué decidió el
+autor y cómo se verificaron los resultados.
