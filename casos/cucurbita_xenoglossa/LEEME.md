@@ -16,7 +16,13 @@ se pueden rehacer con los pasos de abajo.
 | WorldClim 2 | 19 variables bioclimáticas y altitud, agregadas de 30 segundos a 2.5 minutos de arco | 20 capas |
 
 Los registros no se redistribuyen: `gbif_ids.txt` lista sus identificadores y `conjuntos_gbif.csv`, los conjuntos
-que hay que citar. Para publicar con estos datos, GBIF pide repetir la descarga en su portal y citar su DOI.
+que hay que citar.
+
+**Cita de los registros.** GBIF.org (11 de octubre de 2026). *GBIF Occurrence Download*.
+https://doi.org/10.15468/dl.nd3tcx. Es la descarga del portal con los mismos filtros (las 13 especies, los dos
+géneros de abejas, México, con coordenadas y sin problemas geoespaciales): 10,247 registros de 152 conjuntos. La
+diferencia con los 10,254 de la app (7 registros) viene de la lista taxonómica: el portal asigna los nombres con
+Catalogue of Life y la app consulta la taxonomía base de GBIF.
 
 Plantas: *C. pepo*, *C. moschata*, *C. argyrosperma*, *C. ficifolia* y *C. maxima* (domesticadas); *C. foetidissima*,
 *C. digitata*, *C. palmata*, *C. cordata*, *C. pedatifolia*, *C. radicans*, *C. lundelliana* y *C. okeechobeensis*

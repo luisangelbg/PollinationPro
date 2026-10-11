@@ -15,7 +15,13 @@ public data. Everything shown here was produced by the app and can be redone wit
 | WorldClim 2 | 19 bioclimatic variables and elevation, aggregated from 30 arc-seconds to 2.5 arc-minutes | 20 layers |
 
 Records are not redistributed: `gbif_ids.txt` lists their identifiers and `conjuntos_gbif.csv` the datasets to
-cite. To publish with these data, GBIF asks for the download to be repeated on its portal and cited by its DOI.
+cite.
+
+**Citation of the records.** GBIF.org (11 October 2026). *GBIF Occurrence Download*.
+https://doi.org/10.15468/dl.nd3tcx. This is the portal download with the same filters (the 13 species, the two
+bee genera, Mexico, with coordinates and without geospatial issues): 10,247 records from 152 datasets. The
+difference from the 10,254 of the app (7 records) comes from the taxonomic list: the portal assigns names with
+the Catalogue of Life and the app queries the GBIF backbone taxonomy.
 
 Plants: *C. pepo*, *C. moschata*, *C. argyrosperma*, *C. ficifolia* and *C. maxima* (domesticated);
 *C. foetidissima*, *C. digitata*, *C. palmata*, *C. cordata*, *C. pedatifolia*, *C. radicans*, *C. lundelliana* and
