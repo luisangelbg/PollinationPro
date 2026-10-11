@@ -8,8 +8,8 @@
    WARRANTY; see the GNU General Public License, in the file LICENSE at the root
    of this program, or <https://www.gnu.org/licenses/>.
 
-   Íconos: Lucide v1.49.0 (licencia ISC; algunos derivan de Feather, licencia MIT).
-   El texto de ambas licencias está en LICENSES-TERCEROS.md, junto a este módulo.
+   Íconos: dibujados para la suite LABG sobre una cuadrícula de 24 × 24 con
+   trazo de 1.5; son parte de este código.
 
    Qué hace
    --------
@@ -82,40 +82,40 @@
   const shown = el => !!(el && el.getClientRects().length);
   const typing = t => !!(t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)));
 
-  /* íconos: Lucide v1.49.0 (ISC). Se dibujan con trazo de 1.5 para que se vean finos. */
+  /* íconos propios de la suite: trazos sobre una cuadrícula de 24 × 24, de 1.5 para que se vean finos */
   const ICONOS = {
-    "panel-left-close": "<rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\"/><path d=\"M9 3v18\"/><path d=\"m16 15-3-3 3-3\"/>",
-    "panel-left-open": "<rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\"/><path d=\"M9 3v18\"/><path d=\"m14 9 3 3-3 3\"/>",
-    "chevron-right": "<path d=\"m9 18 6-6-6-6\"/>",
-    "chevron-down": "<path d=\"m6 9 6 6 6-6\"/>",
-    "chevrons-down-up": "<path d=\"m7 20 5-5 5 5\"/><path d=\"m7 4 5 5 5-5\"/>",
-    "chevrons-up-down": "<path d=\"m7 15 5 5 5-5\"/><path d=\"m7 9 5-5 5 5\"/>",
-    "search": "<path d=\"m21 21-4.34-4.34\"/><circle cx=\"11\" cy=\"11\" r=\"8\"/>",
-    "file-text": "<path d=\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"/><path d=\"M14 2v5a1 1 0 0 0 1 1h5\"/><path d=\"M10 9H8\"/><path d=\"M16 13H8\"/><path d=\"M16 17H8\"/>",
-    "focus": "<circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M3 7V5a2 2 0 0 1 2-2h2\"/><path d=\"M17 3h2a2 2 0 0 1 2 2v2\"/><path d=\"M21 17v2a2 2 0 0 1-2 2h-2\"/><path d=\"M7 21H5a2 2 0 0 1-2-2v-2\"/>",
-    "arrow-up": "<path d=\"m5 12 7-7 7 7\"/><path d=\"M12 19V5\"/>",
-    "arrow-left": "<path d=\"m12 19-7-7 7-7\"/><path d=\"M19 12H5\"/>",
-    "arrow-right": "<path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/>",
-    "pencil-line": "<path d=\"M13 21h8\"/><path d=\"m15 5 4 4\"/><path d=\"M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z\"/>",
-    "lock": "<rect width=\"18\" height=\"11\" x=\"3\" y=\"11\" rx=\"2\" ry=\"2\"/><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"/>",
-    "check": "<path d=\"M20 6 9 17l-5-5\"/>",
-    "triangle-alert": "<path d=\"m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3\"/><path d=\"M12 9v4\"/><path d=\"M12 17h.01\"/>",
-    "circle-dashed": "<path d=\"M10.1 2.182a10 10 0 0 1 3.8 0\"/><path d=\"M13.9 21.818a10 10 0 0 1-3.8 0\"/><path d=\"M17.609 3.721a10 10 0 0 1 2.69 2.7\"/><path d=\"M2.182 13.9a10 10 0 0 1 0-3.8\"/><path d=\"M20.279 17.609a10 10 0 0 1-2.7 2.69\"/><path d=\"M21.818 10.1a10 10 0 0 1 0 3.8\"/><path d=\"M3.721 6.391a10 10 0 0 1 2.7-2.69\"/><path d=\"M6.391 20.279a10 10 0 0 1-2.69-2.7\"/>",
-    "link": "<path d=\"M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71\"/><path d=\"M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71\"/>",
-    "circle-help": "<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"/><path d=\"M12 17h.01\"/>",
-    "corner-down-right": "<path d=\"m15 10 5 5-5 5\"/><path d=\"M4 4v7a4 4 0 0 0 4 4h12\"/>",
-    "pencil-ruler": "<path d=\"M13 7 8.7 2.7a2.41 2.41 0 0 0-3.4 0L2.7 5.3a2.41 2.41 0 0 0 0 3.4L7 13\"/><path d=\"m8 6 2-2\"/><path d=\"m18 16 2-2\"/><path d=\"m17 11 4.3 4.3c.94.94.94 2.46 0 3.4l-2.6 2.6c-.94.94-2.46.94-3.4 0L11 17\"/><path d=\"M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z\"/><path d=\"m15 5 4 4\"/>",
-    "sun": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2\"/><path d=\"M12 20v2\"/><path d=\"m4.93 4.93 1.41 1.41\"/><path d=\"m17.66 17.66 1.41 1.41\"/><path d=\"M2 12h2\"/><path d=\"M20 12h2\"/><path d=\"m6.34 17.66-1.41 1.41\"/><path d=\"m19.07 4.93-1.41 1.41\"/>",
-    "languages": "<path d=\"m5 8 6 6\"/><path d=\"m4 14 6-6 2-3\"/><path d=\"M2 5h12\"/><path d=\"M7 2h1\"/><path d=\"m22 22-5-10-5 10\"/><path d=\"M14 18h6\"/>",
-    "keyboard": "<path d=\"M10 8h.01\"/><path d=\"M12 12h.01\"/><path d=\"M14 8h.01\"/><path d=\"M16 12h.01\"/><path d=\"M18 8h.01\"/><path d=\"M6 8h.01\"/><path d=\"M7 16h10\"/><path d=\"M8 12h.01\"/><rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\"/>",
-    "message-circle-warning": "<path d=\"M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719\"/><path d=\"M12 8v4\"/><path d=\"M12 16h.01\"/>",
-    "house": "<path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/><path d=\"M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/>",
-    "x": "<path d=\"M18 6 6 18\"/><path d=\"m6 6 12 12\"/>",
-    "list": "<path d=\"M3 5h.01\"/><path d=\"M3 12h.01\"/><path d=\"M3 19h.01\"/><path d=\"M8 5h13\"/><path d=\"M8 12h13\"/><path d=\"M8 19h13\"/>",
-    "clock": "<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 6v6l4 2\"/>",
-    "zap": "<path d=\"M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z\"/>",
-    "table-of-contents": "<path d=\"M16 5H3\"/><path d=\"M16 12H3\"/><path d=\"M16 19H3\"/><path d=\"M21 5h.01\"/><path d=\"M21 12h.01\"/><path d=\"M21 19h.01\"/>",
-    "panel-top": "<rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\"/><path d=\"M3 9h18\"/>",
+    'panel-left-close': '<rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M9 4.5v15"/><path d="M15.5 9.5 13 12l2.5 2.5"/>',
+    'panel-left-open': '<rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M9 4.5v15"/><path d="M13 9.5l2.5 2.5-2.5 2.5"/>',
+    'chevron-right': '<path d="M10 6.5l5.5 5.5-5.5 5.5"/>',
+    'chevron-down': '<path d="M6.5 10l5.5 5.5 5.5-5.5"/>',
+    'chevrons-down-up': '<path d="M8 4.5l4 4 4-4"/><path d="M8 19.5l4-4 4 4"/>',
+    'chevrons-up-down': '<path d="M8 8.5l4-4 4 4"/><path d="M8 15.5l4 4 4-4"/>',
+    'search': '<circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/>',
+    'file-text': '<path d="M6.5 3.5H14l4.5 4.5v12.5h-12z"/><path d="M14 3.5V8h4.5"/><path d="M9 12.5h6M9 16h6"/>',
+    'focus': '<path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/><circle cx="12" cy="12" r="2.5"/>',
+    'arrow-up': '<path d="M12 19.5V5"/><path d="M6.5 10.5 12 5l5.5 5.5"/>',
+    'arrow-left': '<path d="M19.5 12H5"/><path d="M10.5 6.5 5 12l5.5 5.5"/>',
+    'arrow-right': '<path d="M4.5 12H19"/><path d="M13.5 6.5 19 12l-5.5 5.5"/>',
+    'pencil-line': '<path d="M14.5 5.5l4 4L9 19H5v-4z"/><path d="M12.5 7.5l4 4"/><path d="M13 20h7"/>',
+    'lock': '<rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/><path d="M12 14.5V17"/>',
+    'check': '<path d="M5 12.5l5 5L19 7"/>',
+    'triangle-alert': '<path d="M12 3.8 21.2 19.5H2.8z"/><path d="M12 9.5v4"/><path d="M12 16.8h.01" stroke-width="2.2"/>',
+    'circle-dashed': '<circle cx="12" cy="12" r="8.5" stroke-dasharray="3.2 2.6"/>',
+    'link': '<rect x="1.8" y="9" width="12" height="6" rx="3" transform="rotate(-45 7.8 12)"/><rect x="10.2" y="9" width="12" height="6" rx="3" transform="rotate(-45 16.2 12)"/>',
+    'circle-help': '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8v.5"/><path d="M12 17h.01" stroke-width="2.2"/>',
+    'corner-down-right': '<path d="M5 4.5v7a3 3 0 0 0 3 3h11"/><path d="M15 10.5l4 4-4 4"/>',
+    'pencil-ruler': '<rect x="3" y="14.5" width="18" height="6" rx="1"/><path d="M7 14.5V17M11 14.5v3M15 14.5V17"/><path d="M4.5 10.5 12 3l2.5 2.5L7 13H4.5z"/>',
+    'sun': '<circle cx="12" cy="12" r="4"/><path d="M12 2.5V5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.75 1.75M16.95 16.95l1.75 1.75M5.3 18.7l1.75-1.75M16.95 7.05l1.75-1.75"/>',
+    'languages': '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5c-2.6 2.3-3.8 5.2-3.8 8.5s1.2 6.2 3.8 8.5M12 3.5c2.6 2.3 3.8 5.2 3.8 8.5s-1.2 6.2-3.8 8.5"/><path d="M3.5 12h17M5.2 7.5h13.6M5.2 16.5h13.6"/>',
+    'keyboard': '<rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6.5 10h.01M10 10h.01M14 10h.01M17.5 10h.01" stroke-width="2.2"/><path d="M8 14.5h8"/>',
+    'message-circle-warning': '<path d="M4 12a8 7 0 1 1 3.5 5.8L4 19.5l1.2-3.6A6.8 6.8 0 0 1 4 12z"/><path d="M12 8.5v4"/><path d="M12 15.5h.01" stroke-width="2.2"/>',
+    'house': '<path d="M4 11 12 4l8 7"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/>',
+    'x': '<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>',
+    'list': '<path d="M4.5 7h.01M4.5 12h.01M4.5 17h.01" stroke-width="2.2"/><path d="M8.5 7h11M8.5 12h11M8.5 17h11"/>',
+    'clock': '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+    'zap': '<path d="M13.5 2.5 5.5 13.5H11l-1 8 8-11h-5.5z"/>',
+    'table-of-contents': '<path d="M4 6h10M4 10.5h16M8 15h12M8 19.5h12"/>',
+    'panel-top': '<rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17"/>',
   };
   const ico = (n, cls) => '<svg class="lnav-i' + (cls ? ' ' + cls : '') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + (ICONOS[n] || '') + '</svg>';
 

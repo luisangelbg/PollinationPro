@@ -5,28 +5,22 @@ obra propia y cuáles no lo son, de dónde salen estas últimas y en qué situac
 quedan. Se escribió para acompañar el registro de la obra ante el INDAUTOR y
 para que cualquiera pueda comprobar lo que aquí se afirma sin tener que creerlo.
 
-Última revisión: 10 de octubre de 2026 (versión 1.2.3).
+Última revisión: 10 de octubre de 2026 (versión 1.2.4).
 
 ---
 
 ## 1. En una frase
 
-El código de PollinationPro lo escribió su autor: no usa ninguna biblioteca ni
-fragmento de programa de nadie más. Contiene métodos estadísticos publicados
-—citados a su publicación original en el propio código, en la portada y en el
-informe— y dos elementos que no son del autor y que se declaran aquí: los
-contornos de los países y de los estados de México de Natural Earth, de
-dominio público (sección 3), y los íconos de línea de la barra de navegación y
-del estudio de figuras, del proyecto Lucide, de licencia ISC (sección 4). No
-trae ningún dato de terceros: los registros de GBIF, las interacciones
-publicadas y las capas climáticas las descarga o las elige el usuario cuando
-usa el programa.
+PollinationPro no contiene código, íconos, tipografías ni datos de nadie más.
+Contiene métodos estadísticos publicados —citados a su publicación original en
+el propio código, en la portada y en el informe— y los contornos de los países
+y de los estados de México de Natural Earth, que son de dominio público
+(sección 3). No trae ningún dato de terceros: los registros de GBIF, las
+interacciones publicadas y las capas climáticas las descarga o las elige el
+usuario cuando usa el programa.
 
-**Para el formulario del INDAUTOR.** El programa no adapta, traduce ni compila
-otra obra: es una obra **primigenia**. Los íconos de la sección 4 son dibujos
-de terceros incluidos con su licencia y su aviso de derechos; no forman parte
-de lo que se registra como propio y así debe decirse si el formulario pregunta
-por elementos ajenos.
+**Para el formulario del INDAUTOR: marcar solo «Es primigenia».** El programa
+no adapta, traduce ni compila otra obra.
 
 ---
 
@@ -80,26 +74,20 @@ ejemplar del programa.
 
 ---
 
-## 4. Íconos de la interfaz (de terceros, licencia ISC)
+## 4. Los íconos
 
-**Dónde:** dentro de tres módulos que PollinationPro comparte con las demás
-aplicaciones de la LABG Suite: `js/labg-navigator.js` (la barra de navegación
-y el buscador), `js/labg-figure-studio.js` (el estudio de figuras) y
-`js/labg-fx.js` (el botón «Animaciones»). Son los íconos de línea fina de esos
-controles, escritos como trazos SVG en el propio archivo.
-**Fuente:** el proyecto Lucide, versión 1.49.0 (lucide.dev); algunos derivan
-del proyecto Feather. **Licencia:** ISC (los derivados de Feather, además,
-MIT). Las dos permiten usarlos, modificarlos y redistribuirlos, también en un
-programa con licencia GPL, a condición de conservar su aviso de derechos y el
-texto de la licencia. **Situación:** `LICENSES-TERCEROS.md` lleva el aviso, el
-texto completo de las dos licencias y la lista de los íconos que se usan.
-Se dibujan con trazo de 1.5 en lugar de 2, un cambio que la licencia permite.
+Los íconos de línea de la barra de navegación, del estudio de figuras y del
+botón «Animaciones» (`js/labg-navigator.js`, `js/labg-figure-studio.js` y
+`js/labg-fx.js`) se dibujaron para la LABG Suite sobre una cuadrícula de
+24 × 24, como trazos SVG escritos en el propio código. Sustituyen, desde la
+versión 1.2.4, a un conjunto de íconos de terceros de licencia permisiva que
+esos módulos usaban antes; con el cambio, el archivo de licencias de terceros
+dejó de ser necesario y se retiró.
 
-El resto de esos módulos —y `js/labg-core.js`, `js/labg-figedit.js` y
-`css/labg-base.css`— es código del mismo autor, compartido entre sus
-aplicaciones. Ningún otro ícono, dibujo o tipografía del programa es de
-terceros: las ilustraciones de la portada y de los bloques las dibuja
-`js/art.js`, y las letras son las del sistema de quien lo usa.
+Esos tres módulos, `js/labg-core.js`, `js/labg-figedit.js` y
+`css/labg-base.css` son código del mismo autor, compartido entre sus
+aplicaciones. Las ilustraciones de la portada y de los bloques las dibuja
+`js/art.js`, y las letras son las del sistema de quien usa el programa.
 
 ---
 

@@ -1,5 +1,16 @@
 # Cambios · Changelog
 
+## 1.2.4 — 10 de octubre de 2026
+
+- Los íconos de la barra de navegación, del estudio de figuras y del botón
+  «Animaciones» son ahora propios, dibujados para la LABG Suite; sustituyen a
+  un conjunto de íconos de terceros. El programa ya no incluye ningún elemento
+  ajeno salvo los contornos geográficos de dominio público, y el archivo de
+  licencias de terceros se retiró (`js/labg-navigator.js`,
+  `js/labg-figure-studio.js`, `js/labg-fx.js`, `PROCEDENCIA.md`).
+- Documentación en inglés: `README.md` (el texto en español pasa a
+  `LEEME.md`), `docs/quickstart.md` y `CONTRIBUTING.md`.
+
 ## 1.2.3 — 10 de octubre de 2026
 
 - Corregido: la búsqueda de **interacciones publicadas** (Bloque 2) recibía

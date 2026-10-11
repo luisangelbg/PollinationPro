@@ -8,7 +8,7 @@
    WARRANTY; see the GNU General Public License, in the file LICENSE at the root
    of this program, or <https://www.gnu.org/licenses/>.
 
-   Ícono del botón «Animaciones»: Lucide (licencia ISC), en LICENSES-TERCEROS.md, junto a este módulo.
+   Ícono del botón «Animaciones»: dibujado para la suite LABG; es parte de este código.
 
    Qué hace
    --------
@@ -126,11 +126,11 @@
   window.addEventListener('storage', e => { if (e.key === KEY) { pref = readPref(); applyMotion(); } });
   if (mq) { const f = () => applyMotion(); if (mq.addEventListener) mq.addEventListener('change', f); else if (mq.addListener) mq.addListener(f); }
 
-  /* el botón de la cabecera, junto al del tema: el ícono «sparkles» de Lucide 1.49.0 (ISC), con una raya encima
+  /* el botón de la cabecera, junto al del tema: un destello de cuatro puntas con dos chispas, con una raya encima
      cuando las animaciones están apagadas */
   const ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-    '<path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/>' +
-    '<path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/><path class="lfx-off" d="M3 3l18 18"/></svg>';
+    '<path d="M11 4 12.9 9.6 18.5 11.5 12.9 13.4 11 19 9.1 13.4 3.5 11.5 9.1 9.6z"/>' +
+    '<path d="M19 3v4M17 5h4"/><path d="M19.5 17v3M18 18.5h3"/><path class="lfx-off" d="M3 3l18 18"/></svg>';
   let btn = null;
   function paintBtn() {
     if (!btn) return;
