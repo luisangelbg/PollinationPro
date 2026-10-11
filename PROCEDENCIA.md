@@ -11,15 +11,22 @@ para que cualquiera pueda comprobar lo que aquí se afirma sin tener que creerlo
 
 ## 1. En una frase
 
-PollinationPro no contiene código de nadie más. Contiene métodos estadísticos
-publicados —citados a su publicación original en el propio código, en la
-portada y en el informe— y los contornos de los países y de los estados de
-México de Natural Earth, que son de dominio público. No trae ningún dato de
-terceros: los registros de GBIF, las interacciones publicadas y las capas
-climáticas las descarga o las elige el usuario cuando usa el programa.
+El código de PollinationPro lo escribió su autor: no usa ninguna biblioteca ni
+fragmento de programa de nadie más. Contiene métodos estadísticos publicados
+—citados a su publicación original en el propio código, en la portada y en el
+informe— y dos elementos que no son del autor y que se declaran aquí: los
+contornos de los países y de los estados de México de Natural Earth, de
+dominio público (sección 3), y los íconos de línea de la barra de navegación y
+del estudio de figuras, del proyecto Lucide, de licencia ISC (sección 4). No
+trae ningún dato de terceros: los registros de GBIF, las interacciones
+publicadas y las capas climáticas las descarga o las elige el usuario cuando
+usa el programa.
 
-**Para el formulario del INDAUTOR: marcar solo «Es primigenia».** El programa
-no adapta, traduce ni compila otra obra.
+**Para el formulario del INDAUTOR.** El programa no adapta, traduce ni compila
+otra obra: es una obra **primigenia**. Los íconos de la sección 4 son dibujos
+de terceros incluidos con su licencia y su aviso de derechos; no forman parte
+de lo que se registra como propio y así debe decirse si el formulario pregunta
+por elementos ajenos.
 
 ---
 
@@ -73,7 +80,30 @@ ejemplar del programa.
 
 ---
 
-## 4. Métodos publicados
+## 4. Íconos de la interfaz (de terceros, licencia ISC)
+
+**Dónde:** dentro de tres módulos que PollinationPro comparte con las demás
+aplicaciones de la LABG Suite: `js/labg-navigator.js` (la barra de navegación
+y el buscador), `js/labg-figure-studio.js` (el estudio de figuras) y
+`js/labg-fx.js` (el botón «Animaciones»). Son los íconos de línea fina de esos
+controles, escritos como trazos SVG en el propio archivo.
+**Fuente:** el proyecto Lucide, versión 1.49.0 (lucide.dev); algunos derivan
+del proyecto Feather. **Licencia:** ISC (los derivados de Feather, además,
+MIT). Las dos permiten usarlos, modificarlos y redistribuirlos, también en un
+programa con licencia GPL, a condición de conservar su aviso de derechos y el
+texto de la licencia. **Situación:** `LICENSES-TERCEROS.md` lleva el aviso, el
+texto completo de las dos licencias y la lista de los íconos que se usan.
+Se dibujan con trazo de 1.5 en lugar de 2, un cambio que la licencia permite.
+
+El resto de esos módulos —y `js/labg-core.js`, `js/labg-figedit.js` y
+`css/labg-base.css`— es código del mismo autor, compartido entre sus
+aplicaciones. Ningún otro ícono, dibujo o tipografía del programa es de
+terceros: las ilustraciones de la portada y de los bloques las dibuja
+`js/art.js`, y las letras son las del sistema de quien lo usa.
+
+---
+
+## 5. Métodos publicados
 
 Cada método está escrito en JavaScript por el autor a partir de su publicación
 original, que se cita en el comentario del archivo, en la ficha de ayuda y en
@@ -91,7 +121,7 @@ autor; su escritura en un programa sí lo es, y es propia.
 | `js/network.js` | NODF, H₂′, d′, modularidad, fuerza, modelos nulos | Almeida-Neto et al. 2008; Blüthgen et al. 2006; Barber 2007; Liu y Murata 2010; Beckett 2016; Bascompte et al. 2006; Strona et al. 2014; Patefield 1981 |
 | `js/raster.js` | lectura de GeoTIFF y rejilla ASCII | especificación TIFF 6.0 (Adobe, 1992) y GeoTIFF 1.0 |
 
-**Cómo se comprobó:** `tests/index.html` ejecuta 154 pruebas: valores
+**Cómo se comprobó:** `tests/index.html` ejecuta 168 pruebas: valores
 publicados (cuantiles normales y de ji cuadrada, distribución F), aritmética
 entera exacta (la hipergeométrica), fórmulas cerradas resueltas a mano (D, I,
 Pianka, Hurlbert, Chao1, Benjamini–Hochberg, áreas en la esfera), una
@@ -99,19 +129,26 @@ implementación independiente en sentido inverso (un codificador LZW contra el
 decodificador), archivos GeoTIFF construidos byte por byte, y simulaciones
 bajo la hipótesis nula (tasas de rechazo de las pruebas de coocurrencia, de
 distancias, de Rayleigh, de Watson–Williams y de equivalencia de nicho).
+Además, la carpeta `validation/` compara el motor, número por número, con
+programas escritos por otras personas: 34 299 comparaciones sin desacuerdos
+(`validation/LEEME.md`). Esos programas se usan solo para comparar; ninguna
+parte de ellos está en PollinationPro.
 
 ---
 
-## 5. Nombres de programas y marcas
+## 6. Nombres de programas y marcas
 
-El programa y su documentación no nombran programas de terceros ni marcas
+El programa y su manual no nombran programas de terceros ni marcas
 comerciales. Las bases de datos que el usuario consulta (GBIF, Global Biotic
 Interactions) se nombran porque son la fuente de los datos y su cita es
 obligatoria. «MaxEnt» aparece solo como parte del título de un artículo de
-métodos (Elith et al. 2011) en la lista de referencias.
+métodos (Elith et al. 2011) en la lista de referencias. La excepción son los
+documentos de `validation/` y de `casos/`, que nombran los programas y las
+bases contra los que se comparó o de los que salieron los datos, porque sin
+esos nombres la comparación no se podría repetir.
 
 ---
 
-## 6. Autoría
+## 7. Autoría
 
 Luis Ángel Barrera-Guzmán (ORCID 0000-0001-8057-2583).
