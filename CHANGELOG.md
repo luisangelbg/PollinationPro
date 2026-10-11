@@ -1,5 +1,13 @@
 # Cambios · Changelog
 
+## 1.2.5 — 10 de octubre de 2026
+
+- El estudio de figuras ya no lleva los adaptadores para figuras hechas con
+  bibliotecas de gráficas ajenas, que el programa no usa, ni nombra esas
+  bibliotecas (`js/labg-figure-studio.js`, `css/labg-figure-studio.css`).
+- Pruebas automáticas en cada cambio (`.github/workflows/pruebas.yml`) y
+  declaración de uso de IA en el desarrollo (`docs/ai-usage.md`).
+
 ## 1.2.4 — 10 de octubre de 2026
 
 - Los íconos de la barra de navegación, del estudio de figuras y del botón

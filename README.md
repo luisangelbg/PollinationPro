@@ -132,7 +132,7 @@ item by item, what is original work.
 
 Barrera-Guzmán, L.Á. (2026). PollinationPro: a browser-based platform for
 analysing plants, pollinators and their overlap with occurrence data
-(Version 1.2.4) [Computer software]. Zenodo.
+(Version 1.2.5) [Computer software]. Zenodo.
 https://doi.org/10.5281/zenodo.23004694
 
 The DOI above always resolves to the latest version; each version has its own

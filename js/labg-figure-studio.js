@@ -30,8 +30,8 @@
      · si la app trae un editor fino (✎) o un panel de estilo global, se acoplan
        dentro del inspector mientras el estudio está abierto.
 
-   Exportación nativa (1.1.0): si la app sabe volver a dibujar una figura (por ejemplo, las
-   que dibuja Python con matplotlib, por medio de labg-pyfig.js), el estudio le pide la figura
+   Exportación nativa (1.1.0): si la app sabe volver a dibujar una figura con su propio motor,
+   el estudio le pide la figura
    al tamaño, la resolución y el formato de salida —PNG con sus ppp, SVG y PDF vectoriales— en
    lugar de ampliar la imagen de la pantalla, y muestra una vista previa a tamaño de salida.
 
@@ -191,7 +191,6 @@
   const PERFILES = {
     /* los mapas: los abre el estudio y los exporta el estudio de mapas de la app (js/mapstudio.js declara
        su exportación nativa y dónde están sus pestañas); dentro de un mapa interactivo nada es figura suelta */
-    biomodelling: { exclude: DEF.exclude + ', .leaflet-pane, .leaflet-control-container' },   /* «BioModelling Pro»: el nombre va hasta el espacio */
     statspro: {
       hosts: DEF.hosts + ', .plot-canvas',
       controlsFor: f => { const p = f.host.closest('.step-panel, .subtab-panel'); return p ? p.querySelector('.style-bar, [id$="StyleBar"]') : null; },
@@ -397,27 +396,15 @@
       aspect: el => (el.naturalWidth ? el.naturalHeight / el.naturalWidth : 0.62),
       styles: false,
     },
-    /* figuras de bibliotecas de gráficas: se usan sus propias funciones si existen */
-    plotly: {
-      test: el => !!(window.Plotly && el.closest && el.closest('.js-plotly-plot') && el.classList.contains('main-svg')),
-      aspect: el => { const g = el.closest('.js-plotly-plot'); return g && g.offsetWidth ? g.offsetHeight / g.offsetWidth : 0.62; },
-      styles: false,
-      raster: (el, w, h) => window.Plotly.toImage(el.closest('.js-plotly-plot'), { format: 'png', width: w, height: h }).then(loadImg),
-    },
-    chartjs: {
-      test: el => !!(el.tagName === 'CANVAS' && window.Chart && window.Chart.getChart && window.Chart.getChart(el)),
-      aspect: el => (el.width ? el.height / el.width : 0.62),
-      styles: false,
-    },
     /* mapas interactivos: el contenedor entero es la figura; no se eleva (sigue vivo en la página) y lo dibuja la app */
     map: {
-      test: el => !!(el.classList && (el.classList.contains('leaflet-container') || el.hasAttribute('data-lfs-map'))),
+      test: el => !!(el.hasAttribute && el.hasAttribute('data-lfs-map')),
       aspect: el => (el.offsetWidth ? el.offsetHeight / el.offsetWidth : 0.66),
       styles: false,
       lift: false,
     },
   };
-  const MAP_SEL = '.leaflet-container, [data-lfs-map]';
+  const MAP_SEL = '[data-lfs-map]';
 
   /* ---------------- botón de entrada en cada figura ---------------- */
   const openTitle = () => T('Abrir en el estudio de figuras: pantalla dividida para editar y exportar', 'Open in the figure studio: split screen to edit and export');
@@ -444,15 +431,6 @@
       if (rec.lib === 'map') {
         /* que el mapa no se arrastre ni se acerque al pulsar el botón */
         ['pointerdown', 'mousedown', 'touchstart', 'dblclick', 'wheel'].forEach(t => b.addEventListener(t, e => e.stopPropagation(), { passive: true }));
-        /* un control más del mapa, debajo del zoom: no tapa la leyenda, el título ni la flecha */
-        const corner = host.querySelector(':scope > .leaflet-control-container > .leaflet-top.leaflet-left');
-        if (corner) {
-          const bar = mk('div', 'leaflet-control leaflet-bar lfs-mapbar lfs-own');
-          b.classList.add('lfs-open-leaflet');
-          bar.appendChild(b);
-          corner.appendChild(bar);
-          return;
-        }
         b.classList.add('lfs-open-map');
         host.appendChild(b);
         return;

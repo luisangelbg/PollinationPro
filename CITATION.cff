@@ -23,7 +23,7 @@ authors:
     family-names: "Barrera-Guzmán"
     email: lbarrerag@chapingo.mx
     orcid: "https://orcid.org/0000-0001-8057-2583"
-version: "1.2.4"
+version: "1.2.5"
 date-released: "2026-10-10"
 doi: 10.5281/zenodo.23004694
 url: "https://luisangelbg.github.io/PollinationPro/"

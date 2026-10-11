@@ -44,8 +44,6 @@
 .lfs-open.lfs-open-inline { position: static; opacity: 1; margin-left: 6px; vertical-align: middle; flex: none; }
 /* en un mapa interactivo: un control más, debajo del zoom (o, si el mapa no tiene esa esquina, encima de sus capas) */
 .lfs-mapbar { overflow: hidden; }
-.lfs-open.lfs-open-leaflet { position: static; opacity: 1; width: 30px; height: 30px; border: 0; border-radius: 0; background: var(--lfs-card); color: var(--lfs-ink); }
-.lfs-open.lfs-open-leaflet:hover { background: #111; color: #E6C470; }
 .lfs-open.lfs-open-map { top: auto; bottom: 34px; right: 10px; z-index: 1000; width: 30px; height: 30px; opacity: .92; box-shadow: 0 2px 8px rgba(0, 0, 0, .25); }
 .fig-head:has(> .lfs-open) { display: flex; align-items: center; gap: 6px; }
 .fig-head > .lfs-open { margin-left: auto; }

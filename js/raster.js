@@ -100,7 +100,7 @@ const Raster = {};
       }
     }
   }
-  /* floating-point predictor (predictor 3, Adobe Photoshop TIFF technical note 3):
+  /* floating-point predictor (predictor 3, TIFF technical note 3):
      bytes are differenced, and stored most significant byte plane first */
   function undoFloat(bytes, rowW, spp, bps) {
     const bpp = bps / 8, rowBytes = rowW * spp * bpp, rows = Math.floor(bytes.length / rowBytes);
