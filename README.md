@@ -2,109 +2,145 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23004694.svg)](https://doi.org/10.5281/zenodo.23004694)
 
-**Plantas, polinizadores y su solapamiento · Plants, pollinators and their overlap**
-
-Plataforma en el navegador para llevar un estudio de plantas y sus visitantes
-florales desde los registros de presencia hasta un artículo. Sirve para
-**cualquier cultivo, pariente silvestre o planta nativa** y **cualquier grupo
-de visitantes** (abejas, abejorros, meliponinos, moscas, mariposas,
-murciélagos, aves). Español e inglés, tema claro y oscuro, sin instalar nada
-y sin bibliotecas de terceros.
+**Plants, pollinators and their overlap** · *Español: [LEEME.md](LEEME.md)*
 
 A browser-based platform that takes a study of plants and their flower visitors
-from occurrence records to a paper. It works for any crop, crop wild relative or
-native plant and any group of visitors. Spanish and English, light and dark
-theme, nothing to install and no third-party libraries.
+from occurrence records to a paper. It works for **any crop, crop wild relative
+or native plant** and **any group of visitors** (bees, bumblebees, stingless
+bees, flies, butterflies, bats, birds). The interface is in Spanish and
+English, with light and dark themes. There is nothing to install and no
+third-party library.
 
-## Cómo abrirla · How to open it
+## Statement of need
 
-En línea: https://luisangelbg.github.io/PollinationPro/ · On line.
+Whether a plant and its pollinators coincide in space, in time and in
+environment is usually answered by chaining several packages and scripts:
+one to download and clean occurrence records, others for co-occurrence,
+circular statistics, niche overlap, distribution models and interaction
+networks. That chain is a barrier for botanists, entomologists, agronomists
+and students who do not program, and it makes the path from records to
+results hard to report. PollinationPro puts the whole path in one page that
+opens with a double click, keeps every choice visible, and writes a report
+whose methods section is drawn from what was actually run.
 
-Doble clic en `index.html`. Solo la descarga de GBIF y la búsqueda de
-interacciones publicadas necesitan internet. Para abrirla desde otro equipo de
-la red, ejecuta `Open PollinationPro.bat` (servidor local en el puerto 9750).
+## Open it
 
-Double-click `index.html`. Only the GBIF download and the search for published
-interactions need the internet.
+- **On line:** https://luisangelbg.github.io/PollinationPro/
+- **On your computer:** download the repository and double-click `index.html`.
+  No server, no installation, no build step. Any current browser works.
 
-## Los diez bloques · The ten blocks
+Only two actions use the internet, and only when asked: the download of GBIF
+records and the search for published interactions. Everything else runs in
+the browser, and the data never leave the computer.
 
-1. **Inicio** — portada, teoría y dos laboratorios con el motor real
-   (coocurrencia y sesgo de muestreo; solapamiento fenológico).
-2. **Datos** — lista de estudio (plantas y visitantes a cualquier nivel
-   taxonómico, con siete sistemas de ejemplo), registros de GBIF por país,
-   interacciones publicadas, registros propios de presencia y de visitas
-   (.csv, .txt, .tsv, .xlsx o pegado), datos de práctica ficticios.
-3. **Depuración y taxonomía** — quince reglas (centroides con dos
-   definiciones, coordenadas invertidas corregidas, duplicados, imprecisión,
-   colecciones vivas, plantas cultivadas decididas por planta…), sinónimos
-   (p. ej. *Peponapis* dentro de *Xenoglossa*), unidad de análisis y la frase
-   para los métodos.
-4. **Mapa** — estudio de mapa sin internet: fondo vectorial propio, ocho
-   diseños de flecha y de escala, recorte, estilos, PNG/JPEG/WebP/SVG/TIFF/GeoTIFF
-   a tamaño de revista, rejilla de densidad o de coincidencias y coropletas.
-5. **Coocurrencia** — prueba exacta de Veech con universo del grupo objetivo,
-   ajuste por falsos descubrimientos, sensibilidad al tamaño de celda,
-   distancia al vecino más cercano contra un modelo nulo, envolventes.
-6. **Fenología y altitud** — estadística circular (fecha media, R̄,
-   Rayleigh, Watson–Williams), fenograma, rosa circular, corrección por
-   esfuerzo, solapamiento altitudinal.
-7. **Nicho ambiental** — lector propio de GeoTIFF y rejilla ASCII (y capas de práctica ficticias), ACP del
-   ambiente, D de Schoener, I de Warren, pruebas de equivalencia y
-   similitud, análisis variable por variable.
-8. **Distribución potencial** — envolvente, Mahalanobis y logística con fondo;
-   AUC y TSS por validación cruzada; mapa de desajuste planta–visitante,
-   actual y con clima futuro.
-9. **Red de interacciones** — conectancia, NODF, H₂′, d′, fuerza, modularidad,
-   modelos nulos, visitantes de cada planta y completitud del muestreo.
-10. **Informe** — catálogo de figuras editables una por una (✎) (PNG, JPG, SVG hasta 900 ppp), informe
-    HTML con métodos redactados a partir de lo calculado y lista de conjuntos
-    de GBIF que hay que citar, paquete `.zip` reproducible.
+To open it from another device on the same network, run
+`Open PollinationPro.bat` (Windows; a local server on port 9750).
 
-## Manual · User manual
+## Start here
 
-`manual/PollinationPro User's Manual.pdf` — manual de usuario en español (111 hojas
-tamaño carta): introducción, un capítulo por bloque y apéndices, con capturas del
-estudio de práctica. Las partes en HTML están en `manual/es/`.
+[`docs/quickstart.md`](docs/quickstart.md) walks through the ten blocks in
+about ten minutes with the practice study that ships with the program, with no
+internet and no files of your own.
 
-## Validación · Validation
+[`casos/cucurbita_xenoglossa/`](casos/cucurbita_xenoglossa/README.md) is a
+worked example with real data: squashes (*Cucurbita*) and squash bees
+(*Xenoglossa*) in Mexico, from 10,254 GBIF records and 1,061 published
+interaction records.
 
-`tests/index.html` ejecuta 168 pruebas contra valores publicados, aritmética
-exacta, fórmulas resueltas a mano, implementaciones independientes y
-simulaciones bajo la hipótesis nula. Ábrela con doble clic: todo debe salir en
-verde.
+## The ten blocks
 
-`validation/` compara el motor de cálculo, número por número, con paquetes de R
-escritos por otras personas (cooccur, vegan, geosphere, sf, circular, dismo,
-spaa, ecospat, terra, glmnet, pROC, bipartite, SpadeR): **34 299 comparaciones,
-0 en desacuerdo**. `validation/index.html` muestra el informe con doble clic y
-`validation/LEEME.md` explica cada comparación, los errores que atrapó y las
-diferencias que no son errores. · `validation/` checks the engine, number by
-number, against independent R packages: 34,299 comparisons, none in
-disagreement.
+1. **Home** — theory in plain language and two labs that run the real engine
+   (co-occurrence under sampling bias; phenological overlap).
+2. **Data** — the study list (plants and visitors at any taxonomic rank, with
+   seven example systems), GBIF records by country, published interactions,
+   your own presence and visit records (.csv, .txt, .tsv, .xlsx or pasted),
+   and fictional practice data.
+3. **Cleaning and taxonomy** — fifteen rules (centroids under two
+   definitions, swapped coordinates corrected, duplicates, imprecision, living
+   collections, cultivated plants decided plant by plant), synonyms (for
+   example *Peponapis* within *Xenoglossa*), the unit of analysis, and the
+   sentence for the methods.
+4. **Map** — a map studio that needs no internet: its own vector background,
+   north arrows and scale bars, cropping, styles, export as PNG, JPEG, WebP,
+   SVG, TIFF or GeoTIFF at journal size, density and coincidence grids.
+5. **Co-occurrence** — the probabilistic test of Veech (2013) with a
+   target-group universe, false-discovery-rate adjustment, sensitivity to
+   cell size, nearest-neighbour distance against a null model, range overlap.
+6. **Phenology and elevation** — circular statistics (mean date, R̄,
+   Rayleigh, Watson–Williams), phenogram, circular rose, correction for
+   sampling effort, elevational overlap.
+7. **Environmental niche** — its own reader for GeoTIFF and ASCII grids (and
+   fictional practice layers), PCA of the environment, Schoener's D, Warren's
+   I, equivalency and similarity tests, variable-by-variable analysis.
+8. **Potential distribution** — climatic envelope, Mahalanobis distance and
+   background logistic regression; cross-validated AUC and TSS; the
+   plant–visitor mismatch map, current and under a future climate.
+9. **Interaction network** — connectance, NODF, H₂′, d′, strength,
+   modularity, null models, the visitors of each plant and sampling
+   completeness.
+10. **Report** — a catalogue of figures, each editable (PNG, JPG, SVG up to
+    900 dpi), an HTML report with methods written from what was computed and
+    the list of GBIF datasets to cite, and a reproducible `.zip` package.
 
-## Caso de estudio · Case study
+## Tests and validation
 
-`casos/cucurbita_xenoglossa/` recorre los diez bloques con datos reales: las calabazas (*Cucurbita*) y sus
-abejas (*Xenoglossa*) en México, con 10,254 registros de GBIF y 1,061 interacciones publicadas. · A worked
-example with real data: squashes and squash bees in Mexico ([README](casos/cucurbita_xenoglossa/README.md)).
+- **Unit tests.** Open `tests/index.html` with a double click: 168 tests
+  against published values, exact arithmetic, hand-solved formulas,
+  independent implementations and simulations under the null hypothesis.
+  Every line must be green.
+- **Validation against R.** `validation/` checks the engine, number by
+  number, against R packages written by other people (cooccur, vegan,
+  geosphere, sf, circular, dismo, spaa, ecospat, terra, glmnet, pROC,
+  bipartite, SpadeR): **34,299 comparisons, none in disagreement**. Open
+  `validation/index.html` to see the report; `validation/correr.ps1` rebuilds
+  the references with R. `validation/LEEME.md` (in Spanish) explains every
+  comparison, the errors the validation caught and the differences that are
+  not errors.
+- **A published analysis, redone.**
+  `validation/reproducibilidad/Sechium_Xenoglossa.md` documents how the
+  analysis of an article that used the program was rerun from its GBIF
+  download.
 
-## Datos · Data
+## Documentation
 
-El programa no trae datos de terceros. Los registros de GBIF y las
-interacciones publicadas se consultan cuando el usuario lo pide; cita cada
-descarga de GBIF con su DOI. Las capas climáticas las descarga el usuario
-desde su fuente; las capas de práctica del Bloque 7 son ficticias y las genera
-el propio programa. Los datos de práctica son ficticios. Los contornos
-geográficos son de Natural Earth (dominio público). Ver `PROCEDENCIA.md`.
+| Document | Language | What it is |
+|---|---|---|
+| [`docs/quickstart.md`](docs/quickstart.md) | English | Ten-minute tour with the practice study |
+| [`casos/cucurbita_xenoglossa/README.md`](casos/cucurbita_xenoglossa/README.md) | English and Spanish | Worked example with real data |
+| `manual/PollinationPro User's Manual.pdf` | Spanish | User manual, 111 pages: one chapter per block, decision rules, glossary |
+| Help cards inside the app (the **?** next to each result) | English and Spanish | What each number means and how to read it |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | English | How to report a problem and how to test a change |
+| [`CHANGELOG.md`](CHANGELOG.md) | Spanish | What changed in each version |
 
-## Cómo citar · How to cite
+## Data and third-party material
+
+The program ships no third-party data. GBIF records and published
+interactions are fetched when the user asks; climate layers are chosen by the
+user from their source. The practice records and the practice layers of
+Block 7 are fictional and generated by the program itself.
+
+The only third-party material is the outline of countries and Mexican states
+(Natural Earth, public domain) and a set of interface icons (Lucide, ISC
+licence; see `LICENSES-TERCEROS.md`). `PROCEDENCIA.md` (in Spanish) states,
+item by item, what is original work.
+
+## How to cite
 
 Barrera-Guzmán, L.Á. (2026). PollinationPro: a browser-based platform for
 analysing plants, pollinators and their overlap with occurrence data
 (Version 1.2.3) [Computer software]. Zenodo.
 https://doi.org/10.5281/zenodo.23004694
 
-## Licencia · Licence
+The DOI above always resolves to the latest version; each version has its own
+DOI on the Zenodo page. Cite the version you used.
 
-GNU General Public License, versión 3 o posterior (`LICENSE`).
+## Contributing and support
+
+Problems and proposals go to
+https://github.com/luisangelbg/PollinationPro/issues (the **Report a problem**
+button of the app opens one with the block and the browser already filled in). See
+[`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+## Licence
+
+GNU General Public License, version 3 or later (`LICENSE`).
