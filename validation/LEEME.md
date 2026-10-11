@@ -78,3 +78,8 @@ La depuración de registros del Bloque 3 (reglas sobre las fronteras que trae el
 fuentes del Bloque 2 no tienen equivalente directo en R; las cubren las pruebas de `tests/index.html`. Las pruebas
 de equivalencia y similitud de nichos y la validación cruzada de los modelos son simulaciones construidas con
 piezas que sí se comparan aquí.
+
+## Un análisis publicado, rehecho
+
+`reproducibilidad/Sechium_Xenoglossa.md` documenta cómo se rehizo, a partir de su descarga de GBIF, el análisis
+de un artículo que usó el programa, y qué cifras resultan con cada versión archivada.
