@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · User’s Manual · Chapter 1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  .formula { font-family: var(--mono); font-size: 9pt; background: var(--marino-suave); border-radius: 5px; padding: 0.07in 0.12in; margin: 0.08in 0; }
+  figure.media { width: 82%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 70%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b1" data-pestana="B1" data-orden="1" style="--acento: var(--b1)">
+  <div class="cap-apertura">
+    <div class="cap-num">1</div>
+    <div class="cap-etiqueta">Block 1 · Home</div>
+    <h1 data-corto="Home">Home: labs, methods and theory</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">The home page is not a brochure: its two labs generate virtual landscapes and calendars and run on them the same tests the app will run on your records. Since the truth is known in a virtual landscape, you can see when a test is right and when it is wrong. Here you also find the map of the blocks, the questions they answer, the twenty methods with their source publication, what each data source can claim, the theory in plain language and the references.</p>
+    <ul class="cap-contenido">
+      <li><b>1.1</b>What you see when you open the app</li>
+      <li><b>1.2</b>How it works: the seven steps of a paper</li>
+      <li><b>1.3</b>Lab 1: co-occurrence and sampling bias</li>
+      <li><b>1.4</b>Lab 2: phenological overlap</li>
+      <li><b>1.5</b>The blocks, the questions and the method gallery</li>
+      <li><b>1.6</b>Four data sources, four questions</li>
+      <li><b>1.7</b>The theory, in plain language</li>
+      <li><b>1.8</b>How to cite, and the references</li>
+    </ul>
+  </div>
+
+  <!-- 1.1 -->
+  <h2 id="s1-1"><span class="num">1.1</span>What you see when you open the app</h2>
+  <p class="lead">The first screen (Figure I.2) asks a single question: <i>do the flower and its pollinator meet?</i> Below it, a paragraph sums up the path —from GBIF records and your own observations to a paper— and four buttons lead to the four places where people usually start.</p>
+  <table class="compacta">
+    <thead><tr><th style="width:2in">Button</th><th>Where it leads</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Start with my taxa →</span></td><td>To Block 2, to type the study list.</td></tr>
+      <tr><td><span class="ui">Try the labs</span></td><td>Down to the two labs on this same page (Sections 1.3 and 1.4).</td></tr>
+      <tr><td><span class="ui">Read the theory</span></td><td>Down to “The theory, in plain language”, and opens its first item (Section 1.7).</td></tr>
+      <tr><td><span class="ui">How to cite</span></td><td>Down to the citation of the program (Section 1.8).</td></tr>
+    </tbody>
+  </table>
+  <p>The illustration on the right sums up the app in one picture: a cucurbit vine with flower and fruit, a bee arriving, the map of Mexico with plant and pollinator records, a year clock with flowering and flight, a niche diagram with its D and, at the bottom, a visit network. Its caption says it all: <i>coincidence is the hypothesis; the visit, the evidence</i>. The five badges under the buttons sum up what the program guarantees: it runs entirely in the browser, the data never leave the computer, it is in Spanish and English, its tests are verified, and its figures can be edited and exported up to 900 dpi.</p>
+
+  <!-- 1.2 -->
+  <h2 id="s1-2"><span class="num">1.2</span>How it works: the seven steps of a paper</h2>
+  <figure>
+    <div class="marco"><img src="../img/en/b1-flujo.png" alt="The seven steps of the guided route: gather, clean, place, synchronise, compare niches, connect and publish"></div>
+    <figcaption><b>Figure 1.1.</b> The guided route, in the order in which a pollination paper with occurrence data is written. Each step groups one or two blocks.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.35in">Step</th><th style="width:1.9in">What is done</th><th>Blocks</th></tr></thead>
+    <tbody>
+      <tr><td><b>1 · Gather</b></td><td>plants, pollinators and interactions</td><td>2</td></tr>
+      <tr><td><b>2 · Clean</b></td><td>errors, cultivated and synonyms</td><td>3</td></tr>
+      <tr><td><b>3 · Place</b></td><td>map and co-occurrence</td><td>4 and 5</td></tr>
+      <tr><td><b>4 · Synchronise</b></td><td>flowering and flight</td><td>6</td></tr>
+      <tr><td><b>5 · Compare niches</b></td><td>climate, suitability, mismatch</td><td>7 and 8</td></tr>
+      <tr><td><b>6 · Connect</b></td><td>the visit network</td><td>9</td></tr>
+      <tr><td><b>7 · Publish</b></td><td>figures, methods, package</td><td>10</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 1.3 -->
+  <h2 id="s1-3"><span class="num">1.3</span>Lab 1: co-occurrence and sampling bias</h2>
+  <p>The first lab answers the question that is most often got wrong in studies with occurrence data: <i>do the plant and the bee coincide more than expected?</i> It generates a landscape of 36 × 24 cells with an environmental gradient. The plant and the bee occupy the cells that suit them according to their optimum and their niche breadth. Then someone samples, closer to a road the higher the bias, and only the sampled cells yield records. Veech’s exact test (Chapter 5) is run on those records with three different universes, and compared with <b>the truth</b>: the same test with the real presences, which in the field are never known.</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b1-lab1.png" alt="The co-occurrence lab with its four controls, the landscape with the plant and bee records along the road, the null distribution of shared cells with two universes, and the tiles for the truth and the three universes"></div>
+    <figcaption><b>Figure 1.2.</b> The lab with its starting values: niche separation 0.50, breadth 0.14, bias towards the road 80% and background effort 25%. Filled dots are records; open circles, presences nobody recorded; the gray band, the road.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.7in">Control</th><th>What it changes</th></tr></thead>
+    <tbody>
+      <tr><td><b>Niche separation</b></td><td>How different the environmental optima of the plant and the bee are, from 0 (the same) to 0.8. With 0 they share the landscape; with 0.8 they avoid each other.</td></tr>
+      <tr><td><b>Niche breadth</b></td><td>How much of the gradient they tolerate. Large breadths make almost everything coincide.</td></tr>
+      <tr><td><b>Bias towards the road</b></td><td>How strongly sampling concentrates along the road, from 0 to 100%.</td></tr>
+      <tr><td><b>Background effort</b></td><td>The probability of sampling a cell far from the road.</td></tr>
+      <tr><td><span class="ui">↻ Another landscape</span></td><td>Draws another landscape with the same controls. With the same controls and the same landscape, the result is always the same.</td></tr>
+    </tbody>
+  </table>
+  <p>The tiles underneath are the lesson. <b>Records</b> and <b>Shared cells</b> give what was observed —45 plant records and 64 bee records, 2 shared cells in Figure 1.2— and how many would be expected with two of the universes. <b>The truth</b> gives what happens in the landscape: the two species avoid each other (“less than expected”, SES −11.12). The next three tiles are the same test with three universes: the <b>whole map</b> calls it “at random” and gets it wrong (in red); the <b>target group</b> —the 155 cells where the sampler recorded the plant, the bee or another taxon of the same group— and the <b>sampled cells</b> recover the segregation (in green). The paragraph below sums it up: <i>“Bias also hides: in the landscape the two species avoid each other, but since both were recorded along the road, with the whole map as the universe the segregation vanishes.”</i></p>
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Example · bias also invents</div>
+    <p>Set the niche separation to 0.20, the breadth to 0.25 and the background effort to 5%, with the bias at 80%. In the landscape, the plant and the bee are distributed at random with respect to each other (SES −0.37). But their records pile up along the road, and with the whole map as the universe the test declares a huge positive association —54 shared cells against 9.3 expected, SES 16.38— that does not exist. With the target group (SES −1.68) and with the sampled cells (SES −0.86) it comes out “at random” again. This is <i>the bias trap</i>, and it is the most common mistake in papers with occurrence data.</p>
+    <p>Now raise the background effort to 100% and lower the bias to 0: the whole landscape is sampled and the whole-map universe is right. The target group, on the other hand, leans towards “less than expected” (SES −2.36), because it leaves out the cells where nobody recorded anything and, with them, the shared absences. The app explains it in the same paragraph: the target group corrects bias, and when there is no bias it costs a little accuracy.</p>
+  </div>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Decision rule · which universe to use</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>If</b> your records come from GBIF or from collections</td><td><b>then</b> use the target group (the default option in Block 5): your records carry the road bias.</td></tr>
+      <tr><td><b>If</b> your records come from systematic sampling (a grid or transects walked evenly)</td><td><b>then</b> the universe is the cells you walked; “all land” is only correct if you sampled all the land.</td></tr>
+    </tbody></table>
+    <p class="regla-pie">The <span class="ui">?</span> sheet on <i>Sampling bias</i> explains it with references (Phillips et al. 2009; Kramer-Schadt et al. 2013).</p>
+  </div>
+
+  <!-- 1.4 -->
+  <h2 id="s1-4"><span class="num">1.4</span>Lab 2: phenological overlap</h2>
+  <p>The second lab puts the circular statistics of Block 6 to work. A plant flowers and a bee flies around two peak dates, with two spreads; the app draws records from both calendars, calculates the mean date and the concentration of each one, tests whether they differ and measures how much they overlap month by month.</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b1-lab2.png" alt="The phenological lab: five controls, the year as a circle with the flowering and flight records and their mean vectors, the monthly profiles, and the tiles with the mean dates, the lag, Rayleigh, Schoener’s D and the I and O indices"></div>
+    <figcaption><b>Figure 1.3.</b> Flowering peaking on 15 September (± 40 days) and flight peaking on 16 August (± 30 days), 80 records of each. On the left, each record is a dot on the circle of the year and the arrow is the mean vector; on the right, the monthly profiles and their overlap.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.7in">Tile</th><th>What it says</th><th style="width:1.6in">In Figure 1.3</th></tr></thead>
+    <tbody>
+      <tr><td><b>Mean date</b> of flowering and of flight</td><td>The direction of the mean vector, with R̄ —from 0, dates spread over the whole year, to 1, all on the same day— and its scale label, and the circular standard deviation in days.</td><td>17 Sep · R̄ 0.79 <i>marked</i> · ± 40 days; 14 Aug · R̄ 0.86 · ± 32 days</td></tr>
+      <tr><td><b>Lag</b></td><td>The days between the two mean dates and the Watson–Williams test that they are the same.</td><td>34 days · p = 2.5 × 10⁻⁸</td></tr>
+      <tr><td><b>Rayleigh</b></td><td>Whether each calendar is seasonal (small p) or uniform over the year.</td><td>p ≈ 10⁻²⁷ and 10⁻³⁴</td></tr>
+      <tr><td><b>Schoener’s D</b></td><td>The fraction of the two monthly profiles that is shared, from 0 to 1.</td><td>0.65 <i>high</i></td></tr>
+      <tr><td><b>I · O</b></td><td>Warren’s I and Pianka’s O, two overlap indices that are more lenient with small differences.</td><td>0.82 · 0.82</td></tr>
+    </tbody>
+  </table>
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · why D can be high and the lag significant</div>
+    <p>Watson–Williams asks whether the two <b>mean</b> dates are equal; with 80 records on each side, a lag of one month is highly significant. D asks what fraction of the <b>whole calendars</b> is shared, and two two-month seasons one month apart still overlap a great deal. Both things are true at once: the bee flies before the flowering peak, but most of the flowering happens with bees flying. A paper reports both. Move the <b>flight peak</b> towards March and you will see D drop to zero long before the lag reaches six months.</p>
+  </div>
+
+  <!-- 1.5 -->
+  <h2 id="s1-5"><span class="num">1.5</span>The blocks, the questions and the method gallery</h2>
+  <p>Below the labs, the home page offers three indexes of the app. <b>The nine working blocks</b> (Figure 1.4) are cards that take you to the block with one click; each one says what it does, with a drawing that sums up its main figure.</p>
+  <figure class="alta">
+    <div class="marco"><img src="../img/en/b1-bloques.png" alt="The nine cards of the working blocks, from 2 to 10, each with its drawing, its label, its title and its description"></div>
+    <figcaption><b>Figure 1.4.</b> The cards of Blocks 2 to 10. The amber label gives the dimension each block looks at: data, quality, map, space, time, environment, distribution, network and report.</figcaption>
+  </figure>
+  <figure>
+    <div class="marco"><img src="../img/en/b1-preguntas.png" alt="The strip of the six questions the app answers, each with its drawing and the block that answers it"></div>
+    <figcaption><b>Figure 1.5.</b> The questions it answers, with the block that answers each one: who could pollinate it, whether they coincide in time, what will happen with the climate, wild or cultivated, how specialized the network is, and where sampling is missing.</figcaption>
+  </figure>
+  <p>The <b>method gallery</b> gathers the twenty methods of the app with their source publication and the block where they are used. The buttons at the top filter it by family: <span class="ui">Data and quality</span>, <span class="ui">Space</span>, <span class="ui">Time</span>, <span class="ui">Environment</span> and <span class="ui">Networks and diversity</span>.</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b1-metodos.png" alt="The gallery of the twenty methods, with the filter by family and one card per method"></div>
+    <figcaption><b>Figure 1.6.</b> The method gallery. Each card gives the method, what it consists of in one line, and the block where it is used.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.2in">Family</th><th>Methods</th></tr></thead>
+    <tbody>
+      <tr><td><b>Data and quality</b></td><td>GBIF download by taxon and country · taxonomic harmonization · record cleaning · wild versus cultivated</td></tr>
+      <tr><td><b>Space</b></td><td>Probabilistic co-occurrence (Veech 2013) · similarity by cells (Jaccard, Sørensen, Simpson and cover) · nearest-neighbor distance against a target-group null · overlap of convex hulls</td></tr>
+      <tr><td><b>Time</b></td><td>Circular statistics (mean date, R̄, Rayleigh, Watson–Williams) · month-by-month phenological overlap corrected for effort · elevational overlap with kernel densities</td></tr>
+      <tr><td><b>Environment</b></td><td>PCA of the environment (Broennimann et al. 2012) · Schoener’s D and Warren’s I · niche equivalency and similarity (Warren et al. 2008) · environmental suitability (envelope, Mahalanobis and background logistic) · mismatch map</td></tr>
+      <tr><td><b>Networks and diversity</b></td><td>Bipartite network · NODF nestedness (Almeida-Neto et al. 2008) · H₂′ and d′ specialization (Blüthgen et al. 2006) · visitor richness with rarefaction, Chao1 and coverage</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 1.6 -->
+  <h2 id="s1-6"><span class="num">1.6</span>Four data sources, four questions</h2>
+  <p>A table on the home page says what each type of data can claim and what it cannot. It is the best defense against the sentence a reviewer strikes out: each source answers a different question, and a good paper combines at least two.</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b1-fuentes.png" alt="The table of the four data sources —GBIF, your presence records, your visit observations and the interaction databases— with what they say, what they do not say, their main bias, what they are for and which blocks they enter; and the six cards of what the app brings together"></div>
+    <figcaption><b>Figure 1.7.</b> The four sources and, below them, the six things the app brings together in one place: the chaining of the blocks, the cited methods, the validation, the scales to read by, the editable figures and working without installing anything.</figcaption>
+  </figure>
+
+  <!-- 1.7 -->
+  <h2 id="s1-7"><span class="num">1.7</span>The theory, in plain language</h2>
+  <p>Five collapsible items explain what needs to be understood before downloading the first record. Each one shows on the right the block where it applies.</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b1-teoria.png" alt="The theory section with its first item open: the five-link chain of evidence between a coincidence of records and pollination"></div>
+    <figcaption><b>Figure 1.8.</b> The first item, “Coinciding is not pollinating”, with the diagram of the five links: co-occur in space (Blocks 4–5), in time (Block 6), share a niche (Blocks 7–8), the visit (Block 9) and the carrying and deposition of pollen (field).</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:2.4in">Item</th><th>What it explains</th></tr></thead>
+    <tbody>
+      <tr><td><b>Coinciding is not pollinating: the chain of evidence</b> <i>(start here)</i></td><td>The five links, and why Blocks 5 to 8 speak of “potential pollinators” and Block 9 of recorded interactions.</td></tr>
+      <tr><td><b>Sampling bias and the target group</b> <i>(Block 5)</i></td><td>Why records coincide where more sampling took place, the target-group solution and the hypergeometric distribution.</td></tr>
+      <tr><td><b>The year is a circle</b> <i>(Block 6)</i></td><td>The date as an angle, the mean vector and R̄, Rayleigh, Watson–Williams and the three overlap indices.</td></tr>
+      <tr><td><b>The niche in environmental space</b> <i>(Blocks 7 and 8)</i></td><td>The method of Broennimann et al. (2012), the tests of Warren et al. (2008) and the idea of mismatch.</td></tr>
+      <tr><td><b>Crops, wild relatives and their pollinators</b> <i>(what it is for)</i></td><td>Six crop systems with their visitors and their typical question, why planted plants should be separated from wild ones, and the example of <i>Peponapis</i>, a subgenus of <i>Xenoglossa</i> since Freitas et al. (2023).</td></tr>
+    </tbody>
+  </table>
+  <div class="formula">P(j shared) = C(N₁, j) · C(N − N₁, N₂ − j) / C(N, N₂)      E[j] = N₁·N₂ / N</div>
+  <p>The formula above is that of Veech’s test: if the plant occupies N₁ of N cells and the visitor N₂, and they were placed at random with respect to each other, the number of shared cells would follow the hypergeometric distribution. It is the only formula in the manual worth remembering, because the reading of the whole of Chapter 5 depends on it.</p>
+
+  <!-- 1.8 -->
+  <h2 id="s1-8"><span class="num">1.8</span>How to cite, and the references</h2>
+  <figure>
+    <div class="marco"><img src="../img/en/b1-citar.png" alt="The box with the citation of the program and the button to copy it, and the list of references with its filter by family"></div>
+    <figcaption><b>Figure 1.9.</b> The citation of the program, with the version you have open, and the list of the 60 references behind the calculations, which can be filtered by family.</figcaption>
+  </figure>
+  <p><span class="ui">Copy the citation</span> copies it to the clipboard in the language of the interface. The citation of the program is not enough: each method is cited to its original work —the report of Block 10 names them by author and year, and only those you used—, and each GBIF download is cited with its DOI. The list of references can be filtered into seven families: data and quality, space, time, niche, networks and diversity, crops and pollinators, and numerical methods. Appendix E reproduces it in full.</p>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>The home-page figures can be exported too</div>
+    <p>The figures of the two labs have their ⤓ and ✎ buttons like any other. They are useful for a class or a presentation: the co-occurrence lab, with high and low bias, is the quickest way to explain to a committee why an analysis corrects for sampling effort.</p>
+  </div>
+</section>
+
+</body>
+</html>
