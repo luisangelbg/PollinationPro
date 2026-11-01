@@ -2,26 +2,26 @@
 # ejecuta una receta (recetas/<nombre>.js) y guarda manual/img/<nombre>.png al doble de resolución.
 # Uso (desde la carpeta de la app):
 #   powershell -ExecutionPolicy Bypass -File manual\herramientas\captura.ps1 -Receta inicio [-Ancho 1400] [-Alto 900]
-#     [-Tema light|dark] [-Idioma es|en] [-Recorte "x,y,ancho,alto"] [-Salida nombre]
+#     [-Tema light|dark] [-Idioma es|en] [-Recorte "x,y,ancho,alto"] [-Salida nombre] [-Puerto 9335]
 # -Recorte se da en píxeles de pantalla (antes de duplicar la resolución).
 param(
   [Parameter(Mandatory = $true)][string]$Receta,
   [int]$Ancho = 1400, [int]$Alto = 900,
   [string]$Tema = 'light', [string]$Idioma = 'es',
-  [string]$Recorte = '', [string]$Salida = ''
+  [string]$Recorte = '', [string]$Salida = '', [int]$Puerto = 9335
 )
 $ErrorActionPreference = 'Stop'
 $man = Split-Path $PSScriptRoot -Parent
 $app = Split-Path $man -Parent
 $recetas = Join-Path $PSScriptRoot 'recetas'
 # every recipe starts with the helpers of recetas/_comun.js (W, irA, caja, carga…)
-$archivoReceta = Join-Path $env:TEMP "pollinationpro-receta-$Receta.js"
+$archivoReceta = Join-Path $env:TEMP "pollinationpro-receta-$Puerto-$Receta.js"
 [IO.File]::WriteAllText($archivoReceta, [IO.File]::ReadAllText((Join-Path $recetas '_comun.js'), [Text.Encoding]::UTF8) + "`n" + [IO.File]::ReadAllText((Join-Path $recetas "$Receta.js"), [Text.Encoding]::UTF8), (New-Object Text.UTF8Encoding $false))
 if (-not $Salida) { $Salida = $Receta }
 $png = Join-Path $man "img\$Salida.png"
-$ret = Join-Path $env:TEMP 'pollinationpro-receta.txt'
+$ret = Join-Path $env:TEMP ('pollinationpro-receta-' + $Puerto + '.txt')
 if (Test-Path $ret) { Remove-Item $ret }
-& powershell -ExecutionPolicy Bypass -File (Join-Path $app 'tools\local\shot.ps1') -Out $png -SetupFile $archivoReceta -SetupOut $ret -Theme $Tema -Lang $Idioma -Width $Ancho -Height $Alto -Scale 2 -Wait 2500 -SetupWait 700 | Out-Null
+& powershell -ExecutionPolicy Bypass -File (Join-Path $app 'tools\local\shot.ps1') -Out $png -SetupFile $archivoReceta -SetupOut $ret -Theme $Tema -Lang $Idioma -Width $Ancho -Height $Alto -Scale 2 -Wait 2500 -SetupWait 700 -Port $Puerto | Out-Null
 # sin -Recorte, se usa el que la receta devolvió (window.__recorte), si lo hay
 if (-not $Recorte -and (Test-Path $ret)) { $v = [string](Get-Content $ret -Raw); if ($v -and $v.Trim() -match '^\d+,\d+,\d+,\d+$') { $Recorte = $v.Trim() } }
 if ($Recorte) {
