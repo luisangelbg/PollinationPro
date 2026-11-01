@@ -31,7 +31,7 @@
       <li><b>5.4</b>The distance to the nearest visitor</li>
       <li><b>5.5</b>The overlap of ranges</li>
       <li><b>5.6</b>How to read the three tests together</li>
-      <li><b>5.7</b>The messages of this block</li>
+      <li><b>5.7</b>The warnings in this block</li>
     </ul>
   </div>
 
@@ -66,7 +66,7 @@
     <div class="marco"><img src="../img/en/b5-tabla.png" alt="The table of every pair: plant, visitor, cells of each, shared, expected, SES, two-sided p, adjusted p, verdict, Jaccard index and cover"></div>
     <figcaption><b>Figure 5.2.</b> The pairs table. Chayote with <i>Xenoglossa</i> heads the list with 51 shared cells against 46.0 expected (SES 0.97, at random); <i>Cucurbita</i> with the honey bee closes it with 118 against 173.3 (SES −7.72, less than expected).</figcaption>
   </figure>
-  <p>Besides the test, each pair carries two descriptive indices: <b>Jaccard</b>’s (shared cells over the cells of either of the two) and the <b>cover</b> (what fraction of the plant’s cells has the visitor). <span class="ui">⤓ Pairs (.csv)</span> downloads the complete table, with the Sørensen and Simpson indices and both tails of p.</p>
+  <p>Besides the test, each pair carries two descriptive indices: <b>Jaccard</b>’s (shared cells over the cells of either of the two) and the <b>cover</b> (what fraction of the plant’s cells has the visitor). <span class="ui">⤓ Pairs (.csv)</span> downloads the complete table (<code>cooccurrence_pairs.csv</code>), with the Sørensen and Simpson indices and both tails of p.</p>
   <div class="caja teoria">
     <div class="caja-t"><span class="ico">θ</span>Theory in brief · why adjust</div>
     <p>With 6 plants and 2 visitors, 12 pairs are tested; with 30 pairs, at α = 0.05, one or two “significant” ones would be expected even if there were no association at all. The Benjamini and Hochberg (1995) adjustment controls the expected proportion of false positives among the pairs declared associated. Use the adjusted p to decide and report both; if you are only interested in one pair chosen beforehand by the hypothesis, its unadjusted p is the one that applies.</p>
@@ -85,7 +85,7 @@
       <tr><td><b>Expected by chance</b></td><td>N₁·N₂/N, with the size of the universe.</td><td>46.0 · N = 918</td></tr>
       <tr><td><b>SES</b></td><td>The standardized effect size, with its scale label.</td><td>0.97 · <i>chance</i></td></tr>
       <tr><td><b>p (more)</b> · <b>p (less)</b></td><td>The probability of as many or more shared cells (test of positive association) and of as many or fewer (negative).</td><td>0.19 · 0.857</td></tr>
-      <tr><td><b>Cover</b></td><td>What fraction of the plant’s cells has the visitor.</td><td>32%</td></tr>
+      <tr><td><b>Cover</b></td><td>What fraction of the plant’s cells has the visitor.</td><td>32 %</td></tr>
     </tbody>
   </table>
   <p>The <b>sensitivity</b> figure repeats the test with the five cell sizes. In the practice study the verdict changes: less than expected at 0.1°, at random at 0.25°, more than expected at 0.5°, at random at 1° and 2°. The app writes it below and advises: <i>“Report it that way: the association depends on the resolution it is looked at.”</i> When all five agree, it says the result is robust to the scale.</p>
@@ -150,12 +150,12 @@
   </div>
 
   <!-- 5.7 -->
-  <h2 id="s5-7"><span class="num">5.7</span>The messages of this block</h2>
+  <h2 id="s5-7"><span class="num">5.7</span>The warnings in this block</h2>
   <table class="compacta">
     <thead><tr><th style="width:2.6in">Message</th><th>What it means and what to do</th></tr></thead>
     <tbody>
       <tr><td><i>Plants and visitors are needed</i></td><td>The list needs at least one plant and one visitor with cleaned records.</td></tr>
-      <tr><td><i>The grid is too fine for the "all land" universe in this extent</i></td><td>With 0.1° cells over a large area, the all-land universe has too many cells. Use larger cells or the target group.</td></tr>
+      <tr><td><i>The grid is too fine for the “all land” universe in this extent</i></td><td>With 0.1° cells over a large area, the all-land universe has too many cells. Use larger cells or the target group.</td></tr>
       <tr><td><i>The verdict changes with the scale…</i></td><td>It is not an error: it is a result. Report it with the sensitivity figure.</td></tr>
       <tr><td>Many “unclassified” pairs</td><td>There are few records for the chosen cell. Use larger cells or bring species together in their genus (Block 3).</td></tr>
     </tbody>

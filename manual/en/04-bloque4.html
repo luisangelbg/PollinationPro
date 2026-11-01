@@ -54,7 +54,7 @@
       <tr><td><span class="ui">Text and fonts</span></td><td>Title, subtitle, source or credit, legend title, the typeface family and the sizes and styles.</td></tr>
       <tr><td><span class="ui">Elements</span></td><td>North arrow (eight designs), scale bar (eight formats) and legend.</td></tr>
       <tr><td><span class="ui">Data</span></td><td>What is drawn (points, heat, grids, hulls), the symbols and each unit.</td></tr>
-      <tr><td><span class="ui">Colours</span></td><td>The palette of the units, the density ramp and the color of each unit.</td></tr>
+      <tr><td><span class="ui">Colors</span></td><td>The palette of the units, the density ramp and the color of each unit.</td></tr>
       <tr><td><span class="ui">Looks</span></td><td>Six ready-made looks, saving and loading a style, resetting everything.</td></tr>
       <tr><td><span class="ui">Export</span></td><td>Format, paper size and resolution, and the download.</td></tr>
     </tbody>
@@ -115,8 +115,8 @@
     <div class="marco"><img src="../img/en/b4-envolventes.png" alt="The convex hulls of Sechium edule and Xenoglossa over Mexico, with the units table where only those two are ticked to be shown"></div>
     <figcaption><b>Figure 4.6.</b> Convex hulls with only two units visible: chayote and <i>Xenoglossa</i>. The <b>Each unit</b> table lets you hide units, change their color and shape, and says how many records each one has.</figcaption>
   </figure>
-  <p><b>Each unit.</b> The table of the <span class="ui">Data</span> tab —repeated in <span class="ui">Colours</span>— has one row per unit with the <b>Show</b> checkbox, its color, its shape and its number of records. The buttons <span class="ui">Show all</span>, <span class="ui">Plants only</span> and <span class="ui">Visitors only</span> change the visibility at a stroke. The territory tables of Section 4.7 and the points download follow what is shown.</p>
-  <p><b>Colors.</b> Six palettes for the units —PollinationPro, Okabe–Ito (color-blind safe), Earth, Vivid, Soft and Grays— and six ramps for density —Greens, Amber, Violets, Heat, Cool and Grays—. A color changed by hand in a unit is kept when you change palette; <span class="ui">Back to the palette colours</span> undoes it.</p>
+  <p><b>Each unit.</b> The table of the <span class="ui">Data</span> tab —repeated in <span class="ui">Colors</span>— has one row per unit with the <b>Show</b> checkbox, its color, its shape and its number of records. The buttons <span class="ui">Show all</span>, <span class="ui">Plants only</span> and <span class="ui">Visitors only</span> change the visibility at a stroke. The territory tables of Section 4.7 and the points download follow what is shown.</p>
+  <p><b>Colors.</b> Six palettes for the units —PollinationPro, Okabe–Ito (color-blind safe), Earth, Vivid, Soft and Grays— and six ramps for density —Greens, Amber, Violets, Heat, Cool and Grays—. A color changed by hand in a unit is kept when you change palette; <span class="ui">Back to the palette colors</span> undoes it.</p>
 
   <!-- 4.6 -->
   <h2 id="s4-6"><span class="num">4.6</span>Ready-made looks and export</h2>
@@ -142,7 +142,7 @@
       <figcaption><b>Figure 4.8.</b> <i>Field guide</i>, clipped to six southern states.</figcaption>
     </figure>
   </div>
-  <p><span class="ui">⤓ Save this style (.json)</span> saves all the map options —except the data— to a file; <span class="ui">Load a style…</span> applies it to another study or on another computer. That way all the map figures of a thesis come out alike. <span class="ui">Reset everything</span> goes back to the starting values.</p>
+  <p><span class="ui">⤓ Save this style (.json)</span> saves all the map options —except the data— to a file (<code>map_style.json</code>); <span class="ui">Load a style…</span> applies it to another study or on another computer. That way all the map figures of a thesis come out alike. <span class="ui">Reset everything</span> goes back to the starting values.</p>
   <figure>
     <div class="marco"><img src="../img/en/b4-exportar.png" alt="The Export tab with the PNG format, the size of a journal column and 600 dpi; the map already has the proportions of the chosen paper"></div>
     <figcaption><b>Figure 4.9.</b> The export to a journal column (85 × 70 mm) at 600 dpi: “It will be 2,006 × 1,656 pixels”. The view on the left took the shape of the paper: what you see is what is downloaded.</figcaption>
@@ -174,7 +174,7 @@
     <div class="marco"><img src="../img/en/b4-territorio.png" alt="The records by territory card: a table of Mexican states with the total and the records of each unit, the list of states without records and the table of countries"></div>
     <figcaption><b>Figure 4.10.</b> The records of what is shown on the map, by Mexican state and by country. Oaxaca (194), Chiapas (175), Puebla (174) and Veracruz (168) hold the most records; Baja California, Baja California Sur and Nuevo León have none.</figcaption>
   </figure>
-  <p>The tables follow what the map shows: if units are hidden, they are recomputed. The states table gives the total and one column per unit (up to ten); the sentence below names the states without any record of what is shown. It is the first answer to “where is sampling missing?”: a state without records of a plant that should be there is a sampling gap or a real distribution limit, and it is worth knowing which before interpreting the following blocks. <span class="ui">⤓ Points shown (.csv)</span>, under the studio, downloads the visible points with their unit and coordinates.</p>
+  <p>The tables follow what the map shows: if units are hidden, they are recomputed. The states table gives the total and one column per unit (up to ten); the sentence below names the states without any record of what is shown. It is the first answer to “where is sampling missing?”: a state without records of a plant that should be there is a sampling gap or a real distribution limit, and it is worth knowing which before interpreting the following blocks. <span class="ui">⤓ Points shown (.csv)</span>, under the studio, downloads the visible points with their unit and coordinates (<code>map_points.csv</code>).</p>
   <div class="caja importante">
     <div class="caja-t"><span class="ico">!</span>What the map does not say</div>
     <p>A map of presence records is not a distribution map: it shows where someone recorded the species, not where it lives. Gaps may be absences or lack of sampling, and concentrations may be abundance or effort. The caption of the paper’s figure should say so (“cleaned records of…, GBIF and own observations”), and Block 8 is the one that estimates the potential distribution.</p>

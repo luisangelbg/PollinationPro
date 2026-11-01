@@ -12,7 +12,7 @@
 <style>
   .formula { font-family: var(--mono); font-size: 9pt; background: var(--marino-suave); border-radius: 5px; padding: 0.07in 0.12in; margin: 0.08in 0; }
   figure.media { width: 82%; margin-left: auto; margin-right: auto; }
-  figure.alta { width: 52%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 66%; margin-left: auto; margin-right: auto; }
 </style>
 </head>
 <body>
@@ -30,7 +30,7 @@
       <li><b>6.3</b>The circular statistics of each unit</li>
       <li><b>6.4</b>Plant and visitor</li>
       <li><b>6.5</b>Elevation</li>
-      <li><b>6.6</b>The messages of this block</li>
+      <li><b>6.6</b>The warnings in this block</li>
     </ul>
   </div>
 
@@ -100,7 +100,7 @@
       <tr><td><b>Schoener’s D</b></td><td>The fraction of the two calendars that is shared: Σ min(pᵢ, qᵢ) over the twelve months, from 0 to 1 (Schoener 1968).</td><td>0.79 · <i>high</i></td></tr>
       <tr><td><b>Warren’s I · Pianka’s O</b></td><td>Two overlap indices that are more lenient with small differences (Warren et al. 2008; Pianka 1973). They are reported along with D.</td><td>0.94 · 0.91</td></tr>
       <tr><td><b>Lag between mean dates</b></td><td>The days between the two mean dates, with the Watson–Williams p.</td><td>26 days · p ≈ 7 × 10⁻¹³</td></tr>
-      <tr><td><b>Flowering with flight</b></td><td>What fraction of the plant’s profile falls in months with records of the visitor.</td><td>97%</td></tr>
+      <tr><td><b>Flowering with flight</b></td><td>What fraction of the plant’s profile falls in months with records of the visitor.</td><td>97 %</td></tr>
       <tr><td><b>Months in common</b></td><td>The months in which both have at least 5% of their profile.</td><td>Jun to Oct</td></tr>
     </tbody>
   </table>
@@ -120,7 +120,7 @@
     </tbody></table>
     <p class="regla-pie">The scale is that of Rödder and Engler (2011) for the niche, applied to the calendar. A year-round generalist (the honey bee) has a moderate D with almost every plant because its profile is spread out: always read D together with flowering with flight.</p>
   </div>
-  <p><span class="ui">⤓ Units (.csv)</span> and <span class="ui">⤓ Pairs (.csv)</span> download the two tables, with the monthly profiles of each unit.</p>
+  <p><span class="ui">⤓ Units (.csv)</span> and <span class="ui">⤓ Pairs (.csv)</span> download the two tables (<code>phenology_units.csv</code> and <code>phenology_pairs.csv</code>), with the monthly profiles of each unit.</p>
 
   <!-- 6.5 -->
   <h2 id="s6-5"><span class="num">6.5</span>Elevation</h2>
@@ -136,11 +136,11 @@
   </div>
 
   <!-- 6.6 -->
-  <h2 id="s6-6"><span class="num">6.6</span>The messages of this block</h2>
+  <h2 id="s6-6" data-nueva-hoja><span class="num">6.6</span>The warnings in this block</h2>
   <table class="compacta">
     <thead><tr><th style="width:2.6in">Message</th><th>What it means and what to do</th></tr></thead>
     <tbody>
-      <tr><td><i>Only N% of the records carry elevation: the profile may not represent the whole unit</i></td><td>Fill it in from a layer in Block 7, or read elevation with caution.</td></tr>
+      <tr><td><i>Only N % of the records carry elevation: the profile may not represent the whole unit</i></td><td>Fill it in from a layer in Block 7, or read elevation with caution.</td></tr>
       <tr><td><i>No record carries elevation…</i></td><td>Load a digital elevation model in Block 7 and fill in elevation from there.</td></tr>
       <tr><td><i>The chosen pair has no elevations</i></td><td>One of the two units has no record with elevation.</td></tr>
       <tr><td>* κ &lt; 1 in the pairs table</td><td>The dates of one of the units are so spread out that Watson–Williams is unreliable. Use D and flowering with flight.</td></tr>
