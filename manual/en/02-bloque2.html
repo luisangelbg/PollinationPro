@@ -53,15 +53,15 @@
   <p>Everything starts with the names. They are typed at any level —species (<i>Coffea arabica</i>), genus (<i>Bombus</i>) or family— in the <b>Plants</b> column or in the <b>Visitors</b> column, and each name is an <b>entry</b> of the list: a genus gathers the records of all its species. Several names are separated with commas or semicolons. Or you can start from one of the seven <b>example systems</b>, which are starting points, not recommendations: Mexican cucurbits and squash bees; coffee and bees; cocoa and pollinating midges (<i>Forcipomyia</i>); Solanaceae and bumblebees; avocado and its visitors; agaves and nectar-feeding bats; and vanilla and orchid bees.</p>
   <figure>
     <div class="marco"><img src="../img/en/b2-lista.png" alt="The study-list card with the seven example systems, the cucurbit one chosen, and the nine entries resolved in GBIF with their rank, family, order, status, key and records worldwide"></div>
-    <figcaption><b>Figure 2.1.</b> The system of the Mexican cucurbits resolved in GBIF (real query of 27 September 2026; your numbers will differ). Each entry shows its rank, family, order, taxonomic status and the GBIF key with its link; <i>Cucurbita</i> also shows a selector, because GBIF has more than one name with that spelling.</figcaption>
+    <figcaption><b>Figure 2.1.</b> The system of the Mexican cucurbits resolved in GBIF (real query of October 31, 2026; your numbers will differ). Each entry shows its rank, family, order, taxonomic status and the GBIF key with its link; <i>Cucurbita</i> also shows a selector, because GBIF has more than one name with that spelling.</figcaption>
   </figure>
-  <p><span class="ui">Resolve the names in GBIF</span> looks up each name in the GBIF taxonomic backbone. When there are <b>homonyms</b> —the same name in two kingdoms, or a fossil name alongside the living one— the app picks the one from the kingdom that matches the role (plants or animals) with the most records, and leaves a selector to change it. In Figure 2.1, <i>Cucurbita</i> L. has 90,979 records and a homonym with 180. Each name is shown with its number of records worldwide; after counting with the chosen countries (Section 2.3), the number becomes that of those countries.</p>
+  <p><span class="ui">Resolve the names in GBIF</span> looks up each name in the GBIF taxonomic backbone. When there are <b>homonyms</b> —the same name in two kingdoms, or a fossil name alongside the living one— the app picks the one from the kingdom that matches the role (plants or animals) with the most records, and leaves a selector to change it. In Figure 2.1, <i>Cucurbita</i> L. has 94,500 records and a homonym with 180; among the chayote species, <i>Sechium edule</i> has 4,278 and the wild ones between 53 and 145, and among the visitors the honey bee exceeds 1.3 million. Each name is shown with its number of records worldwide; after counting with the chosen countries (Section 2.3), the number becomes that of those countries.</p>
   <table class="compacta">
     <thead><tr><th style="width:1.9in">What a name can say</th><th>What it means and what to do</th></tr></thead>
     <tbody>
       <tr><td><i>accepted</i></td><td>The name is accepted in the GBIF backbone. This is the normal case.</td></tr>
       <tr><td><i>synonym</i> or <i>doubtful</i></td><td>GBIF considers it a synonym or doubtful. The records are requested by the key of the chosen name; check whether you should type the accepted name instead.</td></tr>
-      <tr><td><i>GBIF does not recognise the name: check the spelling</i></td><td>There was no match. It is almost always a typo or a very recent name.</td></tr>
+      <tr><td><i>GBIF does not recognize the name: check the spelling</i></td><td>There was no match. It is almost always a typo or a very recent name.</td></tr>
       <tr><td><i>practice data (not resolved in GBIF)</i></td><td>The entry comes from the fictitious data (Section 2.6): it has no GBIF key and does not need one.</td></tr>
     </tbody>
   </table>
@@ -75,7 +75,7 @@
   <p>The second card requests the records of each resolved name, <b>only with coordinates</b> and filtered by country on the server. Choosing the countries here is much better than downloading the world and filtering afterwards: the count already comes filtered and the download is shorter.</p>
   <figure>
     <div class="marco"><img src="../img/en/b2-gbif.png" alt="The GBIF card with the region buttons, the checkboxes of 31 countries, the maximum records per name, the years, the type of record, the geospatial-issues checkbox and the message with the count"></div>
-    <figcaption><b>Figure 2.2.</b> The download filters and the result of <span class="ui">Count how many there are</span> for the list of the cucurbits in Mexico: 37,185 records with coordinates, and one name (<i>Apis mellifera</i>) that exceeds the maximum of 20,000.</figcaption>
+    <figcaption><b>Figure 2.2.</b> The download filters and the result of <span class="ui">Count how many there are</span> for the list of the cucurbits in Mexico (real query of October 31, 2026): 37,586 records with coordinates, and one name (<i>Apis mellifera</i>) that exceeds the maximum of 20,000.</figcaption>
   </figure>
   <table class="compacta">
     <thead><tr><th style="width:1.9in">Control</th><th>What it does</th></tr></thead>
@@ -108,12 +108,12 @@
   <p><span class="ui">Search published interactions</span> queries a public database of biotic interactions, which gathers what has been published in papers, databases and collections, in both directions: the visitors to the flowers of each plant in the list, and the plants whose flowers each visitor visits. The result is a table of pairs with the visitor’s group (bee, wasp, hoverfly, fly, butterfly or moth, beetle, bat, bird), how many records support it and whether at least one of them calls it <b>pollination</b> and not just a visit.</p>
   <figure>
     <div class="marco"><img src="../img/en/b2-globi.png" alt="The table of published interactions: plant, visitor, group, records and whether any of them claims pollination; with labels marking the names that are in the list"></div>
-    <figcaption><b>Figure 2.3.</b> The first rows of 4,406 published interaction records for the list of the cucurbits (real query). The <span class="ui">in list</span> label marks the names that belong to an entry of your list; <i>Sicyos edulis</i>, an old synonym of chayote, does not carry it.</figcaption>
+    <figcaption><b>Figure 2.3.</b> The first rows of 2,390 published interaction records for the list of the cucurbits (real query of October 31, 2026). At the top are the squashes (<i>Cucurbita</i>) with <i>Peponapis pruinosa</i>. The <span class="ui">in list</span> label marks the names that belong to an entry of your list; <i>Deinandra fasciculata</i>, a composite visited by <i>Xenoglossa pomonae</i>, does not carry it because it arrived through the visitor search.</figcaption>
   </figure>
   <p>Up to 4,000 records are requested per name. The table shows up to 300 pairs sorted by number of records; <span class="ui">⤓ Interactions (.csv)</span>, at the foot, downloads all the records with their type, their source (when the database gives it) and their coordinates (when they have them). When the database returns the citation of the original study, a <b>Sources</b> column also appears with how many studies support each pair.</p>
   <div class="caja nota">
     <div class="caja-t"><span class="ico">i</span>What the table teaches before the analysis</div>
-    <p>Figure 2.3 already offers three useful readings. There are published records of <i>Sechium edule</i> with the honey bee, but none with the squash bees: the chayote–<i>Xenoglossa</i> link that the practice study explores is undocumented. Some plants appear under names that are no longer used (<i>Sicyos edulis</i>): Block 9 can apply the synonyms of Block 3 to them. And the same pair appears at species and at genus level (<i>Cucurbita pepo</i> and <i>Cucurbita</i>): Block 9 lets you group plants and visitors by genus.</p>
+    <p>The full table already offers three useful readings. The first rows are of squashes with squash bees (<i>Peponapis</i>); <i>Sechium edule</i> appears further down, outside Figure 2.3, only with the honey bee (2 records, one of which claims pollination) and with <i>Trigona corvina</i>, and with no squash bee: the chayote–<i>Xenoglossa</i> link that the practice study explores is undocumented. Some plants appear under names that are no longer used (<i>Sicyos edulis</i>, an old synonym of chayote, with the honey bee and three other visitors): Block 9 can apply the synonyms of Block 3 to them. And the same pair appears at species and at genus level (<i>Cucurbita pepo</i> and <i>Cucurbita</i>): Block 9 lets you group plants and visitors by genus.</p>
   </div>
 
   <!-- 2.5 -->
@@ -139,7 +139,7 @@
 
   <!-- 2.6 -->
   <h2 id="s2-6"><span class="num">2.6</span>The practice data</h2>
-  <p>Under the list, the collapsible <span class="ui">No internet, or just practising? Fictional data generated by the program</span> loads one of the two practice studies (Section I.7) without querying the internet: <span class="ui">Cucurbits and squash bees</span> or <span class="ui">Coffee and stingless bees</span>. With them you can reproduce this manual.</p>
+  <p>Under the list, the collapsible <span class="ui">No internet, or just practicing? Fictional data generated by the program</span> loads one of the two practice studies (Section I.7) without querying the internet: <span class="ui">Cucurbits and squash bees</span> or <span class="ui">Coffee and stingless bees</span>. With them you can reproduce this manual.</p>
   <figure>
     <div class="marco"><img src="../img/en/b2-practica.png" alt="The lists of plants and visitors with the practice data loaded, and the message saying how many fictitious records and visits were generated"></div>
     <figcaption><b>Figure 2.6.</b> The cucurbit practice study: six plants and three visitors marked as “practice data (not resolved in GBIF)”, with their records loaded. The message says it plainly: 2,248 records and 354 rows of visits, all <b>fictitious</b>, with errors planted on purpose for Block 3.</figcaption>
@@ -157,7 +157,7 @@
       <tr><td><b>Records</b></td><td>The total and its origin: GBIF, own, practice.</td><td>2,248 · practice 2,248</td></tr>
       <tr><td><b>Plants · visitors</b></td><td>The entries of the list with each role.</td><td>6 · 3</td></tr>
       <tr><td><b>Countries</b></td><td>In how many countries the records fall, with their codes.</td><td>3 · MX GT US</td></tr>
-      <tr><td><b>Years</b></td><td>The range and the fraction of records with a year. A future year is the first sign of an error.</td><td>1975–2031 · 97% with year</td></tr>
+      <tr><td><b>Years</b></td><td>The range and the fraction of records with a year. A future year is the first sign of an error.</td><td>1975–2031 · 97 % with year</td></tr>
       <tr><td><b>Own visits</b></td><td>The imported visits and how many rows describe them.</td><td>953 in 354 rows</td></tr>
       <tr><td><b>Published interactions</b></td><td>The records brought from the interaction database.</td><td>0</td></tr>
     </tbody>
@@ -174,7 +174,7 @@
     <thead><tr><th style="width:2.6in">Message</th><th>What it means and what to do</th></tr></thead>
     <tbody>
       <tr><td><i>First resolve the names in GBIF (section 1)</i></td><td>Counting and downloading need the GBIF key of each name.</td></tr>
-      <tr><td><i>Could not query GBIF… Check your connection, or practise with the fictional data below</i></td><td>No internet, or the service is down. The practice data work offline.</td></tr>
+      <tr><td><i>Could not query GBIF… Check your connection, or practice with the fictional data below</i></td><td>No internet, or the service is down. The practice data work offline.</td></tr>
       <tr><td><i>N names exceed the chosen maximum</i></td><td>Only the first records of those names will be downloaded. Raise the maximum or narrow the years (rule in Section 2.3).</td></tr>
       <tr><td><i>Download finished… Some names failed or were stopped</i></td><td>Repeat the download: only the GBIF records of those names are replaced. A name that was cut keeps what it managed to download and is marked as such (“cut: N kept”).</td></tr>
       <tr><td><i>N published interaction records; N queries failed</i></td><td>Some of the queries to the interaction database did not respond. Repeat the search.</td></tr>
