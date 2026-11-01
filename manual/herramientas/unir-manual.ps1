@@ -1,8 +1,8 @@
 ﻿# PollinationPro · manual de usuario: une las partes de un idioma en un solo documento para imprimirlo a PDF.
-# Uso, desde la carpeta manual/:   powershell -ExecutionPolicy Bypass -File herramientas\unir-manual.ps1 es
+# Uso, desde la carpeta manual/:   powershell -ExecutionPolicy Bypass -File herramientas\unir-manual.ps1 es   (o en)
 #
 # Hace lo mismo que unir-manual.pl (que necesita Perl, y en esta máquina no está instalado): escribe
-# es/manual-completo.html con la portada (00a-portada.html) como primera hoja y las secciones de
+# es/manual-completo.html (o en/manual-completo.html) con la portada (00a-portada.html) como primera hoja y las secciones de
 # 00b-introduccion.html a 11-apendices.html en orden, con un solo paginar.js, para que la numeración de páginas
 # sea continua y el índice general encuentre las páginas de todos los capítulos.
 #
@@ -10,6 +10,9 @@
 # capítulos le dan valores distintos (por ejemplo el ancho de figure.chica), gana la versión más frecuente y las
 # otras se acotan a las hojas de su capítulo con .hoja[data-pestana="N"].
 param([string]$Lang = 'es')
+# el título y el rótulo de la portada van en el idioma del manual ([char]0x2019 = apóstrofo tipográfico)
+$titulo = if ($Lang -eq 'en') { 'PollinationPro ' + [char]0x00B7 + ' User' + [char]0x2019 + 's Manual' } else { 'PollinationPro ' + [char]0x00B7 + ' Manual de usuario' }
+$rotPortada = if ($Lang -eq 'en') { 'Cover' } else { 'Portada' }
 
 $ErrorActionPreference = 'Stop'
 $dir = Join-Path (Get-Location) $Lang
@@ -82,7 +85,7 @@ if (Test-Path $fPortada) {
   $scr = [regex]::Match($t, '(?s)(<script>.*?</script>)')
   $fnt = [regex]::Match($t, '(<link href="https://fonts\.googleapis\.com[^>]*>)')
   if (-not $svg.Success -or -not $scr.Success) { throw '00a-portada.html no tiene la estructura esperada' }
-  $portada = "<div class=`"hoja portada cover`" aria-label=`"Portada`">$($svg.Groups[1].Value)</div>`n$($scr.Groups[1].Value)`n"
+  $portada = "<div class=`"hoja portada cover`" aria-label=`"$rotPortada`">$($svg.Groups[1].Value)</div>`n$($scr.Groups[1].Value)`n"
   if ($fnt.Success) { $links = "$($fnt.Groups[1].Value)`n$links" }
   $ms = [regex]::Match($t, '(?s)<style>(.*?)</style>')
   if ($ms.Success) { [void]$css.AppendLine("  $($ms.Groups[1].Value)") }
@@ -94,7 +97,7 @@ $html = @"
 <html lang="$Lang">
 <head>
 <meta charset="utf-8">
-<title>PollinationPro · Manual de usuario</title>
+<title>$titulo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- documento generado por herramientas/unir-manual.ps1: no se edita a mano; se corrigen las partes -->
 $links

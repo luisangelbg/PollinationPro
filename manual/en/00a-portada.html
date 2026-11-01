@@ -58,7 +58,7 @@
 
   el('rect', { x: 0, y: 0, width: W, height: H, fill: BLANCO });
 
-  /* ---------------------------------------------------------------- the colours of the ten blocks */
+  /* ---------------------------------------------------------------- the colors of the ten blocks */
   const BLOQUES = ['#1f5a3a', VERDE, ORO, VIOLETA, AZUL, OXIDO, TURQ, TIERRA, ROSA, OLIVA, PIZARRA, '#111111'];
   BLOQUES.forEach((c, i) => {
     el('rect', { x: f1(i * W / BLOQUES.length), y: 0, width: f1(W / BLOQUES.length + 0.5), height: 9, fill: c });
@@ -78,7 +78,7 @@
     'PLANTS, POLLINATORS AND THEIR OVERLAP · PLANTAS, POLINIZADORES Y SU SOLAPAMIENTO');
 
   /* ================================================================= the year as a circle
-     The centrepiece is the question of the whole app: do the flower and its pollinator meet?
+     The centerpiece is the question of the whole app: do the flower and its pollinator meet?
      A year clock with the months; on it, the flowering of a plant (green) and the flight of its
      bee (gold) as two circular densities, their mean dates as arrows, and the months they share
      shaded. In the middle, a cucurbit flower with a squash bee on it. */
@@ -220,7 +220,7 @@
   /* ---------------------------------------------------------------- author and edition */
   const foot = el('g', { 'text-anchor': 'middle', 'font-family': 'Cormorant, serif' });
   el('text', { x: W / 2, y: 1052, 'font-size': 19, 'font-weight': 600, fill: INK, 'letter-spacing': 0.5 }, foot, 'Luis Ángel Barrera-Guzmán');
-  el('text', { x: W / 2, y: 1074, 'font-family': 'Jost, sans-serif', 'font-size': 9.5, fill: GRIS, 'letter-spacing': 2.4 }, foot, 'FIRST EDITION · 2026 · VERSION 1.2.5 · ENGLISH EDITION');
+  el('text', { x: W / 2, y: 1074, 'font-family': 'Jost, sans-serif', 'font-size': 9.5, fill: GRIS, 'letter-spacing': 2.4 }, foot, 'FIRST ENGLISH EDITION · 2026 · VERSION 1.2.5');
 })();
 </script>
 </body>

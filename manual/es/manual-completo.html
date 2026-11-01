@@ -241,7 +241,7 @@
   /* ---------------------------------------------------------------- author and edition */
   const foot = el('g', { 'text-anchor': 'middle', 'font-family': 'Cormorant, serif' });
   el('text', { x: W / 2, y: 1052, 'font-size': 19, 'font-weight': 600, fill: INK, 'letter-spacing': 0.5 }, foot, 'Luis Ángel Barrera-Guzmán');
-  el('text', { x: W / 2, y: 1074, 'font-family': 'Jost, sans-serif', 'font-size': 9.5, fill: GRIS, 'letter-spacing': 2.4 }, foot, 'PRIMERA EDICIÓN · 2026 · VERSIÓN 1.2');
+  el('text', { x: W / 2, y: 1074, 'font-family': 'Jost, sans-serif', 'font-size': 9.5, fill: GRIS, 'letter-spacing': 2.4 }, foot, 'PRIMERA EDICIÓN · 2026 · VERSIÓN 1.2.5');
 })();
 </script>
 
@@ -256,16 +256,16 @@
   <dl>
     <dt>Autor</dt><dd><b>Luis Ángel Barrera-Guzmán</b><br><span class="small">ORCID 0000-0001-8057-2583</span></dd>
     <dt>Programa</dt><dd>PollinationPro, versión 1.2.5 (octubre de 2026) · DOI 10.5281/zenodo.23004694</dd>
-    <dt>Manual</dt><dd>Primera edición en español, 2026. Describe la versión 1.2 del programa.</dd>
+    <dt>Manual</dt><dd>Primera edición en español, 2026. Describe la versión 1.2.5 del programa.</dd>
     <dt>Licencia del programa</dt><dd>Licencia Pública General de GNU, versión 3 o posterior (GPL-3.0-or-later).</dd>
     <dt>Derechos del manual</dt><dd>© 2026 Luis Ángel Barrera-Guzmán. Todos los derechos reservados.</dd>
     <dt>Idioma de la interfaz</dt><dd>Español o inglés, con el botón <span class="ui">ES</span> · <span class="ui">EN</span> de la barra superior. En este manual los nombres de botones, campos y menús se escriben como aparecen en pantalla en español, por ejemplo <span class="ui">Depurar y aplicar</span>.</dd>
   </dl>
 
   <h4>Cómo citar el programa</h4>
-  <div class="cita">Barrera-Guzmán, L. Á. (2026). <i>PollinationPro: plataforma en el navegador para el análisis de plantas, polinizadores y su solapamiento con datos de presencia</i> (versión 1.2) [Programa de cómputo]. Zenodo. https://doi.org/10.5281/zenodo.23004694</div>
+  <div class="cita">Barrera-Guzmán, L.Á. (2026). <i>PollinationPro: plataforma en el navegador para el análisis de plantas, polinizadores y su solapamiento con datos de presencia</i> (versión 1.2.5) [software]. Zenodo. https://doi.org/10.5281/zenodo.23004694</div>
   <h4>Cómo citar este manual</h4>
-  <div class="cita">Barrera-Guzmán, L. Á. (2026). <i>PollinationPro. Manual de usuario</i> (1.ª ed.). Distribuido con PollinationPro, versión 1.2. Zenodo. https://doi.org/10.5281/zenodo.23004694</div>
+  <div class="cita">Barrera-Guzmán, L.Á. (2026). <i>PollinationPro. Manual de usuario</i> (1.ª ed.). Distribuido con PollinationPro, versión 1.2.5. Zenodo. https://doi.org/10.5281/zenodo.23004694</div>
   <p class="small">Es el <b>DOI de concepto</b> en Zenodo: lleva siempre a la versión más reciente. En línea: <span class="ruta">luisangelbg.github.io/PollinationPro</span>.</p>
 
   <div class="caja nota">
@@ -434,7 +434,7 @@
 <!-- ====================================================================== CÓMO LEER -->
 <section class="preliminares" id="como-leer" data-nueva-hoja style="--acento: var(--b0)">
   <h2 style="margin-top:0.2in">Cómo leer este manual</h2>
-  <p class="lead">El manual sigue el mismo orden que la app: diez bloques numerados que se recorren de izquierda a derecha en la barra de arriba. Cada capítulo explica un bloque y lleva su mismo número —el capítulo 5 es el Bloque 5, y sus secciones, figuras y tablas se numeran 5.1, 5.2…—. Cada uno empieza con la idea ecológica que el bloque necesita, sigue con lo que la pantalla calcula y cómo se lee, y termina con los avisos que el bloque puede mostrar y qué hacer con ellos. Esta introducción no lleva número: sus secciones van como I.1, I.2…</p>
+  <p class="lead">El manual sigue el mismo orden que la app: diez bloques numerados que se recorren de arriba abajo en la lista <span class="ui">Bloques</span> de la izquierda. Cada capítulo explica un bloque y lleva su mismo número —el capítulo 5 es el Bloque 5, y sus secciones, figuras y tablas se numeran 5.1, 5.2…—. Cada uno empieza con la idea ecológica que el bloque necesita, sigue con lo que la pantalla calcula y cómo se lee, y termina con los avisos que el bloque puede mostrar y qué hacer con ellos. Esta introducción no lleva número: sus secciones van como I.1, I.2…</p>
 
   <h3>Un color para cada bloque</h3>
   <p>El color del bloque aparece en la apertura de su capítulo, en el número de cada sección, en la pestaña del borde de la hoja y en el índice, y es el mismo de la franja de la portada y de la app.</p>
@@ -645,7 +645,7 @@
     <li>Copia la carpeta <span class="ruta">PollinationPro</span> completa a tu computadora. Dentro deben estar <span class="ruta">index.html</span> y las carpetas <span class="ruta">js</span>, <span class="ruta">css</span>, <span class="ruta">data</span> (los contornos de los países y de los estados de México) y <span class="ruta">tests</span>.</li>
     <li>Abre <span class="ruta">index.html</span> con doble clic. La primera pantalla es el Bloque 1, la portada. En Windows, <span class="ruta">Open PollinationPro.bat</span> la abre además como un pequeño servidor local (puerto 9750), útil para abrirla desde otro equipo de la red.</li>
     <li>Elige el idioma con <span class="ui">ES</span> · <span class="ui">EN</span> y el tema claro u oscuro con el botón del sol. Ambos se recuerdan para la próxima vez.</li>
-    <li>Si quieres comprobar que el motor calcula bien en tu navegador, abre <span class="ruta">tests/index.html</span>: son 168 pruebas contra valores publicados, aritmética exacta, fórmulas resueltas a mano, implementaciones independientes y simulaciones bajo la hipótesis nula. Todas deben salir en verde.</li>
+    <li>Si quieres comprobar que el motor calcula bien en tu navegador, abre <span class="ruta">tests/index.html</span>: son 191 pruebas contra valores publicados, aritmética exacta, fórmulas resueltas a mano, implementaciones independientes y simulaciones bajo la hipótesis nula. Todas deben salir en verde.</li>
   </ol>
   <div class="caja nota">
     <div class="caja-t"><span class="ico">i</span>La app recuerda el estudio</div>
@@ -655,18 +655,18 @@
   <!-- I.6 -->
   <h2 id="si-6"><span class="num">I.6</span>Recorrido por la interfaz</h2>
   <figure>
-    <div class="marco"><img src="../img/inicio.png" alt="La pantalla inicial de PollinationPro: la barra superior con la marca, el estudio de figuras, el idioma y el tema; la barra de los diez pasos; y la portada con su pregunta, sus cuatro botones y su ilustración"></div>
-    <figcaption><b>Figura I.2.</b> La pantalla inicial. Arriba, la barra fija con la marca, el botón de la paleta (el estudio de figuras), el selector de idioma y el del tema; debajo, la barra de los diez pasos; y la portada del Bloque 1 con la pregunta que el programa contesta: <i>¿coinciden la flor y su polinizador?</i></figcaption>
+    <div class="marco"><img src="../img/inicio.png" alt="La pantalla inicial de PollinationPro: la barra superior con la marca, el estudio de figuras, el idioma y el tema; a la izquierda, la lista de los diez bloques; al centro, la ruta, los modos Documento y Enfocado, la portada con su pregunta, sus botones y su ilustración; a la derecha, el índice En este bloque"></div>
+    <figcaption><b>Figura I.2.</b> La pantalla inicial. Arriba, la barra fija con la marca, el botón de la paleta (el estudio de figuras), el selector de idioma y el del tema; a la izquierda, la lista <span class="ui">Bloques</span> con los diez bloques; a la derecha, el índice <span class="ui">En este bloque</span> con sus secciones; y, al centro, la portada del Bloque 1 con la pregunta que el programa contesta: <i>¿coinciden la flor y su polinizador?</i></figcaption>
   </figure>
   <table class="compacta">
     <thead><tr><th style="width:1.7in">Elemento</th><th>Para qué sirve</th></tr></thead>
     <tbody>
-      <tr><td><b>La barra de pasos</b></td><td>Diez botones numerados, siempre visibles; en pantallas angostas la barra se desliza de lado. Se puede saltar a cualquier bloque en cualquier momento; el que necesita algo que todavía no existe lo dice y ofrece el botón para ir a resolverlo.</td></tr>
+      <tr><td><b>La lista <span class="ui">Bloques</span> y el índice <span class="ui">En este bloque</span></b></td><td>A la izquierda, los diez bloques, siempre visibles, con una ✓ en los terminados; a la derecha, las secciones del bloque abierto. Se puede saltar a cualquier bloque en cualquier momento; el que necesita algo que todavía no existe lo dice y ofrece el botón para ir a resolverlo.</td></tr>
       <tr><td><b>Las tarjetas</b></td><td>Cada bloque se divide en tarjetas numeradas —«1 · La lista de estudio», «2 · Traer los registros de GBIF»…— que se leen de arriba abajo: primero lo que se elige, luego lo que se calcula.</td></tr>
       <tr><td><b>Los recuadros de resultados</b></td><td>Una fila de cifras grandes con su etiqueta y una línea de contexto debajo. Es el resumen de la tarjeta.</td></tr>
       <tr><td><b>El signo <span class="ui">?</span></b></td><td>Junto a un título, una cifra o una columna, abre una ficha de ayuda: qué mide, cómo se lee, la escala que dice si el valor es bajo o alto y el error más común, con sus referencias. Hay 50 fichas; cada bloque termina con su <span class="ui">📖 Guía de interpretación de este bloque</span>, que reúne las suyas.</td></tr>
       <tr><td><b>Las etiquetas de escala</b></td><td>Al lado de muchos números aparece una palabra en color —<i>moderado</i>, <i>marcada</i>, <i>aceptable</i>, <i>generalista</i>—. Sale de la escala de la ficha correspondiente, aplicada al valor que tienes en pantalla.</td></tr>
-      <tr><td><b>Los botones ⤓ y ✎ de cada figura</b></td><td>En la esquina de cada figura. ⤓ la exporta (PNG, JPG o SVG, 150 a 900 ppp, claro u oscuro). ✎ abre su editor: cualquier texto se reescribe, cambia de tamaño o de color o se oculta; cualquier color se sustituye; la fuente, el grosor de las líneas y el tamaño de los puntos se ajustan (sección 10.3).</td></tr>
+      <tr><td><b>Los botones ⤓ y ✎ de cada figura</b></td><td>En la esquina de cada figura. ⤓ la exporta (PNG, JPG o SVG, 150 a 900 ppp, claro u oscuro). ✎ abre su editor de seis pestañas: título, ejes, series, leyenda, cualquier texto (se reescribe, cambia de tamaño o de color o se oculta) y anotaciones (sección 10.3).</td></tr>
       <tr><td><b>El estudio de figuras</b></td><td>El botón de la paleta en la barra superior. Cambia la paleta (nueve, entre ellas la de Okabe–Ito para daltónicos y una en grises), la fuente, las escalas y el fondo de <b>todas</b> las figuras a la vez, en pantalla y en lo que se exporta.</td></tr>
       <tr><td><b><span class="ui">Continuar a … →</span></b></td><td>Al pie de cada bloque. Lleva al siguiente.</td></tr>
       <tr><td><b>Los mensajes</b></td><td>Bandas de color bajo una tarjeta: azul o verde para información, ámbar para un aviso, rojo para un error que impide seguir. Cada capítulo termina con los de su bloque.</td></tr>
@@ -948,9 +948,9 @@
   <p>Todo empieza con los nombres. Se escriben a cualquier nivel —especie (<i>Coffea arabica</i>), género (<i>Bombus</i>) o familia— en la columna de <b>Plantas</b> o en la de <b>Visitantes</b>, y cada nombre es una <b>entrada</b> de la lista: un género reúne los registros de todas sus especies. Varios nombres se separan con comas o punto y coma. O se parte de uno de los siete <b>sistemas de ejemplo</b>, que son puntos de partida, no recomendaciones: cucurbitáceas de México y abejas de la calabaza; café y abejas; cacao y mosquitas polinizadoras (<i>Forcipomyia</i>); solanáceas y abejorros; aguacate y sus visitantes; agaves y murciélagos nectarívoros; y vainilla y abejas de las orquídeas.</p>
   <figure>
     <div class="marco"><img src="../img/b2-lista.png" alt="La tarjeta de la lista de estudio con los siete sistemas de ejemplo, el de cucurbitáceas elegido, y las nueve entradas resueltas en GBIF con su rango, familia, orden, estado, clave y registros en el mundo"></div>
-    <figcaption><b>Figura 2.1.</b> El sistema de las cucurbitáceas de México resuelto en GBIF (consulta real del 27 de septiembre de 2026; tus números serán otros). Cada entrada muestra su rango, familia, orden, estado taxonómico y la clave de GBIF con su enlace; <i>Cucurbita</i> muestra además un selector, porque GBIF tiene más de un nombre con esa grafía.</figcaption>
+    <figcaption><b>Figura 2.1.</b> El sistema de las cucurbitáceas de México resuelto en GBIF (consulta real del 31 de octubre de 2026; tus números serán otros). Cada entrada muestra su rango, familia, orden, estado taxonómico y la clave de GBIF con su enlace; <i>Cucurbita</i> muestra además un selector, porque GBIF tiene más de un nombre con esa grafía.</figcaption>
   </figure>
-  <p><span class="ui">Resolver los nombres en GBIF</span> busca cada nombre en el esqueleto taxonómico de GBIF. Cuando hay <b>homónimos</b> —el mismo nombre en dos reinos, o un nombre fósil junto al vivo— la app elige el del reino que corresponde al papel (plantas o animales) con más registros, y deja un selector para cambiarlo. En la Figura 2.1, <i>Cucurbita</i> L. tiene 90,979 registros y un homónimo de 180. Cada nombre queda con su número de registros en el mundo; después de contar con los países elegidos (sección 2.3), el número pasa a ser el de esos países.</p>
+  <p><span class="ui">Resolver los nombres en GBIF</span> busca cada nombre en el esqueleto taxonómico de GBIF. Cuando hay <b>homónimos</b> —el mismo nombre en dos reinos, o un nombre fósil junto al vivo— la app elige el del reino que corresponde al papel (plantas o animales) con más registros, y deja un selector para cambiarlo. En la Figura 2.1, <i>Cucurbita</i> L. tiene 94,500 registros y un homónimo de 180; entre las especies de chayote, <i>Sechium edule</i> tiene 4,278 y las silvestres entre 53 y 145, y entre los visitantes la abeja melífera pasa de 1.3 millones. Cada nombre queda con su número de registros en el mundo; después de contar con los países elegidos (sección 2.3), el número pasa a ser el de esos países.</p>
   <table class="compacta">
     <thead><tr><th style="width:1.9in">Lo que puede decir un nombre</th><th>Qué significa y qué hacer</th></tr></thead>
     <tbody>
@@ -970,7 +970,7 @@
   <p>La segunda tarjeta pide los registros de cada nombre resuelto, <b>solo con coordenadas</b> y filtrados por país desde el servidor. Elegir los países aquí es mucho mejor que descargar el mundo y filtrar después: el conteo ya llega filtrado y la descarga es más corta.</p>
   <figure>
     <div class="marco"><img src="../img/b2-gbif.png" alt="La tarjeta de GBIF con los botones de región, las casillas de 31 países, el máximo de registros por nombre, los años, el tipo de registro, la casilla de problemas geoespaciales y el mensaje del conteo"></div>
-    <figcaption><b>Figura 2.2.</b> Los filtros de la descarga y el resultado de <span class="ui">Contar cuántos hay</span> para la lista de las cucurbitáceas en México: 37,185 registros con coordenadas, y un nombre (<i>Apis mellifera</i>) que pasa del máximo de 20,000.</figcaption>
+    <figcaption><b>Figura 2.2.</b> Los filtros de la descarga y el resultado de <span class="ui">Contar cuántos hay</span> para la lista de las cucurbitáceas en México (consulta real del 31 de octubre de 2026): 37,586 registros con coordenadas, y un nombre (<i>Apis mellifera</i>) que pasa del máximo de 20,000.</figcaption>
   </figure>
   <table class="compacta">
     <thead><tr><th style="width:1.9in">Control</th><th>Qué hace</th></tr></thead>
@@ -1003,12 +1003,12 @@
   <p><span class="ui">Buscar interacciones publicadas</span> consulta una base pública de interacciones bióticas, que reúne lo publicado en artículos, bases y colecciones, en las dos direcciones: los visitantes de las flores de cada planta de la lista y las plantas cuyas flores visita cada visitante. El resultado es una tabla de pares con el grupo del visitante (abeja, avispa, mosca sírfida, mosca, mariposa o polilla, escarabajo, murciélago, ave), cuántos registros lo respaldan y si al menos uno de ellos lo llama <b>polinización</b> y no solo visita.</p>
   <figure>
     <div class="marco"><img src="../img/b2-globi.png" alt="La tabla de interacciones publicadas: planta, visitante, grupo, registros y si alguno afirma polinización; con etiquetas que marcan los nombres que están en la lista"></div>
-    <figcaption><b>Figura 2.3.</b> Las primeras filas de 4,406 registros de interacción publicados para la lista de las cucurbitáceas (consulta real). La etiqueta <span class="ui">en la lista</span> marca los nombres que pertenecen a una entrada de tu lista; <i>Sicyos edulis</i>, un sinónimo antiguo del chayote, no la lleva.</figcaption>
+    <figcaption><b>Figura 2.3.</b> Las primeras filas de 2,390 registros de interacción publicados para la lista de las cucurbitáceas (consulta real del 31 de octubre de 2026). Arriba quedan las calabazas (<i>Cucurbita</i>) con <i>Peponapis pruinosa</i>. La etiqueta <span class="ui">en la lista</span> marca los nombres que pertenecen a una entrada de tu lista; <i>Deinandra fasciculata</i>, una compuesta que visita <i>Xenoglossa pomonae</i>, no la lleva porque llegó por la búsqueda del visitante.</figcaption>
   </figure>
   <p>Se piden hasta 4,000 registros por nombre. La tabla muestra hasta 300 pares ordenados por número de registros; <span class="ui">⤓ Interacciones (.csv)</span>, al pie, descarga todos los registros con su tipo, su fuente (cuando la base la da) y sus coordenadas (cuando las tiene). Cuando la base devuelve la cita del estudio de origen, aparece además la columna <b>Fuentes</b> con cuántos estudios respaldan cada par.</p>
   <div class="caja nota">
     <div class="caja-t"><span class="ico">i</span>Lo que la tabla enseña antes del análisis</div>
-    <p>En la Figura 2.3 ya hay tres lecturas útiles. Hay registros publicados de <i>Sechium edule</i> con la abeja melífera, pero ninguno con las abejas de la calabaza: el vínculo chayote–<i>Xenoglossa</i> que el estudio de práctica explora está sin documentar. Algunas plantas aparecen con nombres que ya no se usan (<i>Sicyos edulis</i>): el Bloque 9 puede aplicarles los sinónimos del Bloque 3. Y un mismo par aparece a nivel de especie y de género (<i>Cucurbita pepo</i> y <i>Cucurbita</i>): el Bloque 9 permite reunir plantas y visitantes por género.</p>
+    <p>La tabla completa ya da tres lecturas útiles. Las primeras filas son de calabazas con abejas de la calabaza (<i>Peponapis</i>); <i>Sechium edule</i> aparece más abajo, fuera de la Figura 2.3, solo con la abeja melífera (2 registros, uno que afirma polinización) y con <i>Trigona corvina</i>, y con ninguna abeja de la calabaza: el vínculo chayote–<i>Xenoglossa</i> que el estudio de práctica explora está sin documentar. Algunas plantas aparecen con nombres que ya no se usan (<i>Sicyos edulis</i>, sinónimo antiguo del chayote, con la abeja melífera y otros tres visitantes): el Bloque 9 puede aplicarles los sinónimos del Bloque 3. Y un mismo par aparece a nivel de especie y de género (<i>Cucurbita pepo</i> y <i>Cucurbita</i>): el Bloque 9 permite reunir plantas y visitantes por género.</p>
   </div>
 
   <!-- 2.5 -->
@@ -1189,7 +1189,7 @@
   <p>El recuadro <b>Para los métodos</b> es un párrafo listo para copiar. Dice cuántos registros se conservaron, qué reglas quitaron o corrigieron cuántos, con qué distancia y qué dos definiciones se evaluaron los centroides, qué incertidumbre máxima se usó y qué reglas de sinónimos se aplicaron, con su referencia. El informe del Bloque 10 lo retoma con las citas de los métodos de depuración.</p>
   <div class="caja ejemplo">
     <div class="caja-t"><span class="ico">▸</span>Ejemplo · el párrafo del estudio de práctica</div>
-    <p style="font-style:italic">«De 2,248 registros se conservaron 1,856 (82.6%). Se quitaron o corrigieron: coordenadas (0, 0) (1); coordenadas invertidas o sin signo (2); centroide de país o de estado (9); coordenada imprecisa (1); duplicados (18); fecha imposible (1); plantas cultivadas (335); fuera del área de estudio (27). Los centroides se evaluaron a 5 km con dos definiciones (centroide de área y centro del rectángulo envolvente), la incertidumbre máxima fue de 10 km y se aplicaron las reglas de sinónimos Peponapis → Xenoglossa (Freitas et al. 2023).»</p>
+    <p style="font-style:italic">«De 2,248 registros se conservaron 1,856 (82.6 %). Se quitaron o corrigieron: coordenadas (0, 0) (1); coordenadas invertidas o sin signo (2); centroide de país o de estado (9); coordenada imprecisa (1); duplicados (18); fecha imposible (1); plantas cultivadas (335); fuera del área de estudio (27). Los centroides se evaluaron a 5 km con dos definiciones (centroide de área y centro del rectángulo envolvente), la incertidumbre máxima fue de 10 km y se aplicaron las reglas de sinónimos Peponapis → Xenoglossa (Freitas et al. 2023).»</p>
   </div>
   <figure>
     <div class="marco"><img src="../img/b3-tablas.png" alt="Tres tablas: por regla, con la acción, los registros alcanzados y los quitados; por entrada de la lista, con los registros antes y después y la principal razón de baja; y las unidades de análisis, con los registros, las especies dentro y los nombres originales reunidos"></div>
@@ -1895,8 +1895,8 @@
       <tr><td><b>Celdas con registros</b></td><td>Las presencias del modelo (una por celda de la capa).</td><td>260 · 305 · 642</td></tr>
       <tr><td><b>AUC (validación)</b></td><td>La probabilidad de que una celda con registro reciba más idoneidad que una del fondo al azar (Swets 1988).</td><td>0.793 · 0.609 · 0.577</td></tr>
       <tr><td><b>TSS (validación)</b></td><td>Sensibilidad + especificidad − 1 con el umbral elegido; 0 es azar (Allouche et al. 2006).</td><td>0.477 · 0.090 · 0.114</td></tr>
-      <tr><td><b>Omisión</b></td><td>La fracción de registros de validación que caen fuera del área idónea.</td><td>13 % · 48 % · 16 %</td></tr>
-      <tr><td><b>Umbral</b></td><td>El valor de idoneidad del corte.</td><td>0.452 · 0.525 · 0.444</td></tr>
+      <tr><td><b>Omisión</b></td><td>La fracción de registros de validación que caen fuera del área idónea.</td><td>13 % · 48 % · 17 %</td></tr>
+      <tr><td><b>Umbral</b></td><td>El valor de idoneidad del corte.</td><td>0.452 · 0.525 · 0.448</td></tr>
     </tbody>
   </table>
   <div class="caja regla">
@@ -1925,7 +1925,7 @@
       <tr><td><b>Solo el visitante</b></td><td>El área idónea para algún visitante pero no para la planta.</td><td>2,450,600 km²</td></tr>
     </tbody>
   </table>
-  <p>Debajo del mapa, la app dice qué fracción de las celdas queda fuera del intervalo ambiental de los registros de la planta en al menos una variable: <i>«35% de las celdas del mapa quedan fuera del intervalo ambiental de los registros de la planta en al menos una variable: ahí el modelo extrapola y su idoneidad debe leerse con cautela.»</i> <span class="ui">⤓ Clases por celda (.csv)</span> descarga cada celda con sus coordenadas, la idoneidad de la planta y su clase actual y futura.</p>
+  <p>Debajo del mapa, la app dice qué fracción de las celdas queda fuera del intervalo ambiental de los registros de la planta en al menos una variable: <i>«35 % de las celdas del mapa quedan fuera del intervalo ambiental de los registros de la planta en al menos una variable: ahí el modelo extrapola y su idoneidad debe leerse con cautela.»</i> <span class="ui">⤓ Clases por celda (.csv)</span> descarga cada celda con sus coordenadas, la idoneidad de la planta y su clase actual y futura.</p>
   <div class="caja importante">
     <div class="caja-t"><span class="ico">!</span>Un desajuste potencial</div>
     <p>El mapa se basa solo en idoneidad ambiental: no considera dispersión, barreras, uso del suelo, la conducta de los visitantes ni otros visitantes que no estén en la lista. Un desajuste grande dice dónde conviene buscar en campo qué visita a la planta; no dice que ahí la planta no se poliniza.</p>
@@ -1944,7 +1944,7 @@
   <p>La cuarta tarjeta aplica los modelos ya ajustados, sin volver a ajustarlos, a las mismas variables calculadas para un periodo futuro según un modelo climático y una trayectoria de emisiones. <span class="ui">Elegir las capas futuras…</span> recibe los archivos, que se reconocen por el final de su nombre («bio_1», «bio_12»…) y deben ser las mismas variables en uso. Para practicar, <span class="ui">Usar el futuro de práctica (ficticio)</span> carga un futuro inventado, más cálido y más seco, que solo funciona con las capas de práctica.</p>
   <figure class="alta">
     <div class="marco"><img src="../img/b8-futuro.png" alt="La tabla del área idónea de la planta, con visitante y sin visitante, actual y futura con su cambio, y el mapa del desajuste con el futuro de práctica"></div>
-    <figcaption><b>Figura 8.4.</b> El desajuste con el futuro de práctica. El área idónea del chayote cae 62 %, la que tiene visitante potencial 44 % y el desajuste 74 %: en este futuro inventado, la planta pierde sobre todo las zonas donde ya estaba sola.</figcaption>
+    <figcaption><b>Figura 8.4.</b> El desajuste con el futuro de práctica. El área idónea del chayote cae 62 %, la que tiene visitante potencial 45 % y el desajuste 73 %: en este futuro inventado, la planta pierde sobre todo las zonas donde ya estaba sola.</figcaption>
   </figure>
   <p>La tabla compara, en km², el área idónea de la planta, la que tiene visitante potencial y el desajuste, hoy y en el futuro, con su cambio en porcentaje. El informe del Bloque 10 lo retoma con los nombres de los archivos futuros.</p>
   <div class="caja nota">
@@ -2176,22 +2176,22 @@
     </div>
   </div>
   <h3>El editor ✎: una figura a la vez</h3>
-  <p>Cada figura de la app tiene, junto al botón ⤓, un botón ✎ que abre su propio editor. Lo que se cambie ahí vale solo para esa figura, se conserva aunque la figura se recalcule y sale en su exportación, en el catálogo, en el informe y en el paquete.</p>
-  <figure class="media">
-    <div class="marco"><img src="../img/b10-editor-general.png" alt="El editor de la rosa circular en su pestaña General: familia tipográfica, tamaño de todos los textos, grosor de las líneas, tamaño de los puntos, color de textos y ejes, fondo y líneas de la rejilla"></div>
-    <figcaption><b>Figura 10.4.</b> La pestaña <span class="ui">General</span> del editor, abierta sobre la rosa circular del Bloque 6.</figcaption>
-  </figure>
+  <p>Cada figura de la app tiene, junto al botón ⤓, un botón ✎ que abre su propio editor. Lo que se cambie ahí vale solo para esa figura, aunque se recalcule, y sale en su exportación, en el catálogo, en el informe y en el paquete. El editor tiene seis pestañas —<span class="ui">General</span>, <span class="ui">Ejes y rejilla</span>, <span class="ui">Series</span>, <span class="ui">Leyenda</span>, <span class="ui">Textos</span> y <span class="ui">Anotaciones</span>—; las tres que más usarás son estas.</p>
   <table class="compacta">
     <thead><tr><th style="width:1.2in">Pestaña</th><th>Qué se edita</th></tr></thead>
     <tbody>
-      <tr><td><span class="ui">General</span></td><td>La familia tipográfica, el tamaño de todos los textos (de 0.6 a 2.2 veces), el grosor de las líneas y el tamaño de los puntos (de 0.3 a 3 veces), el color de todos los textos y el de los ejes (con su casilla <i>usar</i>), el fondo y las líneas de la rejilla.</td></tr>
-      <tr><td><span class="ui">Textos</span></td><td>Cada texto de la figura, por su redacción original: se reescribe, cambia de tamaño, se pone en negrita (N) o cursiva (K), cambia de color o se oculta (⦸). Sirve para traducir una etiqueta, acortar un nombre o quitar un rótulo que la revista no quiere.</td></tr>
-      <tr><td><span class="ui">Colores</span></td><td>Cada color que usa la figura, con cuántos elementos lo llevan, para sustituirlo por otro.</td></tr>
+      <tr><td><span class="ui">General</span></td><td>El título dentro de la figura (con subtítulo, nota al pie, tamaño y alineación), la familia tipográfica, el tamaño de todos los textos (0.6 a 2.2 veces) y su color, el grosor de las líneas y el tamaño de los puntos (0.3 a 3 veces), el fondo y un marco. Los colores de los ejes y de la rejilla están en <span class="ui">Ejes y rejilla</span>.</td></tr>
+      <tr><td><span class="ui">Textos</span></td><td>Cada texto de la figura, por su redacción original: se reescribe, cambia de tamaño, se pone en negrita (N) o cursiva (K), cambia de color o se oculta. Sirve para traducir o quitar un rótulo.</td></tr>
+      <tr><td><span class="ui">Series</span></td><td>Cada color de la figura, con el nombre que le da la leyenda: se cambia su color, su grosor, su trazo o su opacidad, o se oculta la serie.</td></tr>
     </tbody>
   </table>
+  <figure class="media">
+    <div class="marco"><img src="../img/b10-editor-general.png" alt="El editor de la rosa circular en su pestaña General: título dentro de la figura, subtítulo y nota al pie, tamaño y alineación del título, familia tipográfica, tamaño de todos los textos, color de todos los textos, grosor de las líneas, tamaño de los puntos, fondo y marco alrededor de toda la figura"></div>
+    <figcaption><b>Figura 10.4.</b> La pestaña <span class="ui">General</span> del editor, abierta sobre la rosa circular del Bloque 6.</figcaption>
+  </figure>
   <figure>
-    <div class="marco"><img src="../img/b10-editor.png" alt="El editor del fenograma en su pestaña Textos: una fila por cada texto de la figura con su campo, su tamaño, negrita, cursiva, color y ocultar"></div>
-    <figcaption><b>Figura 10.5.</b> La pestaña <span class="ui">Textos</span> sobre el fenograma: cada mes, cada unidad y cada «n =» se editan por separado. Al pie, <span class="ui">Deshacer todos los cambios de esta figura</span> y <span class="ui">Copiar el estilo general a todas</span>.</figcaption>
+    <div class="marco"><img src="../img/b10-editor.png" alt="El fenograma y, debajo, su editor en la pestaña Textos: una fila por cada texto de la figura con su campo, su tamaño, negrita, cursiva, color y ocultar"></div>
+    <figcaption><b>Figura 10.5.</b> La pestaña <span class="ui">Textos</span> sobre el fenograma: cada mes, cada unidad y cada «n =» se editan por separado. Al pie del editor (Figura 10.4), <span class="ui">Deshacer todo en esta figura</span> y <span class="ui">Copiar el estilo a todas las figuras</span>.</figcaption>
   </figure>
   <div class="caja nota">
     <div class="caja-t"><span class="ico">i</span>Un texto se reconoce por su redacción original</div>
@@ -2398,10 +2398,10 @@
       <tr><td>Hay puntos en el mar o en otro país</td><td>Revisa en el Bloque 3 las reglas de coordenadas; «En el mar o fuera de los contornos» y «Fuera del país declarado» están en <i>solo marcar</i> por omisión.</td></tr>
       <tr><td>Casi todos los pares salen «sin clasificar»</td><td>Pocos registros para la celda: usa celdas más grandes o reúne especies en su género.</td></tr>
       <tr><td>El Bloque 7 no lee una capa</td><td>Debe estar en grados (latitud y longitud). Reproyecta las capas en metros.</td></tr>
-      <tr><td>Las capas se ven desplazadas o salen «remuestreadas»</td><td>Tienen rejillas distintas. Usa capas de la misma fuente y resolución.</td></tr>
+      <tr><td>Las capas se ven desplazadas o llevan la marca «remuestreada»</td><td>Tienen rejillas distintas. Usa capas de la misma fuente y resolución.</td></tr>
       <tr><td>El Bloque 8 dice que faltan capas futuras</td><td>Nombra los archivos futuros igual que los actuales al final («bio_1»…).</td></tr>
       <tr><td>La red no tiene H₂′ ni d′</td><td>Mezclaste visitas propias con interacciones publicadas: usa solo tus visitas para esos índices.</td></tr>
-      <tr><td>Una figura sale distinta de como la dejé</td><td>Revisa el editor ✎ de esa figura y el estudio de figuras: los cambios se conservan en el navegador. <span class="ui">Deshacer los cambios de esta figura</span> la devuelve a como la dibuja la app.</td></tr>
+      <tr><td>Una figura sale distinta de como la dejé</td><td>Revisa el editor ✎ de esa figura y el estudio de figuras: los cambios se conservan en el navegador. <span class="ui">Deshacer todo en esta figura</span> la devuelve a como la dibuja la app.</td></tr>
       <tr><td>El informe no trae un bloque</td><td>Ese bloque no está calculado: ábrelo (se calcula al abrirlo) y vuelve al Bloque 10.</td></tr>
       <tr><td>El navegador bloquea muchas descargas</td><td>Exporta las figuras como un solo .zip desde el catálogo del Bloque 10.</td></tr>
       <tr><td>Quiero empezar de cero</td><td><span class="ui">Vaciar la lista</span> en el Bloque 2 borra el estudio; <span class="ui">Restablecer todo</span> en los estilos del mapa lo devuelve a su inicio.</td></tr>
@@ -2496,12 +2496,12 @@
   <!-- F -->
   <h2 id="ap-f"><span class="num">F</span>La herramienta: licencia y cómo citarla</h2>
   <h3>F.1 · Qué lleva la app por dentro</h3>
-  <p>PollinationPro está escrita en HTML, CSS y JavaScript sin ninguna biblioteca de terceros: ni para las gráficas, ni para los mapas, ni para leer GeoTIFF u hojas de cálculo, ni para escribir el .zip. Los métodos son los de las publicaciones originales, citadas en el código, en la portada y en el informe. Los contornos de los países y de los estados de México son de Natural Earth (dominio público). Los datos de práctica y las capas de práctica son ficticios y los genera el propio programa. El archivo <span class="ruta">PROCEDENCIA.md</span> de la carpeta del programa detalla el origen de cada cosa, y <span class="ruta">tests/index.html</span> comprueba el motor con 168 pruebas, y la carpeta <span class="ruta">validation/</span> lo compara número por número con paquetes de R escritos por otras personas (34,299 comparaciones, ninguna en desacuerdo).</p>
+  <p>PollinationPro está escrita en HTML, CSS y JavaScript sin ninguna biblioteca de terceros: ni para las gráficas, ni para los mapas, ni para leer GeoTIFF u hojas de cálculo, ni para escribir el .zip. Los métodos son los de las publicaciones originales, citadas en el código, en la portada y en el informe. Los contornos de los países y de los estados de México son de Natural Earth (dominio público). Los datos de práctica y las capas de práctica son ficticios y los genera el propio programa. El archivo <span class="ruta">PROCEDENCIA.md</span> de la carpeta del programa detalla el origen de cada cosa, y <span class="ruta">tests/index.html</span> comprueba el motor con 191 pruebas, y la carpeta <span class="ruta">validation/</span> lo compara número por número con paquetes de R escritos por otras personas (34,299 comparaciones, ninguna en desacuerdo).</p>
   <h3>F.2 · Licencia</h3>
   <p>El programa se distribuye bajo la <b>Licencia Pública General de GNU, versión 3 o posterior</b> (GPL-3.0-or-later): se puede usar, copiar, estudiar y modificar libremente, con la condición de que las versiones modificadas se distribuyan bajo la misma licencia y conserven la atribución. El texto completo está en el archivo <span class="ruta">LICENSE</span>. Este manual es © 2026 Luis Ángel Barrera-Guzmán, todos los derechos reservados.</p>
-  <h3>F.3 · Cómo citarla</h3>
-  <div class="cita">Barrera-Guzmán, L. Á. (2026). <i>PollinationPro: plataforma en el navegador para el análisis de plantas, polinizadores y su solapamiento con datos de presencia</i> (versión 1.2) [Programa de cómputo]. Zenodo. https://doi.org/10.5281/zenodo.23004694</div>
-  <div class="cita">Barrera-Guzmán, L. Á. (2026). <i>PollinationPro. Manual de usuario</i> (1.ª ed.). Distribuido con PollinationPro, versión 1.2. Zenodo. https://doi.org/10.5281/zenodo.23004694</div>
+  <h3 data-nueva-hoja>F.3 · Cómo citarla</h3>
+  <div class="cita">Barrera-Guzmán, L.Á. (2026). <i>PollinationPro: plataforma en el navegador para el análisis de plantas, polinizadores y su solapamiento con datos de presencia</i> (versión 1.2.5) [software]. Zenodo. https://doi.org/10.5281/zenodo.23004694</div>
+  <div class="cita">Barrera-Guzmán, L.Á. (2026). <i>PollinationPro. Manual de usuario</i> (1.ª ed.). Distribuido con PollinationPro, versión 1.2.5. Zenodo. https://doi.org/10.5281/zenodo.23004694</div>
   <p class="small">El DOI es el de concepto en Zenodo: siempre lleva a la versión más reciente. La cita del programa está también en <span class="ruta">CITATION.cff</span> y al final de cada informe del Bloque 10. Cita además los métodos que usaste a sus obras originales y cada descarga de GBIF con su DOI.</p>
 </section>
 

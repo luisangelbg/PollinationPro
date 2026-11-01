@@ -15,7 +15,7 @@ manual/
     recetas/           una receta por captura (JS); _comun.js tiene las ayudas que todas comparten
     evaluar.ps1        abre una página sin ventana, ejecuta un guion y escribe el resultado
     huecos.js          guion para evaluar.ps1: el hueco al pie de cada hoja de una parte del manual
-    unir-manual.ps1    une la portada y las partes en es/manual-completo.html para imprimir el manual completo
+    unir-manual.ps1    une la portada y las partes de un idioma (es o en) en <idioma>/manual-completo.html para imprimirlo
   es/
     00a-portada.html   portada blanca: el año como un círculo con la floración de una planta y el vuelo de su
                        abeja, una flor de cucurbitácea con una abeja de la calabaza, seis sistemas de cultivo y
