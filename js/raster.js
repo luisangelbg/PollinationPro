@@ -272,8 +272,8 @@ const Raster = {};
   }
 
   /* ---------------- using a layer ---------------- */
-  /* value at a point: bilinear between the four nearest cell centres, falling
-     back to the cell itself when a neighbour is missing */
+  /* value at a point: bilinear between the four nearest cell centers, falling
+     back to the cell itself when a neighbor is missing */
   function valueAt(L, lon, lat, nearest) {
     const fx = (lon - L.x0) / L.dx - 0.5, fy = (L.y0 - lat) / L.dy - 0.5;
     const cx = Math.floor((lon - L.x0) / L.dx), cy = Math.floor((L.y0 - lat) / L.dy);

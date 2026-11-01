@@ -1,5 +1,42 @@
 # Cambios · Changelog
 
+## Después de la 1.2.5 — 2026-10-31
+
+Correcciones de la interfaz en inglés halladas al traducir el manual; en
+español sólo cambia el espacio antes de % y la lectura de la plantilla.
+
+- Abreviaturas que quedaban en español: **SES** en lugar de EEF en los
+  recuadros del laboratorio 1, **PC1/PC2** en lugar de CP1/CP2 en el
+  Bloque 7 (recuadro «Variance on the plane» y ejes) y **dpi** en lugar de
+  ppp en el estudio de mapas, en el menú de exportar una figura y en el nombre
+  de los archivos del estudio de figuras. Se escriben en un solo lugar
+  (`term()` en `js/core.js`).
+- La fórmula de la prueba hipergeométrica dice «P(j shared)» en inglés
+  (`index.html`).
+- Referencias en inglés con la forma inglesa: «In … (Ed.)», «(3rd ed.)»,
+  «(5th ed.)», en la página de inicio y en el informe (`js/home.js`,
+  `js/report.js`); «License» en el cuadro de conjuntos de GBIF del informe.
+- Con la interfaz en inglés, los archivos que escribe la app llevan nombre en
+  inglés: el paquete (`README.txt`, `report.html`, `project.json`,
+  `parameters.json`, `tables/`, `figures/`, `…_package.zip`), el informe
+  (`…_report.html`), el .zip de figuras (`…_figures.zip`), cada .csv de los
+  bloques, las plantillas de datos propios (con valores de ejemplo en inglés)
+  y el estilo de mapa (`map_style.json`). Las columnas de los .csv no cambian
+  y todo se vuelve a abrir por su contenido, en cualquiera de los dos idiomas
+  (`OUT_NAMES` y `outName()` en `js/core.js`).
+- Corregido: la columna `wild_or_cultivated` de la propia plantilla de
+  registros no se reconocía al importarla (`js/records.js`).
+- Ortografía estadounidense en toda la interfaz inglesa (color, gray,
+  center, catalog, neighbor, kilometer, specialization, Synchronize,
+  Normalized, Standardized, License…) y comillas tipográficas “ ” en los
+  textos ingleses; el título de la cita y los títulos de obras citadas no
+  cambian.
+- Fechas en inglés estadounidense: «Aug 11», «Sep 5» y «August 11, 2026»
+  (`fmtDate`, `fmtDoy`, `dayMonth` en `js/core.js`).
+- Espacio antes de % en todas las cifras («12.3 %»), en los dos idiomas:
+  porcentajes, ejes y deslizadores.
+- 23 pruebas nuevas (`tests/tests-i18n.js`): 191 en total.
+
 ## 1.2.5 — 10 de octubre de 2026
 
 - El estudio de figuras ya no lleva los adaptadores para figuras hechas con

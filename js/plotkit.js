@@ -5,7 +5,7 @@
    It draws real SVG nodes (not a string), so a figure can be redrawn when the
    language or the theme changes, restyled at once by the figure studio,
    exported at high resolution and inspected element by element in the
-   browser. Colours always come from the CSS variables, never hard-coded, so
+   browser. Colors always come from the CSS variables, never hard-coded, so
    the light and dark themes and the palettes of the studio follow by
    themselves. */
 
@@ -28,7 +28,7 @@
     else s = a >= 100 ? v.toFixed(0) : a >= 10 ? (+v.toFixed(1)).toString() : (+v.toFixed(2)).toString();
     return s.startsWith('-') ? '−' + s.slice(1) : s;
   }
-  const pctTick = v => (v * 100).toFixed(Math.abs(v) < 0.1 ? 1 : 0) + '%';
+  const pctTick = v => (v * 100).toFixed(Math.abs(v) < 0.1 ? 1 : 0) + ' %';
   function clear(svg) { while (svg.firstChild) svg.removeChild(svg.firstChild); }
 
   /* the first day of every month as a day-of-year tick, for a year-long x axis */
@@ -184,7 +184,7 @@
     f.top.appendChild(t);
     return t;
   }
-  /* a legend along the top of a figure: ['label', colour, 'sq' | 'ln' | 'dash'] */
+  /* a legend along the top of a figure: ['label', color, 'sq' | 'ln' | 'dash'] */
   function legend(f, items, y, x) {
     const g = svgEl('g', { 'data-role': 'legend' });
     const yy = y == null ? 8 : y;

@@ -21,11 +21,11 @@
     { n: 4, art: 'bMap', tag: ['mapa', 'map'],
       t: ['Mapa de plantas y polinizadores', 'Map of plants and pollinators'],
       d: ['Los registros de cada taxón sobre México por estados o sobre el mundo, sin internet: colores por taxón o por papel, densidad por celdas, entidades con más registros, flecha, escala y exportación lista para publicar.',
-        'The records of every taxon over Mexico by state or over the world, offline: colours by taxon or by role, density by cells, the states with most records, arrow, scale and export ready to publish.'] },
+        'The records of every taxon over Mexico by state or over the world, offline: colors by taxon or by role, density by cells, the states with most records, arrow, scale and export ready to publish.'] },
     { n: 5, art: 'bCooc', tag: ['espacio', 'space'],
       t: ['Coocurrencia espacial', 'Spatial co-occurrence'],
       d: ['¿Coinciden la planta y el polinizador en el territorio más de lo que el azar predice? Prueba exacta de Veech con el universo corregido por esfuerzo de muestreo, índices de similitud, distancias al vecino más cercano contra un modelo nulo y solapamiento de las áreas de distribución.',
-        'Do the plant and the pollinator coincide in the territory more than chance predicts? Veech\'s exact test with the universe corrected for sampling effort, similarity indices, nearest-neighbour distances against a null model and overlap of the ranges.'] },
+        'Do the plant and the pollinator coincide in the territory more than chance predicts? Veech\'s exact test with the universe corrected for sampling effort, similarity indices, nearest-neighbor distances against a null model and overlap of the ranges.'] },
     { n: 6, art: 'bPheno', tag: ['tiempo', 'time'],
       t: ['Fenología y altitud', 'Phenology and elevation'],
       d: ['¿Vuela el polinizador cuando la planta florece? Estadística circular de las fechas (fecha media, R̄, Rayleigh, Watson–Williams), solapamiento mes a mes corregido por esfuerzo y el mismo análisis a lo largo del gradiente altitudinal.',
@@ -41,7 +41,7 @@
     { n: 9, art: 'bNetwork', tag: ['red', 'network'],
       t: ['Red de interacciones', 'Interaction network'],
       d: ['Con tus observaciones de visitas y las interacciones publicadas: la red planta–visitante, su conectancia, anidamiento, especialización y modularidad contra modelos nulos, la importancia de cada visitante y cuántos visitantes faltan por registrar.',
-        'With your visit observations and the published interactions: the plant–visitor network, its connectance, nestedness, specialisation and modularity against null models, the importance of each visitor and how many visitors remain unrecorded.'] },
+        'With your visit observations and the published interactions: the plant–visitor network, its connectance, nestedness, specialization and modularity against null models, the importance of each visitor and how many visitors remain unrecorded.'] },
     { n: 10, art: 'bReport', tag: ['informe', 'report'],
       t: ['Figuras, informe y paquete', 'Figures, report and package'],
       d: ['Todas las figuras del estudio en PNG, JPG o SVG hasta 900 ppp con el estilo que elijas; un informe con los métodos redactados a partir de lo que realmente calculaste; y un .zip con los registros depurados, los cuadros y los parámetros que lo reproducen.',
@@ -54,7 +54,7 @@
     { art: 'mPhenoOverlap', t: ['¿Coinciden en el tiempo?', 'Do they coincide in time?'], s: ['floración contra actividad de vuelo, mes a mes', 'flowering against flight activity, month by month'], k: ['Bloque 6', 'Block 6'], kc: 'l' },
     { art: 'mMismatch', t: ['¿Qué pasará con el clima?', 'What will happen with the climate?'], s: ['dónde la planta podría quedarse sin su polinizador', 'where the plant could lose its pollinator'], k: ['Bloque 8', 'Block 8'], kc: 'g' },
     { art: 'mWild', t: ['¿Silvestre o cultivada?', 'Wild or cultivated?'], s: ['lo que cambia al separar las poblaciones silvestres', 'what changes when wild populations are set apart'], k: ['Bloque 3', 'Block 3'], kc: '' },
-    { art: 'mNetwork', t: ['¿Qué tan especializada es la red?', 'How specialised is the network?'], s: ['generalistas, especialistas y visitantes clave', 'generalists, specialists and key visitors'], k: ['Bloque 9', 'Block 9'], kc: 'l' },
+    { art: 'mNetwork', t: ['¿Qué tan especializada es la red?', 'How specialized is the network?'], s: ['generalistas, especialistas y visitantes clave', 'generalists, specialists and key visitors'], k: ['Bloque 9', 'Block 9'], kc: 'l' },
     { art: 'mRarefy', t: ['¿Dónde falta muestrear?', 'Where is sampling missing?'], s: ['entidades y meses sin registros, visitantes por descubrir', 'states and months with no records, visitors yet to find'], k: ['Bloques 4 y 9', 'Blocks 4 and 9'], kc: 'g' },
   ];
 
@@ -62,24 +62,24 @@
   const FAMS = { all: ['Todos', 'All'], dat: ['Datos y calidad', 'Data and quality'], esp: ['Espacio', 'Space'], tie: ['Tiempo', 'Time'], amb: ['Ambiente', 'Environment'], red: ['Redes y diversidad', 'Networks and diversity'] };
   const METHODS = [
     { f: 'dat', art: 'mGbif', n: ['Descarga de GBIF', 'GBIF download'], s: ['por taxón y país, con paginación y reintentos', 'by taxon and country, with paging and retries'], b: 2 },
-    { f: 'dat', art: 'mSynonyms', n: ['Armonización taxonómica', 'Taxonomic harmonisation'], s: ['sinónimos bajo el nombre actual, sin perder el original', 'synonyms under the current name, keeping the original'], b: 3 },
+    { f: 'dat', art: 'mSynonyms', n: ['Armonización taxonómica', 'Taxonomic harmonization'], s: ['sinónimos bajo el nombre actual, sin perder el original', 'synonyms under the current name, keeping the original'], b: 3 },
     { f: 'dat', art: 'mClean', n: ['Depuración de registros', 'Record cleaning'], s: ['duplicados, (0, 0), centroides, precisión, fechas', 'duplicates, (0, 0), centroids, precision, dates'], b: 3 },
     { f: 'dat', art: 'mWild', n: ['Silvestre contra cultivado', 'Wild versus cultivated'], s: ['por medio de establecimiento y por palabras clave', 'by establishment means and by keywords'], b: 3 },
     { f: 'esp', art: 'mHyper', n: ['Coocurrencia probabilística', 'Probabilistic co-occurrence'], s: ['prueba hipergeométrica exacta (Veech 2013)', 'exact hypergeometric test (Veech 2013)'], b: 5 },
     { f: 'esp', art: 'mGrid', n: ['Similitud por celdas', 'Similarity by cells'], s: ['Jaccard, Sørensen, Simpson y cobertura', 'Jaccard, Sørensen, Simpson and cover'], b: 5 },
-    { f: 'esp', art: 'mNN', n: ['Distancia al vecino más cercano', 'Nearest-neighbour distance'], s: ['contra un nulo del grupo objetivo', 'against a target-group null'], b: 5 },
+    { f: 'esp', art: 'mNN', n: ['Distancia al vecino más cercano', 'Nearest-neighbor distance'], s: ['contra un nulo del grupo objetivo', 'against a target-group null'], b: 5 },
     { f: 'esp', art: 'mHull', n: ['Solapamiento de áreas', 'Range overlap'], s: ['envolventes convexas y área en la esfera', 'convex hulls and area on the sphere'], b: 5 },
     { f: 'tie', art: 'mCircular', n: ['Estadística circular', 'Circular statistics'], s: ['fecha media, R̄, Rayleigh y Watson–Williams', 'mean date, R̄, Rayleigh and Watson–Williams'], b: 6 },
     { f: 'tie', art: 'mPhenoOverlap', n: ['Solapamiento fenológico', 'Phenological overlap'], s: ['D, I y Pianka mes a mes, corregidos por esfuerzo', 'D, I and Pianka month by month, effort-corrected'], b: 6 },
     { f: 'tie', art: 'mElev', n: ['Solapamiento altitudinal', 'Elevational overlap'], s: ['densidades de kernel a lo largo del gradiente', 'kernel densities along the gradient'], b: 6 },
     { f: 'amb', art: 'mPcaEnv', n: ['ACP del ambiente', 'PCA of the environment'], s: ['Broennimann et al. 2012', 'Broennimann et al. 2012'], b: 7 },
     { f: 'amb', art: 'mDI', n: ['D de Schoener e I de Warren', 'Schoener\'s D and Warren\'s I'], s: ['sobre densidades corregidas por el ambiente disponible', 'on densities corrected by the available environment'], b: 7 },
-    { f: 'amb', art: 'mTests', n: ['Equivalencia y similitud de nicho', 'Niche equivalency and similarity'], s: ['pruebas por aleatorización (Warren et al. 2008)', 'randomisation tests (Warren et al. 2008)'], b: 7 },
+    { f: 'amb', art: 'mTests', n: ['Equivalencia y similitud de nicho', 'Niche equivalency and similarity'], s: ['pruebas por aleatorización (Warren et al. 2008)', 'randomization tests (Warren et al. 2008)'], b: 7 },
     { f: 'amb', art: 'mEnvelope', n: ['Idoneidad ambiental', 'Environmental suitability'], s: ['envolvente, distancia de Mahalanobis y logística con fondo', 'envelope, Mahalanobis distance and background logistic'], b: 8 },
     { f: 'amb', art: 'mMismatch', n: ['Mapa de desajuste', 'Mismatch map'], s: ['planta sin polinizador potencial, hoy y en el futuro', 'plant without a potential pollinator, now and in the future'], b: 8 },
     { f: 'red', art: 'mNetwork', n: ['Red bipartita', 'Bipartite network'], s: ['conectancia, grado, fuerza e importancia de visitantes', 'connectance, degree, strength and visitor importance'], b: 9 },
     { f: 'red', art: 'mNodf', n: ['Anidamiento (NODF)', 'Nestedness (NODF)'], s: ['Almeida-Neto et al. 2008, contra modelos nulos', 'Almeida-Neto et al. 2008, against null models'], b: 9 },
-    { f: 'red', art: 'mH2', n: ['Especialización H₂′ y d′', 'Specialisation H₂′ and d′'], s: ['Blüthgen et al. 2006', 'Blüthgen et al. 2006'], b: 9 },
+    { f: 'red', art: 'mH2', n: ['Especialización H₂′ y d′', 'Specialization H₂′ and d′'], s: ['Blüthgen et al. 2006', 'Blüthgen et al. 2006'], b: 9 },
     { f: 'red', art: 'mRarefy', n: ['Riqueza de visitantes', 'Visitor richness'], s: ['rarefacción, Chao1 y cobertura del muestreo', 'rarefaction, Chao1 and sampling coverage'], b: 9 },
   ];
 
@@ -89,8 +89,8 @@
     rows: [
       { t: ['Qué dicen', 'What they say'], v: [['el taxón estuvo en ese lugar y esa fecha', 'the taxon was at that place on that date'], ['lo mismo, con tu control de calidad', 'the same, with your own quality control'], ['este visitante tocó esta flor', 'this visitor touched this flower'], ['alguien publicó que A visita o poliniza a B', 'someone published that A visits or pollinates B']] },
       { t: ['Qué no dicen', 'What they do not say'], v: [['dónde no está; si interactúa', 'where it is absent; whether it interacts'], ['dónde no está', 'where it is absent'], ['si llevó o depositó polen', 'whether it carried or deposited pollen'], ['dónde, cuándo ni cuántas veces, casi nunca', 'where, when or how often, almost never']] },
-      { t: ['Sesgo principal', 'Main bias'], v: [['esfuerzo desigual: ciudades y caminos', 'uneven effort: cities and roads'], ['tus sitios de trabajo', 'your field sites'], ['horas y sitios observados', 'hours and sites observed'], ['lo que se estudió y se digitalizó', 'what was studied and digitised']] },
-      { t: ['Para qué sirven', 'What they are for'], v: [['oportunidad de interacción', 'opportunity for interaction'], ['oportunidad y verificación', 'opportunity and verification'], ['la red y la especialización', 'the network and specialisation'], ['contexto y comparación', 'context and comparison']] },
+      { t: ['Sesgo principal', 'Main bias'], v: [['esfuerzo desigual: ciudades y caminos', 'uneven effort: cities and roads'], ['tus sitios de trabajo', 'your field sites'], ['horas y sitios observados', 'hours and sites observed'], ['lo que se estudió y se digitalizó', 'what was studied and digitized']] },
+      { t: ['Para qué sirven', 'What they are for'], v: [['oportunidad de interacción', 'opportunity for interaction'], ['oportunidad y verificación', 'opportunity and verification'], ['la red y la especialización', 'the network and specialization'], ['contexto y comparación', 'context and comparison']] },
       { t: ['En la app', 'In the app'], v: [['✓ Bloques 2–8', '✓ Blocks 2–8'], ['✓ Bloques 2–8', '✓ Blocks 2–8'], ['✓ Bloque 9', '✓ Block 9'], ['✓ Bloques 2 y 9', '✓ Blocks 2 and 9']] },
     ],
   };
@@ -101,7 +101,7 @@
     { t: ['Métodos citados', 'Cited methods'], s: ['cada prueba lleva su publicación original, y el informe cita solo las que usaste', 'every test carries its original publication, and the report cites only those you used'], ic: '<path d="M4 5h16v14H4zM8 9h8M8 13h6"/>' },
     { t: ['Validado', 'Validated'], s: ['cada fórmula comprobada contra aritmética exacta, fórmulas cerradas o simulación en la página de pruebas', 'every formula checked against exact arithmetic, closed forms or simulation on the test page'], ic: '<path d="M5 12l5 5L20 7"/>' },
     { t: ['Escalas para leer', 'Scales to read by'], s: ['cada número lleva al lado la escala que dice si es bajo o alto, y el error más común', 'every number carries beside it the scale that says whether it is low or high, and the commonest mistake'], ic: '<path d="M4 18h16M6 14v4M10 10v8M14 6v12M18 12v6"/>' },
-    { t: ['Figuras editables', 'Editable figures'], s: ['paleta, tipografía y fondo de toda la app en un panel, y cada figura con su propio editor ✎ de textos, colores y tamaños; exportación hasta 900 ppp', 'palette, font and background of the whole app in one panel, and every figure with its own ✎ editor of texts, colours and sizes; export up to 900 dpi'], ic: '<circle cx="12" cy="12" r="8"/><circle cx="9" cy="10" r="1.2"/><circle cx="14" cy="8.5" r="1.2"/><circle cx="15" cy="13" r="1.2"/>' },
+    { t: ['Figuras editables', 'Editable figures'], s: ['paleta, tipografía y fondo de toda la app en un panel, y cada figura con su propio editor ✎ de textos, colores y tamaños; exportación hasta 900 ppp', 'palette, font and background of the whole app in one panel, and every figure with its own ✎ editor of texts, colors and sizes; export up to 900 dpi'], ic: '<circle cx="12" cy="12" r="8"/><circle cx="9" cy="10" r="1.2"/><circle cx="14" cy="8.5" r="1.2"/><circle cx="15" cy="13" r="1.2"/>' },
     { t: ['Sin instalar nada', 'Nothing to install'], s: ['abre con doble clic; solo la descarga de GBIF necesita internet y tus datos no salen de tu equipo', 'opens with a double click; only the GBIF download needs the internet and your data never leave your computer'], ic: '<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>' },
   ];
 
@@ -170,6 +170,16 @@
     ['tie', 'Zar 2010', 'Zar, J. H. (2010). <i>Biostatistical analysis</i> (5.ª ed.). Pearson Prentice Hall.'],
     ['dat', 'Zizka et al. 2020', 'Zizka, A., Antunes Carvalho, F., Calvente, A., Baez-Lizarazo, M. R., Cabral, A., Coelho, J. F. R., Colli-Silva, M., Fantinati, M. R., Fernandes, M. F., Ferreira-Araújo, T., Moreira, F. G. L., Santos, N. M. C., Santos, T. A. B., dos Santos-Costa, R. C., Serrano, F. C., da Silva, A. P. A., de Souza Soares, A., de Souza, P. G. C., Tomaz, E. C., … Antonelli, A. (2020). No one-size-fits-all solution to clean GBIF. <i>PeerJ</i>, 8, e9916.'],
   ];
+  /* The references are written once, in their Spanish form; in English the
+     words of the citation style change: «En … (Ed.)» → «In … (Ed.)»,
+     «(3.ª ed.)» → «(3rd ed.)», «(versión …)» → «(version …)». */
+  const ORD_EN = n => n + (n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] || 'th');
+  function refText(s, lang) {
+    if ((lang || I18N.lang) !== 'en') return String(s);
+    return String(s).replace(/\. En (?=[A-ZÁÉÍÓÚÑ])/g, '. In ')
+      .replace(/\((\d+)\.ª ed\.\)/g, (m, n) => '(' + ORD_EN(+n) + ' ed.)')
+      .replace(/\(versión /g, '(version ');
+  }
 
   /* ---------------- rendering ---------------- */
   const two = p => L2(p[0], p[1]);
@@ -233,7 +243,7 @@
       f.addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; refFilter = b.dataset.fam; renderRefs(); });
     }
     if (f) f.innerHTML = Object.keys(RFAM).map(k => `<button class="chip${k === refFilter ? ' on' : ''}" data-fam="${k}">${two(RFAM[k])}</button>`).join('');
-    g.innerHTML = REFS.filter(r => refFilter === 'all' || r[0] === refFilter).map(r => `<li>${r[2]}</li>`).join('');
+    g.innerHTML = REFS.filter(r => refFilter === 'all' || r[0] === refFilter).map(r => `<li>${refText(r[2])}</li>`).join('');
   }
   /* illustrations that contain translated labels are redrawn when the language changes */
   function renderArt() {
@@ -277,5 +287,5 @@
     Fig.decorate();
   }
   document.addEventListener('DOMContentLoaded', init);
-  window.Home = { BLOCKS, METHODS, REFS, QUESTIONS, COMPARE, FAMS };
+  window.Home = { BLOCKS, METHODS, REFS, QUESTIONS, COMPARE, FAMS, refText };
 })();

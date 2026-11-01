@@ -84,7 +84,7 @@ interaction records.
 
 ## Tests and validation
 
-- **Unit tests.** Open `tests/index.html` with a double click: 168 tests
+- **Unit tests.** Open `tests/index.html` with a double click: 191 tests
   against published values, exact arithmetic, hand-solved formulas,
   independent implementations and simulations under the null hypothesis.
   Every line must be green.

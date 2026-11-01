@@ -60,7 +60,7 @@ const B4 = {};
   function wire() {
     if (!el('panel-4')) return;
     els('.soon-art', el('panel-4')).forEach(n => { n.innerHTML = Art.soon(); });
-    el('b4Csv').addEventListener('click', () => download(TableIO.toCSV(shownRecords(), ['unit', 'role', 'lat', 'lon', 'cc2', 'stName', 'y', 'm', 'd', 'basis', 'src']), 'puntos_del_mapa.csv', 'text/csv;charset=utf-8'));
+    el('b4Csv').addEventListener('click', () => download(TableIO.toCSV(shownRecords(), ['unit', 'role', 'lat', 'lon', 'cc2', 'stName', 'y', 'm', 'd', 'basis', 'src']), outName('mapPoints'), 'text/csv;charset=utf-8'));
     document.addEventListener('stepchange', e => { if (e.detail.step === 4) show(); });
     document.addEventListener('cleanchange', () => { if (document.querySelector('#panel-4.active')) show(); });
     document.addEventListener('langchange', () => { if (mounted && document.querySelector('#panel-4.active')) show(); });

@@ -64,7 +64,7 @@ const B3 = {};
     el('b3Cult').innerHTML = `<div class="table-scroll"><table class="map-table"><thead><tr><th>${L2('Planta', 'Plant')}</th><th class="num">${L2('Registros', 'Records')}</th><th class="num">${L2('Cultivados', 'Cultivated')}</th><th class="num">${L2('Colección viva', 'Living collection')}</th><th>${L2('Registros cultivados', 'Cultivated records')}</th></tr></thead><tbody>` +
       st.map(s => `<tr><td>${Taxa.italic(Taxa.label(s.t), s.t.resolved && s.t.resolved.rank)}</td><td class="num">${s.n.toLocaleString('en-US')}</td><td class="num">${s.c.toLocaleString('en-US')} (${fmtPct(s.share, 0)})</td><td class="num">${s.living.toLocaleString('en-US')}</td>
         <td><select data-cult="${s.t.id}" aria-label="${esc(T('Qué hacer con los cultivados de ', 'What to do with the cultivated records of ') + Taxa.label(s.t))}"><option value="remove"${cultDecision(s) === 'remove' ? ' selected' : ''}>${T('quitar (estudio silvestre)', 'remove (wild study)')}</option><option value="keep"${cultDecision(s) === 'keep' ? ' selected' : ''}>${T('conservar (estudio del cultivo)', 'keep (crop study)')}</option></select></td></tr>`).join('') + '</tbody></table></div>' +
-      `<p class="hint">${L2('Las colecciones vivas (jardines botánicos, bancos de germoplasma de campo) se tratan en la regla «Fósiles y colecciones vivas».', 'Living collections (botanical gardens, field genebanks) are handled by the rule "Fossils and living collections".')}</p>`;
+      `<p class="hint">${L2('Las colecciones vivas (jardines botánicos, bancos de germoplasma de campo) se tratan en la regla «Fósiles y colecciones vivas».', 'Living collections (botanical gardens, field genebanks) are handled by the rule “Fossils and living collections”.')}</p>`;
   }
   function renderStates() {
     const box = el('b3States');
@@ -125,7 +125,7 @@ const B3 = {};
     const syn = synonyms().filter(s => s.on);
     el('b3Text').innerHTML = `<b>${L2('Para los métodos', 'For the methods')}.</b> ` + L2(
       `De ${n0.toLocaleString('en-US')} registros se conservaron ${n1.toLocaleString('en-US')} (${fmtPct(n1 / Math.max(1, n0), 1)}). Se quitaron o corrigieron: ${parts.join('; ') || 'ninguno'}. Los centroides se evaluaron a ${P.centroidKm} km con dos definiciones (centroide de área y centro del rectángulo envolvente), la incertidumbre máxima fue de ${P.maxUncKm} km${syn.length ? ` y se aplicaron las reglas de sinónimos ${syn.map(s => `<i>${esc(s.from)}</i> → <i>${esc(s.to)}</i>${s.ref ? ` (${esc(s.ref)})` : ''}`).join(', ')}` : ''}.`,
-      `Of ${n0.toLocaleString('en-US')} records, ${n1.toLocaleString('en-US')} were kept (${fmtPct(n1 / Math.max(1, n0), 1)}). Removed or corrected: ${parts.join('; ') || 'none'}. Centroids were evaluated at ${P.centroidKm} km with two definitions (area centroid and centre of the bounding box), the maximum uncertainty was ${P.maxUncKm} km${syn.length ? ` and the synonym rules ${syn.map(s => `<i>${esc(s.from)}</i> → <i>${esc(s.to)}</i>${s.ref ? ` (${esc(s.ref)})` : ''}`).join(', ')} were applied` : ''}.`);
+      `Of ${n0.toLocaleString('en-US')} records, ${n1.toLocaleString('en-US')} were kept (${fmtPct(n1 / Math.max(1, n0), 1)}). Removed or corrected: ${parts.join('; ') || 'none'}. Centroids were evaluated at ${P.centroidKm} km with two definitions (area centroid and center of the bounding box), the maximum uncertainty was ${P.maxUncKm} km${syn.length ? ` and the synonym rules ${syn.map(s => `<i>${esc(s.from)}</i> → <i>${esc(s.to)}</i>${s.ref ? ` (${esc(s.ref)})` : ''}`).join(', ')} were applied` : ''}.`);
     buildTable('b3RuleTable', [
       { key: 'r', label: T('Regla', 'Rule'), get: x => T(...x.t) },
       { key: 'a', label: T('Acción', 'Action'), get: x => T(...ACTIONS[P.on[x.id] || x.kind]) },
@@ -227,8 +227,8 @@ const B3 = {};
     el('b3Run').addEventListener('click', () => { persist(); run(); el('b3Report').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
     el('b3Show').addEventListener('change', renderRecords);
     const cols = ['id', 'src', 'role', 'unit', 'name', 'origName', 'speciesH', 'lat', 'lon', 'unc', 'elev', 'cc2', 'st', 'stName', 'locality', 'y', 'm', 'd', 'basis', 'inst', 'dataset', 'datasetKey', 'estab', 'repro', 'remarks', 'gbifKey'];
-    el('b3CsvKeep').addEventListener('click', () => download(TableIO.toCSV(last.records.map(r => ({ ...r, flags: r.flags.join('|') })), cols.concat(['flags'])), 'registros_depurados.csv', 'text/csv;charset=utf-8'));
-    el('b3CsvDrop').addEventListener('click', () => download(TableIO.toCSV(last.dropped.map(r => ({ ...r, flags: r.flags.join('|') })), cols.concat(['removedBy', 'flags'])), 'registros_quitados.csv', 'text/csv;charset=utf-8'));
+    el('b3CsvKeep').addEventListener('click', () => download(TableIO.toCSV(last.records.map(r => ({ ...r, flags: r.flags.join('|') })), cols.concat(['flags'])), outName('cleanRecords'), 'text/csv;charset=utf-8'));
+    el('b3CsvDrop').addEventListener('click', () => download(TableIO.toCSV(last.dropped.map(r => ({ ...r, flags: r.flags.join('|') })), cols.concat(['removedBy', 'flags'])), outName('removedRecords'), 'text/csv;charset=utf-8'));
     el('b3Next').addEventListener('click', () => { const b = document.querySelector('.step-btn[data-step="4"]'); if (b && !b.disabled) goStep(4); });
     document.addEventListener('stepchange', e => { if (e.detail.step === 3) show(); });
     document.addEventListener('datachange', () => { last = null; if (document.querySelector('#panel-3.active')) show(); });

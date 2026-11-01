@@ -63,7 +63,7 @@ estudio de práctica. Las partes en HTML están en `manual/es/`.
 
 ## Validación
 
-`tests/index.html` ejecuta 168 pruebas contra valores publicados, aritmética
+`tests/index.html` ejecuta 191 pruebas contra valores publicados, aritmética
 exacta, fórmulas resueltas a mano, implementaciones independientes y
 simulaciones bajo la hipótesis nula. Ábrela con doble clic: todo debe salir en
 verde.

@@ -1,6 +1,6 @@
 /* PollinationPro — Copyright (C) 2026 Luis Ángel Barrera-Guzmán.
    Free software under the GNU General Public License, version 3; see LICENSE. */
-/* PollinationPro — language (Spanish / English) and colour theme.
+/* PollinationPro — language (Spanish / English) and color theme.
 
    How translation works, so that nothing is ever left half translated:
    1. Rich text in the HTML is written twice, side by side:

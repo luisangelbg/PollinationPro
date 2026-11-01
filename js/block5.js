@@ -4,7 +4,7 @@
    The engine is js/cooc.js. The block runs the cell test for every plant ×
    visitor pair at once, draws the pair matrix, and for the pair the user
    picks shows the null distribution, the sensitivity to the cell size, the
-   nearest-neighbour test and the overlap of the ranges. */
+   nearest-neighbor test and the overlap of the ranges. */
 
 const B5 = {};
 
@@ -30,7 +30,7 @@ const B5 = {};
     if (!C || !C.records.length) return;
     const recs = C.records;
     res = Cooc.pairs(recs, opt.size, opt.mode === 'land' ? 'land' : 'target', { alpha: opt.alpha });
-    if (!res) { notice('b5Msg', 'warning', T('La rejilla es demasiado fina para el universo de «toda la tierra» en esta extensión; usa celdas más grandes o el grupo objetivo.', 'The grid is too fine for the "all land" universe in this extent; use larger cells or the target group.')); return; }
+    if (!res) { notice('b5Msg', 'warning', T('La rejilla es demasiado fina para el universo de «toda la tierra» en esta extensión; usa celdas más grandes o el grupo objetivo.', 'The grid is too fine for the “all land” universe in this extent; use larger cells or the target group.')); return; }
     state.cooc = { opt: Object.assign({}, opt), res, date: new Date().toISOString() };
     if (!sel || !res.pairs.some(p => p.plant === sel.plant && p.visitor === sel.visitor)) {
       /* the first pair to look at: the plant and visitor with most shared cells */
@@ -96,7 +96,7 @@ const B5 = {};
       add('rect', { x: 12 + k * 190, y: ly - 9, width: 12, height: 12, rx: 3, fill: c, stroke: V('border'), 'data-li': k }, null, lg);
       add('text', { x: 30 + k * 190, y: ly + 1, 'font-size': 10, class: 'art-mut', 'data-li': k }, lab, lg);
     });
-    add('text', { x: 12, y: H - 5, 'font-size': 9.5, class: 'art-mut' }, T('número = EEF; intensidad del color = |EEF|; borde punteado = significativo; ? = sin clasificar', 'number = SES; colour intensity = |SES|; dotted border = significant; ? = unclassified'), lg);
+    add('text', { x: 12, y: H - 5, 'font-size': 9.5, class: 'art-mut' }, T('número = EEF; intensidad del color = |EEF|; borde punteado = significativo; ? = sin clasificar', 'number = SES; color intensity = |SES|; dotted border = significant; ? = unclassified'), lg);
   }
 
   /* ---------------- the table of pairs ---------------- */
@@ -109,7 +109,7 @@ const B5 = {};
       { key: 'n2', label: T('Celdas visitante', 'Visitor cells'), num: true },
       { key: 'shared', label: T('Compartidas', 'Shared'), num: true },
       { key: 'exp', label: T('Esperadas', 'Expected'), num: true, fmt: v => fmtFixed(v, 1) },
-      { key: 'ses', label: T('EEF', 'SES'), num: true, fmt: v => fmtFixed(v, 2) },
+      { key: 'ses', label: term('ses'), num: true, fmt: v => fmtFixed(v, 2) },
       { key: 'p', label: T('p (dos colas)', 'p (two-sided)'), num: true, get: r => fmtNum(Math.min(1, 2 * Math.min(r.pLe, r.pGe)), 3) },
       { key: 'pAdj', label: T('p ajustada (BH)', 'adjusted p (BH)'), num: true, get: r => (r.pAdj == null ? '—' : fmtNum(r.pAdj, 3)) },
       { key: 'v', label: T('Veredicto', 'Verdict'), html: true, get: r => `<span class="help-tag ${VERD[verdictOf(r)][2]}">${vt(verdictOf(r))}</span>` },
@@ -127,7 +127,7 @@ const B5 = {};
     statTiles('b5PairTiles', [
       [T('Celdas compartidas', 'Shared cells'), p.shared, T(`de ${p.n1} de la planta y ${p.n2} del visitante`, `of ${p.n1} of the plant and ${p.n2} of the visitor`)],
       [T('Esperadas por azar', 'Expected by chance'), fmtFixed(p.exp, 1), `N = ${p.N}`],
-      [T('EEF', 'SES'), fmtFixed(p.ses, 2), (window.Help ? Help.tag('ses', p.ses) : '')],
+      [term('ses'), fmtFixed(p.ses, 2), (window.Help ? Help.tag('ses', p.ses) : '')],
       [T('p (más)', 'p (more)'), fmtNum(p.pGe, 3), T('asociación positiva', 'positive association')],
       [T('p (menos)', 'p (less)'), fmtNum(p.pLe, 3), T('asociación negativa', 'negative association')],
       [T('Cobertura', 'Cover'), fmtPct(p.cover, 0), T('de las celdas de la planta tienen al visitante', 'of the plant\'s cells hold the visitor')],
@@ -157,7 +157,7 @@ const B5 = {};
     const yv = rows.map(r => r.ses).filter(isFinite);
     const ylo = Math.min(-2.5, ...yv) - 0.5, yhi = Math.max(2.5, ...yv) + 0.5;
     /* room on the right for the ±1.96 labels, so the largest cell's point never covers them */
-    const f = Plot.frame(svg, { W: 460, H: 240, m: { l: 44, r: 12, t: 26, b: 34 }, x: [-0.3, rows.length - 0.35], y: [ylo, yhi], xt: rows.map((r, i) => i), xlabFmt: i => (rows[Math.round(i)] ? rows[Math.round(i)].size + '°' : ''), xlab: T('tamaño de celda', 'cell size'), ylab: T('EEF', 'SES') });
+    const f = Plot.frame(svg, { W: 460, H: 240, m: { l: 44, r: 12, t: 26, b: 34 }, x: [-0.3, rows.length - 0.35], y: [ylo, yhi], xt: rows.map((r, i) => i), xlabFmt: i => (rows[Math.round(i)] ? rows[Math.round(i)].size + '°' : ''), xlab: T('tamaño de celda', 'cell size'), ylab: term('ses') });
     Plot.vspan && f.plot.appendChild(svgEl('rect', { x: f.m.l, y: f.sy(1.96), width: f.W - f.m.l - f.m.r, height: f.sy(-1.96) - f.sy(1.96), fill: V('text-muted'), opacity: 0.08 }));
     Plot.hline(f, 1.96, V('primary'), { label: '+1.96', right: true });
     Plot.hline(f, -1.96, V('rose'), { label: '−1.96', right: true, below: true });
@@ -250,7 +250,7 @@ const B5 = {};
     });
     el('b5Csv').addEventListener('click', () => {
       const rows = res.pairs.map(p => ({ plant: p.plant, visitor: p.visitor, cell_deg: opt.size, universe: opt.mode, N: p.N, plant_cells: p.n1, visitor_cells: p.n2, shared: p.shared, expected: p.exp.toFixed(3), ses: isFinite(p.ses) ? p.ses.toFixed(3) : '', p_less: p.pLe, p_more: p.pGe, p_adj_bh: p.pAdj ?? '', verdict: p.verdict, verdict_adj: p.verdictAdj, jaccard: p.jaccard, sorensen: p.sorensen, simpson: p.simpson, cover: p.cover }));
-      download(TableIO.toCSV(rows), 'coocurrencia_pares.csv', 'text/csv;charset=utf-8');
+      download(TableIO.toCSV(rows), outName('coocPairs'), 'text/csv;charset=utf-8');
     });
     document.addEventListener('stepchange', e => { if (e.detail.step === 5) show(); });
     document.addEventListener('cleanchange', () => { res = null; if (document.querySelector('#panel-5.active')) show(); });

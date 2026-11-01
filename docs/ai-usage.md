@@ -44,7 +44,7 @@ what was published and when.
 Because most of the code was written by an AI system, its correctness does
 not rest on trust in that system. It rests on checks that anyone can repeat:
 
-1. **168 unit tests** (`tests/index.html`) against published values, exact
+1. **191 unit tests** (`tests/index.html`) against published values, exact
    arithmetic, hand-solved formulas and simulations under the null hypothesis.
 2. **Validation against independent software.** The engine is compared,
    number by number, with R packages written by other people: 34,299
@@ -111,7 +111,7 @@ Como la mayor parte del código la escribió un sistema de IA, su corrección no
 descansa en la confianza en ese sistema, sino en comprobaciones que
 cualquiera puede repetir:
 
-1. **168 pruebas** (`tests/index.html`) contra valores publicados, aritmética
+1. **191 pruebas** (`tests/index.html`) contra valores publicados, aritmética
    exacta, fórmulas resueltas a mano y simulaciones bajo la hipótesis nula.
 2. **Validación contra programas independientes.** El motor se compara,
    número por número, con paquetes de R escritos por otras personas: 34 299

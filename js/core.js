@@ -63,6 +63,11 @@ function esc(s) {
 }
 /* bilingual inline HTML: both spans are written, CSS shows the active one */
 function L2(es, en) { return `<span data-l="es">${es}</span><span data-l="en">${en}</span>`; }
+/* Abbreviations that change with the language, written in one place so that
+   no label keeps the Spanish one in English: EEF/SES (standardized effect
+   size), CP/PC (principal component), ppp/dpi (dots per inch). */
+const TERMS = { ses: ['EEF', 'SES'], pc: ['CP', 'PC'], dpi: ['ppp', 'dpi'] };
+function term(key, lang) { const p = TERMS[key]; return p ? ((lang || I18N.lang) === 'en' ? p[1] : p[0]) : key; }
 /* Labels shown in capitals would turn km² into KM² and H₂′ into H₂′ with a
    capital letter that means something else: units and symbols keep their own
    case inside an uppercase label. */
@@ -121,10 +126,10 @@ function fmtFixed(v, d) {
   if (/^-0(\.0*)?$/.test(s)) return s.slice(1);
   return s.startsWith('-') ? '−' + s.slice(1) : s;
 }
-/* 0.1234 → "12.3%" */
+/* 0.1234 → "12.3 %" (a space before %, as in the rest of the text) */
 function fmtPct(x, d) {
   if (x == null || !isFinite(x)) return '—';
-  const s = (x * 100).toLocaleString('en-US', { minimumFractionDigits: d == null ? 1 : d, maximumFractionDigits: d == null ? 1 : d }) + '%';
+  const s = (x * 100).toLocaleString('en-US', { minimumFractionDigits: d == null ? 1 : d, maximumFractionDigits: d == null ? 1 : d }) + ' %';
   return s.startsWith('-') ? '−' + s.slice(1) : s;
 }
 /* "1 día", "2 días" */
@@ -197,16 +202,19 @@ function parseISO(s) {
   return { y, m: mo, d };
 }
 function toISO(date) { return `${date.y}-${String(date.m).padStart(2, '0')}-${String(date.d).padStart(2, '0')}`; }
-/* "12 de marzo de 2026" / "12 March 2026"; short: "12 mar" */
+/* "12 de marzo de 2026" / "March 12, 2026"; short: "12 mar" / "Mar 12"
+   (day–month in Spanish, month–day in American English) */
 function fmtDate(date, short) {
   if (!date) return '—';
   if (typeof date === 'string') date = parseISO(date);
   if (!date) return '—';
-  if (short) return `${date.d} ${monthName(date.m, true)}`;
-  return I18N.lang === 'en' ? `${date.d} ${monthName(date.m)} ${date.y}` : `${date.d} de ${monthName(date.m)} de ${date.y}`;
+  if (short) return dayMonth(date.d, date.m);
+  return I18N.lang === 'en' ? `${monthName(date.m)} ${date.d}, ${date.y}` : `${date.d} de ${monthName(date.m)} de ${date.y}`;
 }
-/* a day of the year as a short date of a non-leap year: "12 mar" */
-function fmtDoy(j) { const dt = fromDoy(2025, Math.round(j)); return `${dt.d} ${monthName(dt.m, true)}`; }
+/* a short date without year: "12 mar" in Spanish, "Mar 12" in English */
+function dayMonth(d, m) { return I18N.lang === 'en' ? `${monthName(m, true)} ${d}` : `${d} ${monthName(m, true)}`; }
+/* a day of the year as a short date of a non-leap year: "12 mar" / "Mar 12" */
+function fmtDoy(j) { const dt = fromDoy(2025, Math.round(j)); return dayMonth(dt.d, dt.m); }
 
 /* ---------------- CSV / downloads ---------------- */
 function csvEscape(v) {
@@ -224,6 +232,45 @@ function slug(s) {
   return String(s || 'pollinationpro').replace(/\.[a-z0-9]{1,5}$/i, '')
     .normalize('NFD').replace(/[̀-ͯ]/g, '')
     .replace(/[^\w-]+/g, '_').replace(/^_+|_+$/g, '').slice(0, 60) || 'pollinationpro';
+}
+/* The names of the files and folders the app writes, in the language of the
+   interface. Their content is read back by what is inside, never by the name,
+   so a project or a style saved in one language opens in the other. */
+const OUT_NAMES = {
+  readme: ['LEEME.txt', 'README.txt'],
+  report: ['informe.html', 'report.html'],
+  project: ['proyecto.json', 'project.json'],
+  params: ['parametros.json', 'parameters.json'],
+  tablesDir: ['cuadros', 'tables'],
+  figuresDir: ['figuras', 'figures'],
+  packageZip: ['paquete', 'package'],
+  figuresZip: ['figuras', 'figures'],
+  reportFile: ['informe', 'report'],
+  figure: ['figura', 'figure'],
+  mapStyle: ['estilo_de_mapa.json', 'map_style.json'],
+  rawRecords: ['registros_crudos.csv', 'raw_records.csv'],
+  cleanRecords: ['registros_depurados.csv', 'clean_records.csv'],
+  removedRecords: ['registros_quitados.csv', 'removed_records.csv'],
+  publishedInteractions: ['interacciones_publicadas.csv', 'published_interactions.csv'],
+  recordsTemplate: ['plantilla_registros.csv', 'records_template.csv'],
+  visitsTemplate: ['plantilla_visitas.csv', 'visits_template.csv'],
+  mapPoints: ['puntos_del_mapa.csv', 'map_points.csv'],
+  coocPairs: ['coocurrencia_pares.csv', 'cooccurrence_pairs.csv'],
+  phenoUnits: ['fenologia_unidades.csv', 'phenology_units.csv'],
+  phenoPairs: ['fenologia_pares.csv', 'phenology_pairs.csv'],
+  envValues: ['valores_ambientales.csv', 'environmental_values.csv'],
+  nichePairs: ['nicho_pares.csv', 'niche_pairs.csv'],
+  sdmEvaluation: ['distribucion_evaluacion.csv', 'distribution_evaluation.csv'],
+  mismatchCells: ['desajuste_celdas.csv', 'mismatch_cells.csv'],
+  networkMatrix: ['matriz_de_interacciones.csv', 'interaction_matrix.csv'],
+  networkSpecies: ['especies_de_la_red.csv', 'network_species.csv'],
+  networkSpeciesReport: ['red_especies.csv', 'network_species.csv'],
+  gbifDatasets: ['conjuntos_gbif.csv', 'gbif_datasets.csv'],
+};
+function outName(key, lang) {
+  const p = OUT_NAMES[key];
+  if (!p) return key;
+  return (lang || I18N.lang) === 'en' ? p[1] : p[0];
 }
 
 /* ---------------- step navigation ---------------- */
@@ -309,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
     LABG.work.scene = 'grow';
     LABG.work.tips = [
       ['Las capas de práctica del Bloque 7 son ficticias: sirven para aprender el flujo, no para concluir ni publicar.', 'The Block 7 practice layers are fictional: they are for learning the workflow, not for drawing conclusions or publishing.'],
-      ['La especialización H₂′ del Bloque 9 necesita conteos de visitas propios; los registros publicados cuentan 1 cada uno.', 'The Block 9 specialisation H₂′ needs your own visit counts; published records count 1 each.'],
+      ['La especialización H₂′ del Bloque 9 necesita conteos de visitas propios; los registros publicados cuentan 1 cada uno.', 'The Block 9 specialization H₂′ needs your own visit counts; published records count 1 each.'],
       ['Si detienes la descarga de GBIF en el Bloque 2, se conservan los registros que ya llegaron.', 'If you stop the GBIF download in Block 2, the records that already arrived are kept.'],
     ];
   }
@@ -493,10 +540,10 @@ function poBusy(btn, task) {
 
 Object.assign(window, {
   poWork, poAfterPaint, poBusy,
-  STEPS, el, els, mk, esc, L2, keepGreek, svgEl, showMessage, clearMessages, notice,
+  STEPS, el, els, mk, esc, L2, TERMS, term, keepGreek, svgEl, showMessage, clearMessages, notice,
   fmtNum, fmtFixed, fmtPct, plural, parseNum,
-  MONTHS, MONTHS_SHORT, monthName, isLeap, daysInMonth, daysInYear, doy, fromDoy, dayNumber, fromDayNumber, addDays, parseISO, toISO, fmtDate, fmtDoy,
-  csvEscape, download, slug, goStep, enableStep, Prefs, rng, randn, cssVar, Stat, statTiles, buildTable, Store,
+  MONTHS, MONTHS_SHORT, monthName, isLeap, daysInMonth, daysInYear, doy, fromDoy, dayNumber, fromDayNumber, addDays, parseISO, toISO, fmtDate, dayMonth, fmtDoy,
+  csvEscape, download, slug, OUT_NAMES, outName, goStep, enableStep, Prefs, rng, randn, cssVar, Stat, statTiles, buildTable, Store,
 });
 
 /* every place on the page that shows the version reads it from the constant */

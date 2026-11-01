@@ -12,7 +12,7 @@
 
    Conventions: angles in radians inside, days of the year 1…365 (366 folds
    onto 365) outside; coordinates in decimal degrees, longitude first when a
-   pair is written [lon, lat]; distances in kilometres. */
+   pair is written [lon, lat]; distances in kilometers. */
 
 const Poll = {};
 
@@ -66,7 +66,7 @@ const Poll = {};
     return x - u / (1 + x * u / 2);
   }
 
-  /* the regularised incomplete gamma P(a, x), by its series or its continued
+  /* the regularized incomplete gamma P(a, x), by its series or its continued
      fraction (Press et al. 2007, §6.2) — gives the chi-square distribution */
   function gammaP(a, x) {
     if (x <= 0) return 0;
@@ -95,7 +95,7 @@ const Poll = {};
      side: 1 − P would lose every digit of a probability below 1e-16 */
   const pchisqUpper = (x, df) => (x <= 0 ? 1 : x / 2 < df / 2 + 1 ? 1 - gammaP(df / 2, x / 2) : gammaQcf(df / 2, x / 2));
 
-  /* the regularised incomplete beta I_x(a, b) by Lentz's continued fraction
+  /* the regularized incomplete beta I_x(a, b) by Lentz's continued fraction
      (Press et al. 2007, §6.4) — gives the F and t distributions */
   function betaI(x, a, b) {
     if (x <= 0) return 0;
@@ -160,7 +160,7 @@ const Poll = {};
     }
     pLe = Math.min(1, pLe); pGe = Math.min(1, pGe);
     const exp = N ? N1 * N2 / N : NaN;
-    /* the standardised effect size: (obs − exp) / sd of the hypergeometric */
+    /* the standardized effect size: (obs − exp) / sd of the hypergeometric */
     const v = N > 1 ? N1 * N2 * (N - N1) * (N - N2) / (N * N * (N - 1)) : NaN;
     const ses = v > 0 ? (obs - exp) / Math.sqrt(v) : NaN;
     /* A pair is left unclassified when chance could never be rejected for it:
@@ -217,7 +217,7 @@ const Poll = {};
     for (let i = 0; i < p.length; i++) { pq += p[i] * q[i]; pp += p[i] * p[i]; qq += q[i] * q[i]; }
     return pp && qq ? pq / Math.sqrt(pp * qq) : NaN;
   }
-  /* Levins' (1968) niche breadth B = 1/Σp², and its standardised form
+  /* Levins' (1968) niche breadth B = 1/Σp², and its standardized form
      B_A = (B − 1)/(n − 1) of Hurlbert (1978), from 0 (specialist) to 1 */
   function levinsB(v) {
     const p = normalise(v);
@@ -229,12 +229,12 @@ const Poll = {};
   /* =====================================================================
      4 · circular statistics for dates (Batschelet 1981; Zar 2010, ch. 26–27)
      =====================================================================
-     A date is an angle: 1 January and 31 December are neighbours, and the
+     A date is an angle: 1 January and 31 December are neighbors, and the
      mean of a species active in December and in January is not July. */
   const TWO_PI = 2 * Math.PI;
   const doyToAngle = d => TWO_PI * (((d - 0.5) % 365 + 365) % 365) / 365;
   /* the inverse lands in [0.5, 365.5): day d covers the half-open interval
-     around its centre, so 0.7 is still 1 January, never 31 December */
+     around its center, so 0.7 is still 1 January, never 31 December */
   const angleToDoy = a => ((a % TWO_PI) + TWO_PI) % TWO_PI / TWO_PI * 365 + 0.5;
   /* the middle day of each month, as a day of a non-leap year */
   const MONTH_MID = [16, 45.5, 75, 105.5, 136, 166.5, 197, 228, 258.5, 289, 319.5, 350];

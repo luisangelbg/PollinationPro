@@ -31,7 +31,7 @@ const Records = {};
     { key: 'state', t: ['Estado', 'State'], names: ['stateprovince', 'state', 'estado', 'entidad', 'province', 'provincia'] },
     { key: 'locality', t: ['Localidad', 'Locality'], names: ['locality', 'localidad', 'sitio', 'site', 'lugar', 'place'] },
     { key: 'basis', t: ['Tipo de registro', 'Type of record'], names: ['basisofrecord', 'basis', 'tipo', 'tipo de registro', 'record type'] },
-    { key: 'estab', t: ['Silvestre / cultivado', 'Wild / cultivated'], names: ['establishmentmeans', 'establishment', 'cultivado', 'silvestre', 'origen', 'condicion', 'status'] },
+    { key: 'estab', t: ['Silvestre / cultivado', 'Wild / cultivated'], names: ['establishmentmeans', 'establishment', 'wild or cultivated', 'silvestre o cultivado', 'cultivado', 'silvestre', 'origen', 'condicion', 'status'] },
     { key: 'repro', t: ['Condición reproductiva', 'Reproductive condition'], names: ['reproductivecondition', 'fenologia', 'phenology', 'condicion reproductiva', 'flowering'] },
     { key: 'role', t: ['Papel (planta / visitante)', 'Role (plant / visitor)'], names: ['role', 'papel', 'grupo', 'group', 'tipo de organismo', 'kingdom', 'reino'] },
     { key: 'notes', t: ['Notas', 'Notes'], names: ['occurrenceremarks', 'remarks', 'notes', 'notas', 'observaciones', 'habitat', 'comentarios'] },
@@ -56,7 +56,7 @@ const Records = {};
   function propose(headers, rows, spec) {
     const map = {};
     const used = new Set();
-    /* 1 · by name: exact normalised name first, then "contains" */
+    /* 1 · by name: exact normalized name first, then "contains" */
     spec.forEach(f => {
       const hit = headers.find(h => !used.has(h) && f.names.some(n => norm(h) === norm(n)));
       if (hit) { map[f.key] = hit; used.add(hit); }

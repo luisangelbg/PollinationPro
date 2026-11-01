@@ -127,7 +127,7 @@ const B7 = {};
     el('b7Body2').style.display = '';
     statTiles('b7Tiles', [
       [T('Fondo', 'Background'), bgCells.length.toLocaleString('en-US') + T(' celdas', ' cells'), opt.bg === 'buffer' ? T(`a ≤ ${opt.bufferKm} km de los registros`, `within ${opt.bufferKm} km of the records`) : T('toda el área', 'the whole area')],
-      [T('Varianza en el plano', 'Variance on the plane'), fmtPct(S.pca.explained[0] + S.pca.explained[1], 1), `CP1 ${fmtPct(S.pca.explained[0], 1)} · CP2 ${fmtPct(S.pca.explained[1], 1)}`],
+      [T('Varianza en el plano', 'Variance on the plane'), fmtPct(S.pca.explained[0] + S.pca.explained[1], 1), `${term('pc') + '1'} ${fmtPct(S.pca.explained[0], 1)} · ${term('pc') + '2'} ${fmtPct(S.pca.explained[1], 1)}`],
       [T('Registros con ambiente', 'Records with environment'), occAll.length.toLocaleString('en-US'), T('uno por celda y unidad', 'one per cell and unit')],
       [T('Variables', 'Variables'), used().length, used().map(L => L.label).join(' ')],
     ]);
@@ -165,7 +165,7 @@ const B7 = {};
   function drawSpace() {
     const svg = el('b7Space');
     const R = S.R, [bx0, bx1, by0, by1] = S.box;
-    const f = Plot.frame(svg, { W: 520, H: 440, m: { l: 46, r: 14, t: 26, b: 40 }, x: [bx0, bx1], y: [by0, by1], xlab: `CP1 (${fmtPct(S.pca.explained[0], 1)})`, ylab: `CP2 (${fmtPct(S.pca.explained[1], 1)})`, grid: false });
+    const f = Plot.frame(svg, { W: 520, H: 440, m: { l: 46, r: 14, t: 26, b: 40 }, x: [bx0, bx1], y: [by0, by1], xlab: `${term('pc') + '1'} (${fmtPct(S.pca.explained[0], 1)})`, ylab: `${term('pc') + '2'} (${fmtPct(S.pca.explained[1], 1)})`, grid: false });
     const cw = (f.sx(bx1) - f.sx(bx0)) / (R - 1), ch = (f.sy(by0) - f.sy(by1)) / (R - 1);
     let envMax = 0; for (let i = 0; i < S.zEnv.length; i++) if (S.zEnv[i] > envMax) envMax = S.zEnv[i];
     const g = svgEl('g');
@@ -264,7 +264,7 @@ const B7 = {};
         state.rasters.practice = true;
         state.rasters.layers.forEach(L => { if (/altitud/i.test(L.name)) L.use = false; });
         render();
-        showMessage('b7LoadMsg', 'warning', L2('Son capas <b>ficticias</b>: sirven para practicar, no para concluir ni para publicar.', 'These are <b>fictional</b> layers: for practising, not for drawing conclusions or publishing.'));
+        showMessage('b7LoadMsg', 'warning', L2('Son capas <b>ficticias</b>: sirven para practicar, no para concluir ni para publicar.', 'These are <b>fictional</b> layers: for practicing, not for drawing conclusions or publishing.'));
       } finally { b.disabled = false; }
     });
     el('b7Layers').addEventListener('change', e => { const c = e.target.closest('[data-use]'); if (c) { state.rasters.layers[+c.dataset.use].use = c.checked; renderCorr(); } });
@@ -283,7 +283,7 @@ const B7 = {};
     el('b7Csv').addEventListener('click', () => {
       if (!occAll) return;
       const Ls = used();
-      download(TableIO.toCSV(occAll.map((o, i) => { const r = { unit: o.unit, role: o.role, lon: o.lon, lat: o.lat, PC1: S.sOcc[i][0].toFixed(4), PC2: S.sOcc[i][1].toFixed(4) }; Ls.forEach((L, k) => { r[L.label] = o.v[k]; }); return r; })), 'valores_ambientales.csv', 'text/csv;charset=utf-8');
+      download(TableIO.toCSV(occAll.map((o, i) => { const r = { unit: o.unit, role: o.role, lon: o.lon, lat: o.lat, PC1: S.sOcc[i][0].toFixed(4), PC2: S.sOcc[i][1].toFixed(4) }; Ls.forEach((L, k) => { r[L.label] = o.v[k]; }); return r; })), outName('envValues'), 'text/csv;charset=utf-8');
     });
     document.addEventListener('stepchange', e => { if (e.detail.step === 7) show(); });
     document.addEventListener('cleanchange', () => { occAll = null; S = null; if (document.querySelector('#panel-7.active')) show(); });

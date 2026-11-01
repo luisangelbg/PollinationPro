@@ -3,12 +3,12 @@
 /* PollinationPro — the map studio of Block 4.
 
    One function, render(size), draws the whole map as an SVG with plain
-   colours (no CSS variables inside), from the outlines the app carries: the
+   colors (no CSS variables inside), from the outlines the app carries: the
    picture on screen and the exported file are the same drawing, only the
    size and the resolution change. Around it, an editor in eight tabs: base
    map, framing and clip, texts and fonts, map elements (north arrow, scale
    bar, legend, graticule, frame), data (points, heat, grid, where plant and
-   visitor meet, hulls), colours, ready-made looks and export (PNG, JPEG,
+   visitor meet, hulls), colors, ready-made looks and export (PNG, JPEG,
    WebP, SVG, TIFF and GeoTIFF, at screen, sheet or journal-column size).
 
    The base map is vector, not tiles: no image of any online map is fetched
@@ -23,7 +23,7 @@ const MapStudio = {};
   const f1 = v => (+v).toFixed(1);
   const escX = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-  /* ---------------- colours ---------------- */
+  /* ---------------- colors ---------------- */
   function hexRgb(h) {
     h = String(h || '#000000').trim();
     if (h[0] !== '#') { const m = h.match(/[\d.]+/g); return m && m.length >= 3 ? [+m[0], +m[1], +m[2]] : [0, 0, 0]; }
@@ -35,12 +35,12 @@ const MapStudio = {};
   const mixHex = (a, b, t) => { const A = hexRgb(a), B = hexRgb(b); return rgbHex(A[0] + (B[0] - A[0]) * t, A[1] + (B[1] - A[1]) * t, A[2] + (B[2] - A[2]) * t); };
   const lum = h => { const [r, g, b] = hexRgb(h); return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255; };
   const themeVar = (name, fb) => asHex(cssVar('--' + name, fb));
-  /* the three classes of the "meet" grid: the shared cells in a strong colour of their own, the
-     cells of only one role in pale tints of the plant and visitor colours; the legend uses the same */
+  /* the three classes of the "meet" grid: the shared cells in a strong color of their own, the
+     cells of only one role in pale tints of the plant and visitor colors; the legend uses the same */
   const meetColours = pal => ({ both: asHex(pal[4] || '#b8452f'), plant: mixHex(asHex(pal[0]), '#ffffff', 0.5), poll: mixHex(asHex(pal[1]), '#ffffff', 0.5) });
 
-  /* categorical palettes, eight or more colours each, all the program's own
-     except Okabe–Ito, which is the colour-blind-safe set published by its authors */
+  /* categorical palettes, eight or more colors each, all the program's own
+     except Okabe–Ito, which is the color-blind-safe set published by its authors */
   const PALETTES = {
     pollen: ['#2e7d4f', '#d99a1e', '#7b5ea7', '#2f6fb0', '#b8452f', '#3aa39a', '#8a6a4a', '#c0406a', '#8a9a2a', '#5f6b86'],
     okabe: ['#0072b2', '#e69f00', '#009e73', '#cc79a7', '#d55e00', '#56b4e9', '#f0e442', '#000000'],
@@ -49,7 +49,7 @@ const MapStudio = {};
     soft: ['#7fb3a3', '#e8b77a', '#a79bcf', '#86aed8', '#df8f7e', '#9fcf9a', '#d3b58f', '#e3a1b9', '#bcc27a', '#9aa3b8'],
     grey: ['#111111', '#555555', '#888888', '#bbbbbb', '#333333', '#777777', '#aaaaaa', '#222222'],
   };
-  const PALETTE_NAMES = { pollen: ['PollinationPro', 'PollinationPro'], okabe: ['Okabe–Ito (segura al daltonismo)', 'Okabe–Ito (colour-blind safe)'], earth: ['Tierra', 'Earth'], vivid: ['Vivos', 'Vivid'], soft: ['Suaves', 'Soft'], grey: ['Grises', 'Greys'] };
+  const PALETTE_NAMES = { pollen: ['PollinationPro', 'PollinationPro'], okabe: ['Okabe–Ito (segura al daltonismo)', 'Okabe–Ito (color-blind safe)'], earth: ['Tierra', 'Earth'], vivid: ['Vivos', 'Vivid'], soft: ['Suaves', 'Soft'], grey: ['Grises', 'Grays'] };
   /* ramps for densities: stops designed here, light to dark */
   const RAMPS = {
     green: ['#f4f9ef', '#d4ebc4', '#a6d494', '#6db86b', '#3c9750', '#1f7340', '#0e4a2a'],
@@ -59,7 +59,7 @@ const MapStudio = {};
     cool: ['#f2f8fb', '#cfe6ef', '#9ccfe0', '#5fb0c9', '#2f8aaf', '#1d6290', '#113c64'],
     grey: ['#f7f7f7', '#d9d9d9', '#b0b0b0', '#878787', '#5e5e5e', '#383838', '#111111'],
   };
-  const RAMP_NAMES = { green: ['Verdes', 'Greens'], amber: ['Ámbar', 'Amber'], violet: ['Violetas', 'Violets'], heat: ['Calor', 'Heat'], cool: ['Fríos', 'Cool'], grey: ['Grises', 'Greys'] };
+  const RAMP_NAMES = { green: ['Verdes', 'Greens'], amber: ['Ámbar', 'Amber'], violet: ['Violetas', 'Violets'], heat: ['Calor', 'Heat'], cool: ['Fríos', 'Cool'], grey: ['Grises', 'Grays'] };
   function rampAt(stops, t) {
     t = clamp(t, 0, 1) * (stops.length - 1);
     const i = Math.min(stops.length - 2, Math.floor(t));
@@ -111,7 +111,7 @@ const MapStudio = {};
     /* data */
     mode: 'points', colorBy: 'unit', radius: 3, fillAlpha: 0.85, outlineW: 0.5, outlineColor: '#ffffff', halo: 0,
     shapePlant: 'circle', shapeVisitor: 'triangle', heatRadius: 18, heatIntensity: 1, gridSize: 0.5, hullAlpha: 0.15,
-    /* colours */
+    /* colors */
     palette: 'pollen', ramp: 'green', units: {},
     /* export */
     size: 'screen', wmm: 180, hmm: 130, dpi: 300, fmt: 'png',
@@ -119,7 +119,7 @@ const MapStudio = {};
   const LOOKS = [
     { id: 'publication', t: ['Publicación', 'Publication'], d: ['blanco, marco fino, retícula y leyenda clara', 'white, thin frame, graticule and light legend'],
       s: { bgMode: 'white', sea: '#e3eef3', land: '#f7f5ef', landOther: '#ecebe6', grat: true, frameOn: true, font: 'sans', legendBox: 'light', north: 'arrow', scaleStyle: 'alt', radius: 3, outlineColor: '#ffffff', palette: 'pollen', textColor: '#1a2419', stateLine: '#9aa39a', countryLine: '#6f786f', textBox: 'none' } },
-    { id: 'bw', t: ['Blanco y negro', 'Black and white'], d: ['grises y formas distintas por unidad, para revistas que cobran el color', 'greys and different shapes per unit, for journals that charge for colour'],
+    { id: 'bw', t: ['Blanco y negro', 'Black and white'], d: ['grises y formas distintas por unidad, para revistas que cobran el color', 'grays and different shapes per unit, for journals that charge for color'],
       s: { bgMode: 'white', sea: '#ffffff', land: '#f2f2f2', landOther: '#e6e6e6', grat: true, frameOn: true, palette: 'grey', legendBox: 'outline', north: 'half', scaleStyle: 'stepped', outlineColor: '#ffffff', textColor: '#111111', stateLine: '#8c8c8c', countryLine: '#555555', textBox: 'none' } },
     { id: 'dark', t: ['Presentación oscura', 'Dark presentation'], d: ['fondo oscuro, puntos grandes con halo', 'dark background, large points with halo'],
       s: { bgMode: 'custom', bgColor: '#111a14', sea: '#16211b', land: '#23312a', landOther: '#1c2721', grat: false, frameOn: false, radius: 5, halo: 1.5, outlineColor: '#0b100d', legendBox: 'dark', north: 'rose4', scaleStyle: 'solid', textColor: '#e8efe4', stateLine: '#3f5147', countryLine: '#5b6f63', titleSize: 26, palette: 'vivid', northColor: '#e8efe4', stateLabelColor: '#a0ae9a', gratColor: '#5b6f63', clipColor: '#a0ae9a', frameColor: '#a0ae9a' } },
@@ -184,7 +184,7 @@ const MapStudio = {};
   const niceStep = span => { const c = [0.5, 1, 2, 5, 10, 15, 20, 30]; const t = span / 5; return c.find(v => v >= t) || 30; };
   function centroidOf(st) {
     if (window.Clean && Clean.polyCentroid) {
-      /* the largest ring, so an archipelago is labelled on its main island */
+      /* the largest ring, so an archipelago is labeled on its main island */
       let best = null, area = 0;
       st.rings.forEach(r => { const b = GEO.ringsBBox([r]); const a = (b[2] - b[0]) * (b[3] - b[1]); if (a > area) { area = a; best = r; } });
       const c = best && Clean.polyCentroid([best]);
@@ -300,7 +300,7 @@ const MapStudio = {};
         seg.push([kk, r[i], r[i + 1], r[i + 2], r[i + 3]]);
       }
     }));
-    /* an edge that appears once is not yet an outer edge: two neighbouring states simplified
+    /* an edge that appears once is not yet an outer edge: two neighboring states simplified
        apart do not share their vertices, so their common border also appears once in each. An
        outer edge has land of the chosen states on one side only; a border of this kind has it
        on both. Each side is probed about 3 km off the middle of the edge. */
@@ -471,7 +471,7 @@ const MapStudio = {};
   }
 
   /* scale bars: eight designs */
-  const SCALES = { alt: ['Bloques alternos', 'Alternating blocks'], stepped: ['Escalonada (dos filas)', 'Stepped (two rows)'], solid: ['Barra sólida', 'Solid bar'], line: ['Línea con topes', 'Line with ends'], ruler: ['Regla', 'Ruler'], dual: ['Kilómetros y millas', 'Kilometres and miles'], text: ['Solo texto', 'Text only'], ratio: ['Escala numérica (1:n)', 'Ratio (1:n)'] };
+  const SCALES = { alt: ['Bloques alternos', 'Alternating blocks'], stepped: ['Escalonada (dos filas)', 'Stepped (two rows)'], solid: ['Barra sólida', 'Solid bar'], line: ['Línea con topes', 'Line with ends'], ruler: ['Regla', 'Ruler'], dual: ['Kilómetros y millas', 'Kilometers and miles'], text: ['Solo texto', 'Text only'], ratio: ['Escala numérica (1:n)', 'Ratio (1:n)'] };
   function scaleBar(area, pr, box, k, C) {
     const unitKm = S.scaleUnit === 'mi' ? 1.609344 : 1;
     const uName = S.scaleUnit === 'mi' ? 'mi' : 'km';
@@ -633,7 +633,7 @@ const MapStudio = {};
      ===================================================================== */
   const two = (es, en) => L2(es, en);
   let host = null, view = null, tabNow = 'base';
-  const TABS = [['base', 'Mapa base', 'Base map'], ['frame', 'Encuadre y recorte', 'Framing and clip'], ['text', 'Textos y fuentes', 'Text and fonts'], ['elements', 'Elementos', 'Elements'], ['data', 'Datos', 'Data'], ['colors', 'Colores', 'Colours'], ['looks', 'Estilos', 'Looks'], ['export', 'Exportar', 'Export']];
+  const TABS = [['base', 'Mapa base', 'Base map'], ['frame', 'Encuadre y recorte', 'Framing and clip'], ['text', 'Textos y fuentes', 'Text and fonts'], ['elements', 'Elementos', 'Elements'], ['data', 'Datos', 'Data'], ['colors', 'Colores', 'Colors'], ['looks', 'Estilos', 'Looks'], ['export', 'Exportar', 'Export']];
   const opt = (pairs, cur) => pairs.map(([v, es, en]) => `<option value="${v}"${String(cur) === String(v) ? ' selected' : ''}>${T(es, en ?? es)}</option>`).join('');
   const ctl = {
     sel: (k, es, en, pairs) => `<label class="inline-label"><span>${T(es, en)}</span><select data-k="${k}">${opt(pairs, S[k])}</select></label>`,
@@ -650,27 +650,27 @@ const MapStudio = {};
   function paneHTML(tab) {
     switch (tab) {
       case 'base': return sec('Fondo', 'Background',
-        ctl.sel('bgMode', 'Fondo de la figura', 'Figure background', [['white', 'Blanco', 'White'], ['theme', 'El del tema de la app', 'The app theme'], ['custom', 'Color propio', 'Custom colour'], ['transparent', 'Transparente', 'Transparent']]) + ctl.color('bgColor', 'Color de fondo', 'Background colour') + ctl.color('sea', 'Mar', 'Sea') + ctl.color('land', 'Tierra de México', 'Land of Mexico') + ctl.color('landOther', 'Tierra de otros países', 'Land of other countries'))
-        + sec('Límites', 'Boundaries', ctl.check('showStates', 'Límites de los estados', 'State boundaries') + ctl.color('stateLine', 'Color', 'Colour') + ctl.range('stateW', 'Grosor', 'Width', 0.2, 3, 0.1) + ctl.check('showCountries', 'Límites de los países', 'Country boundaries') + ctl.color('countryLine', 'Color', 'Colour') + ctl.range('countryW', 'Grosor', 'Width', 0.2, 4, 0.1))
-        + sec('Nombres de los estados', 'State names', ctl.sel('stateLabels', 'Mostrar', 'Show', [['off', 'No', 'No'], ['code', 'Abreviatura', 'Abbreviation'], ['name', 'Nombre completo', 'Full name']]) + ctl.range('stateLabelSize', 'Tamaño', 'Size', 5, 18, 0.5) + ctl.color('stateLabelColor', 'Color', 'Colour'))
-        + sec('Retícula (meridianos y paralelos)', 'Graticule (meridians and parallels)', ctl.check('grat', 'Dibujar la retícula', 'Draw the graticule') + ctl.sel('gratStep', 'Cada', 'Every', [['auto', 'automático', 'automatic'], ['1', '1°'], ['2', '2°'], ['5', '5°'], ['10', '10°'], ['20', '20°']]) + ctl.color('gratColor', 'Color', 'Colour') + ctl.range('gratAlpha', 'Opacidad', 'Opacity', 0.1, 1, 0.05) + ctl.check('gratLabels', 'Etiquetas de grados', 'Degree labels') + ctl.range('gratSize', 'Tamaño de las etiquetas', 'Label size', 6, 16, 0.5))
-        + sec('Marco', 'Frame', ctl.check('frameOn', 'Marco alrededor del mapa', 'Frame around the map') + ctl.color('frameColor', 'Color', 'Colour') + ctl.range('frameW', 'Grosor', 'Width', 0.5, 5, 0.25));
+        ctl.sel('bgMode', 'Fondo de la figura', 'Figure background', [['white', 'Blanco', 'White'], ['theme', 'El del tema de la app', 'The app theme'], ['custom', 'Color propio', 'Custom color'], ['transparent', 'Transparente', 'Transparent']]) + ctl.color('bgColor', 'Color de fondo', 'Background color') + ctl.color('sea', 'Mar', 'Sea') + ctl.color('land', 'Tierra de México', 'Land of Mexico') + ctl.color('landOther', 'Tierra de otros países', 'Land of other countries'))
+        + sec('Límites', 'Boundaries', ctl.check('showStates', 'Límites de los estados', 'State boundaries') + ctl.color('stateLine', 'Color', 'Color') + ctl.range('stateW', 'Grosor', 'Width', 0.2, 3, 0.1) + ctl.check('showCountries', 'Límites de los países', 'Country boundaries') + ctl.color('countryLine', 'Color', 'Color') + ctl.range('countryW', 'Grosor', 'Width', 0.2, 4, 0.1))
+        + sec('Nombres de los estados', 'State names', ctl.sel('stateLabels', 'Mostrar', 'Show', [['off', 'No', 'No'], ['code', 'Abreviatura', 'Abbreviation'], ['name', 'Nombre completo', 'Full name']]) + ctl.range('stateLabelSize', 'Tamaño', 'Size', 5, 18, 0.5) + ctl.color('stateLabelColor', 'Color', 'Color'))
+        + sec('Retícula (meridianos y paralelos)', 'Graticule (meridians and parallels)', ctl.check('grat', 'Dibujar la retícula', 'Draw the graticule') + ctl.sel('gratStep', 'Cada', 'Every', [['auto', 'automático', 'automatic'], ['1', '1°'], ['2', '2°'], ['5', '5°'], ['10', '10°'], ['20', '20°']]) + ctl.color('gratColor', 'Color', 'Color') + ctl.range('gratAlpha', 'Opacidad', 'Opacity', 0.1, 1, 0.05) + ctl.check('gratLabels', 'Etiquetas de grados', 'Degree labels') + ctl.range('gratSize', 'Tamaño de las etiquetas', 'Label size', 6, 16, 0.5))
+        + sec('Marco', 'Frame', ctl.check('frameOn', 'Marco alrededor del mapa', 'Frame around the map') + ctl.color('frameColor', 'Color', 'Color') + ctl.range('frameW', 'Grosor', 'Width', 0.5, 5, 0.25));
       case 'frame': return sec('Encuadre', 'Framing',
         ctl.sel('extent', 'Extensión', 'Extent', [['auto', 'Ajustada a los registros', 'Fitted to the records'], ['mexico', 'México completo', 'Whole Mexico'], ['states', 'Estados elegidos', 'Chosen states'], ['world', 'Mundo', 'World'], ['manual', 'Coordenadas propias', 'Own coordinates']]) + ctl.range('margin', 'Margen alrededor (%)', 'Margin around (%)', 0, 30, 1)
         + (S.extent === 'manual' ? ctl.num('mN', 'Norte (lat.)', 'North (lat.)', -90, 90, 0.5) + ctl.num('mS', 'Sur (lat.)', 'South (lat.)', -90, 90, 0.5) + ctl.num('mW', 'Oeste (lon.)', 'West (lon.)', -180, 180, 0.5) + ctl.num('mE', 'Este (lon.)', 'East (lon.)', -180, 180, 0.5) : '')
         + ctl.check('legendOutside', 'Leyenda fuera del mapa, a la derecha', 'Legend outside the map, on the right'))
         + (S.extent === 'states' || (S.clipOn && S.clipTo === 'states') ? `<div class="ms-sec"><h4>${T('Estados', 'States')}</h4><div class="country-list">${GEO.MX.slice().sort((a, b) => a.name.localeCompare(b.name)).map(s => `<label><input type="checkbox" data-state="${s.code}"${S.states.includes(s.code) ? ' checked' : ''}> ${escX(s.name)}</label>`).join('')}</div></div>` : '')
-        + sec('Recorte', 'Clip', ctl.check('clipOn', 'Recortar el mapa a México o a los estados elegidos', 'Clip the map to Mexico or to the chosen states') + ctl.sel('clipTo', 'Recortar a', 'Clip to', [['mexico', 'México', 'Mexico'], ['states', 'Estados elegidos', 'Chosen states']]) + ctl.sel('clipOutside', 'Fuera del recorte', 'Outside the clip', [['bg', 'color de fondo', 'background colour'], ['transparent', 'transparente', 'transparent']]) + ctl.check('clipOutline', 'Dibujar el contorno del recorte', 'Draw the outline of the clip') + ctl.color('clipColor', 'Color del contorno', 'Outline colour') + ctl.range('clipW', 'Grosor', 'Width', 0.5, 5, 0.25),
+        + sec('Recorte', 'Clip', ctl.check('clipOn', 'Recortar el mapa a México o a los estados elegidos', 'Clip the map to Mexico or to the chosen states') + ctl.sel('clipTo', 'Recortar a', 'Clip to', [['mexico', 'México', 'Mexico'], ['states', 'Estados elegidos', 'Chosen states']]) + ctl.sel('clipOutside', 'Fuera del recorte', 'Outside the clip', [['bg', 'color de fondo', 'background color'], ['transparent', 'transparente', 'transparent']]) + ctl.check('clipOutline', 'Dibujar el contorno del recorte', 'Draw the outline of the clip') + ctl.color('clipColor', 'Color del contorno', 'Outline color') + ctl.range('clipW', 'Grosor', 'Width', 0.5, 5, 0.25),
         T('Con el recorte, todo lo que queda fuera del polígono —mar, otros países, puntos— desaparece; el título, la leyenda, la escala y la flecha se dibujan igual.', 'With the clip, everything outside the polygon —sea, other countries, points— disappears; the title, legend, scale bar and arrow are drawn all the same.'));
       case 'text': return sec('Textos', 'Texts', ctl.text('title', 'Título', 'Title') + ctl.text('subtitle', 'Subtítulo', 'Subtitle') + ctl.text('credit', 'Fuente o crédito', 'Source or credit', T('Registros: GBIF (descargado el …)', 'Records: GBIF (downloaded on …)')) + ctl.text('legendTitle', 'Título de la leyenda', 'Legend title'))
-        + sec('Tipografía', 'Typography', ctl.sel('font', 'Familia', 'Family', Object.entries(FONTS).map(([k, v]) => [k, v[0], v[1]])) + ctl.color('textColor', 'Color del texto', 'Text colour') + ctl.range('titleSize', 'Tamaño del título', 'Title size', 10, 48, 1) + ctl.check('titleBold', 'Título en negritas', 'Bold title') + ctl.check('titleItalic', 'Título en cursivas', 'Italic title') + ctl.sel('titlePos', 'Título', 'Title', [['tl', 'a la izquierda', 'left'], ['tc', 'centrado', 'centred'], ['tr', 'a la derecha', 'right']]) + ctl.range('subSize', 'Tamaño del subtítulo', 'Subtitle size', 8, 32, 1) + ctl.range('creditSize', 'Tamaño del crédito', 'Credit size', 6, 18, 0.5) + ctl.sel('creditPos', 'Crédito', 'Credit', POS4.concat([['bc', 'Abajo al centro', 'Bottom centre']]).map(p => p)),
+        + sec('Tipografía', 'Typography', ctl.sel('font', 'Familia', 'Family', Object.entries(FONTS).map(([k, v]) => [k, v[0], v[1]])) + ctl.color('textColor', 'Color del texto', 'Text color') + ctl.range('titleSize', 'Tamaño del título', 'Title size', 10, 48, 1) + ctl.check('titleBold', 'Título en negritas', 'Bold title') + ctl.check('titleItalic', 'Título en cursivas', 'Italic title') + ctl.sel('titlePos', 'Título', 'Title', [['tl', 'a la izquierda', 'left'], ['tc', 'centrado', 'centered'], ['tr', 'a la derecha', 'right']]) + ctl.range('subSize', 'Tamaño del subtítulo', 'Subtitle size', 8, 32, 1) + ctl.range('creditSize', 'Tamaño del crédito', 'Credit size', 6, 18, 0.5) + ctl.sel('creditPos', 'Crédito', 'Credit', POS4.concat([['bc', 'Abajo al centro', 'Bottom center']]).map(p => p)),
           T('Los nombres de las unidades se escriben en cursiva en la leyenda, como corresponde a los nombres científicos.', 'Unit names are written in italics in the legend, as scientific names require.'));
-      case 'elements': return `<div class="ms-sec"><h4>${T('Flecha del norte', 'North arrow')}</h4><div class="ms-npick">${['off'].concat(Object.keys(NORTH)).map(n => `<button type="button" class="ms-npick-b${S.north === n ? ' on' : ''}" data-north="${n}">${n === 'off' ? T('Sin flecha', 'None') : T(...NORTH[n])}</button>`).join('')}</div><div class="ms-grid">${ctl.sel('northPos', 'Posición', 'Position', POS4) + ctl.range('northSize', 'Tamaño', 'Size', 20, 110, 1) + ctl.color('northColor', 'Color', 'Colour')}</div></div>`
-        + sec('Escala gráfica', 'Scale bar', ctl.check('scaleOn', 'Dibujar la escala', 'Draw the scale bar') + ctl.sel('scaleStyle', 'Formato', 'Format', Object.entries(SCALES).map(([k, v]) => [k, v[0], v[1]])) + ctl.sel('scaleUnit', 'Unidad', 'Unit', [['km', 'kilómetros', 'kilometres'], ['mi', 'millas', 'miles']]) + ctl.sel('scalePos', 'Posición', 'Position', POS4) + ctl.range('scaleSegs', 'Divisiones', 'Divisions', 1, 8, 1) + ctl.range('scaleThick', 'Grosor', 'Thickness', 2, 14, 1) + ctl.range('scaleSize', 'Tamaño del texto', 'Text size', 6, 18, 0.5),
-          T('La escala numérica (1:n) se calcula para el tamaño de papel elegido en «Exportar»: cambia si cambias el papel.', 'The ratio (1:n) is computed for the paper size chosen in "Export": it changes if you change the paper.'))
+      case 'elements': return `<div class="ms-sec"><h4>${T('Flecha del norte', 'North arrow')}</h4><div class="ms-npick">${['off'].concat(Object.keys(NORTH)).map(n => `<button type="button" class="ms-npick-b${S.north === n ? ' on' : ''}" data-north="${n}">${n === 'off' ? T('Sin flecha', 'None') : T(...NORTH[n])}</button>`).join('')}</div><div class="ms-grid">${ctl.sel('northPos', 'Posición', 'Position', POS4) + ctl.range('northSize', 'Tamaño', 'Size', 20, 110, 1) + ctl.color('northColor', 'Color', 'Color')}</div></div>`
+        + sec('Escala gráfica', 'Scale bar', ctl.check('scaleOn', 'Dibujar la escala', 'Draw the scale bar') + ctl.sel('scaleStyle', 'Formato', 'Format', Object.entries(SCALES).map(([k, v]) => [k, v[0], v[1]])) + ctl.sel('scaleUnit', 'Unidad', 'Unit', [['km', 'kilómetros', 'kilometers'], ['mi', 'millas', 'miles']]) + ctl.sel('scalePos', 'Posición', 'Position', POS4) + ctl.range('scaleSegs', 'Divisiones', 'Divisions', 1, 8, 1) + ctl.range('scaleThick', 'Grosor', 'Thickness', 2, 14, 1) + ctl.range('scaleSize', 'Tamaño del texto', 'Text size', 6, 18, 0.5),
+          T('La escala numérica (1:n) se calcula para el tamaño de papel elegido en «Exportar»: cambia si cambias el papel.', 'The ratio (1:n) is computed for the paper size chosen in “Export”: it changes if you change the paper.'))
         + sec('Leyenda', 'Legend', ctl.check('legendOn', 'Dibujar la leyenda', 'Draw the legend') + ctl.sel('legendPos', 'Posición', 'Position', POS4) + ctl.sel('legendBox', 'Recuadro', 'Box', [['light', 'claro', 'light'], ['dark', 'oscuro', 'dark'], ['outline', 'solo contorno', 'outline only'], ['none', 'sin recuadro', 'none']]) + ctl.range('legendSize', 'Tamaño del texto', 'Text size', 7, 22, 0.5) + ctl.range('legendCols', 'Columnas', 'Columns', 1, 3, 1));
       case 'data': return sec('Qué se dibuja', 'What is drawn',
-        ctl.sel('mode', 'Representación', 'Representation', [['points', 'Puntos', 'Points'], ['heat', 'Mapa de calor (densidad)', 'Heat map (density)'], ['grid', 'Rejilla: registros por celda', 'Grid: records per cell'], ['meet', 'Rejilla: dónde coinciden planta y visitante', 'Grid: where plant and visitor meet'], ['hull', 'Envolventes convexas con puntos', 'Convex hulls with points']]) + ctl.sel('colorBy', 'Color', 'Colour', [['unit', 'por unidad', 'by unit'], ['role', 'por papel (planta / visitante)', 'by role (plant / visitor)']])
+        ctl.sel('mode', 'Representación', 'Representation', [['points', 'Puntos', 'Points'], ['heat', 'Mapa de calor (densidad)', 'Heat map (density)'], ['grid', 'Rejilla: registros por celda', 'Grid: records per cell'], ['meet', 'Rejilla: dónde coinciden planta y visitante', 'Grid: where plant and visitor meet'], ['hull', 'Envolventes convexas con puntos', 'Convex hulls with points']]) + ctl.sel('colorBy', 'Color', 'Color', [['unit', 'por unidad', 'by unit'], ['role', 'por papel (planta / visitante)', 'by role (plant / visitor)']])
         + (S.mode === 'grid' || S.mode === 'meet' ? ctl.sel('gridSize', 'Celda', 'Cell', [['0.1', '0.1°'], ['0.25', '0.25°'], ['0.5', '0.5°'], ['1', '1°'], ['2', '2°']]) : '')
         + (S.mode === 'heat' ? ctl.range('heatRadius', 'Radio', 'Radius', 4, 60, 1) + ctl.range('heatIntensity', 'Intensidad', 'Intensity', 0.4, 3, 0.1) : '')
         + (S.mode === 'hull' ? ctl.range('hullAlpha', 'Opacidad del relleno', 'Fill opacity', 0, 0.6, 0.02) : ''))
@@ -678,19 +678,19 @@ const MapStudio = {};
         + unitsTable();
       case 'colors': return sec('Paleta de las unidades', 'Unit palette', ctl.sel('palette', 'Paleta', 'Palette', Object.entries(PALETTE_NAMES).map(([k, v]) => [k, v[0], v[1]])) + `<div class="ms-sw">${(PALETTES[S.palette] || []).map(c => `<i style="background:${c}"></i>`).join('')}</div>`)
         + sec('Rampa de densidad', 'Density ramp', ctl.sel('ramp', 'Rampa', 'Ramp', Object.entries(RAMP_NAMES).map(([k, v]) => [k, v[0], v[1]])) + `<div class="ms-sw ms-ramp" style="background:linear-gradient(90deg,${(RAMPS[S.ramp] || RAMPS.green).join(',')})"></div>`)
-        + unitsTable() + `<div class="btn-row"><button type="button" class="btn btn-ghost btn-sm" data-act="resetUnits">${two('Volver a los colores de la paleta', 'Back to the palette colours')}</button></div>`;
+        + unitsTable() + `<div class="btn-row"><button type="button" class="btn btn-ghost btn-sm" data-act="resetUnits">${two('Volver a los colores de la paleta', 'Back to the palette colors')}</button></div>`;
       case 'looks': return `<div class="ms-looks">${LOOKS.map(l => `<button type="button" class="preset" data-look="${l.id}"><b>${T(...l.t)}</b><small>${T(...l.d)}</small></button>`).join('')}</div>
         <div class="btn-row"><button type="button" class="btn btn-ghost btn-sm" data-act="saveStyle">${two('⤓ Guardar este estilo (.json)', '⤓ Save this style (.json)')}</button>
         <label class="btn btn-ghost btn-sm"><input type="file" accept=".json" data-act="loadStyle" style="display:none">${two('Cargar un estilo…', 'Load a style…')}</label>
         <button type="button" class="btn btn-ghost btn-sm" data-act="reset">${two('Restablecer todo', 'Reset everything')}</button></div>
-        <p class="hint">${T('Un estilo aplica fondo, colores, tipografía y elementos de una vez; los textos (título, crédito) y los colores propios de cada unidad se conservan.', 'A look applies background, colours, typography and elements at once; the texts (title, credit) and each unit\'s own colours are kept.')}</p>`;
+        <p class="hint">${T('Un estilo aplica fondo, colores, tipografía y elementos de una vez; los textos (título, crédito) y los colores propios de cada unidad se conservan.', 'A look applies background, colors, typography and elements at once; the texts (title, credit) and each unit\'s own colors are kept.')}</p>`;
       case 'export': {
         const [W, H] = sizePx();
         const mm = S.size === 'screen' ? null : [W / PX_PER_MM, H / PX_PER_MM];
         const px = S.size === 'screen' ? [Math.round(W * S.dpi / 96), Math.round(H * S.dpi / 96)] : [Math.round(mm[0] / 25.4 * S.dpi), Math.round(mm[1] / 25.4 * S.dpi)];
         return sec('Archivo', 'File', ctl.sel('fmt', 'Formato', 'Format', [['png', 'PNG'], ['jpg', 'JPEG'], ['webp', 'WebP'], ['svg', 'SVG (vectorial, editable)', 'SVG (vector, editable)'], ['tiff', 'TIFF'], ['geotiff', 'GeoTIFF (con coordenadas)', 'GeoTIFF (georeferenced)']]) + ctl.sel('size', 'Tamaño', 'Size', Object.entries(SIZES).map(([k, v]) => [k, v[0][0], v[0][1]]))
           + (S.size === 'custom' ? ctl.num('wmm', 'Ancho (mm)', 'Width (mm)', 30, 1200, 1) + ctl.num('hmm', 'Alto (mm)', 'Height (mm)', 30, 1200, 1) : '')
-          + (S.fmt !== 'svg' ? ctl.sel('dpi', 'Resolución', 'Resolution', [['150', '150 ppp'], ['300', '300 ppp'], ['600', '600 ppp'], ['900', '900 ppp']]) : ''),
+          + (S.fmt !== 'svg' ? ctl.sel('dpi', 'Resolución', 'Resolution', [['150', '150 ppp', '150 dpi'], ['300', '300 ppp', '300 dpi'], ['600', '600 ppp', '600 dpi'], ['900', '900 ppp', '900 dpi']]) : ''),
           (S.fmt === 'svg' ? T('El SVG guarda cada punto, línea y texto como vector: se abre y se edita en cualquier programa de dibujo.', 'The SVG keeps every point, line and text as a vector: it opens and edits in any drawing program.') : T(`Saldrá de ${px[0].toLocaleString('en-US')} × ${px[1].toLocaleString('en-US')} píxeles${mm ? ` (${mm[0].toFixed(0)} × ${mm[1].toFixed(0)} mm a ${S.dpi} ppp)` : ''}.`, `It will be ${px[0].toLocaleString('en-US')} × ${px[1].toLocaleString('en-US')} pixels${mm ? ` (${mm[0].toFixed(0)} × ${mm[1].toFixed(0)} mm at ${S.dpi} dpi)` : ''}.`))
           + (S.fmt === 'geotiff' ? ' ' + T('El GeoTIFF se abre en un sistema de información geográfica en su lugar (WGS 84, EPSG 4326). Para que el amarre sea exacto en toda la imagen, quita el título y deja la leyenda dentro del mapa.', 'The GeoTIFF opens in a geographic information system in place (WGS 84, EPSG 4326). For an exact fit over the whole image, remove the title and keep the legend inside the map.') : ''))
           + `<div class="btn-row"><button type="button" class="btn btn-primary" data-act="export">${two('⤓ Descargar el mapa', '⤓ Download the map')}</button><span class="hint" data-msg="export" style="margin:0"></span></div>
@@ -701,7 +701,7 @@ const MapStudio = {};
   }
   function unitsTable() {
     const U = units();
-    return `<div class="ms-sec"><h4>${T('Cada unidad', 'Each unit')}</h4><div class="table-scroll"><table class="map-table"><thead><tr><th>${T('Ver', 'Show')}</th><th>${T('Unidad', 'Unit')}</th><th>${T('Color', 'Colour')}</th><th>${T('Forma', 'Shape')}</th><th class="num">n</th></tr></thead><tbody>` +
+    return `<div class="ms-sec"><h4>${T('Cada unidad', 'Each unit')}</h4><div class="table-scroll"><table class="map-table"><thead><tr><th>${T('Ver', 'Show')}</th><th>${T('Unidad', 'Unit')}</th><th>${T('Color', 'Color')}</th><th>${T('Forma', 'Shape')}</th><th class="num">n</th></tr></thead><tbody>` +
       U.map(u => `<tr><td><input type="checkbox" data-unit-show="${escX(u.unit)}"${u.hidden ? '' : ' checked'}></td><td><i>${escX(u.unit)}</i> <span class="role-tag ${u.role}">${T(...Taxa.ROLE[u.role])}</span></td><td><input type="color" data-unit-color="${escX(u.unit)}" value="${asHex(u.color)}"></td><td><select data-unit-shape="${escX(u.unit)}">${opt(SHAPES, u.shape)}</select></td><td class="num">${u.n.toLocaleString('en-US')}</td></tr>`).join('') +
       `</tbody></table></div><div class="btn-row"><button type="button" class="btn btn-ghost btn-sm" data-act="allUnits">${two('Mostrar todas', 'Show all')}</button><button type="button" class="btn btn-ghost btn-sm" data-act="plantsOnly">${two('Solo plantas', 'Plants only')}</button><button type="button" class="btn btn-ghost btn-sm" data-act="visitorsOnly">${two('Solo visitantes', 'Visitors only')}</button></div></div>`;
   }
@@ -776,7 +776,7 @@ const MapStudio = {};
       if (a === 'resetUnits') { Object.keys(S.units).forEach(u => { delete S.units[u].color; }); save(); renderPane(); redraw(); }
       else if (a === 'allUnits' || a === 'plantsOnly' || a === 'visitorsOnly') { units().forEach(u => { S.units[u.unit] = Object.assign(S.units[u.unit] || {}, { hidden: a === 'plantsOnly' ? u.role !== 'plant' : a === 'visitorsOnly' ? u.role !== 'poll' : false }); }); save(); renderPane(); redraw(); }
       else if (a === 'reset') { const texts = { title: S.title, subtitle: S.subtitle, credit: S.credit, legendTitle: S.legendTitle }; S = Object.assign({}, DEF, texts, { units: {} }); save(); renderPane(); redraw(); }
-      else if (a === 'saveStyle') { const o = Object.assign({}, S); delete o.units; download(JSON.stringify(o, null, 1), 'estilo_de_mapa.json', 'application/json'); }
+      else if (a === 'saveStyle') { const o = Object.assign({}, S); delete o.units; download(JSON.stringify(o, null, 1), outName('mapStyle'), 'application/json'); }
       else if (a === 'export') {
         const msg = panel.querySelector('[data-msg="export"]');
         b.disabled = true; msg.textContent = T('Preparando…', 'Preparing…');

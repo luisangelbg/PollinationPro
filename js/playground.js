@@ -93,9 +93,9 @@
       rd(T('Registros', 'Records'), `${nP} · ${nB}`, T(`planta · abeja, en ${sampled.length} de ${all} celdas muestreadas`, `plant · bee, in ${sampled.length} of ${all} sampled cells`)) +
       rd(T('Celdas compartidas', 'Shared cells'), String(shared), T(`esperadas: ${fmtFixed(naive.exp, 1)} (mapa) · ${fmtFixed(corrected.exp, 1)} (muestreadas)`, `expected: ${fmtFixed(naive.exp, 1)} (map) · ${fmtFixed(corrected.exp, 1)} (sampled)`)) +
       rd(T('La verdad', 'The truth'), verdictTxt(truth.verdict), T(`con las presencias reales: EEF ${fmtFixed(truth.ses, 2)}`, `with the true presences: SES ${fmtFixed(truth.ses, 2)}`)) +
-      rd(T('Universo = todo el mapa', 'Universe = whole map'), verdictTxt(naive.verdict), `EEF ${fmtFixed(naive.ses, 2)} · ${naive.verdict === truth.verdict ? T('acierta', 'right') : T('se equivoca', 'wrong')}`, tone(naive.verdict, truth.verdict)) +
-      rd(T('Universo = grupo objetivo', 'Universe = target group'), verdictTxt(tgRes.verdict), `EEF ${fmtFixed(tgRes.ses, 2)} · ${T(`${tg} celdas con algún registro`, `${tg} cells with any record`)}`, tone(tgRes.verdict, truth.verdict)) +
-      rd(T('Universo = celdas muestreadas', 'Universe = sampled cells'), verdictTxt(corrected.verdict), `EEF ${fmtFixed(corrected.ses, 2)} · ${corrected.verdict === truth.verdict ? T('acierta', 'right') : T('se equivoca', 'wrong')}`, tone(corrected.verdict, truth.verdict));
+      rd(T('Universo = todo el mapa', 'Universe = whole map'), verdictTxt(naive.verdict), `${term('ses')} ${fmtFixed(naive.ses, 2)} · ${naive.verdict === truth.verdict ? T('acierta', 'right') : T('se equivoca', 'wrong')}`, tone(naive.verdict, truth.verdict)) +
+      rd(T('Universo = grupo objetivo', 'Universe = target group'), verdictTxt(tgRes.verdict), `${term('ses')} ${fmtFixed(tgRes.ses, 2)} · ${T(`${tg} celdas con algún registro`, `${tg} cells with any record`)}`, tone(tgRes.verdict, truth.verdict)) +
+      rd(T('Universo = celdas muestreadas', 'Universe = sampled cells'), verdictTxt(corrected.verdict), `${term('ses')} ${fmtFixed(corrected.ses, 2)} · ${corrected.verdict === truth.verdict ? T('acierta', 'right') : T('se equivoca', 'wrong')}`, tone(corrected.verdict, truth.verdict));
     const msg = el('l1Status');
     if (msg) {
       const fixedRight = corrected.verdict === truth.verdict;
@@ -114,7 +114,7 @@
         `Here all three universes agree with the truth. Raise the <b>bias towards the road</b> and lower the <b>background effort</b>: you will see that with the wrong universe associations appear that the landscape does not have, or vanish those it does have.`);
       else msg.innerHTML = L2(
         `Con un muestreo parejo todo el mapa acierta, y el grupo objetivo puede apartarse: al dejar fuera las celdas donde nadie registró nada —las que no tienen ni a la planta ni al visitante— el universo pierde las ausencias compartidas y la prueba se inclina hacia «menos de lo esperado». El grupo objetivo corrige el sesgo; cuando no hay sesgo, cuesta un poco de exactitud.`,
-        `With even sampling the whole map is right, and the target group may drift: by leaving out the cells where nobody recorded anything —those with neither the plant nor the visitor— the universe loses the shared absences and the test leans towards "less than expected". The target group corrects bias; when there is no bias, it costs a little accuracy.`);
+        `With even sampling the whole map is right, and the target group may drift: by leaving out the cells where nobody recorded anything —those with neither the plant nor the visitor— the universe loses the shared absences and the test leans towards “less than expected”. The target group corrects bias; when there is no bias, it costs a little accuracy.`);
     }
   }
   function drawLandscape(L) {
@@ -248,7 +248,7 @@
     const nP = hP.reduce((a, b) => a + b, 0) || 1, nB = hB.reduce((a, b) => a + b, 0) || 1;
     const pP = hP.map(v => v / nP), pB = hB.map(v => v / nB);
     const ymax = Math.max(...pP, ...pB) * 1.15 || 1;
-    const f = Plot.frame(svg, { W, H, m: { l: 40, r: 10, t: 24, b: 28 }, x: [0.4, 12.6], y: [0, ymax], xt: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], xlabFmt: v => monthName(v, true), ylab: T('proporción', 'proportion'), ylabFmt: v => (v * 100).toFixed(0) + '%' });
+    const f = Plot.frame(svg, { W, H, m: { l: 40, r: 10, t: 24, b: 28 }, x: [0.4, 12.6], y: [0, ymax], xt: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], xlabFmt: v => monthName(v, true), ylab: T('proporción', 'proportion'), ylabFmt: v => (v * 100).toFixed(0) + ' %' });
     const xs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     /* the overlap, min(p1, p2), shaded behind: its sum is exactly Schoener's D */
     Plot.bars(f, xs, xs.map((x, i) => Math.min(pP[i], pB[i])), V('gold'), { width: 26, opacity: 0.35 });
@@ -262,7 +262,7 @@
      ===================================================================== */
   function wire() {
     if (!el('l1Map')) return;
-    const pct = v => Math.round(v * 100) + '%';
+    const pct = v => Math.round(v * 100) + ' %';
     Plot.bindSlider('l1Sep', v => v < 0.05 ? T('mismo óptimo', 'same optimum') : fmtFixed(v, 2), lab1);
     Plot.bindSlider('l1Width', v => fmtFixed(v, 2), lab1);
     Plot.bindSlider('l1Bias', pct, lab1);

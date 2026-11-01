@@ -5,7 +5,7 @@
    The method of Broennimann et al. (2012), step by step:
    1. the background — every cell of the study area with all layers present
       (optionally only those within a distance of the study's records) —
-      is summarised by a principal component analysis of the standardised
+      is summarized by a principal component analysis of the standardized
       variables (Poll.pca, fitted on the background only);
    2. the records of each unit are projected onto the first two axes;
    3. on a 100 × 100 grid of that plane, a Gaussian kernel density of the

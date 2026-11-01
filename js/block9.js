@@ -78,7 +78,7 @@ const B9 = {};
         const Nn = N;
         await step(0, `Anidamiento NODF · ${n} réplicas`, `Nestedness NODF · ${n} replicates`);
         const nodf = Net2.nullTest(Nn.A, A => Net2.nodf(A).nodf, 'curveball', n, 11);
-        await step(1 / 3, Nn.quantitative ? `Especialización H₂′ · ${n} réplicas` : 'Especialización H₂′', Nn.quantitative ? `Specialisation H₂′ · ${n} replicates` : 'Specialisation H₂′');
+        await step(1 / 3, Nn.quantitative ? `Especialización H₂′ · ${n} réplicas` : 'Especialización H₂′', Nn.quantitative ? `Specialization H₂′ · ${n} replicates` : 'Specialization H₂′');
         const h2 = Nn.quantitative ? Net2.nullTest(Nn.A, A => Net2.h2prime(A).H2p, 'pairing', n, 12) : null;
         await step(2 / 3, `Modularidad Q · ${Math.min(n, 49)} réplicas`, `Modularity Q · ${Math.min(n, 49)} replicates`);
         const q = Net2.nullTest(Nn.B, A => Net2.modules(A, { restarts: 3, seed: 1 }).Q, Nn.quantitative ? 'pairing' : 'curveball', Math.min(n, 49), 13);
@@ -110,7 +110,7 @@ const B9 = {};
       [T('Visitas', 'Visits'), Net2.rowSums(N.A).reduce((a, b) => a + b, 0).toLocaleString('en-US'), N.quantitative ? T('observadas', 'observed') : T('registros publicados cuentan 1', 'published records count 1')],
       [T('Conectancia', 'Connectance'), fmtFixed(N.conn, 3), Help.tag('connectance', N.conn)],
       [T('Anidamiento NODF', 'Nestedness NODF'), fmtFixed(N.nodf.nodf, 1), (nl ? z(nl.nodf).replace(/^ · /, '') : T('sin modelo nulo aún', 'no null model yet'))],
-      [T('Especialización H₂′', 'Specialisation H₂′'), N.quantitative ? fmtFixed(N.h2.H2p, 3) : '—', N.quantitative ? Help.tag('h2', N.h2.H2p) + (nl && nl.h2 ? z(nl.h2) : '') : T('requiere conteos de visitas', 'needs visit counts')],
+      [T('Especialización H₂′', 'Specialization H₂′'), N.quantitative ? fmtFixed(N.h2.H2p, 3) : '—', N.quantitative ? Help.tag('h2', N.h2.H2p) + (nl && nl.h2 ? z(nl.h2) : '') : T('requiere conteos de visitas', 'needs visit counts')],
       [T('Modularidad Q', 'Modularity Q'), fmtFixed(N.mod.Q, 3), T(`${N.mod.n} módulos`, `${N.mod.n} modules`) + (nl ? z(nl.q) : '')],
     ]);
   }
@@ -172,7 +172,7 @@ const B9 = {};
       { key: 'name', label: T('Especie', 'Species'), html: true, get: r => Taxa.italic(r.name) },
       { key: 'visits', label: T('Visitas', 'Visits'), num: true },
       { key: 'degree', label: T('Grado', 'Degree'), num: true },
-      { key: 'ndegree', label: T('Grado normalizado', 'Normalised degree'), num: true, fmt: v => fmtFixed(v, 2) },
+      { key: 'ndegree', label: T('Grado normalizado', 'Normalized degree'), num: true, fmt: v => fmtFixed(v, 2) },
       { key: 'strength', label: T('Fuerza', 'Strength'), num: true, fmt: v => fmtFixed(v, 2) },
       { key: 'dprime', label: "d′", num: true, html: true, get: r => (N.quantitative ? `${fmtFixed(r.dprime, 2)} ${Help.tag('dprime', r.dprime)}` : '—') },
     ];
@@ -237,12 +237,12 @@ const B9 = {};
     el('b9Csv').addEventListener('click', () => {
       if (!N) return;
       const rows = N.M.rows.map((p, i) => { const o = { plant: p }; N.M.cols.forEach((v, j) => { o[v] = N.A[i][j]; }); return o; });
-      download(TableIO.toCSV(rows, ['plant'].concat(N.M.cols)), 'matriz_de_interacciones.csv', 'text/csv;charset=utf-8');
+      download(TableIO.toCSV(rows, ['plant'].concat(N.M.cols)), outName('networkMatrix'), 'text/csv;charset=utf-8');
     });
     el('b9CsvSp').addEventListener('click', () => {
       if (!N) return;
       const rows = N.sp.plants.concat(N.sp.visitors).map(s => ({ role: s.role, species: s.name, visits: s.visits, degree: s.degree, normalised_degree: s.ndegree.toFixed(3), strength: s.strength.toFixed(3), d_prime: isFinite(s.dprime) ? s.dprime.toFixed(3) : '', module: s.role === 'plant' ? N.mod.rows[N.M.rows.indexOf(s.name)] : N.mod.cols[N.M.cols.indexOf(s.name)] }));
-      download(TableIO.toCSV(rows), 'especies_de_la_red.csv', 'text/csv;charset=utf-8');
+      download(TableIO.toCSV(rows), outName('networkSpecies'), 'text/csv;charset=utf-8');
     });
     document.addEventListener('stepchange', e => { if (e.detail.step === 9) show(); });
     document.addEventListener('datachange', () => { N = null; });

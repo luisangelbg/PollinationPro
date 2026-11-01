@@ -113,7 +113,7 @@ const B2 = {};
       sub = [res.rank ? res.rank.toLowerCase() : '', res.family, res.order, String(res.status || '').toLowerCase(),
         !exact ? (res.matchType === 'FUZZY' ? T(`ortografía corregida (escribiste «${t.name}»)`, `spelling corrected (you typed "${t.name}")`) : T('coincidencia aproximada', 'approximate match')) : '']
         .filter(Boolean).map(esc).join(' · ') + (res.key ? ` · <a href="https://www.gbif.org/species/${res.key}" target="_blank" rel="noopener">GBIF ${res.key}</a>` : '');
-    } else if (t.status === 'nomatch') sub = L2('GBIF no reconoce el nombre: revisa la ortografía', 'GBIF does not recognise the name: check the spelling');
+    } else if (t.status === 'nomatch') sub = L2('GBIF no reconoce el nombre: revisa la ortografía', 'GBIF does not recognize the name: check the spelling');
     else if (t.status === 'example') sub = L2('datos de práctica (sin resolver en GBIF)', 'practice data (not resolved in GBIF)');
     else sub = L2('sin resolver', 'not resolved');
     const cand = t.candidates && t.candidates.length > 1
@@ -171,7 +171,7 @@ const B2 = {};
         `${ok} names resolved${bad ? `; ${bad} without a match (check the spelling)` : ''}. When there are homonyms, the one of the right kingdom with most records is chosen; you can change it in each name's selector.`));
     } catch (e) {
       msg.remove();
-      showMessage('b2ListMsg', 'error', L2('No se pudo consultar GBIF: ', 'Could not query GBIF: ') + Net.errHTML(e) + '<br>' + L2('Revisa tu conexión, o practica con los datos ficticios de abajo.', 'Check your connection, or practise with the fictional data below.'));
+      showMessage('b2ListMsg', 'error', L2('No se pudo consultar GBIF: ', 'Could not query GBIF: ') + Net.errHTML(e) + '<br>' + L2('Revisa tu conexión, o practica con los datos ficticios de abajo.', 'Check your connection, or practice with the fictional data below.'));
     } finally { btn.disabled = false; changed(); }
   }
 
@@ -287,7 +287,7 @@ const B2 = {};
     const b = mk('div', { class: 'btn-row' });
     b.innerHTML = `<button class="btn btn-ghost btn-sm" id="b2GlobiCsv">${L2('⤓ Interacciones (.csv)', '⤓ Interactions (.csv)')}</button>`;
     box.appendChild(b);
-    el('b2GlobiCsv').addEventListener('click', () => download(TableIO.toCSV(state.interactions, ['plant', 'visitor', 'type', 'ref', 'lat', 'lon']), 'interacciones_publicadas.csv', 'text/csv;charset=utf-8'));
+    el('b2GlobiCsv').addEventListener('click', () => download(TableIO.toCSV(state.interactions, ['plant', 'visitor', 'type', 'ref', 'lat', 'lon']), outName('publishedInteractions'), 'text/csv;charset=utf-8'));
   }
 
   /* ---------------- own data ---------------- */
@@ -380,9 +380,9 @@ const B2 = {};
       ? ['taxon', 'latitude', 'longitude', 'date', 'elevation', 'locality', 'state', 'country', 'wild_or_cultivated', 'role', 'notes']
       : ['plant', 'visitor', 'visits', 'site', 'date', 'latitude', 'longitude', 'interaction_type', 'notes'];
     const row = ownKind === 'presence'
-      ? ['Sechium compositum', '15.2345', '-92.3456', '2024-09-14', '1250', 'Rancho El Aguacate', 'Chiapas', 'MX', 'silvestre', 'planta', '']
-      : ['Sechium compositum', 'Trigona fulviventris', '12', 'Sitio 1', '2024-09-14', '15.2345', '-92.3456', 'néctar', '15 min de observación'];
-    download('﻿' + cols.join(',') + '\r\n' + row.join(',') + '\r\n', ownKind === 'presence' ? 'plantilla_registros.csv' : 'plantilla_visitas.csv', 'text/csv;charset=utf-8');
+      ? ['Sechium compositum', '15.2345', '-92.3456', '2024-09-14', '1250', 'Rancho El Aguacate', 'Chiapas', 'MX', T('silvestre', 'wild'), T('planta', 'plant'), '']
+      : ['Sechium compositum', 'Trigona fulviventris', '12', T('Sitio 1', 'Site 1'), '2024-09-14', '15.2345', '-92.3456', T('néctar', 'nectar'), T('15 min de observación', '15 min of observation')];
+    download('﻿' + cols.join(',') + '\r\n' + row.join(',') + '\r\n', outName(ownKind === 'presence' ? 'recordsTemplate' : 'visitsTemplate'), 'text/csv;charset=utf-8');
   }
 
   /* ---------------- practice data ---------------- */
@@ -520,7 +520,7 @@ const B2 = {};
     /* summary, project */
     el('b2Csv').addEventListener('click', () => {
       const cols = ['id', 'src', 'role', 'taxonId', 'name', 'species', 'genus', 'family', 'lat', 'lon', 'unc', 'elev', 'cc', 'stateProvince', 'locality', 'y', 'm', 'd', 'basis', 'inst', 'dataset', 'datasetKey', 'license', 'estab', 'repro', 'remarks', 'issues', 'gbifKey'];
-      download(TableIO.toCSV(state.raw, cols), 'registros_crudos.csv', 'text/csv;charset=utf-8');
+      download(TableIO.toCSV(state.raw, cols), outName('rawRecords'), 'text/csv;charset=utf-8');
     });
     el('b2Save').addEventListener('click', () => download(JSON.stringify(project()), `pollinationpro_${new Date().toISOString().slice(0, 10)}.json`, 'application/json'));
     el('b2Open').addEventListener('change', async e => {

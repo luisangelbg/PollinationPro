@@ -10,7 +10,7 @@
      the space of the variables, scaled by their covariance (Farber & Kadmon
      2003); suitability = the upper tail of χ²(k) at that distance;
    · logistic — presences against background cells (the target group or the
-     whole area), with linear and quadratic terms of the standardised
+     whole area), with linear and quadratic terms of the standardized
      variables and a ridge penalty, fitted by iteratively reweighted least
      squares with the background down-weighted to the number of presences
      (Phillips et al. 2009; Elith et al. 2011 for the family of models).
@@ -132,7 +132,7 @@ const SDM = {};
     const sens = sp.filter(v => v >= t).length / sp.length, spec = sb.filter(v => v < t).length / sb.length;
     return { tss: sens + spec - 1, sens, spec };
   }
-  /* thresholds: the tenth percentile of the training presences, or the one that maximises TSS */
+  /* thresholds: the tenth percentile of the training presences, or the one that maximizes TSS */
   function threshold(sp, sb, rule) {
     if (rule === 'p10') return Stat.quantile(sp, 0.1);
     if (rule === 'p0') return Math.min(...sp);

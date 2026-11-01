@@ -2,7 +2,7 @@
    Free software under the GNU General Public License, version 3; see LICENSE. */
 /* PollinationPro — the study list: plants on one side, visitors on the other.
 
-   A study list entry is a name the user wants analysed as a unit, at any
+   A study list entry is a name the user wants analyzed as a unit, at any
    rank: a species (Coffea arabica), a genus (Bombus) or a family. The app
    resolves it to a GBIF key and downloads every record under it.
 
@@ -55,7 +55,7 @@ const Taxa = {};
   function syncSeq(list) { list.forEach(t => { const n = parseInt(String(t.id).slice(1), 10); if (n > seq) seq = n; }); }
   /* the name shown for an entry: the one resolved by GBIF, or the typed one */
   const label = t => (t && t.resolved ? t.resolved.canonicalName : t ? t.name : '');
-  /* an italic name, except for ranks above genus, which are not italicised */
+  /* an italic name, except for ranks above genus, which are not italicized */
   function italic(name, rank) {
     if (!name) return '';
     const r = String(rank || '').toUpperCase();

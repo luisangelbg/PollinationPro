@@ -1,6 +1,6 @@
 /* PollinationPro — Copyright (C) 2026 Luis Ángel Barrera-Guzmán.
    Free software under the GNU General Public License, version 3; see LICENSE. */
-/* PollinationPro — Block 3 engine: cleaning the records and harmonising the
+/* PollinationPro — Block 3 engine: cleaning the records and harmonizing the
    names.
 
    Every rule is a pure function of a record (and of the whole list, for
@@ -16,8 +16,8 @@
 
    The centroids are computed here from the boundaries the app carries, with
    two definitions, because both circulate as placeholders: the area-weighted
-   centroid of the polygons and the centre of their bounding box (the second
-   is the one behind the "centre of Mexico" at 23.63° N, 102.55° W). */
+   centroid of the polygons and the center of their bounding box (the second
+   is the one behind the "center of Mexico" at 23.63° N, 102.55° W). */
 
 const Clean = {};
 
@@ -102,7 +102,7 @@ const Clean = {};
       test: r => (Math.abs(r.lat - r.lon) < 1e-9 && r.lat !== 0 ? 'x' : null) },
     { id: 'swapped', kind: 'fix', t: ['Coordenadas invertidas o sin signo', 'Swapped or unsigned coordinates'], d: ['el punto no cae en el país que dice el registro, pero sí al cambiar el signo o intercambiar latitud y longitud; se corrige', 'the point does not fall in the country the record states, but does after changing the sign or swapping latitude and longitude; it is corrected'],
       test: (r, ctx) => ctx.fix[r.id] ? ctx.fix[r.id].how : null },
-    { id: 'centroid', kind: 'drop', t: ['Centroide de país o de estado', 'Country or state centroid'], d: ['a menos de la distancia elegida del centro de un país o de un estado de México: el lugar que se pone cuando solo se sabe el país', 'within the chosen distance of the centre of a country or a Mexican state: the place entered when only the country is known'],
+    { id: 'centroid', kind: 'drop', t: ['Centroide de país o de estado', 'Country or state centroid'], d: ['a menos de la distancia elegida del centro de un país o de un estado de México: el lugar que se pone cuando solo se sabe el país', 'within the chosen distance of the center of a country or a Mexican state: the place entered when only the country is known'],
       test: (r, ctx) => { const c = nearCentroid(r.lat, r.lon, ctx.p.centroidKm); return c ? `${c.name} (${c.def === 'box' ? 'rect.' : 'área'})` : null; } },
     { id: 'mismatch', kind: 'flag', t: ['Fuera del país declarado', 'Outside the stated country'], d: ['el punto cae en otro país y ninguna corrección lo explica (o cae en el mar)', 'the point falls in another country and no correction explains it (or falls in the sea)'],
       test: (r, ctx) => { const cc = ccOf(r); if (!cc) return null; const loc = ctx.loc[r.id]; return loc && loc.cc && loc.cc !== cc ? `${cc} → ${loc.cc}` : null; } },
@@ -120,7 +120,7 @@ const Clean = {};
       test: (r, ctx) => (r.y && r.y < ctx.p.minYear ? String(r.y) : null) },
     { id: 'basis', kind: 'drop', t: ['Fósiles y colecciones vivas', 'Fossils and living collections'], d: ['un ejemplar de jardín botánico o de un fósil no dice dónde vive la población silvestre', 'a botanical-garden specimen or a fossil does not say where the wild population lives'],
       test: r => (/FOSSIL|LIVING_SPECIMEN/i.test(r.basis || '') ? r.basis.toLowerCase() : null) },
-    { id: 'cultivated', kind: 'drop', t: ['Plantas cultivadas', 'Cultivated plants'], d: ['solo en las plantas: medio de establecimiento «manejado» o palabras como cultivado, huerto, jardín, traspatio, vivero, invernadero, plantación', 'plants only: "managed" establishment means or words such as cultivated, garden, backyard, nursery, greenhouse, plantation'],
+    { id: 'cultivated', kind: 'drop', t: ['Plantas cultivadas', 'Cultivated plants'], d: ['solo en las plantas: medio de establecimiento «manejado» o palabras como cultivado, huerto, jardín, traspatio, vivero, invernadero, plantación', 'plants only: “managed” establishment means or words such as cultivated, garden, backyard, nursery, greenhouse, plantation'],
       test: (r, ctx) => (r.role === 'plant' && !(ctx.p.keepCultivatedFor || []).includes(r.taxonId) ? isCultivated(r) : null) },
     { id: 'region', kind: 'drop', t: ['Fuera del área de estudio', 'Outside the study area'], d: ['el punto no cae en los países (o estados de México) elegidos como área de estudio', 'the point does not fall in the countries (or Mexican states) chosen as the study area'],
       test: (r, ctx) => {

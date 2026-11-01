@@ -13,7 +13,7 @@
      Help.markTiles(box, map)    the same for the summary tiles
      Help.hydrate(root)          turns every <span data-help="key"> into a badge
      Help.band(key, value)       which band of the scale a computed value falls in
-     Help.tag(key, value)        that band as a small coloured chip, ready to print
+     Help.tag(key, value)        that band as a small colored chip, ready to print
 
    The last two are the point. A scale printed in a manual is documentation; a
    scale applied to the number on screen is a decision rule, which is what the

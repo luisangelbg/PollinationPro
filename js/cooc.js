@@ -42,7 +42,7 @@ const Cooc = {};
     (o.extra || []).forEach(r => set.add(key(r.lon, r.lat, size)));
     return set;
   }
-  /* every cell of the extent whose centre is on land (the naive universe that
+  /* every cell of the extent whose center is on land (the naive universe that
      ignores sampling effort; offered only to show how much it inflates the result) */
   function landCells(records, size, box) {
     const b = box || GEO.bboxOfPoints(records.map(r => [r.lon, r.lat]), 0.02);
@@ -116,7 +116,7 @@ const Cooc = {};
     return { obs: obsD, median: med, nulls, nullMedian: Stat.median(nulls), pCloser: P.mcP(closer, nSim), pFarther: P.mcP(farther, nSim),
       ses: (med - Stat.mean(nulls)) / (Stat.sd(nulls) || NaN), within: [5, 10, 25, 50].map(km => obsD.filter(d => d <= km).length / obsD.length) };
   }
-  /* thinning to at most one point per cell of `km` kilometres: with thousands of
+  /* thinning to at most one point per cell of `km` kilometers: with thousands of
      records the test stays fast and the result is not driven by a few dense spots */
   function thin(pts, km) {
     const deg = km / 111.195, seen = new Set(), out = [];

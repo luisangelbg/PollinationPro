@@ -120,7 +120,7 @@ const B8 = {};
     placeImage(svg, pr, L, href);
     outlines(svg, pr, box);
     x.pres.length && state.clean.records.filter(r => r.unit === u).slice(0, 3000).forEach(r => svg.appendChild(svgEl('circle', { cx: pr.X(r.lon).toFixed(1), cy: pr.Y(r.lat).toFixed(1), r: 1.3, fill: V('text'), opacity: 0.55 })));
-    /* the colour ramp (a key without entries: data-legend, for the figure studio) */
+    /* the color ramp (a key without entries: data-legend, for the figure studio) */
     const g = svgEl('g', { 'data-legend': 'colorbar' });
     for (let k = 0; k < 20; k++) g.appendChild(svgEl('rect', { x: 12 + k * 6, y: H - 18, width: 6, height: 8, fill: `rgb(${lo.map((c, j) => Math.round(c + (hi[j] - c) * k / 19)).join(',')})` }));
     g.appendChild(svgEl('text', { x: 12, y: H - 22, 'font-size': 9, class: 'art-mut' }, T('idoneidad 0 → 1', 'suitability 0 → 1')));
@@ -193,7 +193,7 @@ const B8 = {};
       byLabel[label] = L;
     }
     const missing = Ls.filter(L => !byLabel[L.label]).map(L => L.label);
-    if (missing.length) { showMessage('b8FutMsg', 'error', L2(`Faltan capas futuras para: ${missing.join(', ')}. Deben llamarse igual que las actuales (por ejemplo, terminar en «bio_1»).`, `Future layers are missing for: ${missing.join(', ')}. They must be named like the current ones (for instance, ending in "bio_1").`)); return; }
+    if (missing.length) { showMessage('b8FutMsg', 'error', L2(`Faltan capas futuras para: ${missing.join(', ')}. Deben llamarse igual que las actuales (por ejemplo, terminar en «bio_1»).`, `Future layers are missing for: ${missing.join(', ')}. They must be named like the current ones (for instance, ending in “bio_1”).`)); return; }
     const FL = Ls.map(L => byLabel[L.label]);
     const plantBin = SDM.binary(SDM.predictGrid(res.units[res.plant].model, FL), res.units[res.plant].t);
     const vBins = res.visitors.filter(v => res.units[v]).map(v => SDM.binary(SDM.predictGrid(res.units[v].model, FL), res.units[v].t));
@@ -243,7 +243,7 @@ const B8 = {};
       if (!res) return;
       const L0 = layers()[0], rows = [];
       for (let i = 0; i < res.mm.cls.length; i++) { const c = res.mm.cls[i]; if (c === 255) continue; rows.push({ lon: (L0.x0 + (i % L0.w + 0.5) * L0.dx).toFixed(5), lat: (L0.y0 - (Math.floor(i / L0.w) + 0.5) * L0.dy).toFixed(5), plant_suitability: res.units[res.plant].grid[i].toFixed(4), class: ['neither', 'plant_only', 'visitor_only', 'both'][c], future_class: fut ? ['neither', 'plant_only', 'visitor_only', 'both'][fut.cls[i]] || '' : '' }); }
-      download(TableIO.toCSV(rows), 'desajuste_celdas.csv', 'text/csv;charset=utf-8');
+      download(TableIO.toCSV(rows), outName('mismatchCells'), 'text/csv;charset=utf-8');
     });
     document.addEventListener('stepchange', e => { if (e.detail.step === 8) show(); });
     document.addEventListener('themechange', () => { if (res && document.querySelector('#panel-8.active')) render(); });

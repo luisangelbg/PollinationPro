@@ -2,10 +2,10 @@
    Free software under the GNU General Public License, version 3; see LICENSE. */
 /* PollinationPro — exporting a figure.
 
-   Every figure lives on the screen as an SVG that reads its colours from the
+   Every figure lives on the screen as an SVG that reads its colors from the
    stylesheet and from the figure studio. To leave the app —for a thesis, a
    slide or a printed page— it has to become a file that stands on its own:
-   the colours resolved, a title of its own, a note, a background and the
+   the colors resolved, a title of its own, a note, a background and the
    resolution a journal asks for.
 
    Nothing is recomputed: what leaves is exactly what the block drew. Every
@@ -20,7 +20,7 @@
     'accent', 'gold', 'leaf', 'sky', 'rose', 'rain', 'sun', 'soil', 'frost', 'heat', 'success', 'danger', 'warning',
     'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10'];
 
-  /* the colours as they stand right now: theme first, then the studio's overrides */
+  /* the colors as they stand right now: theme first, then the studio's overrides */
   function readVars(theme) {
     const out = {};
     const root = document.documentElement;
@@ -206,7 +206,7 @@ ${fs.lineScale !== 1 ? `path,polyline{stroke-width:${(1.8 * fs.lineScale).toFixe
     const opt = o || {};
     const composed = compose(source, opt);
     const f = await fileOf(composed, opt);
-    download(f.blob, `${slug(opt.filename || opt.title || 'figura')}.${f.ext}`, f.blob.type);
+    download(f.blob, `${slug(opt.filename || opt.title || outName('figure'))}.${f.ext}`, f.blob.type);
     return f;
   }
 
@@ -252,7 +252,7 @@ ${fs.lineScale !== 1 ? `path,polyline{stroke-width:${(1.8 * fs.lineScale).toFixe
     menu.innerHTML = `<div class="fs-head"><b>${two('⤓ Exportar esta figura', '⤓ Export this figure')}</b><button class="icon-btn fs-x" data-fig-close>✕</button></div>
       <div class="fig-menu-grid">
         <label class="inline-label">${two('Formato', 'Format')}<select id="fmFormat"><option value="png">PNG</option><option value="jpg">JPG</option><option value="svg">SVG</option></select></label>
-        <label class="inline-label">${two('Resolución', 'Resolution')}<select id="fmDpi"><option value="150">150 ppp</option><option value="300" selected>300 ppp</option><option value="600">600 ppp</option><option value="900">900 ppp</option></select></label>
+        <label class="inline-label">${two('Resolución', 'Resolution')}<select id="fmDpi"><option value="150">150 ${term('dpi')}</option><option value="300" selected>300 ${term('dpi')}</option><option value="600">600 ${term('dpi')}</option><option value="900">900 ${term('dpi')}</option></select></label>
         <label class="inline-label">${two('Tema', 'Theme')}<select id="fmTheme"><option value="light"${dark ? '' : ' selected'}>${T('Claro', 'Light')}</option><option value="dark"${dark ? ' selected' : ''}>${T('Oscuro', 'Dark')}</option></select></label>
         <label class="inline-label">${two('Fondo', 'Background')}<select id="fmBg"><option value="auto">${T('El del estudio', 'The studio\'s')}</option><option value="white">${T('Blanco', 'White')}</option><option value="card">${T('El del tema', 'The theme\'s')}</option><option value="none">${T('Transparente', 'Transparent')}</option></select></label>
       </div>

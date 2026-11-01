@@ -1,7 +1,7 @@
 /* PollinationPro — Copyright (C) 2026 Luis Ángel Barrera-Guzmán.
    Free software under the GNU General Public License, version 3; see LICENSE. */
 /* PollinationPro — hand-drawn SVG illustrations.
-   Every picture is generated here with CSS-variable colours, so the whole app
+   Every picture is generated here with CSS-variable colors, so the whole app
    follows the light/dark theme and nothing depends on external images. The
    outline of Mexico is drawn from the state boundaries the app already
    carries (data/mexico-states.js). Each function returns an SVG string. */
@@ -50,7 +50,7 @@
     return `<g transform="translate(${f1(cx)} ${f1(cy)}) rotate(${f1(rot || 0)})">${fillPath(d, V(tone || 'leaf'), 'opacity="0.92"')}${veins}</g>`;
   }
   /* a Sechium flower seen from above: five spreading, pointed petals, cream
-     with green veins, and a small centre */
+     with green veins, and a small center */
   function flower(cx, cy, r, kind) {
     let s = '';
     for (let i = 0; i < 5; i++) {
@@ -523,7 +523,7 @@
       s += circ(x, y, 3, V(i % 2 ? 'primary' : 'accent'), 'opacity="0.85"');
     }
     s += txt(16, 20, T('Registros de la planta y de la abeja siguen al mismo muestreador', 'Plant and bee records follow the same sampler'), V('text'), 10.5, 'start', 'font-weight="700"');
-    s += txt(16, 170, T('→ coinciden «más de lo esperado» si el universo es todo el mapa', '→ they co-occur "more than expected" if the universe is the whole map'), V('text-muted'), 9.5);
+    s += txt(16, 170, T('→ coinciden «más de lo esperado» si el universo es todo el mapa', '→ they co-occur “more than expected” if the universe is the whole map'), V('text-muted'), 9.5);
     return wrap(`0 0 ${W} ${H}`, s);
   }
 

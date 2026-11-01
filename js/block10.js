@@ -3,7 +3,7 @@
 /* PollinationPro — Block 10: figures, report and package.
 
    1 · the state of the study: which blocks have run, which have not;
-   2 · the catalogue of every figure drawn so far, with export one by one or all
+   2 · the catalog of every figure drawn so far, with export one by one or all
        at once in the chosen format, resolution, theme and style;
    3 · the report: a self-contained HTML that opens anywhere and prints to PDF;
    4 · the package: a .zip with the report, the figures, the tables and the
@@ -22,7 +22,7 @@ const Block10 = {};
   const hasData = () => state.raw.length > 0 || state.visits.length > 0;
   const studyName = () => (el('b10Title') && el('b10Title').value.trim()) || 'pollinationpro';
 
-  let selected = new Set();   /* svg ids ticked in the catalogue */
+  let selected = new Set();   /* svg ids ticked in the catalog */
   let lastZipSize = null;
 
   /* ---------- the figures on screen ---------- */
@@ -60,7 +60,7 @@ const Block10 = {};
     else msg.innerHTML = `<b>${done} ${two('de 8 bloques con resultados', 'of 8 blocks with results')} · ${figs} ${two('figuras dibujadas', 'figures drawn')}</b> ${done < 8 ? two('Los bloques sin calcular no aparecen en el informe: visita cada uno (se calcula solo al abrirlo) y vuelve aquí.', 'Blocks not computed do not appear in the report: visit each one (it computes itself on opening) and come back here.') : two('El estudio está completo: exporta las figuras, revisa el informe y descarga el paquete.', 'The study is complete: export the figures, review the report and download the package.')}`;
   }
 
-  /* ---------- 2 · the catalogue ---------- */
+  /* ---------- 2 · the catalog ---------- */
   function figOpts() {
     return { format: el('b10Format').value, dpi: +el('b10Dpi').value, theme: el('b10Theme').value === 'auto' ? Theme.current() : el('b10Theme').value, background: el('b10Bg').value === 'auto' ? null : el('b10Bg').value, withTitle: el('b10WithTitle').checked };
   }
@@ -110,7 +110,7 @@ const Block10 = {};
       const f = cat[i];
       const composed = Fig.compose(f.svg, { theme: o.theme, background: o.background, title: o.withTitle ? f.title : '' });
       const file = await Fig.fileOf(composed, { format: o.format, dpi: o.dpi });
-      out.push({ name: `figuras/${fileName(f)}.${file.ext}`, data: file.blob, title: f.title, block: f.block });
+      out.push({ name: `${outName('figuresDir')}/${fileName(f)}.${file.ext}`, data: file.blob, title: f.title, block: f.block });
       if (onProgress) onProgress(i + 1, cat.length);
     }
     return out;
@@ -125,10 +125,10 @@ const Block10 = {};
       if (files.length > 6) {
         /* many downloads at once get blocked by the browser: one .zip instead */
         const blob = await Zip.build(files);
-        download(blob, `${slug(studyName())}_figuras.zip`, 'application/zip');
+        download(blob, `${slug(studyName())}_${outName('figuresZip')}.zip`, 'application/zip');
         el('b10CatStatus').innerHTML = two(`<b>${files.length} figuras</b> en un .zip (más de seis descargas seguidas las bloquea el navegador).`, `<b>${files.length} figures</b> in one .zip (the browser blocks more than six downloads in a row).`);
       } else {
-        for (const f of files) { download(f.data, f.name.replace(/^figuras\//, ''), f.data.type); await new Promise(r => setTimeout(r, 350)); }
+        for (const f of files) { download(f.data, f.name.slice(f.name.indexOf('/') + 1), f.data.type); await new Promise(r => setTimeout(r, 350)); }
         el('b10CatStatus').innerHTML = two(`<b>${files.length} figuras</b> descargadas (${o.format.toUpperCase()}${o.format !== 'svg' ? ', ' + o.dpi + ' ppp' : ''}).`, `<b>${files.length} figures</b> downloaded (${o.format.toUpperCase()}${o.format !== 'svg' ? ', ' + o.dpi + ' dpi' : ''}).`);
       }
     });
@@ -154,7 +154,7 @@ const Block10 = {};
   function downloadReport() {
     if (!hasData()) return;
     const html = Report.build(reportOpts());
-    download(html, `${slug(studyName())}_informe.html`, 'text/html;charset=utf-8');
+    download(html, `${slug(studyName())}_${outName('reportFile')}.html`, 'text/html;charset=utf-8');
   }
   function printReport() {
     if (!hasData()) return;
@@ -173,14 +173,14 @@ const Block10 = {};
       two(`Estudio: ${studyName()}`, `Study: ${studyName()}`),
       two(`Generado: ${new Date().toISOString().slice(0, 16).replace('T', ' ')} · PollinationPro ${APP_VERSION}`, `Generated: ${new Date().toISOString().slice(0, 16).replace('T', ' ')} · PollinationPro ${APP_VERSION}`), '',
       two('CONTENIDO', 'CONTENTS'),
-      two('  informe.html      el informe completo; se abre en cualquier navegador y se imprime a PDF', '  informe.html      the full report; opens in any browser and prints to PDF'),
-      two('  proyecto.json     la lista de estudio, los registros crudos, las visitas y las interacciones; ábrelo en el Bloque 2', '  proyecto.json     the study list, the raw records, the visits and the interactions; open it in Block 2'),
-      two('  parametros.json   todos los parámetros de cada bloque (registro de cálculo)', '  parametros.json   every parameter of each block (calculation record)'),
-      two('  cuadros/*.csv     los cuadros del estudio, en texto separado por comas', '  cuadros/*.csv     the tables of the study, as comma-separated text'),
-      two('  figuras/*         las figuras seleccionadas, en el formato y la resolución elegidos', '  figuras/*         the selected figures, in the chosen format and resolution'), '',
+      two('  informe.html      el informe completo; se abre en cualquier navegador y se imprime a PDF', '  report.html       the full report; opens in any browser and prints to PDF'),
+      two('  proyecto.json     la lista de estudio, los registros crudos, las visitas y las interacciones; ábrelo en el Bloque 2', '  project.json      the study list, the raw records, the visits and the interactions; open it in Block 2'),
+      two('  parametros.json   todos los parámetros de cada bloque (registro de cálculo)', '  parameters.json   every parameter of each block (calculation record)'),
+      two('  cuadros/*.csv     los cuadros del estudio, en texto separado por comas', '  tables/*.csv      the tables of the study, as comma-separated text'),
+      two('  figuras/*         las figuras seleccionadas, en el formato y la resolución elegidos', '  figures/*         the selected figures, in the chosen format and resolution'), '',
       two('CÓMO REPRODUCIRLO', 'HOW TO REPRODUCE IT'),
-      two('  1. Abre PollinationPro (index.html) y en el Bloque 2 carga proyecto.json.', '  1. Open PollinationPro (index.html) and load proyecto.json in Block 2.'),
-      two('  2. Visita los Bloques 3 a 9 con los valores de parametros.json; las capas ambientales se vuelven a cargar desde su fuente.', '  2. Visit Blocks 3 to 9 with the values of parametros.json; the environmental layers are loaded again from their source.'),
+      two('  1. Abre PollinationPro (index.html) y en el Bloque 2 carga proyecto.json.', '  1. Open PollinationPro (index.html) and load project.json in Block 2.'),
+      two('  2. Visita los Bloques 3 a 9 con los valores de parametros.json; las capas ambientales se vuelven a cargar desde su fuente.', '  2. Visit Blocks 3 to 9 with the values of parameters.json; the environmental layers are loaded again from their source.'),
       two('  3. Cada cuadro y cada figura vuelven a salir iguales: las simulaciones usan semillas fijas.', '  3. Every table and figure comes out the same: the simulations use fixed seeds.'), '',
       two('ARCHIVOS', 'FILES'),
     ].concat(files.map(f => '  ' + f.name));
@@ -194,9 +194,9 @@ const Block10 = {};
       const o = figOpts();
       const files = [];
       st.textContent = two('Redactando el informe…', 'Writing the report…');
-      files.push({ name: 'informe.html', data: Report.build(reportOpts()) });
-      files.push({ name: "proyecto.json", data: JSON.stringify(B2.project()) });
-      files.push({ name: 'parametros.json', data: JSON.stringify(Report.params(), null, 1) });
+      files.push({ name: outName('report'), data: Report.build(reportOpts()) });
+      files.push({ name: outName('project'), data: JSON.stringify(B2.project()) });
+      files.push({ name: outName('params'), data: JSON.stringify(Report.params(), null, 1) });
       Report.csvs().forEach(c => files.push({ name: c.name, data: c.text }));
       if (el('b10PkgFigs').checked && selected.size) {
         const figs = await figureFiles(o, (i, n) => { st.textContent = two(`Figura ${i} de ${n}…`, `Figure ${i} of ${n}…`); });
@@ -206,11 +206,11 @@ const Block10 = {};
           svgs.forEach(f => files.push({ name: f.name, data: f.data }));
         }
       }
-      files.unshift({ name: 'LEEME.txt', data: readme(files) });
+      files.unshift({ name: outName('readme'), data: readme(files) });
       st.textContent = two('Comprimiendo…', 'Compressing…');
       const blob = await Zip.build(files);
       lastZipSize = blob.size;
-      download(blob, `${slug(studyName())}_paquete.zip`, 'application/zip');
+      download(blob, `${slug(studyName())}_${outName('packageZip')}.zip`, 'application/zip');
       st.innerHTML = two(`<b>Paquete listo</b> · ${files.length} archivos · ${fmtSize(blob.size)}. Guárdalo junto al artículo o la tesis: quien lo abra tiene el informe, las figuras, los cuadros y el proyecto que los reproduce.`, `<b>Package ready</b> · ${files.length} files · ${fmtSize(blob.size)}. Keep it with the paper or the thesis: whoever opens it has the report, the figures, the tables and the project that reproduces them.`);
     } catch (e) {
       st.innerHTML = `<b>${two('No se pudo construir el paquete', 'The package could not be built')}</b> · ${esc(e && e.message || String(e))}`;
@@ -221,12 +221,12 @@ const Block10 = {};
   function renderPkgList() {
     const n = { csv: Report.csvs().length, figs: selected.size };
     el('b10PkgList').innerHTML = [
-      ['LEEME.txt', two('qué contiene y cómo reproducirlo', 'what it contains and how to reproduce it')],
-      ['informe.html', two('el informe con las secciones marcadas arriba', 'the report with the sections ticked above')],
-      ['proyecto.json', two('los datos del estudio (se abre en el Bloque 2)', 'the data of the study (opens in Block 2)')],
-      ['parametros.json', two('el registro de cálculo de todos los bloques', 'the calculation record of every block')],
-      [`cuadros/ (${n.csv})`, two('los cuadros en .csv', 'the tables as .csv')],
-      [`figuras/ (${n.figs})`, two('las figuras seleccionadas en el catálogo', 'the figures selected in the catalogue')],
+      [outName('readme'), two('qué contiene y cómo reproducirlo', 'what it contains and how to reproduce it')],
+      [outName('report'), two('el informe con las secciones marcadas arriba', 'the report with the sections ticked above')],
+      [outName('project'), two('los datos del estudio (se abre en el Bloque 2)', 'the data of the study (opens in Block 2)')],
+      [outName('params'), two('el registro de cálculo de todos los bloques', 'the calculation record of every block')],
+      [`${outName('tablesDir')}/ (${n.csv})`, two('los cuadros en .csv', 'the tables as .csv')],
+      [`${outName('figuresDir')}/ (${n.figs})`, two('las figuras seleccionadas en el catálogo', 'the figures selected in the catalog')],
     ].map(([a, b]) => `<li><code>${a}</code> — ${b}</li>`).join('');
   }
 
@@ -248,7 +248,7 @@ const Block10 = {};
     el('b10SelAll').addEventListener('click', () => { selected = new Set(catalogue().map(f => f.id)); renderCatalogue(); renderPkgList(); });
     el('b10SelNone').addEventListener('click', () => { selected = new Set(); renderCatalogue(); renderPkgList(); });
     el('b10Style').addEventListener('click', () => FigStyle.show());
-    el('b10ZipFigs').addEventListener('click', () => { const o = figOpts(); const b = el('b10ZipFigs'); poBusy(b, async () => { const files = await figureFiles(o, (i, n) => { el('b10CatStatus').textContent = two(`Figura ${i} de ${n}…`, `Figure ${i} of ${n}…`); }); const blob = await Zip.build(files); download(blob, `${slug(studyName())}_figuras.zip`, 'application/zip'); el('b10CatStatus').innerHTML = two(`<b>${files.length} figuras</b> en un .zip de ${fmtSize(blob.size)}.`, `<b>${files.length} figures</b> in a ${fmtSize(blob.size)} .zip.`); }); });
+    el('b10ZipFigs').addEventListener('click', () => { const o = figOpts(); const b = el('b10ZipFigs'); poBusy(b, async () => { const files = await figureFiles(o, (i, n) => { el('b10CatStatus').textContent = two(`Figura ${i} de ${n}…`, `Figure ${i} of ${n}…`); }); const blob = await Zip.build(files); download(blob, `${slug(studyName())}_${outName('figuresZip')}.zip`, 'application/zip'); el('b10CatStatus').innerHTML = two(`<b>${files.length} figuras</b> en un .zip de ${fmtSize(blob.size)}.`, `<b>${files.length} figures</b> in a ${fmtSize(blob.size)} .zip.`); }); });
     el('b10Format').addEventListener('change', () => { el('b10DpiWrap').style.display = el('b10Format').value === 'svg' ? 'none' : ''; });
     el('b10Preview_btn').addEventListener('click', preview);
     el('b10Download').addEventListener('click', downloadReport);

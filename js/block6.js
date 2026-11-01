@@ -68,7 +68,7 @@ const B6 = {};
       }
       add('text', { x: left + 12 * cw + 8, y: y + ch / 2 + 4, 'font-size': 10, class: 'art-mut' }, `n = ${u.recs.length}`);
     });
-    add('text', { x: 12, y: H - 10, 'font-size': 9.5, class: 'art-mut' }, T('intensidad = proporción del mes en el perfil de la unidad; ▼ fecha media (si Rayleigh p < 0.05); franja gris = esfuerzo del grupo objetivo', 'intensity = share of the month in the unit\'s profile; ▼ mean date (if Rayleigh p < 0.05); grey strip = effort of the target group'));
+    add('text', { x: 12, y: H - 10, 'font-size': 9.5, class: 'art-mut' }, T('intensidad = proporción del mes en el perfil de la unidad; ▼ fecha media (si Rayleigh p < 0.05); franja gris = esfuerzo del grupo objetivo', 'intensity = share of the month in the unit\'s profile; ▼ mean date (if Rayleigh p < 0.05); gray strip = effort of the target group'));
   }
 
   function renderUnitTable() {
@@ -149,7 +149,7 @@ const B6 = {};
     const svg = el('b6Months');
     const ymax = Math.max(...p.prof, ...v.prof) * 1.15 || 1;
     const xs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-    const f = Plot.frame(svg, { W: 460, H: 260, m: { l: 42, r: 10, t: 26, b: 28 }, x: [0.4, 12.6], y: [0, ymax], xt: xs, xlabFmt: m => monthName(m, true), ylab: T('proporción', 'proportion'), ylabFmt: y => (y * 100).toFixed(0) + '%' });
+    const f = Plot.frame(svg, { W: 460, H: 260, m: { l: 42, r: 10, t: 26, b: 28 }, x: [0.4, 12.6], y: [0, ymax], xt: xs, xlabFmt: m => monthName(m, true), ylab: T('proporción', 'proportion'), ylabFmt: y => (y * 100).toFixed(0) + ' %' });
     Plot.bars(f, xs, xs.map((x, i) => Math.min(p.prof[i], v.prof[i])), V('gold'), { width: 28, opacity: 0.35 });
     Plot.bars(f, xs.map(x => x - 0.17), p.prof, V('primary'), { width: 10, opacity: 0.85 });
     Plot.bars(f, xs.map(x => x + 0.17), v.prof, V('accent'), { width: 10, opacity: 0.85 });
@@ -234,9 +234,9 @@ const B6 = {};
         u.counts.forEach((c, i) => { o['n_' + MONTHS_SHORT.en[i]] = c; });
         return o;
       });
-      download(TableIO.toCSV(rows), 'fenologia_unidades.csv', 'text/csv;charset=utf-8');
+      download(TableIO.toCSV(rows), outName('phenoUnits'), 'text/csv;charset=utf-8');
     });
-    el('b6CsvPairs').addEventListener('click', () => download(TableIO.toCSV(A.pairs.map(p => ({ plant: p.plant, visitor: p.visitor, D: p.D.toFixed(4), I: p.I.toFixed(4), O: p.O.toFixed(4), lag_days: p.lag != null ? p.lag.toFixed(1) : '', watson_williams_p: p.wwP ?? '', ww_valid: p.wwValid, flowering_with_flight: p.coverPlant.toFixed(3), months_both: p.monthsBoth.join(' ') }))), 'fenologia_pares.csv', 'text/csv;charset=utf-8'));
+    el('b6CsvPairs').addEventListener('click', () => download(TableIO.toCSV(A.pairs.map(p => ({ plant: p.plant, visitor: p.visitor, D: p.D.toFixed(4), I: p.I.toFixed(4), O: p.O.toFixed(4), lag_days: p.lag != null ? p.lag.toFixed(1) : '', watson_williams_p: p.wwP ?? '', ww_valid: p.wwValid, flowering_with_flight: p.coverPlant.toFixed(3), months_both: p.monthsBoth.join(' ') }))), outName('phenoPairs'), 'text/csv;charset=utf-8'));
     document.addEventListener('stepchange', e => { if (e.detail.step === 6) show(); });
     document.addEventListener('cleanchange', () => { A = null; if (document.querySelector('#panel-6.active')) show(); });
     document.addEventListener('langchange', () => { if (A && document.querySelector('#panel-6.active')) render(); });

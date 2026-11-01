@@ -115,5 +115,5 @@ differs from networks drawn at random with the same totals. Card
 - [`casos/cucurbita_xenoglossa/`](../casos/cucurbita_xenoglossa/README.md)
   repeats this tour with real GBIF records and real climate layers.
 - To check that the engine computes correctly in your browser, open
-  `tests/index.html` (168 tests) and `validation/index.html` (34,299
+  `tests/index.html` (191 tests) and `validation/index.html` (34,299
   comparisons against R).

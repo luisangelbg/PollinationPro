@@ -1,6 +1,6 @@
 /* PollinationPro — Copyright (C) 2026 Luis Ángel Barrera-Guzmán.
    Free software under the GNU General Public License, version 3; see LICENSE. */
-/* PollinationPro — the catalogue of the interpretation help.
+/* PollinationPro — the catalog of the interpretation help.
 
    One entry per concept or number the app prints: what it measures, how it
    is read, the scale that places a value (flagged as a convention when it is
@@ -30,9 +30,9 @@
     what: ['Que una planta y una abeja tengan registros en la misma celda del mapa, en los mismos meses y en climas parecidos es una condición <b>necesaria</b> para que la abeja la visite, pero no <b>suficiente</b>. La abeja puede no usar esa flor, visitarla solo por néctar sin llevar polen, o estar ahí por otras plantas.',
       'That a plant and a bee have records in the same map cell, in the same months and in similar climates is a <b>necessary</b> condition for the bee to visit it, but not a <b>sufficient</b> one. The bee may not use that flower, visit it only for nectar without carrying pollen, or be there for other plants.'],
     read: ['Los Bloques 5 a 8 miden <b>oportunidad de interacción</b>: dónde, cuándo y en qué ambientes es posible. El Bloque 9 trabaja con interacciones <b>observadas</b> (tus registros de visitas y las bases de interacciones). Un artículo sólido usa lo primero para delimitar y priorizar, y lo segundo para afirmar.',
-      'Blocks 5 to 8 measure <b>opportunity for interaction</b>: where, when and in what environments it is possible. Block 9 works with <b>observed</b> interactions (your visit records and the interaction databases). A sound paper uses the former to delimit and prioritise, and the latter to assert.'],
+      'Blocks 5 to 8 measure <b>opportunity for interaction</b>: where, when and in what environments it is possible. Block 9 works with <b>observed</b> interactions (your visit records and the interaction databases). A sound paper uses the former to delimit and prioritize, and the latter to assert.'],
     care: ['La frase que un revisor tachará: «la especie X es polinizador de Y porque sus distribuciones se solapan». La frase correcta: «X y Y se solapan en el espacio, el tiempo y el nicho climático, lo que la hace un polinizador potencial a confirmar con observaciones de visitas y de carga de polen».',
-      'The sentence a reviewer will strike out: "species X is a pollinator of Y because their distributions overlap". The correct one: "X and Y overlap in space, time and climatic niche, which makes X a potential pollinator to be confirmed with observations of visits and pollen loads".'],
+      'The sentence a reviewer will strike out: “species X is a pollinator of Y because their distributions overlap”. The correct one: “X and Y overlap in space, time and climatic niche, which makes X a potential pollinator to be confirmed with observations of visits and pollen loads”.'],
     ref: 'Blanchet et al. 2020; Dormann et al. 2018',
   });
 
@@ -41,9 +41,9 @@
     what: ['Los registros se amontonan cerca de ciudades, carreteras, universidades y áreas protegidas. Si la planta y la abeja se registraron más donde se muestrea más, parecerán asociadas aunque no lo estén: las dos siguen al mismo muestreador.',
       'Records pile up near cities, roads, universities and protected areas. If the plant and the bee were recorded more where more sampling happens, they will look associated even if they are not: both follow the same sampler.'],
     read: ['La corrección que usa la app es el <b>grupo objetivo</b> (Phillips et al. 2009): el universo de sitios del modelo nulo no es todo el mapa sino las celdas donde alguien registró <i>cualquier</i> taxón del estudio. Así, «coinciden más de lo esperado» significa «más de lo esperado <b>entre los sitios que sí se muestrearon</b>».',
-      'The correction the app uses is the <b>target group</b> (Phillips et al. 2009): the universe of sites of the null model is not the whole map but the cells where someone recorded <i>any</i> taxon of the study. So "they co-occur more than expected" means "more than expected <b>among the sites that were actually sampled</b>".'],
+      'The correction the app uses is the <b>target group</b> (Phillips et al. 2009): the universe of sites of the null model is not the whole map but the cells where someone recorded <i>any</i> taxon of the study. So “they co-occur more than expected” means “more than expected <b>among the sites that were actually sampled</b>”.'],
     care: ['Sin esa corrección casi todos los pares salen «positivos»: el laboratorio de la portada lo muestra con un paisaje virtual. Revisa siempre en el informe con qué universo de sitios se calculó.',
-      'Without that correction almost every pair comes out "positive": the home-page laboratory shows it with a virtual landscape. Always check in the report which universe of sites was used.'],
+      'Without that correction almost every pair comes out “positive”: the home-page laboratory shows it with a virtual landscape. Always check in the report which universe of sites was used.'],
     ref: 'Phillips et al. 2009; Kramer-Schadt et al. 2013',
   });
 
@@ -59,7 +59,7 @@
   });
 
   E('ses', {
-    t: ['Tamaño estandarizado del efecto (EEF)', 'Standardised effect size (SES)'],
+    t: ['Tamaño estandarizado del efecto (EEF)', 'Standardized effect size (SES)'],
     what: ['Cuántas desviaciones estándar se aleja lo observado de lo esperado por azar: (observado − esperado) / desviación estándar del modelo nulo. Positivo = más coincidencia de la esperada; negativo = menos.',
       'How many standard deviations the observed value lies from what chance predicts: (observed − expected) / standard deviation of the null model. Positive = more coincidence than expected; negative = less.'],
     read: ['Permite comparar pares con tamaños de muestra distintos, cosa que el valor p no hace. Por la aproximación normal, |EEF| > 1.96 corresponde más o menos a p < 0.05 a dos colas.',
@@ -103,7 +103,7 @@
     read: ['Da menos peso a las diferencias en las colas de las distribuciones. Se reporta junto con D; si los dos cuentan la misma historia, el resultado es robusto.',
       'It weighs differences in the tails of the distributions less. It is reported alongside D; if both tell the same story, the result is robust.'],
     care: ['No uses la escala de D para I: al ser siempre mayor, un I de 0.6 no es «alto» en el mismo sentido que un D de 0.6.',
-      'Do not use D\'s scale for I: since it is always larger, an I of 0.6 is not "high" in the same sense as a D of 0.6.'],
+      'Do not use D\'s scale for I: since it is always larger, an I of 0.6 is not “high” in the same sense as a D of 0.6.'],
     ref: 'Warren et al. 2008',
   });
 
@@ -119,9 +119,9 @@
   E('jaccard', {
     t: ['Similitud de Jaccard y de Sørensen', 'Jaccard and Sørensen similarity'],
     what: ['Proporción de sitios compartidos: Jaccard = compartidos / (sitios de cualquiera de los dos); Sørensen = 2 · compartidos / (sitios de uno + sitios del otro). La de Simpson divide entre el taxón con menos sitios y no se castiga porque uno sea mucho más común.',
-      'Proportion of shared sites: Jaccard = shared / (sites of either); Sørensen = 2 · shared / (sites of one + sites of the other). Simpson\'s divides by the taxon with fewer sites and is not penalised because one is much commoner.'],
+      'Proportion of shared sites: Jaccard = shared / (sites of either); Sørensen = 2 · shared / (sites of one + sites of the other). Simpson\'s divides by the taxon with fewer sites and is not penalized because one is much commoner.'],
     read: ['Para un polinizador y su planta, la pregunta útil suele ser asimétrica: <b>¿en qué fracción de los sitios de la planta está el polinizador?</b> La app la da como «cobertura».',
-      'For a pollinator and its plant, the useful question is usually asymmetric: <b>in what fraction of the plant\'s sites is the pollinator?</b> The app gives it as "cover".'],
+      'For a pollinator and its plant, the useful question is usually asymmetric: <b>in what fraction of the plant\'s sites is the pollinator?</b> The app gives it as “cover”.'],
     care: ['Sin modelo nulo, un Jaccard de 0.3 no dice si es mucho o poco: depende de cuán comunes son los dos. Por eso la app acompaña cada índice con la prueba hipergeométrica.',
       'Without a null model, a Jaccard of 0.3 does not say whether it is a lot or a little: it depends on how common both are. That is why the app pairs every index with the hypergeometric test.'],
     ref: 'Jaccard 1912; Baselga 2010',
@@ -130,9 +130,9 @@
   E('circular', {
     t: ['Estadística circular de fechas', 'Circular statistics of dates'],
     what: ['El año es un círculo: el 31 de diciembre y el 1 de enero están juntos. La fecha media se calcula como la dirección media de los días convertidos en ángulos, y <b>R̄</b> (longitud del vector medio, de 0 a 1) dice qué tan concentrados están los registros alrededor de esa fecha.',
-      'The year is a circle: 31 December and 1 January are neighbours. The mean date is the mean direction of the days turned into angles, and <b>R̄</b> (length of the mean vector, from 0 to 1) says how concentrated the records are around that date.'],
+      'The year is a circle: December 31 and January 1 are neighbors. The mean date is the mean direction of the days turned into angles, and <b>R̄</b> (length of the mean vector, from 0 to 1) says how concentrated the records are around that date.'],
     read: ['R̄ cercano a 1: la actividad o la floración ocurre en una ventana corta. Cercano a 0: todo el año, o dos picos opuestos que se anulan (revisa el histograma antes de concluir «no estacional»). La desviación estándar circular se da en días.',
-      'R̄ near 1: activity or flowering happens in a short window. Near 0: all year round, or two opposite peaks that cancel out (check the histogram before concluding "aseasonal"). The circular standard deviation is given in days.'],
+      'R̄ near 1: activity or flowering happens in a short window. Near 0: all year round, or two opposite peaks that cancel out (check the histogram before concluding “aseasonal”). The circular standard deviation is given in days.'],
     scaleTitle: ['R̄ (estacionalidad)', 'R̄ (seasonality)'],
     scale: [
       S(0, 0.3, ['difusa', 'diffuse'], 'warn', ['casi todo el año o bimodal', 'nearly all year or bimodal']),
@@ -141,7 +141,7 @@
     ],
     conv: true,
     care: ['La media aritmética de los meses (1 a 12) es un error clásico: una especie activa de noviembre a febrero tendría su «pico» en junio.',
-      'The arithmetic mean of the months (1 to 12) is a classic mistake: a species active from November to February would have its "peak" in June.'],
+      'The arithmetic mean of the months (1 to 12) is a classic mistake: a species active from November to February would have its “peak” in June.'],
     ref: 'Batschelet 1981; Zar 2010; Morellato et al. 2010',
   });
 
@@ -150,7 +150,7 @@
     what: ['¿Están las fechas concentradas en una parte del año, o repartidas al azar? La hipótesis nula es la uniformidad; Z = n·R̄².',
       'Are the dates concentrated in one part of the year, or spread at random? The null hypothesis is uniformity; Z = n·R̄².'],
     read: ['p < 0.05: hay estacionalidad significativa y la fecha media tiene sentido. p ≥ 0.05: no hay evidencia de estacionalidad y la fecha media no debe reportarse como «pico».',
-      'p < 0.05: there is significant seasonality and the mean date is meaningful. p ≥ 0.05: there is no evidence of seasonality and the mean date should not be reported as a "peak".'],
+      'p < 0.05: there is significant seasonality and the mean date is meaningful. p ≥ 0.05: there is no evidence of seasonality and the mean date should not be reported as a “peak”.'],
     scaleTitle: ['p', 'p'],
     scale: [
       S(null, 0.001, ['muy estacional', 'strongly seasonal'], 'good'),
@@ -165,7 +165,7 @@
   E('nicheoverlap', {
     t: ['Solapamiento de nicho ambiental', 'Environmental niche overlap'],
     what: ['Se compara en qué climas viven la planta y el polinizador, no dónde. Los ambientes de toda la región se resumen en dos ejes de componentes principales; en ese plano se estima la densidad de registros de cada taxón, corregida por lo que el ambiente ofrece, y se mide D.',
-      'It compares in which climates the plant and the pollinator live, not where. The environments of the whole region are summarised on two principal-component axes; on that plane the density of records of each taxon is estimated, corrected by what the environment offers, and D is measured.'],
+      'It compares in which climates the plant and the pollinator live, not where. The environments of the whole region are summarized on two principal-component axes; on that plane the density of records of each taxon is estimated, corrected by what the environment offers, and D is measured.'],
     read: ['Dos pruebas acompañan a D (Warren et al. 2008; Broennimann et al. 2012). <b>Equivalencia</b>: ¿son los dos nichos intercambiables? Se reparten los registros al azar entre los dos taxones muchas veces; si el D real es menor que casi todos los simulados, los nichos no son equivalentes. <b>Similitud</b>: ¿se parecen más de lo que se parecerían sus ambientes disponibles por sí solos?',
       'Two tests accompany D (Warren et al. 2008; Broennimann et al. 2012). <b>Equivalency</b>: are the two niches interchangeable? Records are shuffled between the two taxa many times; if the real D is smaller than almost all simulated ones, the niches are not equivalent. <b>Similarity</b>: are they more alike than their available environments alone would make them?'],
     care: ['Un nicho climático compartido es una condición para que la interacción persista ante el cambio climático; uno que no se comparte anticipa un <b>desajuste</b>: la planta podría quedarse sin su polinizador en parte de su área (Bloque 8).',
@@ -176,7 +176,7 @@
   E('squashbees', {
     t: ['Las abejas de la calabaza: <i>Xenoglossa</i> y <i>Peponapis</i>', 'Squash bees: <i>Xenoglossa</i> and <i>Peponapis</i>'],
     what: ['Abejas solitarias de la tribu Eucerini especializadas en el polen de las cucurbitáceas, sobre todo de <i>Cucurbita</i>. En la clasificación filogenómica de Freitas et al. (2023), <i>Peponapis</i> pasa a ser subgénero de <i>Xenoglossa</i>: <i>Xenoglossa</i> (<i>Peponapis</i>).',
-      'Solitary bees of the tribe Eucerini specialised in the pollen of cucurbits, above all <i>Cucurbita</i>. In the phylogenomic classification of Freitas et al. (2023), <i>Peponapis</i> becomes a subgenus of <i>Xenoglossa</i>: <i>Xenoglossa</i> (<i>Peponapis</i>).'],
+      'Solitary bees of the tribe Eucerini specialized in the pollen of cucurbits, above all <i>Cucurbita</i>. In the phylogenomic classification of Freitas et al. (2023), <i>Peponapis</i> becomes a subgenus of <i>Xenoglossa</i>: <i>Xenoglossa</i> (<i>Peponapis</i>).'],
     read: ['Muchas bases de datos, GBIF incluido, siguen aceptando <i>Peponapis</i> como género. La app busca los dos nombres y, si lo pides, los reúne bajo el nombre actual y guarda el original de cada registro, para que no se pierda ni se duplique nada.',
       'Many databases, GBIF included, still accept <i>Peponapis</i> as a genus. The app searches both names and, if asked, merges them under the current name while keeping each record\'s original one, so nothing is lost or duplicated.'],
     care: ['Que sean especialistas de <i>Cucurbita</i> hace de su relación con <i>Sechium</i> una pregunta abierta y atractiva, no un hecho: por eso vale la pena medir el solapamiento y buscar visitas registradas.',
@@ -189,7 +189,7 @@
     what: ['En casi cualquier cultivo, la mayoría de los registros de GBIF son plantas sembradas: parcelas, huertos, jardines, invernaderos. Su distribución refleja la agricultura, no el nicho natural. Las poblaciones silvestres y los parientes silvestres del cultivo (por ejemplo <i>Sechium edule</i> subsp. <i>sylvestre</i> frente al chayote de huerto, o las calabazas silvestres frente a las sembradas) son los que informan de la relación natural con sus polinizadores.',
       'In almost any crop, most GBIF records are planted individuals: fields, gardens, backyards, greenhouses. Their distribution reflects agriculture, not the natural niche. Wild populations and crop wild relatives (for instance <i>Sechium edule</i> subsp. <i>sylvestre</i> against garden chayote, or wild squashes against planted ones) are the ones that inform about the natural relationship with their pollinators.'],
     read: ['La app separa lo cultivado por el campo de «medios de establecimiento» (cuando existe) y por palabras en la localidad o las notas (cultivado, huerto, traspatio, mercado…). Revisa la lista de lo marcado antes de descartarlo.',
-      'The app separates cultivated material by the "establishment means" field (when present) and by words in the locality or notes (cultivated, garden, backyard, market…). Review the flagged list before discarding it.'],
+      'The app separates cultivated material by the “establishment means” field (when present) and by words in the locality or notes (cultivated, garden, backyard, market…). Review the flagged list before discarding it.'],
     care: ['Mezclar registros cultivados y silvestres infla la distribución de la planta hacia zonas donde se siembra, y con ella el solapamiento aparente con cualquier abeja de zonas agrícolas.',
       'Mixing cultivated and wild records inflates the plant\'s distribution towards areas where it is grown, and with it the apparent overlap with any bee of farming areas.'],
     ref: 'Klein et al. 2007; Lira-Saade 1996',
@@ -218,11 +218,11 @@
   E('centroidrule', {
     t: ['Centroides de país y de estado', 'Country and state centroids'],
     what: ['Cuando una colección solo sabe el país o el estado de un ejemplar, a veces le pone las coordenadas de su centro. Esos registros forman montones en un solo punto y fabrican «presencias» en lugares donde nadie colectó.',
-      'When a collection only knows the country or state of a specimen, it sometimes gives it the coordinates of its centre. Those records pile up on a single point and fabricate "presences" where nobody collected.'],
+      'When a collection only knows the country or state of a specimen, it sometimes gives it the coordinates of its center. Those records pile up on a single point and fabricate “presences” where nobody collected.'],
     read: ['La app calcula los centros de cada país y de cada estado de México a partir de sus contornos, con dos definiciones que circulan como relleno: el centroide de área y el centro del rectángulo envolvente. El «centro de México» (23.63° N, 102.55° W) que aparece en muchas bases es el segundo.',
-      'The app computes the centres of every country and every Mexican state from their outlines, with two definitions that circulate as placeholders: the area centroid and the centre of the bounding box. The "centre of Mexico" (23.63° N, 102.55° W) seen in many databases is the second.'],
+      'The app computes the centers of every country and every Mexican state from their outlines, with two definitions that circulate as placeholders: the area centroid and the center of the bounding box. The “center of Mexico” (23.63° N, 102.55° W) seen in many databases is the second.'],
     care: ['Un pueblo real puede estar a pocos kilómetros de un centroide. Con 5 km el riesgo es pequeño; revisa la lista de marcados antes de ampliar la distancia.',
-      'A real town can lie a few kilometres from a centroid. At 5 km the risk is small; check the flagged list before widening the distance.'],
+      'A real town can lie a few kilometers from a centroid. At 5 km the risk is small; check the flagged list before widening the distance.'],
     ref: 'Chapman 2005; Zizka et al. 2020',
   });
   E('livingcoll', {
@@ -237,7 +237,7 @@
     what: ['Lo que los bloques siguientes comparan: las entradas de tu lista (un género como <i>Bombus</i> es una sola unidad que reúne a todas sus especies) o cada especie por separado.',
       'What the following blocks compare: the entries of your list (a genus such as <i>Bombus</i> is a single unit gathering all its species) or each species separately.'],
     read: ['Por entradas conviene cuando la pregunta es de grupo funcional («¿coinciden las abejas de la calabaza con la planta?») o cuando cada especie tiene pocos registros. Por especies, cuando las especies de un género difieren en área o temporada y quieres saber cuál coincide.',
-      'By entries suits a functional-group question ("do the squash bees coincide with the plant?") or when each species has few records. By species, when the species of a genus differ in range or season and you want to know which one coincides.'],
+      'By entries suits a functional-group question (“do the squash bees coincide with the plant?”) or when each species has few records. By species, when the species of a genus differ in range or season and you want to know which one coincides.'],
     care: ['Con muy pocos registros por especie (menos de 10–15), los índices de solapamiento y las pruebas pierden potencia: une en la entrada.',
       'With very few records per species (under 10–15), overlap indices and tests lose power: merge into the entry.'],
   });
@@ -248,9 +248,9 @@
   E('cellsize', {
     t: ['Tamaño de celda', 'Cell size'],
     what: ['La rejilla convierte puntos en sitios: dos registros «coinciden» si caen en la misma celda. El tamaño define la pregunta: con celdas de 0.1° (unos 11 km) se pregunta si comparten paisaje; con celdas de 1° (unos 110 km), si comparten región.',
-      'The grid turns points into sites: two records "coincide" if they fall in the same cell. The size defines the question: with 0.1° cells (about 11 km) it asks whether they share a landscape; with 1° cells (about 110 km), whether they share a region.'],
+      'The grid turns points into sites: two records “coincide” if they fall in the same cell. The size defines the question: with 0.1° cells (about 11 km) it asks whether they share a landscape; with 1° cells (about 110 km), whether they share a region.'],
     read: ['Una abeja solitaria forrajea a unos cientos de metros o pocos kilómetros de su nido; un abejorro, a varios kilómetros. Celdas de 0.1–0.25° están cerca de esa escala; celdas mayores miden más bien distribuciones que se solapan. La figura de sensibilidad repite la prueba con cinco tamaños: si el veredicto se sostiene, es robusto.',
-      'A solitary bee forages a few hundred metres to a few kilometres from its nest; a bumblebee, several kilometres. Cells of 0.1–0.25° are close to that scale; larger cells rather measure overlapping distributions. The sensitivity figure repeats the test with five sizes: if the verdict holds, it is robust.'],
+      'A solitary bee forages a few hundred meters to a few kilometers from its nest; a bumblebee, several kilometers. Cells of 0.1–0.25° are close to that scale; larger cells rather measure overlapping distributions. The sensitivity figure repeats the test with five sizes: if the verdict holds, it is robust.'],
     care: ['Con celdas muy finas y pocos registros casi nada coincide y los pares quedan sin clasificar; con celdas enormes casi todo coincide. Ninguno de los extremos informa.',
       'With very fine cells and few records almost nothing coincides and pairs stay unclassified; with huge cells almost everything coincides. Neither extreme informs.'],
     ref: 'Veech 2013; Gotelli 2000',
@@ -258,13 +258,13 @@
   E('fdr', {
     t: ['Comparaciones múltiples (tasa de falsos descubrimientos)', 'Multiple comparisons (false discovery rate)'],
     what: ['Con 6 plantas y 5 visitantes se prueban 30 pares; a α = 0.05 se esperaría uno o dos «significativos» aunque no hubiera ninguna asociación. El ajuste de Benjamini y Hochberg controla la proporción esperada de falsos positivos entre los pares que se declaran asociados.',
-      'With 6 plants and 5 visitors, 30 pairs are tested; at α = 0.05 one or two "significant" ones would be expected even with no association at all. The Benjamini–Hochberg adjustment controls the expected proportion of false positives among the pairs declared associated.'],
+      'With 6 plants and 5 visitors, 30 pairs are tested; at α = 0.05 one or two “significant” ones would be expected even with no association at all. The Benjamini–Hochberg adjustment controls the expected proportion of false positives among the pairs declared associated.'],
     read: ['Reporta los dos valores de p; usa el ajustado para decidir. Si solo te interesa un par elegido de antemano por la hipótesis (por ejemplo, tu planta y su polinizador conocido), el p sin ajustar de ese par es el que corresponde.',
       'Report both p-values; use the adjusted one to decide. If you only care about one pair chosen beforehand by the hypothesis (say, your plant and its known pollinator), that pair\'s unadjusted p is the right one.'],
     ref: 'Benjamini & Hochberg 1995',
   });
   E('nntest', {
-    t: ['Prueba de la distancia al vecino más cercano', 'Nearest-neighbour distance test'],
+    t: ['Prueba de la distancia al vecino más cercano', 'Nearest-neighbor distance test'],
     what: ['No necesita rejilla: mide, desde cada punto de la planta, qué tan lejos está el registro más cercano del visitante, y compara la mediana con la de muchas simulaciones en las que el visitante se coloca al azar entre los sitios muestreados del estudio.',
       'It needs no grid: from each plant point it measures how far the nearest visitor record is, and compares the median with that of many simulations in which the visitor is placed at random among the sampled sites of the study.'],
     read: ['p (más cerca) < 0.05: el visitante aparece más cerca de la planta de lo que el muestreo por sí solo explicaría; p (más lejos) < 0.05: más lejos, como si se evitaran o vivieran en partes distintas del área muestreada. La proporción de puntos con visitante a 10 km o menos es una cifra fácil de comunicar.',
@@ -280,7 +280,7 @@
     read: ['La cobertura dice qué parte del área de la planta cae dentro del área del visitante. Es descriptiva: no tiene prueba y exagera las áreas con puntos aislados o formas alargadas.',
       'The cover says what part of the plant\'s area falls inside the visitor\'s area. It is descriptive: it has no test and it exaggerates areas with isolated points or elongated shapes.'],
     care: ['Un solo registro lejano estira la envolvente cientos de kilómetros. Revisa el mapa del Bloque 4 antes de citar un área.',
-      'A single distant record stretches the hull by hundreds of kilometres. Check the Block 4 map before quoting an area.'],
+      'A single distant record stretches the hull by hundreds of kilometers. Check the Block 4 map before quoting an area.'],
     ref: 'Andrew 1979; Chamberlain & Duquette 2007',
   });
 
@@ -290,7 +290,7 @@
   E('phenoeffort', {
     t: ['Corregir la fenología por esfuerzo', 'Correcting phenology for effort'],
     what: ['El número de registros de un mes refleja también cuándo se sale al campo: temporadas de colecta, vacaciones, lluvias que cierran caminos. La corrección divide los registros de la unidad en cada mes entre los de todo el grupo objetivo en ese mes, y vuelve a normalizar.',
-      'The number of records in a month also reflects when people go into the field: collecting seasons, holidays, rains that close roads. The correction divides the unit\'s records in each month by those of the whole target group in that month, and normalises again.'],
+      'The number of records in a month also reflects when people go into the field: collecting seasons, holidays, rains that close roads. The correction divides the unit\'s records in each month by those of the whole target group in that month, and normalizes again.'],
     read: ['Si el perfil corregido cuenta la misma historia que el crudo, el calendario es robusto. Si cambia mucho, el crudo reflejaba más al colector que a la especie.',
       'If the corrected profile tells the same story as the raw one, the calendar is robust. If it changes a lot, the raw one reflected the collector more than the species.'],
     care: ['Los meses con menos de cinco registros en todo el estudio se dejan en cero al corregir, porque dividir entre casi nada fabrica picos.',
@@ -300,7 +300,7 @@
   E('flowering', {
     t: ['Registros con flor', 'Records with flowers'],
     what: ['Un ejemplar de herbario o una fotografía de una planta puede estar en flor, en fruto o solo con hojas. Algunos registros lo dicen en su «condición reproductiva» (sobre todo las observaciones verificadas); la mayoría no.',
-      'A herbarium specimen or a photograph of a plant can be in flower, in fruit or only with leaves. Some records say so in their "reproductive condition" (above all verified observations); most do not.'],
+      'A herbarium specimen or a photograph of a plant can be in flower, in fruit or only with leaves. Some records say so in their “reproductive condition” (above all verified observations); most do not.'],
     read: ['Cuando hay suficientes, usar solo los registros con flor da el calendario de floración propiamente dicho; con todos los registros se obtiene el calendario de presencia, que se parece al de floración en plantas que se colectan casi siempre fértiles.',
       'When there are enough, using only records with flowers gives the flowering calendar proper; with all records one gets the presence calendar, which resembles the flowering one in plants that are nearly always collected fertile.'],
     care: ['Si activas el filtro y quedan muy pocos registros, la fecha media se vuelve inestable: compara ambas versiones.',
@@ -315,9 +315,9 @@
     what: ['Rejillas con un valor por celda: temperatura, precipitación, estacionalidad, altitud, suelos. Las más usadas son las 19 variables bioclimáticas de las bases climáticas globales (medias de 1970–2000 o de 1981–2010), a resoluciones de 10′ (unos 18 km), 5′, 2.5′ o 30″ (casi 1 km).',
       'Grids with one value per cell: temperature, precipitation, seasonality, elevation, soils. The most used are the 19 bioclimatic variables of the global climate databases (averages of 1970–2000 or 1981–2010), at resolutions of 10′ (about 18 km), 5′, 2.5′ or 30″ (almost 1 km).'],
     read: ['Elige una resolución acorde a la precisión de tus registros: con registros de GBIF de precisión desconocida, 2.5′ o 5′ suele ser razonable; 30″ solo tiene sentido con coordenadas de GPS. Todas las capas deben estar en grados (latitud y longitud), no en metros.',
-      'Choose a resolution in line with the precision of your records: with GBIF records of unknown precision, 2.5′ or 5′ is usually reasonable; 30″ only makes sense with GPS coordinates. Every layer must be in degrees (latitude and longitude), not metres.'],
+      'Choose a resolution in line with the precision of your records: with GBIF records of unknown precision, 2.5′ or 5′ is usually reasonable; 30″ only makes sense with GPS coordinates. Every layer must be in degrees (latitude and longitude), not meters.'],
     care: ['Cita la base de datos y su versión, y descárgala tú: sus licencias no permiten que otros programas la redistribuyan. Las capas de práctica del programa son ficticias: sirven para aprender los Bloques 7 y 8, nunca para publicar.',
-      'Cite the database and its version, and download it yourself: their licences do not allow other programs to redistribute it. The program’s practice layers are fictional: they are for learning Blocks 7 and 8, never for publishing.'],
+      'Cite the database and its version, and download it yourself: their licenses do not allow other programs to redistribute it. The program’s practice layers are fictional: they are for learning Blocks 7 and 8, never for publishing.'],
     ref: 'Broennimann et al. 2012',
   });
   E('background', {
@@ -333,7 +333,7 @@
   E('pcaenv', {
     t: ['Espacio ambiental por componentes principales', 'Environmental space by principal components'],
     what: ['Las variables climáticas del fondo, estandarizadas, se resumen en dos ejes que recogen la mayor parte de su variación. Cada registro se proyecta sobre esos ejes con sus propios valores. El círculo de correlación dice qué variable empuja hacia dónde.',
-      'The climate variables of the background, standardised, are summarised in two axes that gather most of their variation. Each record is projected onto those axes with its own values. The correlation circle says which variable pushes towards where.'],
+      'The climate variables of the background, standardized, are summarized in two axes that gather most of their variation. Each record is projected onto those axes with its own values. The correlation circle says which variable pushes towards where.'],
     read: ['La varianza explicada por el plano indica cuánto del ambiente se ve en la figura: por encima de 60–70 % el plano es un buen resumen; por debajo, parte de la diferencia entre nichos puede estar en ejes que no se muestran (el análisis variable por variable ayuda a verla).',
       'The variance explained by the plane indicates how much of the environment is seen in the figure: above 60–70 % the plane is a good summary; below, part of the difference between niches may lie on axes not shown (the variable-by-variable analysis helps to see it).'],
     ref: 'Broennimann et al. 2012',
@@ -352,7 +352,7 @@
     what: ['<b>Equivalencia</b>: se mezclan los registros de las dos unidades y se reparten al azar en dos grupos del tamaño original, muchas veces. Si la D real es menor que casi todas las simuladas, los dos nichos no son intercambiables. <b>Similitud</b>: el nicho del visitante se desplaza a un lugar al azar del ambiente disponible, conservando su forma. Si la D real es mayor que casi todas, los nichos se parecen más de lo que el ambiente por sí solo explicaría.',
       '<b>Equivalency</b>: the records of both units are pooled and split at random into two groups of the original sizes, many times. If the real D is lower than almost all simulated ones, the two niches are not interchangeable. <b>Similarity</b>: the visitor\'s niche is moved to a random place of the available environment, keeping its shape. If the real D is higher than almost all, the niches are more alike than the environment alone would explain.'],
     read: ['La combinación más informativa para una interacción: «no equivalentes» (no ocupan exactamente los mismos climas) pero «más similares que al azar» (comparten más de lo esperado). Eso sostiene que el visitante sigue a la planta en el espacio climático.',
-      'The most informative combination for an interaction: "not equivalent" (they do not occupy exactly the same climates) but "more similar than chance" (they share more than expected). That supports the visitor following the plant in climate space.'],
+      'The most informative combination for an interaction: “not equivalent” (they do not occupy exactly the same climates) but “more similar than chance” (they share more than expected). That supports the visitor following the plant in climate space.'],
     care: ['Con 100 repeticiones el menor p posible es 0.0099; usa 500 para el resultado final. Con pocos registros (menos de 20–30 por unidad) ambas pruebas tienen poca potencia.',
       'With 100 replicates the smallest possible p is 0.0099; use 500 for the final result. With few records (fewer than 20–30 per unit) both tests have little power.'],
     ref: 'Warren et al. 2008; Broennimann et al. 2012',
@@ -364,7 +364,7 @@
   E('sdmmodels', {
     t: ['Los tres modelos de idoneidad', 'The three suitability models'],
     what: ['<b>Envolvente bioclimática</b>: idóneo lo que cae dentro del intervalo de valores de los registros en todas las variables; la más sencilla y la más conservadora. <b>Distancia de Mahalanobis</b>: qué tan lejos está una celda del centro climático de los registros, teniendo en cuenta cómo covarían las variables. <b>Logística con fondo</b>: contrasta las celdas con registros contra las celdas del fondo, con términos lineales y cuadráticos; es la más flexible y la única que usa el fondo, por lo que corrige el sesgo si el fondo es el grupo objetivo.',
-      '<b>Bioclimatic envelope</b>: suitable is what falls within the range of values of the records on every variable; the simplest and the most conservative. <b>Mahalanobis distance</b>: how far a cell lies from the climatic centre of the records, accounting for how the variables covary. <b>Background logistic</b>: contrasts cells with records against background cells, with linear and quadratic terms; the most flexible and the only one using the background, so it corrects the bias when the background is the target group.'],
+      '<b>Bioclimatic envelope</b>: suitable is what falls within the range of values of the records on every variable; the simplest and the most conservative. <b>Mahalanobis distance</b>: how far a cell lies from the climatic center of the records, accounting for how the variables covary. <b>Background logistic</b>: contrasts cells with records against background cells, with linear and quadratic terms; the most flexible and the only one using the background, so it corrects the bias when the background is the target group.'],
     read: ['Para comparar planta y visitantes, usa el mismo modelo, las mismas variables y el mismo fondo para todos: el desajuste es una comparación, y solo es justa si las reglas son iguales.',
       'To compare plant and visitors, use the same model, the same variables and the same background for all: the mismatch is a comparison, and it is only fair if the rules are equal.'],
     care: ['Estos modelos son deliberadamente sencillos y transparentes. Para un análisis de distribución a fondo (varios algoritmos, ensambles, validación espacial) usa un programa dedicado; el Bloque 8 está pensado para el desajuste planta–visitante, no para competir con esos programas.',
@@ -417,7 +417,7 @@
     read: ['Se reporta como porcentaje del área idónea de la planta. Su cambio con el clima futuro dice si el cambio climático separaría a la planta de sus visitantes (desajuste espacial) o los acercaría.',
       'It is reported as a percentage of the plant\'s suitable area. Its change under the future climate says whether climate change would separate the plant from its visitors (spatial mismatch) or bring them together.'],
     care: ['Es un desajuste potencial, basado en idoneidad ambiental: no considera dispersión, barreras, uso del suelo ni la conducta de los visitantes.',
-      'It is a potential mismatch, based on environmental suitability: it does not consider dispersal, barriers, land use or the visitors\' behaviour.'],
+      'It is a potential mismatch, based on environmental suitability: it does not consider dispersal, barriers, land use or the visitors\' behavior.'],
     ref: 'Schweiger et al. 2008; Kerr et al. 2015',
   });
   E('futureclimate', {
@@ -437,7 +437,7 @@
   E('publishedlinks', {
     t: ['Visitas observadas e interacciones publicadas', 'Observed visits and published interactions'],
     what: ['Tus observaciones traen <b>cuántas</b> visitas hizo cada visitante a cada planta, en sitios y fechas conocidos: permiten medir especialización y completitud. Las interacciones publicadas solo dicen que el vínculo existe en algún lugar y momento: sirven para la estructura de la red (quién con quién), no para su intensidad.',
-      'Your observations carry <b>how many</b> visits each visitor made to each plant, at known sites and dates: they allow measuring specialisation and completeness. Published interactions only say that the link exists somewhere at some time: they serve the structure of the network (who with whom), not its intensity.'],
+      'Your observations carry <b>how many</b> visits each visitor made to each plant, at known sites and dates: they allow measuring specialization and completeness. Published interactions only say that the link exists somewhere at some time: they serve the structure of the network (who with whom), not its intensity.'],
     care: ['Mezclar las dos fuentes da una red de estructura: la app entonces cuenta cada registro publicado como una visita y no calcula H₂′ ni d′, que suponen conteos comparables.',
       'Mixing both sources gives a structural network: the app then counts each published record as one visit and does not compute H₂′ or d′, which assume comparable counts.'],
   });
@@ -457,16 +457,16 @@
     ref: 'Almeida-Neto et al. 2008; Bascompte et al. 2003',
   });
   E('h2', {
-    t: ['Especialización de la red (H₂′)', 'Network specialisation (H₂′)'],
+    t: ['Especialización de la red (H₂′)', 'Network specialization (H₂′)'],
     what: ['Qué tan exclusivas son las interacciones, dados los totales de visitas de cada planta y cada visitante: 0 cuando cada visitante reparte sus visitas en proporción a lo que cada planta recibe (red generalista), 1 cuando cada uno se concentra en sus socios exclusivos.', 'How exclusive the interactions are, given the visit totals of each plant and each visitor: 0 when each visitor spreads its visits in proportion to what each plant receives (generalist network), 1 when each concentrates on exclusive partners.'],
-    read: ['Al estandarizar por los totales, no depende del tamaño ni del esfuerzo de muestreo, y se puede comparar entre estudios.', 'Being standardised by the totals, it does not depend on size or sampling effort, and can be compared between studies.'],
+    read: ['Al estandarizar por los totales, no depende del tamaño ni del esfuerzo de muestreo, y se puede comparar entre estudios.', 'Being standardized by the totals, it does not depend on size or sampling effort, and can be compared between studies.'],
     scaleTitle: ['H₂′', 'H₂′'],
-    scale: [S(null, 0.3, ['generalista', 'generalist'], 'ok'), S(0.3, 0.6, ['intermedia', 'intermediate'], 'good'), S(0.6, null, ['especializada', 'specialised'], 'good')],
+    scale: [S(null, 0.3, ['generalista', 'generalist'], 'ok'), S(0.3, 0.6, ['intermedia', 'intermediate'], 'good'), S(0.6, null, ['especializada', 'specialized'], 'good')],
     conv: true,
     ref: 'Blüthgen et al. 2006',
   });
   E('dprime', {
-    t: ['Especialización de cada especie (d′)', 'Species specialisation (d′)'],
+    t: ['Especialización de cada especie (d′)', 'Species specialization (d′)'],
     what: ['Qué tanto se aparta una especie de visitar (o ser visitada) en proporción a la disponibilidad de sus socios: 0 = oportunista, 1 = especialista extremo.', 'How much a species departs from visiting (or being visited) in proportion to the availability of its partners: 0 = opportunistic, 1 = extreme specialist.'],
     read: ['Una abeja especialista de las cucurbitáceas debería tener d′ alto en una red con muchas otras flores; la abeja melífera, bajo.', 'A cucurbit-specialist bee should have a high d′ in a network with many other flowers; the honey bee, a low one.'],
     scaleTitle: ["d′", "d′"],
@@ -509,18 +509,18 @@
   E('mapstudio', {
     t: ['Estudio de mapa', 'Map studio'],
     what: ['Un editor completo del mapa en ocho pestañas: fondo y límites, encuadre y recorte, textos y fuentes, elementos (flecha del norte en ocho diseños, escala gráfica en ocho formatos, leyenda, retícula, marco), datos (puntos, calor, rejillas, envolventes), colores, estilos listos y exportación. El mapa base es vectorial y lo dibuja el programa: no depende de internet ni de imágenes de terceros.',
-      'A complete map editor in eight tabs: background and boundaries, framing and clip, texts and fonts, elements (north arrow in eight designs, scale bar in eight formats, legend, graticule, frame), data (points, heat, grids, hulls), colours, ready-made looks and export. The base map is vector and drawn by the program: it does not depend on the internet or on third-party images.'],
+      'A complete map editor in eight tabs: background and boundaries, framing and clip, texts and fonts, elements (north arrow in eight designs, scale bar in eight formats, legend, graticule, frame), data (points, heat, grids, hulls), colors, ready-made looks and export. The base map is vector and drawn by the program: it does not depend on the internet or on third-party images.'],
     read: ['Elige primero el tamaño de salida en «Exportar» (por ejemplo, una columna de revista): la vista toma esa forma y lo que ves es lo que se descarga. El GeoTIFF se abre en su lugar en un sistema de información geográfica; la escala numérica 1:n corresponde al papel elegido.',
-      'Choose the output size in "Export" first (for instance, a journal column): the view takes that shape and what you see is what is downloaded. The GeoTIFF opens in place in a geographic information system; the 1:n ratio corresponds to the chosen paper.'],
-    care: ['Un mapa para revista casi nunca necesita color: prueba el estilo «Blanco y negro», que distingue las unidades por forma.', 'A journal map rarely needs colour: try the "Black and white" look, which tells units apart by shape.'],
+      'Choose the output size in “Export” first (for instance, a journal column): the view takes that shape and what you see is what is downloaded. The GeoTIFF opens in place in a geographic information system; the 1:n ratio corresponds to the chosen paper.'],
+    care: ['Un mapa para revista casi nunca necesita color: prueba el estilo «Blanco y negro», que distingue las unidades por forma.', 'A journal map rarely needs color: try the “Black and white” look, which tells units apart by shape.'],
   });
   E('figedit', {
     t: ['Editar una figura', 'Editing a figure'],
     what: ['El botón ✎ de cada figura abre su editor: cualquier texto se reescribe, cambia de tamaño, de estilo o de color, o se oculta; cualquier color se sustituye; la familia tipográfica, el tamaño general del texto, el grosor de las líneas, el tamaño de los puntos, la rejilla, el fondo y el color de los ejes se ajustan. El botón ⤓ la exporta.',
-      'The ✎ button of every figure opens its editor: any text can be rewritten, resized, restyled, recoloured or hidden; any colour replaced; the font family, overall text size, line width, point size, grid, background and axis colour adjusted. The ⤓ button exports it.'],
+      'The ✎ button of every figure opens its editor: any text can be rewritten, resized, restyled, recolored or hidden; any color replaced; the font family, overall text size, line width, point size, grid, background and axis color adjusted. The ⤓ button exports it.'],
     read: ['Los cambios se guardan por figura y se vuelven a aplicar cuando la figura se recalcula; aparecen en la exportación, en el catálogo del Bloque 10, en el informe y en el paquete. El estudio de figuras de la barra superior cambia la paleta y la tipografía de todas a la vez.',
-      'Changes are kept per figure and applied again when the figure is recomputed; they appear in the export, the Block 10 catalogue, the report and the package. The figure studio of the top bar changes the palette and font of all at once.'],
-    care: ['Un texto se reconoce por su redacción original: si cambias el idioma, sus textos son otros y se editan aparte.', 'A text is recognised by its original wording: if you change the language, its texts are different ones and are edited separately.'],
+      'Changes are kept per figure and applied again when the figure is recomputed; they appear in the export, the Block 10 catalog, the report and the package. The figure studio of the top bar changes the palette and font of all at once.'],
+    care: ['Un texto se reconoce por su redacción original: si cambias el idioma, sus textos son otros y se editan aparte.', 'A text is recognized by its original wording: if you change the language, its texts are different ones and are edited separately.'],
   });
   E('figformat', {
     t: ['PNG, JPG o SVG: cuál pedir', 'PNG, JPG or SVG: which to ask for'],
@@ -534,7 +534,7 @@
     ],
     conv: true,
     read: ['Las revistas suelen pedir TIFF o EPS: cualquier editor de imágenes convierte el PNG a TIFF sin pérdida, y el SVG a EPS o PDF. Los colores exportados son los del estilo activo, resueltos: la figura ya no depende de la app.',
-      'Journals often ask for TIFF or EPS: any image editor converts the PNG to TIFF without loss, and the SVG to EPS or PDF. The exported colours are those of the active style, resolved: the figure no longer depends on the app.'],
+      'Journals often ask for TIFF or EPS: any image editor converts the PNG to TIFF without loss, and the SVG to EPS or PDF. The exported colors are those of the active style, resolved: the figure no longer depends on the app.'],
   });
 
   E('dpi', {
@@ -593,7 +593,7 @@
     'eef': 'ses', 'ses': 'ses',
     'p (menos)': 'hypergeo', 'p (less)': 'hypergeo', 'p (más)': 'hypergeo', 'p (more)': 'hypergeo', 'esperado': 'hypergeo', 'expected': 'hypergeo', 'compartidos': 'hypergeo', 'shared': 'hypergeo',
     'r̄': 'circular', 'fecha media': 'circular', 'mean date': 'circular', 'de circular': 'circular', 'circular sd': 'circular',
-    'rayleigh': 'rayleigh', 'conectancia': 'connectance', 'connectance': 'connectance', 'anidamiento': 'nodf', 'nestedness': 'nodf', 'especialización h₂′': 'h2', 'specialisation h₂′': 'h2', 'modularidad': 'modularity', 'modularity': 'modularity', 'fuerza': 'strength', 'strength': 'strength', 'd′': 'dprime', 'completitud': 'completeness', 'completeness': 'completeness', 'chao1': 'completeness', 'cobertura de': 'completeness', 'auc': 'auc', 'tss': 'tss', 'umbral': 'threshold', 'threshold': 'threshold', 'omisión': 'threshold', 'omission': 'threshold',
+    'rayleigh': 'rayleigh', 'conectancia': 'connectance', 'connectance': 'connectance', 'anidamiento': 'nodf', 'nestedness': 'nodf', 'especialización h₂′': 'h2', 'specialization h₂′': 'h2', 'modularidad': 'modularity', 'modularity': 'modularity', 'fuerza': 'strength', 'strength': 'strength', 'd′': 'dprime', 'completitud': 'completeness', 'completeness': 'completeness', 'chao1': 'completeness', 'cobertura de': 'completeness', 'auc': 'auc', 'tss': 'tss', 'umbral': 'threshold', 'threshold': 'threshold', 'omisión': 'threshold', 'omission': 'threshold',
     'unidad': 'unit', 'unit': 'unit', 'quitados': 'cleaning', 'removed': 'cleaning', 'conservados': 'cleaning', 'kept': 'cleaning',
   });
 })();

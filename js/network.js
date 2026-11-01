@@ -5,16 +5,16 @@
    The network is a matrix A of plants (rows) × visitors (columns) holding the
    number of visits (or 1/0 when only presence of the link is known).
    Network-level indices:
-   · connectance: realised links over possible links;
+   · connectance: realized links over possible links;
    · NODF, nestedness by overlap and decreasing fill (Almeida-Neto et al.
      2008), on the binary matrix;
-   · H₂′, the network-level specialisation of Blüthgen et al. (2006): the
-     Shannon entropy of the interactions standardised between its minimum
+   · H₂′, the network-level specialization of Blüthgen et al. (2006): the
+     Shannon entropy of the interactions standardized between its minimum
      and maximum for the observed marginal totals;
-   · Q, the bipartite modularity of Barber (2007), weighted, optimised by
+   · Q, the bipartite modularity of Barber (2007), weighted, optimized by
      label propagation with restarts and a merging stage in the manner of
      Liu & Murata (2010) and Beckett (2016).
-   Species-level: degree, normalised degree, strength (the sum of the
+   Species-level: degree, normalized degree, strength (the sum of the
    dependences of the partners on the species, Bascompte et al. 2006), d′
    (Blüthgen et al. 2006) and the share of a plant's visits by each visitor.
    Null models: for the binary matrix, the curveball algorithm (Strona et al.
@@ -104,7 +104,7 @@ const Net2 = {};
   function h2min(r, c) { return remember('min', r, c, () => h2minSearch(r, c)); }
   function h2maxSearch(r, c) {
     /* integers as close as possible to the independence expectation r_i c_j / T,
-       whose continuous version maximises the entropy */
+       whose continuous version maximizes the entropy */
     const T = sum(r), m = r.length, n = c.length;
     const M = r.map(ri => c.map(cj => Math.floor(ri * cj / T)));
     const rr = r.map((ri, i) => ri - sum(M[i])), cc = c.map((cj, j) => cj - sum(M.map(row => row[j])));
