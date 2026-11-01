@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · User’s Manual · Chapter 9</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  figure.media { width: 82%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 72%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b9" data-pestana="B9" data-orden="9" style="--acento: var(--b9)">
+  <div class="cap-apertura">
+    <div class="cap-num">9</div>
+    <div class="cap-etiqueta">Block 9 · Interaction network</div>
+    <h1 data-corto="Interaction network">Interaction network</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Here we no longer speak of coincidences but of recorded visits: your field observations and what others have published. The plant–visitor network says how specialized the relationship is —connectance, nestedness, specialization and modules, against null models—, which visitors are key for each plant and how many remain to be recorded.</p>
+    <ul class="cap-contenido">
+      <li><b>9.1</b>From coincidence to visit</li>
+      <li><b>9.2</b>Which interactions go in</li>
+      <li><b>9.3</b>The network and its null models</li>
+      <li><b>9.4</b>Plants and visitors, one by one</li>
+      <li><b>9.5</b>One plant and its visitors</li>
+      <li><b>9.6</b>The messages of this block</li>
+    </ul>
+  </div>
+
+  <!-- 9.1 -->
+  <h2 id="s9-1"><span class="num">9.1</span>From coincidence to visit</h2>
+  <p class="lead">Blocks 5 to 8 measured the opportunity for interaction. This block works with the fourth link of the chain of evidence (Section 1.7): the visit to the flower. A visit network is a matrix of plants (rows) by visitors (columns) with the number of visits observed in each cell, or with a 1 when all that is known is that the link exists.</p>
+  <p>Pollination networks have a characteristic structure: they are <b>nested</b> —specialists visit subsets of the plants that generalists visit (Bascompte et al. 2003)—, more or less <b>modular</b> —groups of plants and visitors that interact more among themselves— and they have a measurable <b>specialization</b>. Each index is compared with what a random network with the same totals would give: a number without a null model does not say whether the structure is remarkable.</p>
+
+  <!-- 9.2 -->
+  <h2 id="s9-2"><span class="num">9.2</span>Which interactions go in</h2>
+  <figure>
+    <div class="marco"><img src="../img/en/b9-entran.png" alt="The card of which interactions go in: the count of own visits and published interactions, four boxes and two selectors of taxonomic level"></div>
+    <figcaption><b>Figure 9.1.</b> The sources of the network of the practice study: 354 rows of own visits and no published interactions (the practice data do not query the internet).</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:2.2in">Control</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">My visit observations</span></td><td>The visits imported in Block 2, with their counts.</td></tr>
+      <tr><td><span class="ui">Published interactions</span></td><td>The pairs brought from the interactions database; each published record counts as one visit.</td></tr>
+      <tr><td><span class="ui">Published: only plants in my list</span></td><td>Leaves out the published plants that do not belong to an entry of your list (the database also returns the other plants that your visitors visit).</td></tr>
+      <tr><td><span class="ui">Apply the synonyms of Block 3</span></td><td>Rewrites the names with the synonym rules: <i>Peponapis crassidentata</i> becomes <i>Xenoglossa crassidentata</i>.</td></tr>
+      <tr><td><b>Visitors as</b> · <b>Plants as</b></td><td>Species or genera. Grouping by genus helps when the sources identify at different levels.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Mixing own and published visits changes what can be computed</div>
+    <p>With your visits only, the network is <b>quantitative</b>: each cell is a comparable number of visits. When you add the published ones, each published record counts 1 and the numbers stop being comparable: the app then computes the structure (connectance, NODF, modules) but not H₂′ or d′, which assume counts, and says so in its tile.</p>
+  </div>
+
+  <!-- 9.3 -->
+  <h2 id="s9-3"><span class="num">9.3</span>The network and its null models</h2>
+  <figure>
+    <div class="marco"><img src="../img/en/b9-red.png" alt="The network tiles —plants and visitors, visits, connectance, NODF, H2 prime and modularity with their z and p—, the null models button and the bipartite network colored by module"></div>
+    <figcaption><b>Figure 9.2.</b> The network of the practice study after <span class="ui">Compare against null models</span> with 99 replicates: 6 plants, 11 visitors, 54 links and 953 visits. In the drawing, the visitors are at the top and the plants at the bottom; the width of each line is the number of visits and the color, the module.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.6in">Index</th><th>What it measures</th><th style="width:1.45in">In the practice study</th></tr></thead>
+    <tbody>
+      <tr><td><b>Connectance</b></td><td>The observed links among the possible ones (Jordano 1987). Large networks usually have between 0.15 and 0.4.</td><td>0.818 · <i>dense (small or generalist network)</i></td></tr>
+      <tr><td><b>NODF</b></td><td>Nestedness, from 0 to 100, by overlap and decreasing fill of the binary matrix (Almeida-Neto et al. 2008).</td><td>68.8 · z = −1.03, p = 0.26</td></tr>
+      <tr><td><b>H₂′</b></td><td>The specialization of the whole network, from 0 (each visitor spreads its visits like the supply) to 1 (each one visits exclusive plants) (Blüthgen et al. 2006).</td><td>0.153 · <i>generalist</i> · z = 34.71, p = 0.02</td></tr>
+      <tr><td><b>Modularity Q</b></td><td>How divided the network is into groups (Barber 2007), searched for with label propagation and restarts (Liu and Murata 2010; Beckett 2016).</td><td>0.224 · 3 modules · z = 24.48, p = 0.04</td></tr>
+    </tbody>
+  </table>
+  <p>The <b>null models</b> keep the totals of each plant and each visitor and distribute the links at random: the <i>curveball</i> algorithm for the binary matrix (Strona et al. 2014) and the random allocation of individual visits for the quantitative one (equivalent to that of Patefield 1981). The tile gives <b>z</b> —how many standard deviations the observed value lies from the null mean— and a two-tailed p; the one for modularity uses up to 49 replicates because each one requires searching for modules.</p>
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Worked example · reading the practice network</div>
+    <p>The practice network is small and highly connected (0.818): almost every visitor reaches almost every plant. Its nestedness (68.8) is no different from that of a random network with the same totals (p = 0.26). Its specialization is low in absolute terms (H₂′ = 0.153, <i>generalist</i>), but much higher than that of chance (z = 34.7): the visitors distribute their visits with preferences, albeit weak ones. And it has three modules: the squash bees, with <i>Halictus</i>, <i>Polistes</i> and <i>Toxomerus</i>, together with <i>Cucurbita pepo</i> and <i>S. mexicanum</i>; the stingless bees <i>Trigona</i> and <i>Partamona</i> with <i>S. chinantlense</i> and <i>S. compositum</i>; and the honey bee, <i>Scaptotrigona</i> and the bumblebee with chayote and <i>S. hintonii</i>.</p>
+  </div>
+  <figure class="media">
+    <div class="marco"><img src="../img/en/b9-matriz.png" alt="The network matrix sorted by degree, with the plants in rows and the visitors in columns"></div>
+    <figcaption><b>Figure 9.3.</b> The matrix sorted by degree: the visitors and plants with the most links at the top and on the left. In a nested network, the filled cells crowd into the upper left corner. <span class="ui">⤓ Matrix (.csv)</span> downloads it.</figcaption>
+  </figure>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Decision rule · what to report about the network</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>If</b> the network is small (fewer than 10 species per side)</td><td><b>then</b> connectance will be high and nestedness hardly informative; report H₂′, the modules and the sampling completeness before NODF.</td></tr>
+      <tr><td><b>If</b> an index does not differ from the null model</td><td><b>then</b> the structure it measures is not remarkable given the totals: do not discuss it as a trait of the network.</td></tr>
+      <tr><td><b>H₂′</b> &lt; 0.3 · 0.3–0.6 · &gt; 0.6</td><td>generalist · intermediate · specialized.</td></tr>
+    </tbody></table>
+  </div>
+
+  <!-- 9.4 -->
+  <h2 id="s9-4"><span class="num">9.4</span>Plants and visitors, one by one</h2>
+  <figure>
+    <div class="marco"><img src="../img/en/b9-especies.png" alt="The tables of plants and of visitors with visits, degree, normalized degree, strength and d prime with its label"></div>
+    <figcaption><b>Figure 9.4.</b> The species of the network. The honey bee has the highest strength (2.13) and the lowest specialization (d′ = 0.04): it is the visitor on which the plants of the practice network depend most.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.6in">Column</th><th>What it says</th></tr></thead>
+    <tbody>
+      <tr><td><b>Visits</b> · <b>Degree</b></td><td>How many visits, and with how many species of the other side it interacts.</td></tr>
+      <tr><td><b>Normalized degree</b></td><td>The degree divided by the number of species of the other side: 1 if it interacts with all of them.</td></tr>
+      <tr><td><b>Strength</b></td><td>The sum of its partners’ dependences on it (Bascompte et al. 2006): a visitor with high strength is one on which many plants depend for a large fraction of their visits. It is the measure of a “key visitor”.</td></tr>
+      <tr><td><b>d′</b></td><td>The specialization of each species with respect to the availability of its partners, from 0 to 1 (Blüthgen et al. 2006): <i>generalist</i> &lt; 0.3, <i>intermediate</i> 0.3–0.6, <i>specialist</i> &gt; 0.6.</td></tr>
+    </tbody>
+  </table>
+  <p><span class="ui">⤓ Species (.csv)</span> downloads both tables. In the practice network no species exceeds d′ = 0.22; the most specialized are <i>Partamona bilineata</i> and <i>S. mexicanum</i> (0.22).</p>
+
+  <!-- 9.5 -->
+  <h2 id="s9-5"><span class="num">9.5</span>One plant and its visitors</h2>
+  <p>The last card looks at one plant at a time: who visits it, in what proportion, and whether sampling has already found all its visitors. It works even if the study has a single plant —in that case it is the only possible reading, because with one plant there is no network to describe.</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b9-planta.png" alt="Chayote and its visitors: tiles for recorded visitors, Chao1, completeness and coverage; the visits by visitor as bars and the rarefaction curve with the Chao1 line"></div>
+    <figcaption><b>Figure 9.5.</b> The practice chayote: 11 visitors in 348 visits, half of them by the honey bee. The rarefaction curve flattens well before 348 visits and reaches the Chao1 line: sampling is nearly complete.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.7in">Tile</th><th>What it says</th></tr></thead>
+    <tbody>
+      <tr><td><b>Recorded visitors</b></td><td>How many different visitors in how many visits.</td></tr>
+      <tr><td><b>Chao1</b></td><td>The estimated minimum number of visitors, from how many were seen once and how many twice (Chao 1987).</td></tr>
+      <tr><td><b>Completeness</b></td><td>Recorded divided by Chao1: what fraction of the visitors has already been found (Chacoff et al. 2012). <i>Very incomplete</i> &lt; 50%, <i>incomplete</i> 50–80%, <i>good</i> 80–95%, <i>nearly complete</i> &gt; 95%.</td></tr>
+      <tr><td><b>Coverage</b></td><td>The probability that the next visit is by a visitor already seen.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Decision rule · do you need to go back to the field?</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>If</b> completeness is below 80%</td><td><b>then</b> visitors remain to be recorded: do not claim that the plant has few visitors or that it depends on one; go back to the field or say so in the discussion.</td></tr>
+      <tr><td><b>If</b> there are many visitors seen only once</td><td><b>then</b> Chao1 is unstable: it is a minimum of the total, not the total.</td></tr>
+    </tbody></table>
+  </div>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>With published interactions only, there is no completeness</div>
+    <p>Completeness needs visit counts. With published interactions, all that is known is whether the link exists, and the app says so instead of drawing the curve.</p>
+  </div>
+
+  <!-- 9.6 -->
+  <h2 id="s9-6"><span class="num">9.6</span>The messages of this block</h2>
+  <table class="compacta">
+    <thead><tr><th style="width:2.6in">Message</th><th>What it means and what to do</th></tr></thead>
+    <tbody>
+      <tr><td><i>Interactions are needed</i></td><td>Import your visit observations or search the published interactions in Block 2.</td></tr>
+      <tr><td><i>There are no interactions with these sources…</i></td><td>The chosen boxes leave the network empty. Tick another source or remove the filter of plants in the list.</td></tr>
+      <tr><td><i>With a single plant (or a single visitor) there is no network to describe…</i></td><td>The visitors, their shares and the completeness are shown; the network indices do not apply.</td></tr>
+      <tr><td><i>Sampling completeness needs visit counts…</i></td><td>There are only published interactions for that plant.</td></tr>
+      <tr><td><i>H₂′: needs visit counts</i></td><td>The network mixes sources or has only published ones (Section 9.2).</td></tr>
+      <tr><td><i>no null model yet</i></td><td>Press <span class="ui">Compare against null models</span>.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>

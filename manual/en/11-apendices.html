@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · User’s Manual · Appendices</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  .refs { list-style: none; padding: 0; margin: 0.06in 0 0; }
+  .refs li { margin: 0 0 0.09in 0.24in; text-indent: -0.24in; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-ap" data-pestana="Ap" data-orden="11" style="--acento: var(--bx)">
+  <div class="cap-apertura">
+    <div class="cap-num">A</div>
+    <div class="cap-etiqueta">Appendices</div>
+    <h1>Appendices</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">What you need to have at hand and did not fit in any chapter: which files the app reads and writes, the decision rules of the blocks gathered in a single list, the vocabulary of pollination ecology with occurrence data, what to do when something does not work, the references behind each calculation and the license of the tool.</p>
+    <ul class="cap-contenido">
+      <li><b>A</b>The files the app reads and writes</li>
+      <li><b>B</b>The decision rules, gathered</li>
+      <li><b>C</b>Glossary</li>
+      <li><b>D</b>When something does not work</li>
+      <li><b>E</b>References</li>
+      <li><b>F</b>The tool: license and how to cite it</li>
+    </ul>
+  </div>
+
+  <!-- A -->
+  <h2 id="ap-a"><span class="num">A</span>The files the app reads and writes</h2>
+  <p class="lead">PollinationPro runs in the browser and does not send your data to any server: every file comes in from and goes out to a folder on your computer. Only name resolution, the GBIF download and the search for published interactions query the internet, and only when you ask for them.</p>
+  <h3>A.1 · What the app reads</h3>
+  <table class="compacta">
+    <thead><tr><th style="width:1.4in">Format</th><th>Where and what for</th></tr></thead>
+    <tbody>
+      <tr><td><b>.csv, .txt, .tsv</b></td><td>Block 2, occurrence records and visit observations. Any separator, UTF-8 or Windows-1252; the columns are recognized by their heading in Spanish or English, or by the Darwin Core names.</td></tr>
+      <tr><td><b>.xlsx</b></td><td>Block 2, the same, from a spreadsheet; if the workbook has several sheets, you choose which one. The reader is written by the program itself from the public specification of the format.</td></tr>
+      <tr><td><b>pasted</b></td><td>Block 2, <span class="ui">…or paste the table</span>: the cells copied from a spreadsheet with their row of headings.</td></tr>
+      <tr><td>project <b>.json</b></td><td>Block 2, <span class="ui">📂 Open a project</span>: the list, the records, the visits, the interactions and the filters saved earlier by the app.</td></tr>
+      <tr><td><b>.tif, .tiff</b> (GeoTIFF)</td><td>Blocks 7 and 8, current and future environmental layers: uncompressed, LZW, Deflate or PackBits, with predictors; in strips or tiles; classic or BigTIFF; in degrees.</td></tr>
+      <tr><td><b>.asc</b> (ASCII grid)</td><td>Blocks 7 and 8, the same in the text format that any geographic information system writes.</td></tr>
+      <tr><td>style <b>.json</b></td><td>Block 4, <span class="ui">Load a style…</span>: a map style saved earlier.</td></tr>
+    </tbody>
+  </table>
+  <h3>A.2 · What the app writes</h3>
+  <table class="compacta">
+    <thead><tr><th style="width:0.55in">Block</th><th style="width:2.3in">Button</th><th>Content</th></tr></thead>
+    <tbody>
+      <tr><td><span class="chip k2">2</span></td><td><span class="ui">⤓ Download an empty template</span></td><td>The columns the app recognizes, for occurrences or for visits.</td></tr>
+      <tr><td><span class="chip k2">2</span></td><td><span class="ui">⤓ Interactions (.csv)</span></td><td>The published records: plant, visitor, type, source and coordinates when there are any.</td></tr>
+      <tr><td><span class="chip k2">2</span></td><td><span class="ui">⤓ Raw records (.csv)</span></td><td>All the records as they arrived.</td></tr>
+      <tr><td><span class="chip k2">2</span></td><td><span class="ui">💾 Save the project (.json)</span></td><td>The whole study, to reopen it on another computer.</td></tr>
+      <tr><td><span class="chip k3">3</span></td><td><span class="ui">⤓ Cleaned records (.csv)</span> · <span class="ui">⤓ Removed records, with the reason (.csv)</span></td><td>The ones that enter the analysis, with their unit and the original and harmonized name; the rest, with the rule that removed them.</td></tr>
+      <tr><td><span class="chip k4">4</span></td><td><span class="ui">⤓ Download the map</span> · <span class="ui">⤓ Save this style (.json)</span> · <span class="ui">⤓ Points shown (.csv)</span></td><td>The map in PNG, JPEG, WebP, SVG, TIFF or GeoTIFF; the map style; the visible points.</td></tr>
+      <tr><td><span class="chip k5">5</span></td><td><span class="ui">⤓ Pairs (.csv)</span></td><td>Each pair with cells, expected, SES, both tails of p, the adjusted p, the verdict and the Jaccard, Sørensen, Simpson and cover indices.</td></tr>
+      <tr><td><span class="chip k6">6</span></td><td><span class="ui">⤓ Units (.csv)</span> · <span class="ui">⤓ Pairs (.csv)</span></td><td>The circular statistics and the monthly profiles; the phenological pairs.</td></tr>
+      <tr><td><span class="chip k7">7</span></td><td><span class="ui">⤓ Environmental values of the records (.csv)</span></td><td>Each record with environment, its components and its variables.</td></tr>
+      <tr><td><span class="chip k8">8</span></td><td><span class="ui">⤓ Classes by cell (.csv)</span></td><td>Each cell with the suitability of the plant and its current and future class.</td></tr>
+      <tr><td><span class="chip k9">9</span></td><td><span class="ui">⤓ Matrix (.csv)</span> · <span class="ui">⤓ Species (.csv)</span></td><td>The network matrix; the tables of plants and visitors.</td></tr>
+      <tr><td>all</td><td>⤓ of each figure</td><td>The figure in PNG, JPG or SVG, 150 to 900 dpi, with the changes of the ✎ editor.</td></tr>
+      <tr><td><span class="chip k10">10</span></td><td><span class="ui">⤓ Export the selected ones</span> · <span class="ui">⤓ Download report .html</span> · <span class="ui">⤓ Build and download the .zip package</span></td><td>The figures of the catalog; the report; the package with the report, the project, the parameters, the tables and the figures.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- B -->
+  <h2 id="ap-b"><span class="num">B</span>The decision rules, gathered</h2>
+  <p>The reading scales of the chapters, in a single table. They are conventions for reading a number, not laws; the <span class="ui">?</span> card of each index in the app says where each one comes from.</p>
+  <table class="compacta">
+    <thead><tr><th style="width:1.6in">Index or decision</th><th>Reading</th><th style="width:0.45in">Ch.</th></tr></thead>
+    <tbody>
+      <tr><td><b>Co-occurrence universe</b></td><td>GBIF or collection records → target group; systematic sampling → the cells surveyed.</td><td>1, 5</td></tr>
+      <tr><td><b>Records per name</b></td><td>A generalist capped at 20,000 is enough; the plant or visitor of interest, uncapped; fewer than 20 in the area, weak tests.</td><td>2</td></tr>
+      <tr><td><b>Remove or flag</b></td><td>Remove what does not represent where the organism was; flag and review what is doubtful but possible.</td><td>3</td></tr>
+      <tr><td><b>Records kept</b></td><td>&gt; 80% usual · 50–80% check which rule removes most · &lt; 50% review the parameters.</td><td>3</td></tr>
+      <tr><td><b>Map format</b></td><td>Journal: TIFF or PNG at 600 dpi at column width · retouching: SVG · GIS: GeoTIFF without title.</td><td>4</td></tr>
+      <tr><td><b>SES</b></td><td>&lt; −1.96 segregation · −1.96 to 1.96 chance · ≥ 1.96 aggregation.</td><td>5</td></tr>
+      <tr><td><b>Cell size</b></td><td>0.1–0.25° for the foraging scale · 0.5–1° for the region · if the verdict changes, report the sensitivity.</td><td>5</td></tr>
+      <tr><td><b>R̄</b></td><td>&lt; 0.3 diffuse · 0.3–0.6 moderate · &gt; 0.6 marked.</td><td>6</td></tr>
+      <tr><td><b>Schoener’s D</b> (calendar, elevation, niche)</td><td>&lt; 0.2 none or very limited · 0.2–0.4 low · 0.4–0.6 moderate · 0.6–0.8 high · &gt; 0.8 very high.</td><td>6, 7</td></tr>
+      <tr><td><b>Correlation between layers</b></td><td>|r| &gt; 0.8 → keep one of the two.</td><td>7</td></tr>
+      <tr><td><b>Equivalency and similarity</b></td><td>Equivalency p &lt; 0.05: not identical · similarity p &lt; 0.05: more alike than the environments.</td><td>7</td></tr>
+      <tr><td><b>AUC</b></td><td>&lt; 0.6 nearly random · 0.6–0.7 poor · 0.7–0.8 fair · 0.8–0.9 good · &gt; 0.9 excellent.</td><td>8</td></tr>
+      <tr><td><b>TSS</b></td><td>&lt; 0.2 poor · 0.2–0.4 fair · 0.4–0.6 good · &gt; 0.6 very good.</td><td>8</td></tr>
+      <tr><td><b>Mismatch</b></td><td>Show it with two thresholds; draw no conclusion with poor visitor models; restrict it to the zone without extrapolation.</td><td>8</td></tr>
+      <tr><td><b>Connectance</b></td><td>&lt; 0.15 sparse · 0.15–0.4 usual · &gt; 0.4 dense (small or generalist network).</td><td>9</td></tr>
+      <tr><td><b>H₂′ and d′</b></td><td>&lt; 0.3 generalist · 0.3–0.6 intermediate · &gt; 0.6 specialized (specialist).</td><td>9</td></tr>
+      <tr><td><b>Completeness</b></td><td>&lt; 50% very incomplete · 50–80% incomplete · 80–95% good · &gt; 95% nearly complete.</td><td>9</td></tr>
+    </tbody>
+  </table>
+
+  <!-- C -->
+  <h2 id="ap-c"><span class="num">C</span>Glossary</h2>
+  <table class="compacta">
+    <thead><tr><th style="width:1.7in">Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><b>AUC</b></td><td>Area under the ROC curve: the probability that a cell with a record receives higher suitability than a random background cell.</td></tr>
+      <tr><td><b>Background</b> (<i>fondo</i>)</td><td>The cells of available environment against which what the species use is compared.</td></tr>
+      <tr><td><b>Centroid</b> (<i>centroide</i>)</td><td>The point assigned when only the country or the state is known: the area centroid or the center of the bounding box.</td></tr>
+      <tr><td><b>Chao1</b></td><td>Estimator of the minimum number of species (here, of visitors) from those seen once and twice.</td></tr>
+      <tr><td><b>Circular statistics</b> (<i>estadística circular</i>)</td><td>Statistics that treat dates as angles, because the year is a circle.</td></tr>
+      <tr><td><b>Clip</b> (<i>recorte</i>)</td><td>Drawing the map only inside the outline of Mexico or of the chosen states.</td></tr>
+      <tr><td><b>Co-occurrence</b> (<i>coocurrencia</i>)</td><td>Two taxa having records at the same site (cell). It is an opportunity for interaction, not an interaction.</td></tr>
+      <tr><td><b>Completeness</b> (<i>completitud</i>)</td><td>Recorded visitors divided by estimated visitors: how much of the sampling has already been done.</td></tr>
+      <tr><td><b>Connectance</b> (<i>conectancia</i>)</td><td>Observed links divided by possible links of a network.</td></tr>
+      <tr><td><b>Convex hull</b> (<i>envolvente convexa</i>)</td><td>The smallest polygon without indentations that encloses all the points of a unit.</td></tr>
+      <tr><td><b>Cross-validation</b> (<i>validación cruzada</i>)</td><td>Evaluating a model with records that were not used to fit it.</td></tr>
+      <tr><td><b>d′</b></td><td>Specialization of a species with respect to the availability of its partners, from 0 to 1.</td></tr>
+      <tr><td><b>Environmental space</b> (<i>espacio ambiental</i>)</td><td>The plane of the first two principal components of the climate variables of the background.</td></tr>
+      <tr><td><b>GBIF</b></td><td>Global Biodiversity Information Facility: the portal that gathers occurrence records from collections and observations around the world.</td></tr>
+      <tr><td><b>H₂′</b></td><td>Specialization of a whole quantitative network, from 0 to 1.</td></tr>
+      <tr><td><b>List entry</b> (<i>entrada de la lista</i>)</td><td>Each name of the study list (species, genus or family), with its role.</td></tr>
+      <tr><td><b>Living collection</b> (<i>colección viva</i>)</td><td>A specimen from a botanical garden or a field genebank; it does not say where the wild population lives.</td></tr>
+      <tr><td><b>Mismatch</b> (<i>desajuste</i>)</td><td>Area suitable for the plant and for no potential visitor.</td></tr>
+      <tr><td><b>Modularity Q</b> (<i>modularidad Q</i>)</td><td>How much a network divides into groups that interact more among themselves.</td></tr>
+      <tr><td><b>NODF</b></td><td>Measure of the nestedness of a matrix, from 0 to 100.</td></tr>
+      <tr><td><b>Null model</b> (<i>modelo nulo</i>)</td><td>The random version of the data that keeps what is not in question (the totals, the geography of sampling) and breaks only what is being tested.</td></tr>
+      <tr><td><b>Omission</b> (<i>omisión</i>)</td><td>Fraction of validation records that fall outside the suitable area.</td></tr>
+      <tr><td><b>Opportunity for interaction</b> (<i>oportunidad de interacción</i>)</td><td>Coincidence in space, time and environment: a necessary, not sufficient, condition for pollination.</td></tr>
+      <tr><td><b>Potential pollinator</b> (<i>polinizador potencial</i>)</td><td>A visitor that coincides with the plant in space, time or environment, but whose visits and pollen transport have not been documented.</td></tr>
+      <tr><td><b>Published interaction</b> (<i>interacción publicada</i>)</td><td>A plant–visitor pair recorded in the literature or in collections and gathered by a database of biotic interactions.</td></tr>
+      <tr><td><b>R̄</b></td><td>Length of the mean vector of the dates: their concentration, from 0 to 1.</td></tr>
+      <tr><td><b>Rayleigh test</b> (<i>prueba de Rayleigh</i>)</td><td>Test that a set of dates is seasonal and not uniform over the year.</td></tr>
+      <tr><td><b>Role</b> (<i>papel</i>)</td><td>Plant or visitor.</td></tr>
+      <tr><td><b>Sampling bias</b> (<i>sesgo de muestreo</i>)</td><td>The uneven distribution of recording effort: near roads, cities and stations.</td></tr>
+      <tr><td><b>Schoener’s D</b> (<i>D de Schoener</i>)</td><td>Overlap of two probability distributions (monthly, elevational or in environmental space), from 0 to 1.</td></tr>
+      <tr><td><b>SES</b> (<i>EEF</i>)</td><td>Standardized effect size: (observed − expected) / null standard deviation.</td></tr>
+      <tr><td><b>Suitability</b> (<i>idoneidad</i>)</td><td>How much the environment of a cell resembles that of the records of a unit, according to a model.</td></tr>
+      <tr><td><b>Synonym</b> (<i>sinónimo</i>)</td><td>An earlier name of the same taxon; the app gathers them under the current name and keeps the original.</td></tr>
+      <tr><td><b>Target group</b> (<i>grupo objetivo</i>)</td><td>The sites (or months) where any taxon of the study was recorded: the universe that corrects for sampling bias.</td></tr>
+      <tr><td><b>Threshold</b> (<i>umbral</i>)</td><td>The suitability value from which a cell is declared suitable.</td></tr>
+      <tr><td><b>TSS</b></td><td>Sensitivity + specificity − 1 of a binary map, from −1 to 1.</td></tr>
+      <tr><td><b>Unit of analysis</b> (<i>unidad de análisis</i>)</td><td>What Blocks 4 to 8 compare: a list entry or a species.</td></tr>
+      <tr><td><b>Universe</b> (<i>universo</i>)</td><td>The set of sites among which chance is distributed in a co-occurrence test.</td></tr>
+      <tr><td><b>Veech test</b> (<i>prueba de Veech</i>)</td><td>Exact hypergeometric test of the number of sites shared by two taxa.</td></tr>
+      <tr><td><b>Watson–Williams test</b> (<i>prueba de Watson–Williams</i>)</td><td>Test that two sets of dates have the same mean date.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- D -->
+  <h2 id="ap-d"><span class="num">D</span>When something does not work</h2>
+  <table class="compacta">
+    <thead><tr><th style="width:2.2in">What happens</th><th>What to do</th></tr></thead>
+    <tbody>
+      <tr><td>The app opens blank or without styles</td><td>A folder is missing (<span class="ruta">js</span>, <span class="ruta">css</span>, <span class="ruta">data</span>). Copy the whole program folder.</td></tr>
+      <tr><td>Names cannot be resolved or downloaded</td><td>No internet, or GBIF does not respond. Try later; meanwhile, use the practice data or your own records.</td></tr>
+      <tr><td>A name was resolved as another taxon (a fossil, another kingdom)</td><td>Choose the right one in the selector of that name (Section 2.2).</td></tr>
+      <tr><td>The download was cut off halfway</td><td>Repeat <span class="ui">Download the records</span>: only the GBIF records of each name are replaced.</td></tr>
+      <tr><td>My columns are not recognized</td><td>Choose each field in the mapping, or download the template and use its headings.</td></tr>
+      <tr><td>My dates come out with the day and month swapped</td><td>Change <b>Dates written as</b> to day/month/year or month/day/year.</td></tr>
+      <tr><td>There are points in the sea or in another country</td><td>Check the coordinate rules in Block 3; “In the sea or outside the outlines” and “Outside the stated country” are set to <i>flag only</i> by default.</td></tr>
+      <tr><td>Almost all pairs come out “unclassified”</td><td>Too few records for the cell: use larger cells or merge species into their genus.</td></tr>
+      <tr><td>Block 7 does not read a layer</td><td>It must be in degrees (latitude and longitude). Reproject layers in meters.</td></tr>
+      <tr><td>The layers look shifted or come out “resampled”</td><td>They have different grids. Use layers from the same source and resolution.</td></tr>
+      <tr><td>Block 8 says that future layers are missing</td><td>Name the future files with the same ending as the current ones (“bio_1”…).</td></tr>
+      <tr><td>The network has no H₂′ or d′</td><td>You mixed your own visits with published interactions: use only your visits for those indices.</td></tr>
+      <tr><td>A figure looks different from how I left it</td><td>Check the ✎ editor of that figure and the figure studio: the changes are kept in the browser. <span class="ui">Undo everything on this figure</span> returns it to how the app draws it.</td></tr>
+      <tr><td>The report lacks a block</td><td>That block is not computed: open it (it computes itself on opening) and go back to Block 10.</td></tr>
+      <tr><td>The browser blocks many downloads</td><td>Export the figures as a single .zip from the catalog of Block 10.</td></tr>
+      <tr><td>I want to start from scratch</td><td><span class="ui">Empty the list</span> in Block 2 clears the study; <span class="ui">Reset everything</span> in the map styles returns them to their starting point.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- E -->
+  <h2 id="ap-e"><span class="num">E</span>References</h2>
+  <p>The sixty references of the app’s home page, by family. The Block 10 report cites only those of the methods the study used.</p>
+  <h3>Data and quality</h3>
+  <ol class="refs">
+    <li>Beck, J., Böller, M., Erhardt, A., &amp; Schwanghart, W. (2014). Spatial bias in the GBIF database and its effect on modeling species' geographic distributions. <i>Ecological Informatics</i>, 19, 10–15.</li>
+    <li>Chapman, A. D. (2005). <i>Principles and methods of data cleaning: primary species and species-occurrence data</i> (version 1.0). Global Biodiversity Information Facility.</li>
+    <li>Graham, C. H., Ferrier, S., Huettman, F., Moritz, C., &amp; Peterson, A. T. (2004). New developments in museum-based informatics and applications in biodiversity analysis. <i>Trends in Ecology &amp; Evolution</i>, 19(9), 497–503.</li>
+    <li>Kramer-Schadt, S., Niedballa, J., Pilgrim, J. D., Schröder, B., Lindenborn, J., Reinfelder, V., Stillfried, M., Heckmann, I., Scharf, A. K., Augeri, D. M., Cheyne, S. M., Hearn, A. J., Ross, J., Macdonald, D. W., Mathai, J., Eaton, J., Marshall, A. J., Semiadi, G., Rustam, R., … Wilting, A. (2013). The importance of correcting for sampling bias in MaxEnt species distribution models. <i>Diversity and Distributions</i>, 19(11), 1366–1379.</li>
+    <li>Phillips, S. J., Dudík, M., Elith, J., Graham, C. H., Lehmann, A., Leathwick, J., &amp; Ferrier, S. (2009). Sample selection bias and presence-only distribution models: implications for background and pseudo-absence data. <i>Ecological Applications</i>, 19(1), 181–197.</li>
+    <li>Sandve, G. K., Nekrutenko, A., Taylor, J., &amp; Hovig, E. (2013). Ten simple rules for reproducible computational research. <i>PLoS Computational Biology</i>, 9(10), e1003285.</li>
+    <li>Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., et al. (2016). The FAIR Guiding Principles for scientific data management and stewardship. <i>Scientific Data</i>, 3, 160018.</li>
+    <li>Zizka, A., Antunes Carvalho, F., Calvente, A., Baez-Lizarazo, M. R., Cabral, A., Coelho, J. F. R., Colli-Silva, M., Fantinati, M. R., Fernandes, M. F., Ferreira-Araújo, T., Moreira, F. G. L., Santos, N. M. C., Santos, T. A. B., dos Santos-Costa, R. C., Serrano, F. C., da Silva, A. P. A., de Souza Soares, A., de Souza, P. G. C., Tomaz, E. C., … Antonelli, A. (2020). No one-size-fits-all solution to clean GBIF. <i>PeerJ</i>, 8, e9916.</li>
+  </ol>
+  <h3>Space</h3>
+  <ol class="refs">
+    <li>Baselga, A. (2010). Partitioning the turnover and nestedness components of beta diversity. <i>Global Ecology and Biogeography</i>, 19(1), 134–143.</li>
+    <li>Blanchet, F. G., Cazelles, K., &amp; Gravel, D. (2020). Co-occurrence is not evidence of ecological interactions. <i>Ecology Letters</i>, 23(7), 1050–1063.</li>
+    <li>Dormann, C. F., Bobrowski, M., Dehling, D. M., Harris, D. J., Hartig, F., Lischke, H., Moretti, M. D., Pagel, J., Pinkert, S., Schleuning, M., Schmidt, S. I., Sheppard, C. S., Steinbauer, M. J., Zeuss, D., &amp; Kraan, C. (2018). Biotic interactions in species distribution modelling: 10 questions to guide interpretation and avoid false conclusions. <i>Global Ecology and Biogeography</i>, 27(9), 1004–1016.</li>
+    <li>Gotelli, N. J. (2000). Null model analysis of species co-occurrence patterns. <i>Ecology</i>, 81(9), 2606–2621.</li>
+    <li>Jaccard, P. (1912). The distribution of the flora in the alpine zone. <i>New Phytologist</i>, 11(2), 37–50.</li>
+    <li>Veech, J. A. (2013). A probabilistic model for analysing species co-occurrence. <i>Global Ecology and Biogeography</i>, 22(2), 252–260.</li>
+  </ol>
+  <h3>Time</h3>
+  <ol class="refs">
+    <li>Batschelet, E. (1981). <i>Circular statistics in biology</i>. Academic Press.</li>
+    <li>Fisher, N. I. (1993). <i>Statistical analysis of circular data</i>. Cambridge University Press.</li>
+    <li>Hurlbert, S. H. (1978). The measurement of niche overlap and some relatives. <i>Ecology</i>, 59(1), 67–77.</li>
+    <li>Levins, R. (1968). <i>Evolution in changing environments</i>. Princeton University Press.</li>
+    <li>Mardia, K. V. (1972). <i>Statistics of directional data</i>. Academic Press.</li>
+    <li>Morellato, L. P. C., Alberti, L. F., &amp; Hudson, I. L. (2010). Applications of circular statistics in plant phenology: a case studies approach. In I. L. Hudson &amp; M. R. Keatley (Eds.), <i>Phenological research</i> (pp. 339–359). Springer.</li>
+    <li>Pianka, E. R. (1973). The structure of lizard communities. <i>Annual Review of Ecology and Systematics</i>, 4, 53–74.</li>
+    <li>Zar, J. H. (2010). <i>Biostatistical analysis</i> (5th ed.). Pearson Prentice Hall.</li>
+  </ol>
+  <h3>Niche and distribution</h3>
+  <ol class="refs">
+    <li>Allouche, O., Tsoar, A., &amp; Kadmon, R. (2006). Assessing the accuracy of species distribution models: prevalence, kappa and the true skill statistic (TSS). <i>Journal of Applied Ecology</i>, 43(6), 1223–1232.</li>
+    <li>Broennimann, O., Fitzpatrick, M. C., Pearman, P. B., Petitpierre, B., Pellissier, L., Yoccoz, N. G., Thuiller, W., Fortin, M.-J., Randin, C., Zimmermann, N. E., Graham, C. H., &amp; Guisan, A. (2012). Measuring ecological niche overlap from occurrence and spatial environmental data. <i>Global Ecology and Biogeography</i>, 21(4), 481–497.</li>
+    <li>Elith, J., Kearney, M., &amp; Phillips, S. (2010). The art of modelling range-shifting species. <i>Methods in Ecology and Evolution</i>, 1(4), 330–342.</li>
+    <li>Elith, J., Phillips, S. J., Hastie, T., Dudík, M., Chee, Y. E., &amp; Yates, C. J. (2011). A statistical explanation of MaxEnt for ecologists. <i>Diversity and Distributions</i>, 17(1), 43–57.</li>
+    <li>Farber, O., &amp; Kadmon, R. (2003). Assessment of alternative approaches for bioclimatic modeling with special emphasis on the Mahalanobis distance. <i>Ecological Modelling</i>, 160(1–2), 115–130.</li>
+    <li>Kerr, J. T., Pindar, A., Galpern, P., Packer, L., Potts, S. G., Roberts, S. M., Rasmont, P., Schweiger, O., Colla, S. R., Richardson, L. L., Wagner, D. L., Gall, L. F., Sikes, D. S., &amp; Pantoja, A. (2015). Climate change impacts on bumblebees converge across continents. <i>Science</i>, 349(6244), 177–180.</li>
+    <li>Liu, C., Berry, P. M., Dawson, T. P., &amp; Pearson, R. G. (2005). Selecting thresholds of occurrence in the prediction of species distributions. <i>Ecography</i>, 28(3), 385–393.</li>
+    <li>Lobo, J. M., Jiménez-Valverde, A., &amp; Real, R. (2008). AUC: a misleading measure of the performance of predictive distribution models. <i>Global Ecology and Biogeography</i>, 17(2), 145–151.</li>
+    <li>Nix, H. A. (1986). A biogeographic analysis of Australian elapid snakes. In R. Longmore (Ed.), <i>Atlas of elapid snakes of Australia</i> (pp. 4–15). Bureau of Flora and Fauna.</li>
+    <li>Rödder, D., &amp; Engler, J. O. (2011). Quantitative metrics of overlaps in Grinnellian niches: advances and possible drawbacks. <i>Global Ecology and Biogeography</i>, 20(6), 915–927.</li>
+    <li>Schoener, T. W. (1968). The <i>Anolis</i> lizards of Bimini: resource partitioning in a complex fauna. <i>Ecology</i>, 49(4), 704–726.</li>
+    <li>Schweiger, O., Settele, J., Kudrna, O., Klotz, S., &amp; Kühn, I. (2008). Climate change can cause spatial mismatch of trophically interacting species. <i>Ecology</i>, 89(12), 3472–3479.</li>
+    <li>Swets, J. A. (1988). Measuring the accuracy of diagnostic systems. <i>Science</i>, 240(4857), 1285–1293.</li>
+    <li>Warren, D. L., Glor, R. E., &amp; Turelli, M. (2008). Environmental niche equivalency versus conservatism: quantitative approaches to niche evolution. <i>Evolution</i>, 62(11), 2868–2883.</li>
+  </ol>
+  <h3>Networks and diversity</h3>
+  <ol class="refs">
+    <li>Almeida-Neto, M., Guimarães, P., Guimarães, P. R., Jr., Loyola, R. D., &amp; Ulrich, W. (2008). A consistent metric for nestedness analysis in ecological systems: reconciling concept and measurement. <i>Oikos</i>, 117(8), 1227–1239.</li>
+    <li>Barber, M. J. (2007). Modularity and community detection in bipartite networks. <i>Physical Review E</i>, 76(6), 066102.</li>
+    <li>Bascompte, J., Jordano, P., &amp; Olesen, J. M. (2006). Asymmetric coevolutionary networks facilitate biodiversity maintenance. <i>Science</i>, 312(5772), 431–433.</li>
+    <li>Bascompte, J., Jordano, P., Melián, C. J., &amp; Olesen, J. M. (2003). The nested assembly of plant–animal mutualistic networks. <i>Proceedings of the National Academy of Sciences</i>, 100(16), 9383–9387.</li>
+    <li>Beckett, S. J. (2016). Improved community detection in weighted bipartite networks. <i>Royal Society Open Science</i>, 3(1), 140536.</li>
+    <li>Blüthgen, N., Menzel, F., &amp; Blüthgen, N. (2006). Measuring specialization in species interaction networks. <i>BMC Ecology</i>, 6, 9.</li>
+    <li>Chacoff, N. P., Vázquez, D. P., Lomáscolo, S. B., Stevani, E. L., Dorado, J., &amp; Padrón, B. (2012). Evaluating sampling completeness in a desert plant–pollinator network. <i>Journal of Animal Ecology</i>, 81(1), 190–200.</li>
+    <li>Chao, A. (1987). Estimating the population size for capture–recapture data with unequal catchability. <i>Biometrics</i>, 43(4), 783–791.</li>
+    <li>Hurlbert, S. H. (1971). The nonconcept of species diversity: a critique and alternative parameters. <i>Ecology</i>, 52(4), 577–586.</li>
+    <li>Jordano, P. (1987). Patterns of mutualistic interactions in pollination and seed dispersal: connectance, dependence asymmetries, and coevolution. <i>The American Naturalist</i>, 129(5), 657–677.</li>
+    <li>Liu, X., &amp; Murata, T. (2010). An efficient algorithm for optimizing bipartite modularity in bipartite networks. <i>Journal of Advanced Computational Intelligence and Intelligent Informatics</i>, 14(4), 408–415.</li>
+    <li>Patefield, W. M. (1981). An efficient method of generating random R × C tables with given row and column totals. <i>Applied Statistics</i>, 30(1), 91–97.</li>
+    <li>Strona, G., Nappo, D., Boccacci, F., Fattorini, S., &amp; San-Miguel-Ayanz, J. (2014). A fast and unbiased procedure to randomize ecological binary matrices with fixed row and column totals. <i>Nature Communications</i>, 5, 4114.</li>
+  </ol>
+  <h3>Crops and pollinators</h3>
+  <ol class="refs">
+    <li>Freitas, F. V., Branstetter, M. G., Franceschini-Santos, V. H., Dorchin, A., Wright, K. W., López-Uribe, M. M., Griswold, T., Silveira, F. A., &amp; Almeida, E. A. B. (2023). UCE phylogenomics, biogeography, and classification of long-horned bees (Hymenoptera: Apidae: Eucerini), with insights on using specimens with extremely degraded DNA. <i>Insect Systematics and Diversity</i>, 7(4), 3.</li>
+    <li>Hurd, P. D., Jr., &amp; Linsley, E. G. (1964). The squash and gourd bees — genera <i>Peponapis</i> Robertson and <i>Xenoglossa</i> Smith — inhabiting America north of Mexico (Hymenoptera: Apoidea). <i>Hilgardia</i>, 35(15), 375–477.</li>
+    <li>Klein, A.-M., Vaissière, B. E., Cane, J. H., Steffan-Dewenter, I., Cunningham, S. A., Kremen, C., &amp; Tscharntke, T. (2007). Importance of pollinators in changing landscapes for world crops. <i>Proceedings of the Royal Society B</i>, 274(1608), 303–313.</li>
+    <li>Lira-Saade, R. (1996). <i>Chayote. Sechium edule (Jacq.) Sw.</i> Promoting the conservation and use of underutilized and neglected crops 8. International Plant Genetic Resources Institute.</li>
+  </ol>
+  <h3>Numerical methods</h3>
+  <ol class="refs">
+    <li>Andrew, A. M. (1979). Another efficient algorithm for convex hulls in two dimensions. <i>Information Processing Letters</i>, 9(5), 216–219.</li>
+    <li>Benjamini, Y., &amp; Hochberg, Y. (1995). Controlling the false discovery rate: a practical and powerful approach to multiple testing. <i>Journal of the Royal Statistical Society B</i>, 57(1), 289–300.</li>
+    <li>Chamberlain, R. G., &amp; Duquette, W. H. (2007). <i>Some algorithms for polygons on a sphere</i> (JPL Publication 07-03). Jet Propulsion Laboratory.</li>
+    <li>Davison, A. C., &amp; Hinkley, D. V. (1997). <i>Bootstrap methods and their application</i>. Cambridge University Press.</li>
+    <li>Press, W. H., Teukolsky, S. A., Vetterling, W. T., &amp; Flannery, B. P. (2007). <i>Numerical recipes: the art of scientific computing</i> (3rd ed.). Cambridge University Press.</li>
+    <li>Silverman, B. W. (1986). <i>Density estimation for statistics and data analysis</i>. Chapman &amp; Hall.</li>
+    <li>Sutherland, I. E., &amp; Hodgman, G. W. (1974). Reentrant polygon clipping. <i>Communications of the ACM</i>, 17(1), 32–42.</li>
+  </ol>
+
+  <!-- F -->
+  <h2 id="ap-f"><span class="num">F</span>The tool: license and how to cite it</h2>
+  <h3>F.1 · What the app carries inside</h3>
+  <p>PollinationPro is written in HTML, CSS and JavaScript without any third-party library: not for the charts, not for the maps, not for reading GeoTIFF files or spreadsheets, not for writing the .zip. The methods are those of the original publications, cited in the code, on the home page and in the report. The outlines of the countries and of the states of Mexico come from Natural Earth (public domain). The practice data and the practice layers are fictional and are generated by the program itself. The file <span class="ruta">PROCEDENCIA.md</span> in the program folder details the origin of everything, <span class="ruta">tests/index.html</span> checks the engine with 168 tests, and the <span class="ruta">validation/</span> folder compares it number by number with R packages written by other people (34,299 comparisons, none in disagreement).</p>
+  <h3>F.2 · License</h3>
+  <p>The program is distributed under the <b>GNU General Public License, version 3 or later</b> (GPL-3.0-or-later): it can be freely used, copied, studied and modified, on condition that modified versions are distributed under the same license and keep the attribution. The full text is in the <span class="ruta">LICENSE</span> file. This manual is © 2026 Luis Ángel Barrera-Guzmán, all rights reserved.</p>
+  <h3>F.3 · How to cite it</h3>
+  <div class="cita">Barrera-Guzmán, L. Á. (2026). <i>PollinationPro: a browser-based platform for analysing plants, pollinators and their overlap with occurrence data</i> (Version 1.2) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.23004694</div>
+  <div class="cita">Barrera-Guzmán, L. Á. (2026). <i>PollinationPro: User’s Manual</i> (1st English ed.). Distributed with PollinationPro, version 1.2. Zenodo. https://doi.org/10.5281/zenodo.23004694</div>
+  <p class="small">The DOI is the concept DOI in Zenodo: it always resolves to the latest version. The citation of the program is also in <span class="ruta">CITATION.cff</span> and at the end of every Block 10 report. Also cite the methods you used to their original works, and each GBIF download with its DOI.</p>
+</section>
+
+</body>
+</html>

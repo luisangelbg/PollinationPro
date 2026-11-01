@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · User’s Manual · Chapter 10</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  figure.media { width: 80%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 60%; margin-left: auto; margin-right: auto; }
+  figure.estrecha { width: 52%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b10" data-pestana="B10" data-orden="10" style="--acento: var(--b10)">
+  <div class="cap-apertura">
+    <div class="cap-num">10</div>
+    <div class="cap-etiqueta">Block 10 · Report</div>
+    <h1 data-corto="Figures, report and package">Figures, report and package</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Everything you computed, ready to leave the app: every figure of the study in PNG, JPG or SVG up to 900 dpi in the style you choose —that of all of them at once from the figure studio, or that of each one with its ✎ editor—; a report that opens in any browser and prints to PDF, with the methods written from what you actually ran; and a .zip with the report, the figures, the tables and the project that reproduces it.</p>
+    <ul class="cap-contenido">
+      <li><b>10.1</b>What comes out of the app</li>
+      <li><b>10.2</b>The state of the study</li>
+      <li><b>10.3</b>The catalog and the two figure editors</li>
+      <li><b>10.4</b>The report</li>
+      <li><b>10.5</b>The reproducible package</li>
+      <li><b>10.6</b>Before you hand it in</li>
+    </ul>
+  </div>
+
+  <!-- 10.1 -->
+  <h2 id="s10-1"><span class="num">10.1</span>What comes out of the app</h2>
+  <p class="lead">A study is delivered with three things: the figures, the text that says what was done and the data that allow it to be redone. Block 10 produces all three from whatever exists at that moment in the computed blocks. It recomputes nothing: if you change something in a block, come back here and generate again.</p>
+
+  <!-- 10.2 -->
+  <h2 id="s10-2"><span class="num">10.2</span>The state of the study</h2>
+  <figure>
+    <div class="marco"><img src="../img/en/b10-estado.png" alt="The card of the state of the study with the eight blocks computed and the message that the study is complete"></div>
+    <figcaption><b>Figure 10.1.</b> The practice study with the eight working blocks computed and 21 figures drawn.</figcaption>
+  </figure>
+  <p>Each block appears as <i>computed</i> (with the <span class="ui">View</span> button) or <i>not computed</i> (with <span class="ui">Go</span>). A block is computed when you open it; the ones that were not opened do not appear in the report or in the catalog, and the message at the top reminds you of it. Blocks 7 and 8 also need layers, and Block 9, interactions.</p>
+
+  <!-- 10.3 -->
+  <h2 id="s10-3"><span class="num">10.3</span>The catalog and the two figure editors</h2>
+  <figure>
+    <div class="marco"><img src="../img/en/b10-catalogo.png" alt="The controls of the figure catalog —format, resolution, theme, background, title— and the first thumbnails grouped by block"></div>
+    <figcaption><b>Figure 10.2.</b> The catalog gathers all the figures drawn, grouped by block, with a box to tick each one and an <span class="ui">only these</span> button per block.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.7in">Control</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><b>Format</b></td><td>PNG, JPG or SVG (vector and editable).</td></tr>
+      <tr><td><b>Resolution</b></td><td>150 dpi (screen), 300 (print), 600 (journal) or 900 (poster).</td></tr>
+      <tr><td><b>Theme</b> · <b>Background</b></td><td>Light, dark or the one on screen; background as styled, white, that of the card or transparent.</td></tr>
+      <tr><td><span class="ui">With the title inside the figure</span></td><td>Writes the title of the figure into the file. For a journal, which puts the title in the caption, untick it.</td></tr>
+      <tr><td><span class="ui">⤓ Export the selected ones</span> · <span class="ui">All the selected ones in a .zip</span></td><td>Downloads the ticked ones; with more than six they come in a .zip, because the browser blocks many downloads in a row.</td></tr>
+    </tbody>
+  </table>
+  <p>There are two ways to change the look of the figures, and they combine.</p>
+  <h3>The figure studio: all at once</h3>
+  <div class="dos">
+    <figure style="margin:0">
+      <div class="marco"><img src="../img/en/b10-estudio.png" alt="The figure studio panel with nine palettes, Okabe-Ito selected, the ten adjustable colors, the font, the background, the text size, the line weight and the background grid"></div>
+      <figcaption><b>Figure 10.3.</b> The figure studio, with the Okabe–Ito palette.</figcaption>
+    </figure>
+    <div>
+      <p style="margin-top:0">It opens with the palette button of the top bar, from any block. A single rule restyles every figure of the app, on screen and when exporting, without recomputing anything.</p>
+      <ul>
+        <li><b>Nine palettes</b>: PollinationPro, Okabe–Ito (color-blind safe), Viridis, Seasons, Earth, Cool, Warm, High contrast and Greyscale.</li>
+        <li><b>Adjust one color</b>: any of the ten of the palette.</li>
+        <li><b>Font</b> (seven families that exist on any computer), <b>background</b>, <b>text size</b>, <b>line weight</b> and <b>background grid</b>.</li>
+        <li><span class="ui">↻ Back to the original style</span>.</li>
+      </ul>
+    </div>
+  </div>
+  <h3>The ✎ editor: one figure at a time</h3>
+  <p>Every figure of the app has, next to the ⤓ button, a ✎ button that opens its own editor. Whatever you change there applies only to that figure, is kept even if the figure is recomputed and comes out in its export, in the catalog, in the report and in the package. The editor has six tabs —<span class="ui">General</span>, <span class="ui">Axes &amp; grid</span>, <span class="ui">Series</span>, <span class="ui">Legend</span>, <span class="ui">Texts</span> and <span class="ui">Annotations</span>—; the three you will use most are these.</p>
+  <figure class="media">
+    <div class="marco"><img src="../img/en/b10-editor-general.png" alt="The editor of the circular rose on its General tab: title inside the figure, subtitle and footnote, title size and alignment, font family, size of every text, color of every text, line weight, point size, background and border around the whole figure"></div>
+    <figcaption><b>Figure 10.4.</b> The <span class="ui">General</span> tab of the editor, opened on the circular rose of Block 6.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.2in">Tab</th><th>What is edited</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">General</span></td><td>The title inside the figure, with its subtitle, footnote, size and alignment; the font family, the size of every text (from 0.6 to 2.2 times), the color of every text, the line weight and the point size (from 0.3 to 3 times), the background and a border around the whole figure. The colors of the axes and the grid lines are on the <span class="ui">Axes &amp; grid</span> tab.</td></tr>
+      <tr><td><span class="ui">Texts</span></td><td>Each text of the figure, by its original wording: it can be rewritten, resized, set in bold (B) or italic (I), recolored or hidden. It serves to translate a label, shorten a name or remove a label the journal does not want.</td></tr>
+      <tr><td><span class="ui">Series</span></td><td>Each color the figure uses, named after its legend entry, to replace it with another, change its weight, stroke or opacity, or hide the series.</td></tr>
+    </tbody>
+  </table>
+  <figure>
+    <div class="marco"><img src="../img/en/b10-editor.png" alt="The phenogram and, below it, its editor on the Texts tab: one row for each text of the figure with its field, its size, bold, italic, color and hide"></div>
+    <figcaption><b>Figure 10.5.</b> The <span class="ui">Texts</span> tab on the phenogram: each month, each unit and each “n =” are edited separately. At the foot of the editor (Figure 10.4), <span class="ui">Undo everything on this figure</span> and <span class="ui">Copy the style to every figure</span>.</figcaption>
+  </figure>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>A text is recognized by its original wording</div>
+    <p>The editor remembers each text change by what the figure said. If you change the language of the app, the texts are different and are edited separately. And if a figure changes its content —another pair, another cell—, the texts that no longer exist are simply not applied.</p>
+  </div>
+
+  <!-- 10.4 -->
+  <h2 id="s10-4"><span class="num">10.4</span>The report</h2>
+  <figure class="alta">
+    <div class="marco"><img src="../img/en/b10-informe.png" alt="The report card with the title, the authorship, the boxes of the sections and the preview of the report with its summary, the practice-data warning and the first tables"></div>
+    <figcaption><b>Figure 10.6.</b> The preview of the report of the practice study: 11 sections, 10 figures and 11 tables. The amber box warns that it contains practice data.</figcaption>
+  </figure>
+  <p>The report is a single <code>.html</code> file, without dependencies, that opens in any browser. You give it a <b>title</b> and an <b>authorship</b>, tick the <b>sections</b> —one per computed block— and the <b>appendix with the calculation record</b>. <span class="ui">Preview</span> shows it in the card; <span class="ui">⤓ Download report .html</span> saves it; <span class="ui">Print to PDF</span> opens the browser’s print dialog (Save as PDF).</p>
+  <table class="compacta">
+    <thead><tr><th style="width:1.8in">Part of the report</th><th>What it contains</th></tr></thead>
+    <tbody>
+      <tr><td><b>Summary</b></td><td>One line per block: the cleaned records, the pairs that coincide more than expected, the largest phenological overlap, the D of the niche, the mismatch and the specialization of the network.</td></tr>
+      <tr><td><b>One section per block</b></td><td>What the block computed, in prose, with its tables and its figures (with the changes of the ✎ editor and the style of the figure studio).</td></tr>
+      <tr><td><b>Methods</b></td><td>Written from what was actually run: the cleaning rules with their parameters, the universe and the cell of the co-occurrence, the effort correction, the background and the density of the niche, the model and the threshold, the null model of the network. Only what was used appears.</td></tr>
+      <tr><td><b>References</b></td><td>Only the works of the methods used.</td></tr>
+      <tr><td><b>GBIF datasets</b></td><td>The datasets that contributed cleaned records, because GBIF asks for them to be credited, and the recommendation to repeat the download on its portal to obtain the DOI.</td></tr>
+      <tr><td><b>How to cite</b> and <b>appendix</b></td><td>The citation of the program and, if ticked, the calculation record with every parameter of every block.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>The report says when the data are for practice</div>
+    <p>If the study uses the practice data, the report warns about it at the start; if the niche or the distribution were computed with the practice layers, their sections warn about it too. Such a report is for learning to read it, not for handing in.</p>
+  </div>
+
+  <!-- 10.5 -->
+  <h2 id="s10-5"><span class="num">10.5</span>The reproducible package</h2>
+  <figure>
+    <div class="marco"><img src="../img/en/b10-paquete.png" alt="The package card with the list of what it contains and the button to build it"></div>
+    <figcaption><b>Figure 10.7.</b> The package of the practice study: the report, the project, the calculation record, 8 tables and 21 figures.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.8in">File</th><th>Content</th></tr></thead>
+    <tbody>
+      <tr><td><code>LEEME.txt</code></td><td>What the package contains and how to reproduce the study.</td></tr>
+      <tr><td><code>informe.html</code></td><td>The report with the ticked sections.</td></tr>
+      <tr><td><code>proyecto.json</code></td><td>The data of the study: it opens in Block 2 with <span class="ui">📂 Open a project</span>.</td></tr>
+      <tr><td><code>parametros.json</code></td><td>The calculation record of every block: rules, cells, universes, backgrounds, models, thresholds, replicates.</td></tr>
+      <tr><td><code>cuadros/</code></td><td>The tables as .csv: cleaned and removed records, co-occurrence pairs, phenological units and pairs, niche pairs, evaluation of the distribution, species of the network and GBIF datasets.</td></tr>
+      <tr><td><code>figuras/</code></td><td>The figures ticked in the catalog, in the chosen format and resolution, and also as SVG if <span class="ui">and also as SVG (editable)</span> is ticked.</td></tr>
+    </tbody>
+  </table>
+  <p>The .zip is written by the app itself, byte by byte, without any library. The file and folder names stay in Spanish whatever the language of the app. It is what goes with the paper, the thesis or the technical opinion: whoever receives it can open the project, read the parameters and redo every number (Sandve et al. 2013; Wilkinson et al. 2016).</p>
+
+  <!-- 10.6 -->
+  <h2 id="s10-6"><span class="num">10.6</span>Before you hand it in</h2>
+  <ol class="pasos">
+    <li><b>Check the state of the study.</b> If a block the paper uses is missing, open it.</li>
+    <li><b>Reread the methods of the report.</b> They must match what you say in the paper: cell, universe, background, model, threshold, replicates.</li>
+    <li><b>Cite.</b> The program, the works of the methods you used and each GBIF download with its DOI, repeating it on its portal with the same filters.</li>
+    <li><b>Check the wording.</b> Blocks 5 to 8 give <i>potential pollinators</i> and <i>opportunity for interaction</i>; only Block 9 gives interactions.</li>
+    <li><b>Export the figures at the journal’s size</b> and check in the ✎ editor that no text is cut off or overlaps.</li>
+    <li><b>Keep the package</b> with the manuscript. It is the supplementary material and the guarantee that the study can be redone.</li>
+  </ol>
+</section>
+
+</body>
+</html>
