@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · User’s Manual · Chapter 3</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  figure.media { width: 82%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 58%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b3" data-pestana="B3" data-orden="3" style="--acento: var(--b3)">
+  <div class="cap-apertura">
+    <div class="cap-num">3</div>
+    <div class="cap-etiqueta">Block 3 · Cleaning and taxonomy</div>
+    <h1 data-corto="Cleaning and taxonomy">Cleaning and taxonomy</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Records arriving from hundreds of collections carry errors that, left uncleaned, turn into results. Here you decide what is removed, what is only flagged and how the units of analysis are named: fifteen quality rules, cultivated plants decided plant by plant, the study area, synonyms and the unit. The report comes out written for the methods section.</p>
+    <ul class="cap-contenido">
+      <li><b>3.1</b>Why clean</li>
+      <li><b>3.2</b>The fifteen rules</li>
+      <li><b>3.3</b>Cultivated plants and study area</li>
+      <li><b>3.4</b>Synonyms and units of analysis</li>
+      <li><b>3.5</b>The report</li>
+      <li><b>3.6</b>Reviewing and downloading the records</li>
+      <li><b>3.7</b>The messages of this block</li>
+    </ul>
+  </div>
+
+  <!-- 3.1 -->
+  <h2 id="s3-1"><span class="num">3.1</span>Why clean</h2>
+  <p class="lead">A single record at the geographic center of Mexico —the place written down when only the country is known— can create a co-occurrence between two species that have never been seen together. A backyard chayote in Mexico City stretches the climatic niche of the species toward places where it never lived in the wild. And a bee recorded as <i>Peponapis</i> in one collection and as <i>Xenoglossa</i> in another splits into two units that do not recognize each other. Cleaning is not a formality: it is the first scientific decision of the study.</p>
+  <p>The app applies the checks on which the record-cleaning literature agrees (Chapman 2005; Zizka et al. 2020) and keeps every decision in view, with its count. Nothing is applied until you press <span class="ui">Clean and apply</span>, and everything can be redone: the raw records of Block 2 are not touched.</p>
+
+  <!-- 3.2 -->
+  <h2 id="s3-2"><span class="num">3.2</span>The fifteen rules</h2>
+  <p>For each rule you choose whether it <b>removes</b> the record, only <b>flags</b> it (it stays in the analyses, with the flag in the table) or is <b>not applied</b>. The column on the right says how many records it reaches with the current parameters, and how many it would remove.</p>
+  <figure class="alta">
+    <div class="marco"><img src="../img/en/b3-reglas.png" alt="The rules card: fifteen rows with the name of the rule, its explanation, an action selector and the number of records it reaches; below, the four parameters"></div>
+    <figcaption><b>Figure 3.1.</b> The fifteen rules with their default actions and what they reach in the practice study, and the four parameters below: distance to a centroid, maximum uncertainty, minimum decimals and year of the old record.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.75in">Rule</th><th>What it detects</th><th style="width:0.9in">Default</th><th class="c" style="width:0.75in">Practice</th></tr></thead>
+    <tbody>
+      <tr><td><b>No valid coordinates</b></td><td>Latitude or longitude empty or beyond ±90 / ±180.</td><td>remove</td><td class="c">0</td></tr>
+      <tr><td><b>(0, 0) coordinates</b></td><td>The default value of many databases: a point in the Gulf of Guinea.</td><td>remove</td><td class="c">1</td></tr>
+      <tr><td><b>Latitude equal to longitude</b></td><td>Nearly always a data-entry error.</td><td>remove</td><td class="c">0</td></tr>
+      <tr><td><b>Swapped or unsigned coordinates</b></td><td>The point does not fall in the country the record states, but does after changing the sign or swapping latitude and longitude. This rule does not remove: it <b>corrects</b>.</td><td>correct</td><td class="c">2</td></tr>
+      <tr><td><b>Country or state centroid</b></td><td>Within the chosen distance of the center of a country or of a Mexican state, with two definitions of “center” (Section 3.2.1).</td><td>remove</td><td class="c">9</td></tr>
+      <tr><td><b>Outside the stated country</b></td><td>The point falls in another country and no correction explains it, or it falls in the sea.</td><td>flag only</td><td class="c">1</td></tr>
+      <tr><td><b>In the sea or outside the outlines</b></td><td>It falls in no country. The world outlines are coarse: check before removing coastal records.</td><td>flag only</td><td class="c">1</td></tr>
+      <tr><td><b>Imprecise coordinate</b></td><td>Declared uncertainty larger than the threshold (10 km).</td><td>remove</td><td class="c">1</td></tr>
+      <tr><td><b>Rounded coordinate</b></td><td>Latitude and longitude with fewer decimals than the minimum (2, about 1.1 km). A whole degree is ~110 km.</td><td>flag only</td><td class="c">2</td></tr>
+      <tr><td><b>Duplicates</b></td><td>Same taxon, same coordinates and same date: one is kept.</td><td>remove</td><td class="c">18</td></tr>
+      <tr><td><b>Impossible date</b></td><td>Year after the current one, or month or day out of range.</td><td>remove</td><td class="c">1</td></tr>
+      <tr><td><b>Old record</b></td><td>Before the chosen year (1950): useful for history, doubtful for the current climate.</td><td>flag only</td><td class="c">0</td></tr>
+      <tr><td><b>Fossils and living collections</b></td><td>A botanical-garden specimen or a fossil does not say where the wild population lives.</td><td>remove</td><td class="c">0</td></tr>
+      <tr><td><b>Cultivated plants</b></td><td>Plants only: “managed” establishment means, or words such as cultivated, garden, backyard, nursery, greenhouse, plantation, milpa, coffee farm (Section 3.3).</td><td>remove</td><td class="c">340</td></tr>
+      <tr><td><b>Outside the study area</b></td><td>The point does not fall in the countries —or Mexican states— chosen as the area (Section 3.3).</td><td>remove</td><td class="c">32</td></tr>
+    </tbody>
+  </table>
+  <p>The seven errors planted in the practice study all come out: the (0, 0), the swapped coordinate and the unsigned longitude (both corrected), the center of Mexico, the rounded coordinate, the year 2031 and the record with 25 km of uncertainty, in addition to the 18 duplicates. The centroid rule reaches nine records and not only the planted one: with points drawn at random around invented centers, eight fell within 5 km of the center of some state. The same happens with real data, and that is why the distance is a parameter.</p>
+
+  <h3>3.2.1 Two definitions of “center”</h3>
+  <p>The place written down when only the country or the state is known is not always the same. Some databases use the <b>area centroid</b> of the polygon; others, the <b>center of the bounding box</b>. The “center of Mexico” that circulates as a placeholder, at 23.6345° N and 102.5528° W, is the second one, and it lies tens of kilometers from the first. The app computes both for every country in the world and for each of the 32 Mexican states from its own outlines, and the rule reaches a record if it falls near either of them.</p>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Decision rule · remove or flag only</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>If</b> the error means the point does not represent where the organism was (0, 0; centroid; fossil; living collection; impossible date)</td><td><b>then</b> remove it: leaving it shifts the maps, the cells and the niche.</td></tr>
+      <tr><td><b>If</b> the record is doubtful but may be correct (rounded, old, coastal)</td><td><b>then</b> flag it and review it in the table of Section 3.6 before deciding. If your analysis cell is 0.25° or larger, a coordinate with two decimals changes nothing.</td></tr>
+      <tr><td><b>If</b> one rule reaches many records of a single entry</td><td><b>then</b> look at the table “By list entry”: it may be a collection with a systematic problem, and it is worth knowing before removing it altogether.</td></tr>
+    </tbody></table>
+  </div>
+
+  <!-- 3.3 -->
+  <h2 id="s3-3"><span class="num">3.3</span>Cultivated plants and study area</h2>
+  <p>Most records of a crop are of planted individuals, whose distribution reflects agriculture and not the natural niche. What to do with them depends on the question: if you study the crop as it is grown (coffee in its farms), keep its cultivated records; if you study the wild populations or the wild relatives, remove them. That is why each plant is decided <b>separately</b>, and the app proposes keeping them when more than half of that plant’s records are cultivated.</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b3-cultivadas.png" alt="The cultivated plants card: one row per plant with its records, how many are cultivated, how many come from living collections and a selector to remove or keep them; below, the study area"></div>
+    <figcaption><b>Figure 3.2.</b> The plants of the practice study. <i>Sechium edule</i> has 124 cultivated records (29%) and <i>Cucurbita</i> 216 (36%); the four wild relatives, none. With fewer than half cultivated, the app proposes removing them: the study is about the wild populations.</figcaption>
+  </figure>
+  <p>A record is considered cultivated if its establishment means is “managed”, “cultivated”, “introduced” or “planted”, or if its locality or its notes say cultivated, sown, planted, orchard, vegetable garden, garden, backyard, nursery, greenhouse, market, plot, fruit orchard, milpa, coffee farm, plantation, ornamental or escaped from cultivation, in Spanish or English. The column <b>Living collection</b> counts separately the specimens from botanical gardens and field genebanks, which are handled by the rule “Fossils and living collections”.</p>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Cultivated records without a label are not detected</div>
+    <p>The rule only sees what the record says. A garden chayote recorded without notes passes as wild. With widely grown crops, check on the map of Block 4 the points in cities and in farming areas, and consider narrowing the study area to the known natural distribution.</p>
+  </div>
+  <p><b>The study area.</b> Records outside the area are removed if the rule “Outside the study area” is active. The <span class="ui">Countries</span> selector offers <i>those of the download (Block 2)</i> —the usual choice— or <i>all (no area)</i>. <span class="ui">Choose Mexican states…</span> opens the list of the 32 states: if you choose some, the area is only those. In the practice study the area is Mexico, and the rule removes 27 records, almost all from the Guatemalan side of the southern border.</p>
+
+  <!-- 3.4 -->
+  <h2 id="s3-4"><span class="num">3.4</span>Synonyms and units of analysis</h2>
+  <figure>
+    <div class="marco"><img src="../img/en/b3-taxonomia.png" alt="The taxonomy card: the synonym rule Peponapis → Xenoglossa with its reference, the fields to add another, the unit of analysis and the checkbox for subspecies and varieties"></div>
+    <figcaption><b>Figure 3.3.</b> The taxonomy of the practice study. The app proposed the rule <i>Peponapis</i> → <i>Xenoglossa</i> on its own because both are on the list, with the work that supports it.</figcaption>
+  </figure>
+  <p><b>Synonym rules</b> bring two entries of the list together under the current name and rewrite the species names —<i>Peponapis crassidentata</i> becomes <i>Xenoglossa crassidentata</i>—, keeping the original name in every record. The app comes with the rules it knows and proposes them when both entries are on the list; the one for the squash bees follows Freitas et al. (2023), who place <i>Peponapis</i> as a subgenus of <i>Xenoglossa</i>. Each rule is turned on or off with its checkbox, and you can add others by typing the <b>former name</b> and the <b>current name</b> and pressing <span class="ui">Add rule</span>.</p>
+  <table class="compacta">
+    <thead><tr><th style="width:2.1in">Unit of analysis</th><th>What the following blocks compare</th></tr></thead>
+    <tbody>
+      <tr><td><b>List entries</b> (a genus = one unit)</td><td>Each entry is a unit: <i>Cucurbita</i> gathers all its species and <i>Xenoglossa</i>, after the synonym, gathers five. It is the right choice when the question is about a functional group (the squash bees) or when the species have few records.</td></tr>
+      <tr><td><b>Species</b> (each species apart)</td><td>Each species is a unit, even if the list has a genus. It is the right choice when the question is about particular species and each one has enough records.</td></tr>
+      <tr><td><span class="ui">Split subspecies and varieties as units of their own (e.g. a wild subspecies from the cultivated one)</span></td><td>With species as the unit, it also splits subspecies and varieties (for example, a wild subspecies from the cultivated one).</td></tr>
+    </tbody>
+  </table>
+  <p>When you are done, <span class="ui">Clean and apply</span> runs the rules, applies the synonyms, assigns the units and opens the report.</p>
+
+  <!-- 3.5 -->
+  <h2 id="s3-5"><span class="num">3.5</span>The report</h2>
+  <figure>
+    <div class="marco"><img src="../img/en/b3-reporte.png" alt="The report: five tiles —before, after, removed, coordinates corrected and units of analysis— and the paragraph for the methods"></div>
+    <figcaption><b>Figure 3.4.</b> The report of the practice study: of 2,248 raw records, 1,856 are kept (82.6%), 392 are removed, 2 coordinates are corrected and 8 units of analysis remain.</figcaption>
+  </figure>
+  <p>The box <b>For the methods</b> is a paragraph ready to copy. It says how many records were kept, which rules removed or corrected how many, at what distance and with which two definitions the centroids were evaluated, what maximum uncertainty was used and which synonym rules were applied, with their reference. The report of Block 10 takes it up again with the citations of the cleaning methods.</p>
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Worked example · the paragraph of the practice study</div>
+    <p style="font-style:italic">“Of 2,248 records, 1,856 were kept (82.6%). Removed or corrected: (0, 0) coordinates (1); swapped or unsigned coordinates (2); country or state centroid (9); imprecise coordinate (1); duplicates (18); impossible date (1); cultivated plants (335); outside the study area (27). Centroids were evaluated at 5 km with two definitions (area centroid and centre of the bounding box), the maximum uncertainty was 10 km and the synonym rules Peponapis → Xenoglossa (Freitas et al. 2023) were applied.”</p>
+  </div>
+  <figure class="media">
+    <div class="marco"><img src="../img/en/b3-tablas.png" alt="Three tables: by rule, with the action, the records reached and those removed; by list entry, with the records before and after and the main reason for removal; and the units of analysis, with the records, the species within and the original names merged"></div>
+    <figcaption><b>Figure 3.5.</b> The three tables of the report. The units table shows that <i>Xenoglossa</i> ended up with 316 records of five species and gathers the original names <i>Peponapis crassidentata</i>, <i>P. azteca</i> and <i>P. pruinosa</i>.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.8in">Table</th><th>What it is for</th></tr></thead>
+    <tbody>
+      <tr><td><b>By rule</b></td><td>The action of each rule, how many records it reached and how many it removed. A rule can reach more than it removes because another rule had already removed them: <i>Cultivated plants</i> reached 340 and removed 335.</td></tr>
+      <tr><td><b>By list entry</b></td><td>The records before and after and the main reason for removal. In the practice study, chayote goes from 424 to 296 (mostly cultivated, 121) and <i>Cucurbita</i> from 605 to 377 (cultivated, 214). The <i>Peponapis</i> row says “<i>Peponapis</i> → <i>Xenoglossa</i>”.</td></tr>
+      <tr><td><b>Units of analysis</b></td><td>The units that Blocks 4 to 8 will see, with their cleaned records, how many species they gather and which original names were merged into each one.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Decision rule · how much can be lost</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>If</b> cleaning keeps more than 80% of the records</td><td><b>then</b> it is the usual result with well-filtered GBIF data; report it and move on.</td></tr>
+      <tr><td><b>If</b> it keeps between 50 and 80%</td><td><b>then</b> look at which rule removes the most: if it is cultivated plants, it is a decision of the question, not a quality problem.</td></tr>
+      <tr><td><b>If</b> it keeps less than half, or a unit is left with fewer than 20 records</td><td><b>then</b> review the parameters (distance to the centroid, uncertainty, area) and consider bringing species together in their genus.</td></tr>
+    </tbody></table>
+    <p class="regla-pie">These are guides: a rare species with 15 good records is worth more than a common one with 1,500 doubtful ones.</p>
+  </div>
+
+  <!-- 3.6 -->
+  <h2 id="s3-6"><span class="num">3.6</span>Reviewing and downloading the records</h2>
+  <p>The <span class="ui">Show</span> selector filters the records table: all the removed ones, the corrected coordinates or those of a given rule, with their count. Each row gives the unit, the latitude and longitude (already corrected), the country the record states and the country where it falls, the Mexican state, the date, the record type, the flags of the rules —with ✕ if it was removed— and the locality or the notes.</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b3-revisar.png" alt="The records table filtered to the corrected coordinates, with two Cucurbita records, and the buttons to download and to continue to the map"></div>
+    <figcaption><b>Figure 3.6.</b> The two corrected coordinates of the practice study, already in place: one in Oaxaca and the other in Jalisco. Below, the two downloads and the step to the map.</figcaption>
+  </figure>
+  <p><span class="ui">⤓ Cleaned records (.csv)</span> downloads those that enter the analysis, with their unit, the original and the harmonized name, and the Mexican state; <span class="ui">⤓ Removed records, with the reason (.csv)</span> downloads the rest with the rule that removed them. Both are the supplementary material a reviewer expects to see.</p>
+
+  <!-- 3.7 -->
+  <h2 id="s3-7"><span class="num">3.7</span>The messages of this block</h2>
+  <table class="compacta">
+    <thead><tr><th style="width:2.6in">Message</th><th>What it means and what to do</th></tr></thead>
+    <tbody>
+      <tr><td><i>Records are needed first</i></td><td>Block 2 is empty. Download from GBIF, upload your records or load the practice ones.</td></tr>
+      <tr><td>A rule reaches many coastal records (“In the sea or outside the outlines”)</td><td>The world outlines are coarse along the coasts. Leave it on <i>flag only</i> and check those points on the map of Block 4 before removing them.</td></tr>
+      <tr><td>A unit is left with very few records</td><td>The following blocks will analyze it anyway, but their tests will have little power and some will leave it “unclassified”. Bring it together in its genus or widen the area.</td></tr>
+      <tr><td>I changed the data of Block 2 after cleaning</td><td>There is no need to come back here: the cleaning is redone by itself, with the same rules, as soon as a block needs it. If what you change is a rule, a synonym or the unit, press <span class="ui">Clean and apply</span>.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>

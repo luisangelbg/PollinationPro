@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · User’s Manual · Chapter 4</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  figure.media { width: 82%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 74%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b4" data-pestana="B4" data-orden="4" style="--acento: var(--b4)">
+  <div class="cap-apertura">
+    <div class="cap-num">4</div>
+    <div class="cap-etiqueta">Block 4 · Map</div>
+    <h1 data-corto="Map">The map and its studio</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">The cleaned records over the territory, with no internet connection. The map is the first quality check —a point in the sea or in the wrong country catches the eye— and the first figure of the paper. Everything is edited from a studio with eight tabs: background and boundaries, framing and clip, texts and fonts, north arrow, scale bar and legend, points, heat or grids, colors, ready-made looks and export at journal size, up to GeoTIFF.</p>
+    <ul class="cap-contenido">
+      <li><b>4.1</b>The map as a check and as a figure</li>
+      <li><b>4.2</b>The map studio</li>
+      <li><b>4.3</b>Base map, framing and clip</li>
+      <li><b>4.4</b>Texts, north arrow, scale bar and legend</li>
+      <li><b>4.5</b>Data and colors</li>
+      <li><b>4.6</b>Ready-made looks and export</li>
+      <li><b>4.7</b>Records by territory</li>
+    </ul>
+  </div>
+
+  <!-- 4.1 -->
+  <h2 id="s4-1"><span class="num">4.1</span>The map as a check and as a figure</h2>
+  <p class="lead">Before measuring co-occurrences you have to see where the points are. A record in the sea, a cloud of points at the center of a state, a mountain species that shows up on the coast, a desert bee in the rainforest: all of that is seen on the map in seconds and never in a table. If something like that appears, go back to Block 3 and adjust a rule.</p>
+  <p>The same map is the first figure of the paper. That is why Block 4 is not a viewer but a complete editing studio, with a <b>vector base map of the program’s own</b>: the outlines of the world’s countries and of the 32 Mexican states (Natural Earth, public domain) travel with the app. No tiles are downloaded from any service, so it works without internet, it is exported without asking anyone for permission and it looks the same on any computer.</p>
+
+  <!-- 4.2 -->
+  <h2 id="s4-2"><span class="num">4.2</span>The map studio</h2>
+  <figure>
+    <div class="marco"><img src="../img/en/b4-estudio.png" alt="The map studio: on the left, the map of Mexico with the cleaned records of the eight units, with north arrow, scale bar, graticule and legend; on the right, the eight tabs with Base map open"></div>
+    <figcaption><b>Figure 4.1.</b> The studio with its starting values: extent fitted to the records, plants as circles and visitors as triangles, one color per unit, north arrow, scale bar in alternating blocks, graticule with degrees and light legend. On the right, the <span class="ui">Base map</span> tab.</figcaption>
+  </figure>
+  <p>The map on the left is redrawn with every change on the right. The eight tabs group the controls; everything you choose is remembered in that browser, so the map is the same the next time, and a complete style can be saved to a file (Section 4.6).</p>
+  <table class="compacta">
+    <thead><tr><th style="width:1.5in">Tab</th><th>What is edited</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui">Base map</span></td><td>Figure background, sea, land of Mexico and of other countries; state and country boundaries; state names; graticule; frame.</td></tr>
+      <tr><td><span class="ui">Framing and clip</span></td><td>The extent of the map, the margin, the legend outside the map and the clip to Mexico or to chosen states.</td></tr>
+      <tr><td><span class="ui">Text and fonts</span></td><td>Title, subtitle, source or credit, legend title, the typeface family and the sizes and styles.</td></tr>
+      <tr><td><span class="ui">Elements</span></td><td>North arrow (eight designs), scale bar (eight formats) and legend.</td></tr>
+      <tr><td><span class="ui">Data</span></td><td>What is drawn (points, heat, grids, hulls), the symbols and each unit.</td></tr>
+      <tr><td><span class="ui">Colours</span></td><td>The palette of the units, the density ramp and the color of each unit.</td></tr>
+      <tr><td><span class="ui">Looks</span></td><td>Six ready-made looks, saving and loading a style, resetting everything.</td></tr>
+      <tr><td><span class="ui">Export</span></td><td>Format, paper size and resolution, and the download.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 4.3 -->
+  <h2 id="s4-3"><span class="num">4.3</span>Base map, framing and clip</h2>
+  <p><b>Base map.</b> The <b>figure background</b> can be white, that of the app theme, a custom color or transparent. You choose the colors of the sea, of the land of Mexico and of the land of other countries (telling them apart helps to read a map of Mexico); whether the state and country boundaries are drawn, with their color and width; whether the <b>state names</b> are written —no, abbreviation or full name—, with their size and color; the <b>graticule</b> of meridians and parallels, how many degrees apart (automatic, 1°, 2°, 5°, 10° or 20°), its color, its opacity and its degree labels; and the <b>frame</b> around the map.</p>
+  <p><b>Framing.</b> The <b>extent</b> can be fitted to the records (with a margin in percent), cover the whole of Mexico, the chosen states, the world or your own coordinates (north, south, west and east). <span class="ui">Legend outside the map, on the right</span> moves the legend out of the map area so that it does not cover points.</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b4-recorte.png" alt="The map clipped to Mexico with title and subtitle, and the Framing and clip tab with the extent Whole Mexico and the clip turned on"></div>
+    <figcaption><b>Figure 4.2.</b> The whole of Mexico, clipped to its silhouette, with title and subtitle. Outside the clip the sea, the other countries and the points that fell outside disappear; the north arrow, the scale bar, the graticule and the legend are drawn all the same.</figcaption>
+  </figure>
+  <p><b>Clip.</b> <span class="ui">Clip the map to Mexico or to the chosen states</span> draws only what falls inside that silhouette. Outside the clip there is the background color or nothing (transparent, useful for placing the map over another figure). <span class="ui">Draw the outline of the clip</span> traces the outer silhouette —not the internal borders— with the color and width you choose. When you choose <i>chosen states</i> in the extent or in the clip, the list of the 32 states appears so you can tick them.</p>
+
+  <!-- 4.4 -->
+  <h2 id="s4-4"><span class="num">4.4</span>Texts, north arrow, scale bar and legend</h2>
+  <p><b>Text and fonts.</b> Four texts —title, subtitle, source or credit, legend title— and six generic typeface families (system sans, humanist sans, serif, classic serif, condensed sans and monospace), which exist on any computer and therefore look the same on the reviewer’s. You choose the text color, the size of the title (with bold, italics and alignment), of the subtitle and of the credit, and the corner of the credit. Unit names are written in italics in the legend, as scientific names require.</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b4-elementos.png" alt="The map with an eight-point compass rose at the top right, a ruler-style scale bar at the bottom right and the legend in two columns at the bottom left; on the right, the Elements tab"></div>
+    <figcaption><b>Figure 4.3.</b> The <span class="ui">Elements</span> tab with an eight-point rose, the ruler-style scale bar and the legend in two columns. Each element can be placed in any of the four corners.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.4in">Element</th><th>Options</th></tr></thead>
+    <tbody>
+      <tr><td><b>North arrow</b></td><td>None, arrow, split arrow, needle, triangle, circle, 4-point rose, 8-point rose and minimal; position, size and color.</td></tr>
+      <tr><td><b>Scale bar</b></td><td>Alternating blocks, stepped (two rows), solid bar, line with ends, ruler, kilometers and miles, text only and ratio (1:n); unit (kilometers or miles), position, divisions, thickness and text size. The ratio is computed for the paper size chosen in <span class="ui">Export</span> and changes if the paper changes.</td></tr>
+      <tr><td><b>Legend</b></td><td>Whether to draw it, position, box (light, dark, outline only or none), text size and one to three columns.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 4.5 -->
+  <h2 id="s4-5"><span class="num">4.5</span>Data and colors</h2>
+  <p>The <span class="ui">Data</span> tab decides what is drawn. Each <b>representation</b> answers a different question:</p>
+  <table class="compacta">
+    <thead><tr><th style="width:1.9in">Representation</th><th>What it is for</th></tr></thead>
+    <tbody>
+      <tr><td><b>Points</b></td><td>The standard distribution figure: one symbol per record, with color and shape by unit or by role.</td></tr>
+      <tr><td><b>Heat map (density)</b></td><td>Where the records are concentrated, with adjustable radius and intensity. It shows sampling effort as much as abundance.</td></tr>
+      <tr><td><b>Grid: records per cell</b></td><td>How many records there are in each cell (0.1° to 2°), with the density ramp.</td></tr>
+      <tr><td><b>Grid: where plant and visitor meet</b></td><td>The cells with plant and visitor, plants only or visitors only: the visual version of the test of Block 5.</td></tr>
+      <tr><td><b>Convex hulls with points</b></td><td>The minimum area enclosing the points of each unit, and their overlap.</td></tr>
+    </tbody>
+  </table>
+  <div class="dos">
+    <figure style="margin:0">
+      <div class="marco"><img src="../img/en/b4-calor.png" alt="Heat map of all the records over Mexico"></div>
+      <figcaption><b>Figure 4.4.</b> Heat map with the “Heat” ramp.</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <div class="marco"><img src="../img/en/b4-coinciden.png" alt="Grid of 0.5-degree cells colored according to whether they have plant and visitor, plants only or visitors only"></div>
+      <figcaption><b>Figure 4.5.</b> Where plant and visitor meet, in 0.5° cells.</figcaption>
+    </figure>
+  </div>
+  <p>In Figure 4.5 the shared cells (in rust red) are concentrated in central and southern Mexico, where more sampling was done; the visitor-only cells (light amber) dominate the north, where <i>Xenoglossa</i> and the honey bee are recorded without wild cucurbits. It is a visual reading; Block 5 says whether that co-occurrence is more or less than chance predicts.</p>
+  <p><b>The symbols.</b> Size, opacity, outline color and width, halo (a light border that separates the points from the background) and the shape of the plants and of the visitors: circle, square, triangle, diamond, cross or star. With <i>by role</i> color, all the plants go in one color and all the visitors in another.</p>
+  <figure class="media">
+    <div class="marco"><img src="../img/en/b4-envolventes.png" alt="The convex hulls of Sechium edule and Xenoglossa over Mexico, with the units table where only those two are ticked to be shown"></div>
+    <figcaption><b>Figure 4.6.</b> Convex hulls with only two units visible: chayote and <i>Xenoglossa</i>. The <b>Each unit</b> table lets you hide units, change their color and shape, and says how many records each one has.</figcaption>
+  </figure>
+  <p><b>Each unit.</b> The table of the <span class="ui">Data</span> tab —repeated in <span class="ui">Colours</span>— has one row per unit with the <b>Show</b> checkbox, its color, its shape and its number of records. The buttons <span class="ui">Show all</span>, <span class="ui">Plants only</span> and <span class="ui">Visitors only</span> change the visibility at a stroke. The territory tables of Section 4.7 and the points download follow what is shown.</p>
+  <p><b>Colors.</b> Six palettes for the units —PollinationPro, Okabe–Ito (color-blind safe), Earth, Vivid, Soft and Grays— and six ramps for density —Greens, Amber, Violets, Heat, Cool and Grays—. A color changed by hand in a unit is kept when you change palette; <span class="ui">Back to the palette colours</span> undoes it.</p>
+
+  <!-- 4.6 -->
+  <h2 id="s4-6"><span class="num">4.6</span>Ready-made looks and export</h2>
+  <p>A <b>look</b> applies the background, the colors, the typography and the elements at once; the texts (title, credit) and each unit’s own colors are kept.</p>
+  <table class="compacta">
+    <thead><tr><th style="width:1.5in">Look</th><th>What it is like</th><th style="width:1.8in">What for</th></tr></thead>
+    <tbody>
+      <tr><td><b>Publication</b></td><td>White, thin frame, graticule and light legend.</td><td>The figure of a paper.</td></tr>
+      <tr><td><b>Black and white</b></td><td>Grays and different shapes per unit.</td><td>Journals that charge for color.</td></tr>
+      <tr><td><b>Dark presentation</b></td><td>Dark background, large points with halo.</td><td>Slides.</td></tr>
+      <tr><td><b>Field guide</b></td><td>Earth tones, serif, compass rose, state abbreviations.</td><td>Books, outreach posters.</td></tr>
+      <tr><td><b>Poster</b></td><td>Large texts and points, boxed title.</td><td>Conference posters.</td></tr>
+      <tr><td><b>Data only</b></td><td>No sea or graticule, faint boundaries.</td><td>Composite figures, insets.</td></tr>
+    </tbody>
+  </table>
+  <div class="dos">
+    <figure style="margin:0">
+      <div class="marco"><img src="../img/en/b4-byn.png" alt="The map with the Black and white look: gray land, units in blacks and grays with different shapes"></div>
+      <figcaption><b>Figure 4.7.</b> The <i>Black and white</i> look.</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <div class="marco"><img src="../img/en/b4-campo.png" alt="The map with the Field guide look clipped to six states of southern Mexico, with compass rose and state abbreviations"></div>
+      <figcaption><b>Figure 4.8.</b> <i>Field guide</i>, clipped to six southern states.</figcaption>
+    </figure>
+  </div>
+  <p><span class="ui">⤓ Save this style (.json)</span> saves all the map options —except the data— to a file; <span class="ui">Load a style…</span> applies it to another study or on another computer. That way all the map figures of a thesis come out alike. <span class="ui">Reset everything</span> goes back to the starting values.</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b4-exportar.png" alt="The Export tab with the PNG format, the size of a journal column and 600 dpi; the map already has the proportions of the chosen paper"></div>
+    <figcaption><b>Figure 4.9.</b> The export to a journal column (85 × 70 mm) at 600 dpi: “It will be 2,006 × 1,656 pixels”. The view on the left took the shape of the paper: what you see is what is downloaded.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.3in">Option</th><th>Values</th></tr></thead>
+    <tbody>
+      <tr><td><b>Format</b></td><td>PNG, JPEG, WebP, SVG (vector, editable), TIFF and GeoTIFF (georeferenced).</td></tr>
+      <tr><td><b>Size</b></td><td>Screen (960 × 620 px), A4 landscape and portrait, letter landscape, journal single column (85 × 70 mm), 1.5 columns (120 × 90 mm) and double column (175 × 120 mm), 16:9 slide and custom (in millimeters).</td></tr>
+      <tr><td><b>Resolution</b></td><td>150, 300, 600 or 900 dpi. Below, you can read the size in pixels that will come out.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>The GeoTIFF opens in place</div>
+    <p>The GeoTIFF carries the georeferencing keys of a longitude–latitude grid on WGS 84 (EPSG 4326): in a geographic information system it falls exactly on your layers. For an exact fit over the whole image, remove the title and keep the legend inside the map; the app reminds you of this when downloading.</p>
+  </div>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Decision rule · which format to hand in</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>If</b> the journal asks for the final figure</td><td><b>then</b> TIFF or PNG at 600 dpi at the column width it asks for (single, one and a half or double).</td></tr>
+      <tr><td><b>If</b> you are going to touch up the figure in another program</td><td><b>then</b> SVG: every text and every point remains editable.</td></tr>
+      <tr><td><b>If</b> the figure goes into a geographic information system or onto another map</td><td><b>then</b> GeoTIFF, without a title.</td></tr>
+    </tbody></table>
+  </div>
+
+  <!-- 4.7 -->
+  <h2 id="s4-7"><span class="num">4.7</span>Records by territory</h2>
+  <figure class="alta">
+    <div class="marco"><img src="../img/en/b4-territorio.png" alt="The records by territory card: a table of Mexican states with the total and the records of each unit, the list of states without records and the table of countries"></div>
+    <figcaption><b>Figure 4.10.</b> The records of what is shown on the map, by Mexican state and by country. Oaxaca (194), Chiapas (175), Puebla (174) and Veracruz (168) hold the most records; Baja California, Baja California Sur and Nuevo León have none.</figcaption>
+  </figure>
+  <p>The tables follow what the map shows: if units are hidden, they are recomputed. The states table gives the total and one column per unit (up to ten); the sentence below names the states without any record of what is shown. It is the first answer to “where is sampling missing?”: a state without records of a plant that should be there is a sampling gap or a real distribution limit, and it is worth knowing which before interpreting the following blocks. <span class="ui">⤓ Points shown (.csv)</span>, under the studio, downloads the visible points with their unit and coordinates.</p>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>What the map does not say</div>
+    <p>A map of presence records is not a distribution map: it shows where someone recorded the species, not where it lives. Gaps may be absences or lack of sampling, and concentrations may be abundance or effort. The caption of the paper’s figure should say so (“cleaned records of…, GBIF and own observations”), and Block 8 is the one that estimates the potential distribution.</p>
+  </div>
+</section>
+
+</body>
+</html>

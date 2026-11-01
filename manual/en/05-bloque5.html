@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · User’s Manual · Chapter 5</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  .formula { font-family: var(--mono); font-size: 9pt; background: var(--marino-suave); border-radius: 5px; padding: 0.07in 0.12in; margin: 0.08in 0; }
+  figure.media { width: 82%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 70%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b5" data-pestana="B5" data-orden="5" style="--acento: var(--b5)">
+  <div class="cap-apertura">
+    <div class="cap-num">5</div>
+    <div class="cap-etiqueta">Block 5 · Co-occurrence</div>
+    <h1 data-corto="Co-occurrence">Spatial co-occurrence</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Do the plant and the visitor coincide in the territory more than chance predicts, once where sampling happened is discounted? Three independent readings: the cells they share, with Veech’s exact test and its sensitivity to scale; the distance from each plant to the nearest visitor, against a null model that keeps the geography of sampling; and the overlap of their ranges.</p>
+    <ul class="cap-contenido">
+      <li><b>5.1</b>More than chance predicts?</li>
+      <li><b>5.2</b>Every pair</li>
+      <li><b>5.3</b>The chosen pair and the scale</li>
+      <li><b>5.4</b>The distance to the nearest visitor</li>
+      <li><b>5.5</b>The overlap of ranges</li>
+      <li><b>5.6</b>How to read the three tests together</li>
+      <li><b>5.7</b>The messages of this block</li>
+    </ul>
+  </div>
+
+  <!-- 5.1 -->
+  <h2 id="s5-1"><span class="num">5.1</span>More than chance predicts?</h2>
+  <p class="lead">That the plant and the visitor have records in the same places says nothing unless you know how many co-occurrences would be expected by chance. The test of this block compares the observed with the expected, and the answer depends on two decisions: <b>among which sites</b> chance is spread (the universe) and <b>at what scale</b> you look (the cell size).</p>
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · Veech’s exact test</div>
+    <p>The territory is cut into cells. If the universe has N cells, the plant occupies N₁ and the visitor N₂, and they were placed at random with respect to each other, the number of shared cells j would follow the <b>hypergeometric</b> distribution. The app computes the probability of observing as many or more (positive association) and as many or fewer (negative association), with no simulations or normality assumptions (Veech 2013). The <b>standardized effect size</b> (SES) says how many standard deviations the observed lies from the expected; |SES| &gt; 1.96 corresponds roughly to p &lt; 0.05 (Gotelli 2000).</p>
+    <div class="formula">P(j) = C(N₁, j) · C(N − N₁, N₂ − j) / C(N, N₂)     E[j] = N₁·N₂ / N     SES = (j − E[j]) / √Var[j]</div>
+  </div>
+  <p>The default <b>universe</b> is the <b>target group</b>: the cells where any unit of the study was recorded, which are the ones that were really sampled (Phillips et al. 2009). The alternative, all the land in the extent, also spreads chance over cells nobody visited; the lab of Block 1 (Section 1.3) shows the error that produces.</p>
+
+  <!-- 5.2 -->
+  <h2 id="s5-2"><span class="num">5.2</span>Every pair</h2>
+  <p>The first card tests every plant against every visitor with three controls: the <b>cell</b> size (0.1°, 0.25°, 0.5°, 1° or 2°, that is, about 11, 28, 55, 110 or 220 km), the <b>universe</b> and the Benjamini–Hochberg <b>adjustment for multiple comparisons</b>.</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b5-pares.png" alt="The cell, universe and adjustment controls; the tiles for the universe, the pairs tested and the verdicts; and the pair matrix of plants by visitors with the SES in each square"></div>
+    <figcaption><b>Figure 5.1.</b> The twelve pairs of the practice study in 0.25° cells with the target group: 918 universe cells, no pair more than expected, four less than expected and eight at random. In the matrix, each square carries the SES; green is aggregation, violet segregation, the intensity is |SES| and the dotted border marks the significant ones. The pair with the thick border is the chosen one.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.6in">Tile</th><th>What it says</th></tr></thead>
+    <tbody>
+      <tr><td><b>Universe</b></td><td>How many cells enter the chance model, with the size and type of universe.</td></tr>
+      <tr><td><b>Pairs tested</b></td><td>Plants × visitors.</td></tr>
+      <tr><td><b>More than expected</b> · <b>Less</b> · <b>At random</b></td><td>The verdicts, with adjusted p if the adjustment is on.</td></tr>
+      <tr><td><b>Unclassified</b></td><td>The pairs for which chance could never be rejected: those that expect less than one shared cell, or for which not even the most extreme result would reach α = 0.05. With so few data no conclusion is possible, and the app does not pretend otherwise.</td></tr>
+    </tbody>
+  </table>
+  <p>Clicking a square of the matrix chooses that pair for the following cards. The drop-down <span class="ui">Table of every pair</span> sorts them by SES, from aggregation to segregation:</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b5-tabla.png" alt="The table of every pair: plant, visitor, cells of each, shared, expected, SES, two-sided p, adjusted p, verdict, Jaccard index and cover"></div>
+    <figcaption><b>Figure 5.2.</b> The pairs table. Chayote with <i>Xenoglossa</i> heads the list with 51 shared cells against 46.0 expected (SES 0.97, at random); <i>Cucurbita</i> with the honey bee closes it with 118 against 173.3 (SES −7.72, less than expected).</figcaption>
+  </figure>
+  <p>Besides the test, each pair carries two descriptive indices: <b>Jaccard</b>’s (shared cells over the cells of either of the two) and the <b>cover</b> (what fraction of the plant’s cells has the visitor). <span class="ui">⤓ Pairs (.csv)</span> downloads the complete table, with the Sørensen and Simpson indices and both tails of p.</p>
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · why adjust</div>
+    <p>With 6 plants and 2 visitors, 12 pairs are tested; with 30 pairs, at α = 0.05, one or two “significant” ones would be expected even if there were no association at all. The Benjamini and Hochberg (1995) adjustment controls the expected proportion of false positives among the pairs declared associated. Use the adjusted p to decide and report both; if you are only interested in one pair chosen beforehand by the hypothesis, its unadjusted p is the one that applies.</p>
+  </div>
+
+  <!-- 5.3 -->
+  <h2 id="s5-3"><span class="num">5.3</span>The chosen pair and the scale</h2>
+  <figure>
+    <div class="marco"><img src="../img/en/b5-par.png" alt="The pair Sechium edule by Xenoglossa: tiles for shared cells, expected, SES, p of each tail and cover; the null distribution of shared cells with the observed and the expected; and the sensitivity of the SES to five cell sizes"></div>
+    <figcaption><b>Figure 5.3.</b> Chayote and <i>Xenoglossa</i>. On the left, the hypergeometric distribution of shared cells under chance, with the observed (51) and the expected (46.0); the colored bars are the tail running outward from the observed. On the right, the SES with five cell sizes, the ±1.96 band and the verdict of each one (+, − or ·).</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.6in">Tile</th><th>What it says</th><th style="width:1.35in">Chayote × <i>Xenoglossa</i></th></tr></thead>
+    <tbody>
+      <tr><td><b>Shared cells</b></td><td>The observed ones, out of those of the plant and those of the visitor.</td><td>51 of 158 and 267</td></tr>
+      <tr><td><b>Expected by chance</b></td><td>N₁·N₂/N, with the size of the universe.</td><td>46.0 · N = 918</td></tr>
+      <tr><td><b>SES</b></td><td>The standardized effect size, with its scale label.</td><td>0.97 · <i>chance</i></td></tr>
+      <tr><td><b>p (more)</b> · <b>p (less)</b></td><td>The probability of as many or more shared cells (test of positive association) and of as many or fewer (negative).</td><td>0.19 · 0.857</td></tr>
+      <tr><td><b>Cover</b></td><td>What fraction of the plant’s cells has the visitor.</td><td>32%</td></tr>
+    </tbody>
+  </table>
+  <p>The <b>sensitivity</b> figure repeats the test with the five cell sizes. In the practice study the verdict changes: less than expected at 0.1°, at random at 0.25°, more than expected at 0.5°, at random at 1° and 2°. The app writes it below and advises: <i>“Report it that way: the association depends on the resolution it is looked at.”</i> When all five agree, it says the result is robust to the scale.</p>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Decision rule · which cell size</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>If</b> the question is whether the visitor can reach the flower</td><td><b>then</b> use small cells (0.1–0.25°): a solitary bee forages hundreds of meters or a few kilometers from its nest; a bumble bee, several kilometers.</td></tr>
+      <tr><td><b>If</b> the question is whether they share a region (biogeography, history)</td><td><b>then</b> 0.5–1° cells.</td></tr>
+      <tr><td><b>If</b> the verdict changes with the cell</td><td><b>then</b> do not pick the one that suits you: report the sensitivity figure and say at what scale there is association and at which there is not.</td></tr>
+    </tbody></table>
+    <p class="regla-pie">With very fine cells and few records almost nothing coincides and the pairs are left unclassified; with huge cells almost everything coincides. Neither extreme is informative.</p>
+  </div>
+
+  <!-- 5.4 -->
+  <h2 id="s5-4"><span class="num">5.4</span>The distance to the nearest visitor</h2>
+  <p>The third card uses no grid. For each point of the plant it measures the distance to the nearest record of the visitor and takes the median. The <b>null model</b> replaces the visitor’s records with as many sites drawn without replacement from all the records of the study —the target group—, which keeps the geography of sampling and breaks only the link between the two taxa; it is repeated 99 to 999 times (Davison and Hinkley 1997). Beforehand, the points are thinned to one per kilometer so that a heavily recorded site does not weigh a hundredfold.</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b5-vecino.png" alt="The card for the distance to the nearest visitor: tiles for the observed median, the null median, the p of both tails and the fraction of points with a visitor within 10 km; and the histogram of the medians under the null model with the observed one"></div>
+    <figcaption><b>Figure 5.4.</b> Chayote and <i>Xenoglossa</i>: the observed median, 17.9 km, lies outside the 199 medians of the null model (null median 13.9 km). p (farther) = 0.005: the visitor is farther from the plant than sampling would explain.</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.9in">Tile</th><th>What it says</th></tr></thead>
+    <tbody>
+      <tr><td><b>Observed median</b></td><td>The typical distance from a plant point to the nearest visitor, with how many plant points enter.</td></tr>
+      <tr><td><b>Null median</b></td><td>The median of the simulated medians.</td></tr>
+      <tr><td><b>p (closer · farther)</b></td><td>The fraction of simulations with a median equal or smaller (the visitor is closer than expected) and equal or larger (farther). With 199 simulations, the smallest possible p is 0.005.</td></tr>
+      <tr><td><b>With a visitor ≤ 10 km</b></td><td>What fraction of the plant points has a record of the visitor within 10 km: a figure easy to communicate.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Two tests, two answers: it is not a contradiction</div>
+    <p>At 0.25°, the cell test says “at random” for chayote and <i>Xenoglossa</i>; the distance test says “farther than expected”. They measure different things: the first counts whether they share 28 km cells; the second, how close each chayote is to the nearest visitor. In the practice data, <i>Xenoglossa</i> spreads over the center and the north, where there are many records of other units, and chayote is concentrated in the center and the southeast: within the cells they share, the points are not particularly close together. Report both and say what each one measures.</p>
+  </div>
+
+  <!-- 5.5 -->
+  <h2 id="s5-5"><span class="num">5.5</span>The overlap of ranges</h2>
+  <p>The fourth card draws the <b>convex hull</b> of each unit —the smallest polygon without indentations that encloses all its points (Andrew 1979)— and computes its area on the sphere (Chamberlain and Duquette 2007), that of their intersection (Sutherland and Hodgman 1974) and what fraction of the plant’s area is covered by the visitor’s.</p>
+  <figure class="alta">
+    <div class="marco"><img src="../img/en/b5-areas.png" alt="The area tiles and the map with the convex hulls of chayote and Xenoglossa and their intersection"></div>
+    <figcaption><b>Figure 5.5.</b> The area of chayote (301,078 km²) falls almost entirely (99%) within that of <i>Xenoglossa</i> (1,444,639 km²).</figcaption>
+  </figure>
+  <p>It is the coarsest reading of the three: a convex hull includes everything lying between the extreme points —in Figure 5.5, a good part of the Gulf of Mexico—, so it exaggerates the area of species with scattered records. It serves to say whether the visitor covers, at least in extent, the area of the plant; not to say whether they coincide within it.</p>
+
+  <!-- 5.6 -->
+  <h2 id="s5-6"><span class="num">5.6</span>How to read the three tests together</h2>
+  <table>
+    <thead><tr><th style="width:1.5in">Test</th><th style="width:2.2in">Question</th><th>In the practice study (chayote × <i>Xenoglossa</i>)</th></tr></thead>
+    <tbody>
+      <tr><td><b>Cells (Veech)</b></td><td>Do they share more cells than by chance?</td><td>At random at 0.25°; it depends on the scale.</td></tr>
+      <tr><td><b>Nearest neighbor</b></td><td>Is the visitor closer to the plant than by chance?</td><td>Farther than expected.</td></tr>
+      <tr><td><b>Hulls</b></td><td>Does the visitor cover the area of the plant?</td><td>Yes, 99%.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja ejemplo">
+    <div class="caja-t"><span class="ico">▸</span>Worked example · how to write it up</div>
+    <p style="font-style:italic">“<i>Xenoglossa</i> occupies practically the whole area of chayote (99% of its convex hull), but its records do not coincide with those of the plant more than expected by chance within the sampled cells (0.25°: 51 shared cells against 46.0 expected, SES = 0.97), and the result depends on the scale. The distance from each plant record to the nearest visitor record was larger than under a target-group null model (median 17.9 versus 13.9 km; p = 0.005). <i>Xenoglossa</i> is therefore a potential pollinator whose spatial co-occurrence with chayote must be confirmed with visitation observations.”</p>
+    <p>Remember that these numbers come from the practice data: they serve to learn how to write it up, not to conclude anything about chayote.</p>
+  </div>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>Coinciding is not interacting</div>
+    <p>Even with the three tests in favor, what the block demonstrates is <b>opportunity for interaction</b>. The sentence a reviewer will strike out is “X is a pollinator of Y because their distributions overlap”; the correct one, “X and Y overlap in space, which makes X a potential pollinator to be confirmed with observations of visits and pollen loads” (Blanchet et al. 2020; Dormann et al. 2018).</p>
+  </div>
+
+  <!-- 5.7 -->
+  <h2 id="s5-7"><span class="num">5.7</span>The messages of this block</h2>
+  <table class="compacta">
+    <thead><tr><th style="width:2.6in">Message</th><th>What it means and what to do</th></tr></thead>
+    <tbody>
+      <tr><td><i>Plants and visitors are needed</i></td><td>The list needs at least one plant and one visitor with cleaned records.</td></tr>
+      <tr><td><i>The grid is too fine for the "all land" universe in this extent</i></td><td>With 0.1° cells over a large area, the all-land universe has too many cells. Use larger cells or the target group.</td></tr>
+      <tr><td><i>The verdict changes with the scale…</i></td><td>It is not an error: it is a result. Report it with the sensitivity figure.</td></tr>
+      <tr><td>Many “unclassified” pairs</td><td>There are few records for the chosen cell. Use larger cells or bring species together in their genus (Block 3).</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>

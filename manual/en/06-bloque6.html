@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PollinationPro · User’s Manual · Chapter 6</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../interior.css">
+<script src="../paginar.js"></script>
+<style>
+  .formula { font-family: var(--mono); font-size: 9pt; background: var(--marino-suave); border-radius: 5px; padding: 0.07in 0.12in; margin: 0.08in 0; }
+  figure.media { width: 82%; margin-left: auto; margin-right: auto; }
+  figure.alta { width: 52%; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<section class="capitulo" id="cap-b6" data-pestana="B6" data-orden="6" style="--acento: var(--b6)">
+  <div class="cap-apertura">
+    <div class="cap-num">6</div>
+    <div class="cap-etiqueta">Block 6 · Phenology and elevation</div>
+    <h1 data-corto="Phenology and elevation">Phenology and elevation</h1>
+    <div class="cap-regla"></div>
+    <p class="cap-resumen">Does the visitor fly when the plant flowers, and at the same elevation? Record dates are read as circular statistics —the year is a circle—: mean date, concentration, seasonality and difference between calendars. Monthly profiles are compared with the same overlap indices as the niche, with the option of correcting for the sampling effort of each month. And elevation is compared with densities along the gradient.</p>
+    <ul class="cap-contenido">
+      <li><b>6.1</b>The year is a circle</li>
+      <li><b>6.2</b>The calendar of every unit</li>
+      <li><b>6.3</b>The circular statistics of each unit</li>
+      <li><b>6.4</b>Plant and visitor</li>
+      <li><b>6.5</b>Elevation</li>
+      <li><b>6.6</b>The messages of this block</li>
+    </ul>
+  </div>
+
+  <!-- 6.1 -->
+  <h2 id="s6-1"><span class="num">6.1</span>The year is a circle</h2>
+  <p class="lead">December 31 and January 1 are one day apart. Treating dates as numbers from 1 to 365 gives a plant that flowers from November to February its “mean” in June. Circular statistics turn each date into an angle and solve the problem (Batschelet 1981; Fisher 1993; Morellato et al. 2010).</p>
+  <div class="caja teoria">
+    <div class="caja-t"><span class="ico">θ</span>Theory in brief · mean date, R̄ and the two tests</div>
+    <p>Day <i>d</i> is equivalent to the angle θ = 2π(<i>d</i> − ½)/365. The <b>mean date</b> is the direction of the average vector of all the records, and its length <b>R̄</b>, from 0 to 1, measures concentration: 1 if all fall on the same day, 0 if they are spread evenly over the year. The <b>circular standard deviation</b>, in days, is its more intuitive version. The <b>Rayleigh</b> test says whether the distribution is seasonal (small p) or uniform; the <b>Watson–Williams</b> test, whether two calendars have the same mean date (Zar 2010), and it requires that they not be too spread out (κ ≥ 1).</p>
+    <div class="formula">C̄ = Σcos θᵢ / n     S̄ = Σsin θᵢ / n     R̄ = √(C̄² + S̄²)     θ̄ = atan2(S̄, C̄)     Z = n·R̄²</div>
+  </div>
+  <p>A dated record does not necessarily say that the plant was in flower: a herbarium specimen may be vegetative or in fruit. That is why the checkbox <span class="ui">Plants: only records with flowers</span> uses only the records whose reproductive condition says flower or anthesis. And the number of records per month also reflects when people go to the field: the checkbox <span class="ui">Correct by the monthly effort of the target group</span> divides each profile by the records of the whole study in that month (Section 6.2).</p>
+
+  <!-- 6.2 -->
+  <h2 id="s6-2"><span class="num">6.2</span>The calendar of every unit</h2>
+  <figure>
+    <div class="marco"><img src="../img/en/b6-fenograma.png" alt="The tiles for records with month, plants with recorded flowers, units and profile, and the phenogram: one row per unit and one column per month, with color intensity proportional to the fraction of the month and a triangle at the mean date"></div>
+    <figcaption><b>Figure 6.1.</b> The phenogram of the practice study. Each row is a unit and each square a month; the color intensity is the fraction of that unit’s records in that month, and the triangle marks the mean date when the Rayleigh test is significant. The gray strip at the top is the effort of the whole study.</figcaption>
+  </figure>
+  <p>The tiles say how many records carry a month (all 1,856 cleaned ones, 100%), how many plants have flowers recorded in their reproductive condition (331), how many units enter (6 plants and 2 visitors) and whether the profile is raw or corrected. The phenogram shows the essentials at a glance: the five <i>Sechium</i> species and the squashes flower from July to October; <i>Xenoglossa</i> flies from June to September; the honey bee is recorded all year round.</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b6-esfuerzo.png" alt="The phenogram with the effort correction turned on: the profiles change and the honey bee appears concentrated in the winter months"></div>
+    <figcaption><b>Figure 6.2.</b> The same phenogram corrected by the monthly effort. The honey bee, which was recorded all year round, appears concentrated in winter: in those months the study has few records, and its records weigh more when divided by the effort.</figcaption>
+  </figure>
+  <div class="caja importante">
+    <div class="caja-t"><span class="ico">!</span>The effort correction can also mislead</div>
+    <p>Correcting divides the fraction of each month by the effort of that month, and the months with very few records in the whole study (fewer than five) are set to zero so as not to divide by almost nothing. Even so, with few records the correction amplifies the noise, as in Figure 6.2. The correction changes the <b>monthly profiles</b> and the overlap indices; the mean date and R̄ are always computed with the dates of the records. Report the raw and the corrected result, and say which one you use to draw conclusions.</p>
+  </div>
+
+  <!-- 6.3 -->
+  <h2 id="s6-3"><span class="num">6.3</span>The circular statistics of each unit</h2>
+  <figure>
+    <div class="marco"><img src="../img/en/b6-circular.png" alt="The circular statistics table: role, unit, dated records, mean date, R̄ with its label, circular deviation in days, Rayleigh p and possible second peak"></div>
+    <figcaption><b>Figure 6.3.</b> The circular statistics of the eight units. The plants have marked flowering seasons (R̄ from 0.65 to 0.91); <i>Xenoglossa</i> flies in a concentrated season (R̄ 0.80, mean date August 11); the honey bee is recorded almost all year (R̄ 0.12, <i>diffuse</i>).</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.7in">Column</th><th>What it says</th></tr></thead>
+    <tbody>
+      <tr><td><b>Dated</b></td><td>How many of the unit’s records enter, out of how many it has.</td></tr>
+      <tr><td><b>Mean date</b></td><td>The direction of the mean vector, as day and month.</td></tr>
+      <tr><td><b>R̄</b></td><td>The concentration, with its label: <i>diffuse</i>, <i>moderate</i> or <i>marked</i>.</td></tr>
+      <tr><td><b>Circular SD (days)</b></td><td>The spread around the mean date.</td></tr>
+      <tr><td><b>Rayleigh p</b></td><td>Whether there is seasonality. With hundreds of records it is nearly always very small: look at R̄.</td></tr>
+      <tr><td><b>Two peaks?</b></td><td>“possible” when the second harmonic is strong (R̄₂ &gt; 0.3 and larger than R̄ + 0.15): two flowering seasons a year, or two populations with different calendars. With two peaks, the mean date falls between them and describes neither.</td></tr>
+    </tbody>
+  </table>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Decision rule · how seasonal it is</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>If</b> R̄ &lt; 0.3</td><td><b>then</b> the unit is recorded almost all year or has two seasons (<i>diffuse</i>): its mean date says little and it should not be compared with Watson–Williams.</td></tr>
+      <tr><td><b>If</b> R̄ is between 0.3 and 0.6</td><td><b>then</b> there is a preferred season, but a broad one (<i>moderate</i>).</td></tr>
+      <tr><td><b>If</b> R̄ &gt; 0.6</td><td><b>then</b> there is a defined season (<i>marked</i>) and the mean date summarizes it well.</td></tr>
+    </tbody></table>
+    <p class="regla-pie">The <span class="ui">?</span> card for R̄ carries this scale. They are reading conventions, not laws.</p>
+  </div>
+
+  <!-- 6.4 -->
+  <h2 id="s6-4"><span class="num">6.4</span>Plant and visitor</h2>
+  <p>The second card compares one plant with one visitor, chosen in its two selectors.</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b6-par.png" alt="Chayote and Xenoglossa: tiles for Schoener’s D, I and O, the lag between the mean dates with Watson–Williams, flowering with flight and the months in common; the circular rose with the two calendars and their mean vectors, and the monthly profiles"></div>
+    <figcaption><b>Figure 6.4.</b> Chayote and <i>Xenoglossa</i>. In the rose, the area of each sector is proportional to the fraction of the month and the arrow is the mean vector; in the bars, the monthly profiles and, in light color, their overlap (the minimum of the two in each month, whose sum is D).</figcaption>
+  </figure>
+  <table class="compacta">
+    <thead><tr><th style="width:1.8in">Tile</th><th>What it says</th><th style="width:1.35in">Chayote × <i>Xenoglossa</i></th></tr></thead>
+    <tbody>
+      <tr><td><b>Schoener’s D</b></td><td>The fraction of the two calendars that is shared: Σ min(pᵢ, qᵢ) over the twelve months, from 0 to 1 (Schoener 1968).</td><td>0.79 · <i>high</i></td></tr>
+      <tr><td><b>Warren’s I · Pianka’s O</b></td><td>Two overlap indices that are more lenient with small differences (Warren et al. 2008; Pianka 1973). They are reported along with D.</td><td>0.94 · 0.91</td></tr>
+      <tr><td><b>Lag between mean dates</b></td><td>The days between the two mean dates, with the Watson–Williams p.</td><td>26 days · p ≈ 7 × 10⁻¹³</td></tr>
+      <tr><td><b>Flowering with flight</b></td><td>What fraction of the plant’s profile falls in months with records of the visitor.</td><td>97%</td></tr>
+      <tr><td><b>Months in common</b></td><td>The months in which both have at least 5% of their profile.</td><td>Jun to Oct</td></tr>
+    </tbody>
+  </table>
+  <p>The reading is that of Section 1.4: the practice chayote flowers on average on September 5 and <i>Xenoglossa</i> flies on average on August 11; with hundreds of records, that 26-day lag is highly significant, and yet 97% of the flowering falls in months with bees flying and the two calendars share 79% of their profile. The visitor comes ahead of the plant, but it keeps it company.</p>
+  <figure>
+    <div class="marco"><img src="../img/en/b6-pares.png" alt="The table of every phenological pair, sorted by Schoener’s D, with I, O, lag, Watson–Williams p marked with an asterisk when it is unreliable, and flowering with flight"></div>
+    <figcaption><b>Figure 6.5.</b> Every pair, from highest to lowest D. The pairs with the honey bee carry an asterisk on the Watson–Williams p: with dates this spread out (κ &lt; 1), the test is unreliable.</figcaption>
+  </figure>
+  <div class="caja regla">
+    <div class="caja-t"><span class="ico">✓</span>Decision rule · Schoener’s D</div>
+    <table class="compacta"><tbody>
+      <tr><td style="width:44%"><b>If</b> D &lt; 0.2</td><td><b>then</b> no or very limited overlap: flowering and flight hardly coincide.</td></tr>
+      <tr><td><b>If</b> D is between 0.2 and 0.4</td><td><b>then</b> low.</td></tr>
+      <tr><td><b>If</b> D is between 0.4 and 0.6</td><td><b>then</b> moderate.</td></tr>
+      <tr><td><b>If</b> D is between 0.6 and 0.8</td><td><b>then</b> high.</td></tr>
+      <tr><td><b>If</b> D &gt; 0.8</td><td><b>then</b> very high: the calendars are almost the same.</td></tr>
+    </tbody></table>
+    <p class="regla-pie">The scale is that of Rödder and Engler (2011) for the niche, applied to the calendar. A year-round generalist (the honey bee) has a moderate D with almost every plant because its profile is spread out: always read D together with flowering with flight.</p>
+  </div>
+  <p><span class="ui">⤓ Units (.csv)</span> and <span class="ui">⤓ Pairs (.csv)</span> download the two tables, with the monthly profiles of each unit.</p>
+
+  <!-- 6.5 -->
+  <h2 id="s6-5"><span class="num">6.5</span>Elevation</h2>
+  <p>The third card compares the elevational distribution of the pair with kernel densities (Silverman 1986) and computes its D. It needs records with elevation, which GBIF provides only sometimes: in the practice study only 23% of the records carry it, and none of the visitors’. Block 7 can fill it in from an elevation layer (Section 7.2); Figure 6.6 was made after doing so with the practice elevation layer.</p>
+  <figure class="alta">
+    <div class="marco"><img src="../img/en/b6-altitud.png" alt="The elevational distribution of chayote and Xenoglossa as two overlapping densities, the sentence on elevational overlap and the elevation table of the eight units"></div>
+    <figcaption><b>Figure 6.6.</b> The elevation of chayote and <i>Xenoglossa</i> with elevation filled in from the practice layer: D = 0.78 (<i>high</i>), and 96% of the plant’s records fall within the central 90% of the visitor’s range. The table gives the minimum, quartiles, median and maximum of each unit.</figcaption>
+  </figure>
+  <p>The sentence below the figure gives the elevational D and what fraction of the plant’s records falls within the central 90% of the visitor’s range. The table helps to read the wild relatives: in the practice data, <i>S. chinantlense</i> is a lowland species (median 317 m) and <i>S. mexicanum</i> a highland one (1,687 m).</p>
+  <div class="caja nota">
+    <div class="caja-t"><span class="ico">i</span>The elevation of a layer is not that of the record</div>
+    <p>The elevation read from a digital elevation model is that of the cell (at 0.1°, an average over about 11 km), not that of the exact point: in mountains it can differ by hundreds of meters. Records that carried their own elevation keep it; the layer only fills in those that lack it.</p>
+  </div>
+
+  <!-- 6.6 -->
+  <h2 id="s6-6"><span class="num">6.6</span>The messages of this block</h2>
+  <table class="compacta">
+    <thead><tr><th style="width:2.6in">Message</th><th>What it means and what to do</th></tr></thead>
+    <tbody>
+      <tr><td><i>Only N% of the records carry elevation: the profile may not represent the whole unit</i></td><td>Fill it in from a layer in Block 7, or read elevation with caution.</td></tr>
+      <tr><td><i>No record carries elevation…</i></td><td>Load a digital elevation model in Block 7 and fill in elevation from there.</td></tr>
+      <tr><td><i>The chosen pair has no elevations</i></td><td>One of the two units has no record with elevation.</td></tr>
+      <tr><td>* κ &lt; 1 in the pairs table</td><td>The dates of one of the units are so spread out that Watson–Williams is unreliable. Use D and flowering with flight.</td></tr>
+      <tr><td>“possible” under Two peaks?</td><td>The unit may have two seasons. Check the phenogram and consider separating populations or subspecies (Block 3).</td></tr>
+      <tr><td>Few records with flowers</td><td>With <span class="ui">Plants: only records with flowers</span> turned on, a plant with few flowering records can end up with a noisy profile. Use it to confirm, not as the only analysis.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>
