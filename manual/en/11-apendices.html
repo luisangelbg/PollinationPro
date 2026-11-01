@@ -53,19 +53,19 @@
   <table class="compacta">
     <thead><tr><th style="width:0.55in">Block</th><th style="width:2.3in">Button</th><th>Content</th></tr></thead>
     <tbody>
-      <tr><td><span class="chip k2">2</span></td><td><span class="ui">⤓ Download an empty template</span></td><td>The columns the app recognizes, for occurrences or for visits.</td></tr>
-      <tr><td><span class="chip k2">2</span></td><td><span class="ui">⤓ Interactions (.csv)</span></td><td>The published records: plant, visitor, type, source and coordinates when there are any.</td></tr>
-      <tr><td><span class="chip k2">2</span></td><td><span class="ui">⤓ Raw records (.csv)</span></td><td>All the records as they arrived.</td></tr>
-      <tr><td><span class="chip k2">2</span></td><td><span class="ui">💾 Save the project (.json)</span></td><td>The whole study, to reopen it on another computer.</td></tr>
-      <tr><td><span class="chip k3">3</span></td><td><span class="ui">⤓ Cleaned records (.csv)</span> · <span class="ui">⤓ Removed records, with the reason (.csv)</span></td><td>The ones that enter the analysis, with their unit and the original and harmonized name; the rest, with the rule that removed them.</td></tr>
-      <tr><td><span class="chip k4">4</span></td><td><span class="ui">⤓ Download the map</span> · <span class="ui">⤓ Save this style (.json)</span> · <span class="ui">⤓ Points shown (.csv)</span></td><td>The map in PNG, JPEG, WebP, SVG, TIFF or GeoTIFF; the map style; the visible points.</td></tr>
-      <tr><td><span class="chip k5">5</span></td><td><span class="ui">⤓ Pairs (.csv)</span></td><td>Each pair with cells, expected, SES, both tails of p, the adjusted p, the verdict and the Jaccard, Sørensen, Simpson and cover indices.</td></tr>
-      <tr><td><span class="chip k6">6</span></td><td><span class="ui">⤓ Units (.csv)</span> · <span class="ui">⤓ Pairs (.csv)</span></td><td>The circular statistics and the monthly profiles; the phenological pairs.</td></tr>
-      <tr><td><span class="chip k7">7</span></td><td><span class="ui">⤓ Environmental values of the records (.csv)</span></td><td>Each record with environment, its components and its variables.</td></tr>
-      <tr><td><span class="chip k8">8</span></td><td><span class="ui">⤓ Classes by cell (.csv)</span></td><td>Each cell with the suitability of the plant and its current and future class.</td></tr>
-      <tr><td><span class="chip k9">9</span></td><td><span class="ui">⤓ Matrix (.csv)</span> · <span class="ui">⤓ Species (.csv)</span></td><td>The network matrix; the tables of plants and visitors.</td></tr>
+      <tr><td><span class="chip k2">2</span></td><td><span class="ui">⤓ Download an empty template</span></td><td>The columns the app recognizes, for occurrences or for visits (<code>records_template.csv</code>, <code>visits_template.csv</code>).</td></tr>
+      <tr><td><span class="chip k2">2</span></td><td><span class="ui">⤓ Interactions (.csv)</span></td><td>The published records: plant, visitor, type, source and coordinates when there are any (<code>published_interactions.csv</code>).</td></tr>
+      <tr><td><span class="chip k2">2</span></td><td><span class="ui">⤓ Raw records (.csv)</span></td><td>All the records as they arrived (<code>raw_records.csv</code>).</td></tr>
+      <tr><td><span class="chip k2">2</span></td><td><span class="ui">💾 Save the project (.json)</span></td><td>The whole study, to reopen it on another computer (<code>pollinationpro_&lt;date&gt;.json</code>).</td></tr>
+      <tr><td><span class="chip k3">3</span></td><td><span class="ui">⤓ Cleaned records (.csv)</span> · <span class="ui">⤓ Removed records, with the reason (.csv)</span></td><td>The ones that enter the analysis, with their unit and the original and harmonized name (<code>clean_records.csv</code>); the rest, with the rule that removed them (<code>removed_records.csv</code>).</td></tr>
+      <tr><td><span class="chip k4">4</span></td><td><span class="ui">⤓ Download the map</span> · <span class="ui">⤓ Save this style (.json)</span> · <span class="ui">⤓ Points shown (.csv)</span></td><td>The map in PNG, JPEG, WebP, SVG, TIFF or GeoTIFF; the map style (<code>map_style.json</code>); the visible points (<code>map_points.csv</code>).</td></tr>
+      <tr><td><span class="chip k5">5</span></td><td><span class="ui">⤓ Pairs (.csv)</span></td><td>Each pair with cells, expected, SES, both tails of p, the adjusted p, the verdict and the Jaccard, Sørensen, Simpson and cover indices (<code>cooccurrence_pairs.csv</code>).</td></tr>
+      <tr><td><span class="chip k6">6</span></td><td><span class="ui">⤓ Units (.csv)</span> · <span class="ui">⤓ Pairs (.csv)</span></td><td>The circular statistics and the monthly profiles (<code>phenology_units.csv</code>); the phenological pairs (<code>phenology_pairs.csv</code>).</td></tr>
+      <tr><td><span class="chip k7">7</span></td><td><span class="ui">⤓ Environmental values of the records (.csv)</span></td><td>Each record with environment, its components and its variables (<code>environmental_values.csv</code>).</td></tr>
+      <tr><td><span class="chip k8">8</span></td><td><span class="ui">⤓ Classes by cell (.csv)</span></td><td>Each cell with the suitability of the plant and its current and future class (<code>mismatch_cells.csv</code>).</td></tr>
+      <tr><td><span class="chip k9">9</span></td><td><span class="ui">⤓ Matrix (.csv)</span> · <span class="ui">⤓ Species (.csv)</span></td><td>The network matrix (<code>interaction_matrix.csv</code>); the tables of plants and visitors (<code>network_species.csv</code>).</td></tr>
       <tr><td>all</td><td>⤓ of each figure</td><td>The figure in PNG, JPG or SVG, 150 to 900 dpi, with the changes of the ✎ editor.</td></tr>
-      <tr><td><span class="chip k10">10</span></td><td><span class="ui">⤓ Export the selected ones</span> · <span class="ui">⤓ Download report .html</span> · <span class="ui">⤓ Build and download the .zip package</span></td><td>The figures of the catalog; the report; the package with the report, the project, the parameters, the tables and the figures.</td></tr>
+      <tr><td><span class="chip k10">10</span></td><td><span class="ui">⤓ Export the selected ones</span> · <span class="ui">⤓ Download report .html</span> · <span class="ui">⤓ Build and download the .zip package</span></td><td>The figures of the catalog; the report (<code>&lt;study&gt;_report.html</code>); the package (<code>&lt;study&gt;_package.zip</code>) with the report, the project, the parameters, the tables and the figures.</td></tr>
     </tbody>
   </table>
 
@@ -259,8 +259,8 @@
   <h3>F.2 · License</h3>
   <p>The program is distributed under the <b>GNU General Public License, version 3 or later</b> (GPL-3.0-or-later): it can be freely used, copied, studied and modified, on condition that modified versions are distributed under the same license and keep the attribution. The full text is in the <span class="ruta">LICENSE</span> file. This manual is © 2026 Luis Ángel Barrera-Guzmán, all rights reserved.</p>
   <h3>F.3 · How to cite it</h3>
-  <div class="cita">Barrera-Guzmán, L. Á. (2026). <i>PollinationPro: a browser-based platform for analysing plants, pollinators and their overlap with occurrence data</i> (Version 1.2) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.23004694</div>
-  <div class="cita">Barrera-Guzmán, L. Á. (2026). <i>PollinationPro: User’s Manual</i> (1st English ed.). Distributed with PollinationPro, version 1.2. Zenodo. https://doi.org/10.5281/zenodo.23004694</div>
+  <div class="cita">Barrera-Guzmán, L.Á. (2026). <i>PollinationPro: a browser-based platform for analysing plants, pollinators and their overlap with occurrence data</i> (Version 1.2.5) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.23004694</div>
+  <div class="cita">Barrera-Guzmán, L.Á. (2026). <i>PollinationPro: User’s Manual</i> (1st English ed.). Distributed with PollinationPro, version 1.2.5. Zenodo. https://doi.org/10.5281/zenodo.23004694</div>
   <p class="small">The DOI is the concept DOI in Zenodo: it always resolves to the latest version. The citation of the program is also in <span class="ruta">CITATION.cff</span> and at the end of every Block 10 report. Also cite the methods you used to their original works, and each GBIF download with its DOI.</p>
 </section>
 

@@ -29,7 +29,7 @@
       <li><b>8.3</b>Evaluation and suitability maps</li>
       <li><b>8.4</b>The mismatch</li>
       <li><b>8.5</b>With a future climate</li>
-      <li><b>8.6</b>The messages of this block</li>
+      <li><b>8.6</b>The warnings in this block</li>
     </ul>
   </div>
 
@@ -108,7 +108,7 @@
       <tr><td><b>Visitor only</b></td><td>The area suitable for some visitor but not for the plant.</td><td>2,450,600 km²</td></tr>
     </tbody>
   </table>
-  <p>Below the map, the app says what fraction of the cells lies outside the environmental range of the plant’s records in at least one variable: <i>“35% of the map cells lie outside the environmental range of the plant’s records in at least one variable: there the model extrapolates and its suitability must be read with caution.”</i> <span class="ui">⤓ Classes by cell (.csv)</span> downloads each cell with its coordinates, the suitability of the plant and its current and future class.</p>
+  <p>Below the map, the app says what fraction of the cells lies outside the environmental range of the plant’s records in at least one variable: <i>“35 % of the map cells lie outside the environmental range of the plant's records in at least one variable: there the model extrapolates and its suitability must be read with caution.”</i> <span class="ui">⤓ Classes by cell (.csv)</span> downloads, as <code>mismatch_cells.csv</code>, each cell with its coordinates, the suitability of the plant and its current and future class.</p>
   <div class="caja importante">
     <div class="caja-t"><span class="ico">!</span>A potential mismatch</div>
     <p>The map rests only on environmental suitability: it does not consider dispersal, barriers, land use, the behavior of the visitors or other visitors that are not on the list. A large mismatch tells you where it is worth looking in the field for what visits the plant; it does not say that the plant is not pollinated there.</p>
@@ -136,7 +136,7 @@
   </div>
 
   <!-- 8.6 -->
-  <h2 id="s8-6"><span class="num">8.6</span>The messages of this block</h2>
+  <h2 id="s8-6"><span class="num">8.6</span>The warnings in this block</h2>
   <table class="compacta">
     <thead><tr><th style="width:2.6in">Message</th><th>What it means and what to do</th></tr></thead>
     <tbody>
@@ -144,7 +144,7 @@
       <tr><td><i>First fit the models with the current climate</i></td><td>The future is projected with the models already fitted: press <span class="ui">Fit and map</span> first.</td></tr>
       <tr><td><i>Future layers are missing for: …</i></td><td>The future layers must be the same variables in use and have the same ending in their name (“bio_1”…).</td></tr>
       <tr><td><i>The practice future only goes with the practice layers of Block 7</i></td><td>With your real layers, choose your own future layers.</td></tr>
-      <tr><td><i>N% of the map cells lie outside the environmental range…</i></td><td>There the model extrapolates. Read it with caution and say so in the methods.</td></tr>
+      <tr><td><i>N % of the map cells lie outside the environmental range…</i></td><td>There the model extrapolates. Read it with caution and say so in the methods.</td></tr>
       <tr><td>A unit with very few cells with records</td><td>Cross-validation needs records in each fold; with very few, the model and its evaluation are fragile. Merge species into their genus or widen the area.</td></tr>
     </tbody>
   </table>

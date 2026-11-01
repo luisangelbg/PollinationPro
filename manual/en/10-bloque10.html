@@ -59,7 +59,7 @@
       <tr><td><b>Resolution</b></td><td>150 dpi (screen), 300 (print), 600 (journal) or 900 (poster).</td></tr>
       <tr><td><b>Theme</b> · <b>Background</b></td><td>Light, dark or the one on screen; background as styled, white, that of the card or transparent.</td></tr>
       <tr><td><span class="ui">With the title inside the figure</span></td><td>Writes the title of the figure into the file. For a journal, which puts the title in the caption, untick it.</td></tr>
-      <tr><td><span class="ui">⤓ Export the selected ones</span> · <span class="ui">All the selected ones in a .zip</span></td><td>Downloads the ticked ones; with more than six they come in a .zip, because the browser blocks many downloads in a row.</td></tr>
+      <tr><td><span class="ui">⤓ Export the selected ones</span> · <span class="ui">All the selected ones in a .zip</span></td><td>Downloads the ticked ones; with more than six they come in a .zip (<code>&lt;study&gt;_figures.zip</code>), because the browser blocks many downloads in a row.</td></tr>
     </tbody>
   </table>
   <p>There are two ways to change the look of the figures, and they combine.</p>
@@ -72,7 +72,7 @@
     <div>
       <p style="margin-top:0">It opens with the palette button of the top bar, from any block. A single rule restyles every figure of the app, on screen and when exporting, without recomputing anything.</p>
       <ul>
-        <li><b>Nine palettes</b>: PollinationPro, Okabe–Ito (color-blind safe), Viridis, Seasons, Earth, Cool, Warm, High contrast and Greyscale.</li>
+        <li><b>Nine palettes</b>: PollinationPro, Okabe–Ito (color-blind safe), Viridis, Seasons, Earth, Cool, Warm, High contrast and Grayscale.</li>
         <li><b>Adjust one color</b>: any of the ten of the palette.</li>
         <li><b>Font</b> (seven families that exist on any computer), <b>background</b>, <b>text size</b>, <b>line weight</b> and <b>background grid</b>.</li>
         <li><span class="ui">↻ Back to the original style</span>.</li>
@@ -108,7 +108,7 @@
     <div class="marco"><img src="../img/en/b10-informe.png" alt="The report card with the title, the authorship, the boxes of the sections and the preview of the report with its summary, the practice-data warning and the first tables"></div>
     <figcaption><b>Figure 10.6.</b> The preview of the report of the practice study: 11 sections, 10 figures and 11 tables. The amber box warns that it contains practice data.</figcaption>
   </figure>
-  <p>The report is a single <code>.html</code> file, without dependencies, that opens in any browser. You give it a <b>title</b> and an <b>authorship</b>, tick the <b>sections</b> —one per computed block— and the <b>appendix with the calculation record</b>. <span class="ui">Preview</span> shows it in the card; <span class="ui">⤓ Download report .html</span> saves it; <span class="ui">Print to PDF</span> opens the browser’s print dialog (Save as PDF).</p>
+  <p>The report is a single <code>.html</code> file, without dependencies, that opens in any browser. You give it a <b>title</b> and an <b>authorship</b>, tick the <b>sections</b> —one per computed block— and the <b>appendix with the calculation record</b>. <span class="ui">Preview</span> shows it in the card; <span class="ui">⤓ Download report .html</span> saves it as <code>&lt;study&gt;_report.html</code>; <span class="ui">Print to PDF</span> opens the browser’s print dialog (Save as PDF).</p>
   <table class="compacta">
     <thead><tr><th style="width:1.8in">Part of the report</th><th>What it contains</th></tr></thead>
     <tbody>
@@ -134,15 +134,15 @@
   <table class="compacta">
     <thead><tr><th style="width:1.8in">File</th><th>Content</th></tr></thead>
     <tbody>
-      <tr><td><code>LEEME.txt</code></td><td>What the package contains and how to reproduce the study.</td></tr>
-      <tr><td><code>informe.html</code></td><td>The report with the ticked sections.</td></tr>
-      <tr><td><code>proyecto.json</code></td><td>The data of the study: it opens in Block 2 with <span class="ui">📂 Open a project</span>.</td></tr>
-      <tr><td><code>parametros.json</code></td><td>The calculation record of every block: rules, cells, universes, backgrounds, models, thresholds, replicates.</td></tr>
-      <tr><td><code>cuadros/</code></td><td>The tables as .csv: cleaned and removed records, co-occurrence pairs, phenological units and pairs, niche pairs, evaluation of the distribution, species of the network and GBIF datasets.</td></tr>
-      <tr><td><code>figuras/</code></td><td>The figures ticked in the catalog, in the chosen format and resolution, and also as SVG if <span class="ui">and also as SVG (editable)</span> is ticked.</td></tr>
+      <tr><td><code>README.txt</code></td><td>What the package contains and how to reproduce the study.</td></tr>
+      <tr><td><code>report.html</code></td><td>The report with the ticked sections.</td></tr>
+      <tr><td><code>project.json</code></td><td>The data of the study: it opens in Block 2 with <span class="ui">📂 Open a project</span>.</td></tr>
+      <tr><td><code>parameters.json</code></td><td>The calculation record of every block: rules, cells, universes, backgrounds, models, thresholds, replicates.</td></tr>
+      <tr><td><code>tables/</code></td><td>The tables as .csv: cleaned and removed records (<code>clean_records</code>, <code>removed_records</code>), co-occurrence pairs (<code>cooccurrence_pairs</code>), phenological units and pairs (<code>phenology_units</code>, <code>phenology_pairs</code>), niche pairs (<code>niche_pairs</code>), evaluation of the distribution (<code>distribution_evaluation</code>), species of the network (<code>network_species</code>) and GBIF datasets (<code>gbif_datasets</code>).</td></tr>
+      <tr><td><code>figures/</code></td><td>The figures ticked in the catalog, in the chosen format and resolution, and also as SVG if <span class="ui">and also as SVG (editable)</span> is ticked.</td></tr>
     </tbody>
   </table>
-  <p>The .zip is written by the app itself, byte by byte, without any library. The file and folder names stay in Spanish whatever the language of the app. It is what goes with the paper, the thesis or the technical opinion: whoever receives it can open the project, read the parameters and redo every number (Sandve et al. 2013; Wilkinson et al. 2016).</p>
+  <p>The .zip, <code>&lt;study&gt;_package.zip</code>, is written by the app itself, byte by byte, without any library. It is what goes with the paper, the thesis or the technical opinion: whoever receives it can open the project, read the parameters and redo every number (Sandve et al. 2013; Wilkinson et al. 2016).</p>
 
   <!-- 10.6 -->
   <h2 id="s10-6"><span class="num">10.6</span>Before you hand it in</h2>
