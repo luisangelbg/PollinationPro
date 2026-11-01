@@ -26,7 +26,7 @@ manual/
 Las capturas se toman con la app abierta desde el servidor local o `file://`, en español, tema claro, 1400 píxeles
 de ancho, al doble de resolución, con el **estudio de práctica «Cucurbitáceas y abejas de la calabaza»** depurado
 con los valores por omisión y, en los Bloques 7 y 8, las **capas de práctica** del programa. Las figuras del
-Bloque 2 que muestran GBIF y la base de interacciones son consultas reales del 27 de septiembre de 2026. Todos
+Bloque 2 que muestran GBIF y la base de interacciones son consultas reales del 31 de octubre de 2026. Todos
 los números del manual salen de esas corridas.
 
 ## Partes
